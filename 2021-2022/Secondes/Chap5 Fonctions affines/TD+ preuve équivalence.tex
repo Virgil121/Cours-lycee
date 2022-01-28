@@ -1,0 +1,57 @@
+\documentclass[a4paper,twocolumn,landscape,12pt,french]{article}
+
+\usepackage[TD]{../../../Style}
+\geometry{margin=1cm}
+
+\setlength\columnsep{2cm}
+
+% Début du document
+%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+\newcommand{\contenu}{
+\setcounter{exercice}{0}
+\titre{Une caractérisation des fonctions affines}
+
+\begin{prop}
+Soit $f:\R \rightarrow \R$ une fonction. Les deux conditions suivantes sont équivalentes:
+\begin{itemize}
+\item $f$ est une fonction affine.
+\item Quelque soient $x_1$ et $x_2 \in \R$, le nombre $\tfrac{f(x_2)-f(x_1)}{x_2-x_1}$ a toujours la même valeur.
+\end{itemize}
+\end{prop}
+
+\begin{exercice}
+On s'intéresse à la preuve de cette proposition. L'équivalence signifie que l'on doit prouver les deux sens de cette affirmation:
+\begin{itemize}
+\item (Sens direct) Si $f$ est une fonction affine, alors quelque soient [\ldots]
+\item (Sens indirect) Si quelque soient [\ldots] , alors $f$ est une fonction affine.
+\end{itemize}
+\begin{enumerate}
+\item On suppose que $f$ est une fonction affine:
+$$f:x \mapsto ax+b$$
+On se donne alors $x_1$ et $x_2 \in \R$.
+\begin{enumerate}
+\item Calculer $\tfrac{f(x_2)-f(x_1)}{x_2-x_1}$.
+\item Le résultat est-il cohérent? Quel sens de l'affirmation a-t-on prouvé?
+\end{enumerate}
+\item On ne suppose plus que $f$ est affine, mais que quelque soient $x_1$ et $x_2 \in \R$, le nombre $\tfrac{f(x_2)-f(x_1)}{x_2-x_1}$ est toujours le même. On pose alors:
+$$m:=\frac{f(x_2)-f(x_1)}{x_2-x_1}$$
+Montrons que $f$ est affine.
+\begin{enumerate}
+\item Soit $x \in \R$. Que vaut $\frac{f(x)-f(0)}{x}$?
+\item En manipulant l'égalité ainsi trouvée, donner une expression de $f(x)$ en fonction de $m$, $x$ et $f(0)$.
+\item Conclure.
+\end{enumerate}
+\item Refaire les calculs de la question 2 en calculant cette fois $\frac{f(x)-f(k)}{x-k}$, pour $k \in \R$.
+\end{enumerate}
+\end{exercice}
+}
+
+\contenu
+
+\newpage
+
+\contenu
+
+\end{document}

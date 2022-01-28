@@ -1,0 +1,159 @@
+\documentclass[,a4paper,11pt,french]{article}
+
+\usepackage{../../../Style}
+
+\renewcommand\tabularxcolumn[1]{m{#1}}
+
+\setlist[itemize]{align=parleft,left=5pt..15pt}
+\setlist[enumerate]{align=parleft,left=5pt..20pt}
+
+\geometry{centering,vcentering,left=13mm, right=13mm, top=10mm, bottom=10mm, marginparwidth=15mm}
+
+\pagestyle{empty}
+
+% Début du document
+%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+\titre{Exercices - Chapitres 1 à 3}
+
+\begin{multicols*}{2}
+
+\section*{Proportions, évolutions}
+
+\begin{exercice}
+En septembre 2000, la superficie minimum de la banquise arctique était de $6,32$ millions de km$^2$. Elle n'était plus que de $4,59$ millions de km$^2$ en septembre 2018. De quel pourcentage la superficie de la banquise arctique a-t-elle diminué entre septembre 2000 et septembre 2018?
+\end{exercice}
+
+\begin{exercice}
+Une boulangerie propose une baguette de pain à $90$ centimes. Son prix augmente de $10 \%$. Par quel nombre a-t-il été multiplié? Quel est alors son nouveau prix?
+\end{exercice}
+
+\begin{exercice}
+Le prix d'un litre d'essence a augmenté de $15 \%$ entre janvier et juillet, puis de $10 \%$ entre juillet et décembre.
+\begin{enumerate}
+\item Calculer le coefficient multiplicateur de ces deux évolutions.
+\item Justifier que le coefficient multiplicateur global est $1,265$.
+\end{enumerate}
+\end{exercice}
+
+\begin{exercice}
+La moitié de la carte d'un restaurant est composée de plats végétariens. Parmi ceux-ci, 20 $\%$ contiennent des tomates. Déterminer la proportion de plats végétariens contenant des tomates dans la carte du restaurant.
+\end{exercice}
+
+\section*{Fonctions, généralités}
+
+\begin{exercice}
+Soit $f$ la fonction définie par la courbe ci-dessous:
+
+\Centering{
+\begin{tikzpicture}[scale=\echellepgf]
+\begin{axis}[
+styleglobal,
+width=0.9*\echellepgfinv*\linewidth,
+xmin=-7, xmax= 7,
+ymin=-3, ymax=5,
+xtick distance=1,
+ytick distance=1,
+minor x tick num=0,
+minor y tick num=0,
+tick label style = {font=\scriptsize},
+]
+\addplot[styleplot] plot coordinates {(-6,3) (-5,1) (-3,-1) (-1,4) (1,3) (3,4) (4,2) (5,-1) (6,-2)};
+\end{axis}
+\end{tikzpicture}}
+\begin{enumerate}
+\item Quel est l'ensemble de définition de $f$?
+\item Déterminer les images par $f$ de $-5 \ , \ 3 \ , \ -1 \ , \ 1 \ , \ 4$.
+\item Quel est le nombre d'antécédents par $f$ de $4 \ , \ 2 \ , \ 0 \ , \ -1 \ , \ -2 \ , \ 3$?
+\end{enumerate}
+\end{exercice}
+
+\begin{exercice}
+On se donne la fonction $f$ définie sur $[-2;7]$ qui à $x$ associe $\frac {2x^3} {x^2+5x+15}$.
+\begin{enumerate}
+\item Réaliser le tableau de valeurs de $f$ entre $-2$ et $7$ par pas de $1$. On pourra s'aider de la calculatrice. On arrondira au dixième près.
+\item A l'aide de ce tableau de valeurs, tracer dans un repère la courbe représentative de $f$ sur $[-2;7]$.
+\end{enumerate}
+\end{exercice}
+
+\begin{exercice}
+La courbe dans le repère ci-dessous représente la fonction $f$ qui à un instant $t$ exprimé en heures de l'intervalle $[0;24]$ associe la température $T$ en degrés Celsius, en un lieu.
+
+\Centering{
+\begin{tikzpicture}[scale=\echellepgf]
+\begin{axis}[
+styleglobal,
+hauteurproptick,
+width=0.8*\echellepgfinv*\linewidth,
+xmin=0, xmax= 25,
+ymin=-12, ymax=16,
+xtick distance=2,
+ytick distance=2,
+minor x tick num=1,
+minor y tick num=0,
+ylabel={Température ($^{\circ}$C)},
+xlabel={Temps (h)},
+label style={font=\normalsize},
+yscale=0.5,
+]
+\addplot[styleplot] plot coordinates {(0,10) (1,6) (2,2) (5,-4) (6,-8) (8,-10) (10,-8) (13,2) (15,8) (16,12) (18,14) (20,2) (24,-4)};
+\end{axis}
+\end{tikzpicture}}
+\begin{enumerate}
+\item Résoudre graphiquement l'équation $f(t)=2$. Interpréter le résultat.
+\item Résoudre graphiquement l'inéquation $f(t) \geq -8$. Interpréter le résultat.
+\end{enumerate}
+\end{exercice}
+
+\begin{exercice} \label{schemafonctions}
+On se donne trois fonctions $f$, $g$ et $h$ représentées sur le graphe ci-dessous:
+\begin{centrer}
+\begin{tikzpicture}[scale=\echellepgf]
+\begin{axis}[
+styleglobal,
+width=0.8*\echellepgfinv*\linewidth,
+xmin=-0.5, xmax= 8.5,
+ymin=-2.5, ymax=3.5,
+xtick distance=1,
+ytick distance=1,
+minor x tick num=1,
+minor y tick num=1,
+]
+\addplot[styleplot,domain=(0:8)] plot {0.5*x-1.5)} node[pos=0.75,above] {$\mathscr C_f$};
+\addplot[styleplot,color=DarkRed,densely dashed,domain=(0:8)] plot coordinates{(0,-2) (1,-1) (2,2) (3,3) (5,1) (6,0) (8,-2)} node[pos=0.6,above right] {$\mathscr C_g$};
+\addplot[styleplot,densely dotted,color=DarkGreen,domain=(0:8)] plot coordinates{(0,3) (2,2) (3,0) (4,-2) (6,0) (7,2) (8,3)} node[pos=0.1,above right] {$\mathscr C_h$};
+\end{axis}
+\end{tikzpicture}
+\end{centrer}
+Dresser le tableau de variation de $g$ et le tableau de signes de $h$.
+\end{exercice}
+
+\begin{exercice}
+On reprend les fonctions définies à l'exercice précédent. Dans chaque cas, résoudre:
+\begin{enumerate}
+\item $g(x)=h(x)$
+\item $f(x) \leq h(x)$
+\item $h(x) > g(x)$
+\end{enumerate}
+\end{exercice}
+
+\section*{Suites, généralités}
+
+\begin{exercice} \
+\begin{enumerate}
+\item Soit $u$ une suite de premier terme $u_{11}$. Déterminer l'indice du troisième et du septième terme.
+\item Soit $v$ la suite définie sur $\N$ par $u_n=3n-2$. Déterminer $v_0, v_1, v_2, v_{10}$.
+\item Soit $w$ la suite telle que $w_0=1$ et pour $n \in N, w_{n+1}=5-2w_n$. Déterminer $w_1, w_2, w_3$.
+\end{enumerate}
+\end{exercice}
+
+\begin{exercice}
+Représenter la suite $u$ définie sur $\N$ par $u_n=\frac {n \times \sqrt n} 3$, et établir une conjecture sur son sens de variation.
+\end{exercice}
+
+\begin{exercice}
+Soit $u$ la suite définie sur $\N$ par $u_n=5-n$. Que dire de son sens de variation? Prouver cette conjecture.
+\end{exercice}
+\end{multicols*}
+\end{document}

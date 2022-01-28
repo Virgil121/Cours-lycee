@@ -1,0 +1,105 @@
+\documentclass[twocolumn,landscape,a4paper,12pt,french]{article}
+
+\usepackage[TD]{../../../Style}
+
+\renewcommand\tabularxcolumn[1]{m{#1}}
+
+\setlist[itemize]{align=parleft,left=5pt..15pt}
+\setlist[enumerate]{align=parleft,left=5pt..20pt}
+
+\pagestyle{empty}
+
+\setlength{\columnsep}{2cm}
+
+% Début du document
+%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+\newcommand{\contenu}{
+\titre{Fonctions polynômiales de degré 2 - Exercices}
+
+\begin{exercice}
+Parmi les fonctions suivantes, lesquelles sont des fonctions polynômiales de degré 2? Si oui, préciser les valeurs de $a,b,c$.
+
+\noindent $ f:x \mapsto x^2+5x-1 \hfill g:x \mapsto x^2 \hfill h:x \mapsto 1$
+
+\noindent $ \hfill i:x \mapsto 2+5x-7x^3 \hfill j:x \mapsto (x-2)^2+3x-1 \hfill$
+\end{exercice}
+
+\begin{exercice} \
+
+\compo[0.45]
+{
+Pour chaque parabole:
+
+\begin{itemize}
+\item Déterminer le signe de $a$.
+\item Déterminer $c$.
+\item Identifier le sommet et préciser ses coordonnées.
+\item Tracer l'axe de symétrie sur le repère.
+\end{itemize}
+}
+{
+\vspace{-5mm}
+\begin{centrer}
+\begin{tikzpicture}[scale=\echellepgf]
+\begin{axis}[
+styleglobal,
+width=0.95*\echellepgfinv*\linewidth,
+xmin=-4, xmax=9,
+ymin=-4, ymax=4,
+xtick distance=1,
+ytick distance=1,
+]
+\addplot[styleplot,domain=(-9:9)]{(x+1)^2};
+\addplot[color=red,styleplot,densely dashed,domain=(-9:9)]{-0.05*(x-3.5)^2+1.5};
+\addplot[color=blue,styleplot,densely dotted,domain=(4:8)]{-10*(x-6)^2+3};
+\end{axis}
+\end{tikzpicture}
+\end{centrer}
+}
+\end{exercice}
+
+\begin{exercice} \
+
+\compo[0.5]
+{
+Déterminer l'équation des trois paraboles suivantes (sous la forme $y=ax^2+c$):
+}
+{
+\vspace{-5mm}
+\begin{centrer}
+\begin{tikzpicture}[scale=\echellepgf]
+\begin{axis}[
+styleglobal,
+width=0.95*\echellepgfinv*\linewidth,
+xmin=-4, xmax=4,
+ymin=-2, ymax=6,
+xtick distance=1,
+ytick distance=1,
+]
+\addplot[styleplot,domain=(-9:9)]{(x^2+2};
+\addplot[color=red,styleplot,densely dashed,domain=(-9:9)]{4*x^2-1};
+\addplot[color=blue,styleplot,densely dotted,domain=(-9:9)]{-0.5*x^2+3};
+\end{axis}
+\end{tikzpicture}
+\end{centrer}
+}
+\end{exercice}
+
+\begin{exercice}
+Identifier $a$, $x_1$ et $x_2$ pour les fonctions suivantes:
+
+\noindent $\hfill f:x \mapsto 3(x-5)(x-9) \hfill g:x \mapsto 4(x-1)(x+12) \hfill$
+\center{$h:x \mapsto -2\left(x+ \frac 5 2 \right)(x-0.25)$}
+\end{exercice}
+}
+
+\contenu
+
+\newpage
+
+\setcounter{exercice}{0}
+
+\contenu
+\end{document}

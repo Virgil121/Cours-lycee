@@ -1,0 +1,136 @@
+\documentclass[a4paper,11pt,french,landscape]{article}
+
+\usepackage{../../../Style}
+
+\renewcommand\tabularxcolumn[1]{m{#1}}
+
+\geometry{left=10mm, right=10mm, top=10mm, bottom=17mm, marginparwidth=15mm}
+
+\setlist[itemize]{align=parleft,left=5pt..15pt}
+\setlist[enumerate]{align=left,left=-3pt..15pt,leftmargin=0pt,itemindent=15pt}
+\setlist[enumerate,1]{align=left,left=5pt..20pt,itemindent=*}
+
+\pagestyle{empty}
+
+%Sources: Indice 1Tech, Hyperbole 2nde, Indice 2nde (2019), perso, fiche Thomas
+
+% Début du document
+%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+\newcommand{\contenu}{
+
+\setcounter{exercice}{20}
+
+\begin{exercice}
+Que retourne l'algorithme suivant pour var$=3$? \ldots var$=-7$? \ldots On réutilisera ici l'algorithme de l'exercice 16.
+
+\begin{algorithme*}
+	\algofonction{Procédure\_{}spéciale(var)}{
+		\eSi{var$=f($var$)$}{
+			res $\gets$ var$^2-6$ \;
+			\eSi{res $\leq 0$}{
+				\Retour{res} \;
+			}
+			{
+				\Retour{$2*$res-5} \;
+			}
+		}
+		{
+			\Retour{$3*$var} \;
+		}
+	}
+\end{algorithme*}
+\end{exercice}
+
+\begin{exercice}
+On se donne l'algorithme suivant:
+
+\begin{algorithme*}
+	\algofonction{fonction$(A,B)$}{
+		\eSi{$A > B$}{
+			\eSi{$B > 0$}{
+				$C \gets A+B$ \;
+			}
+			{
+				$C \gets A-B$ \;
+			}
+		}
+		{
+			\eSi{$A > 0$}{
+				$C \gets A+B$ \;
+			}
+			{
+				$C \gets B-A$ \;
+			}
+		}
+	\Retour{$C$} \;
+	}
+\end{algorithme*}
+
+\begin{enumerate}
+\item Quelle est la valeur de $C$ pour $A=15$ et $B=25$? \ldots
+\item Pour $A=45$ et $B=-56$ ? \ldots
+\item \begin{enumerate}
+\item Démontrer que $C$ est toujours positif.
+\item Est-il strictement positif? 
+\end{enumerate}
+\end{enumerate}
+
+\end{exercice}
+
+\begin{exercice}
+Ecrire un algorithme qui retourne le maximum parmi deux nombres, parmi quatre nombres, puis parmi huit nombres.
+\end{exercice}
+
+\begin{exercice} On se donne les algorithmes suivants:
+
+
+\begin{algorithme*}
+	\algofonction{$f(x)$}{
+		$y \gets x^3-3*x^2+7*x-5$ \;
+		\Retour{$y$} \;
+	}
+\end{algorithme*}
+
+\begin{algorithme*}
+	\algofonction{$g(x)$}{
+		$y \gets x$ \;
+		$y \gets y*x-3$ \;
+		$y \gets y*x+7$ \;
+		$y \gets y*x-5$ \;
+		\Retour{$y$} \;
+	}
+\end{algorithme*}
+
+\begin{enumerate}
+\item Compléter le tableau de valeurs suivant:
+
+\noindent\begin{tabularx}{\linewidth}{|*4{Y|}} \hline
+$x$ & $-1$ & $2$ & $3$ \\ \hline
+$f(x)$ & & & \\ \hline
+$g(x)$ & & &\\ \hline
+\end{tabularx}
+
+\item Emettre et prouver une conjecture concernant ces deux algorithmes.
+
+\end{enumerate}
+\end{exercice}
+
+\begin{exercice}
+Ecrire un ou plusieurs algorithmes qui, à partir de trois quantités, calculent le taux d'évolution entre la première et la deuxième, la deuxième et la troisième puis la première et la troisième, et retournent le couple correspondant à la plus grande évolution.
+\end{exercice}
+\vfill \
+}
+
+\begin{multicols*}{4}
+
+\contenu
+
+\columnbreak
+
+\contenu
+
+\end{multicols*}
+
+\end{document}

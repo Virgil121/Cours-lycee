@@ -1,0 +1,157 @@
+\documentclass[a4paper,12pt,french]{article}
+
+\usepackage[minted,TD]{../../../Style}
+
+% Début du document
+%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+\titre{Tableur et Python}
+
+\section{Utilisation du tableur}
+
+\begin{exercice}
+On utilise un tableur pour calculer les termes de deux suites $u$ et $v$.
+
+\begin{center}
+    \includegraphics[scale=0.5]{tab1.png}
+\end{center}
+
+\begin{enumerate}
+    \item D'après la formule saisie en \textbf{B4}, et recopiée vers le bas, écrire un procédé pour passer du terme $u_1$ à $u_2$
+    \item Calculer $u_4$
+    \item Généraliser ce procédé entre $u_{n+1}$ et $u_n$
+    \item On garde le même procédé pour passer de  $v_{n+1}$ à $v_n$. Pourquoi n'obtient-on pas les mêmes résultats ? Argumenter.
+\end{enumerate}
+\end{exercice}
+
+\begin{exercice}
+On considère la relation de récurrence:
+
+$$u_{n+1}=\dfrac{u_n}{2} +5$$
+
+\compo[0.7]{\begin{enumerate}
+    \item Interpréter par une phrase cette relation entre deux termes consécutifs de la suite $u$
+    \item Le terme initial $u_1$ n'est pas donné mais sera saisi en \textbf{B2}.
+    Indiquer la formule à saisir en \textbf{B3, et recopiée vers le }, pour obtenir les termes de la suite.
+    \item Calculer les premiers termes pour :
+    \begin{enumerate}
+        \item $u_1=2$
+        \item $u_1=10$
+        \item $u_1=6$
+    \end{enumerate}
+\end{enumerate}}{\includegraphics[scale=0.5]{tab2.png}}
+\end{exercice}
+
+\begin{exercice}
+Soit $\left(v_n\right)$ la suite définie par $v_0=1$ et, pour tout entier naturel $n$, par $v_{n+1}=1,02 v_n+100$
+
+\begin{enumerate}
+    \item La suite $\left(v_n\right)$ est-elle définie par récurrence ou de manière explicite ?
+    \item Calculer $v_1$ et $v_2$
+    \item A l'aide de la calculatrice puis du tableur, déterminer une valeur approchée au centième de $v_{100}$
+\end{enumerate}
+\end{exercice}
+
+\begin{exercice} \saut
+\begin{enumerate}
+    \item Calculer les cinq premiers termes de chaque suite
+    \begin{enumerate}
+        \item $\left(u_n\right)$ définie par $u_n=\dfrac{1}{n^2}-7n$, avec $n\in \mathbb{N}^{*}$
+        \item $\left(v_n\right)$ définie par $v_n=5(n+2)^2-3$, avec $n \in \mathbb{N}$
+    \end{enumerate}
+   \item Calculer le dix-huitième terme des deux suites précédentes
+\end{enumerate}
+\end{exercice}
+
+\begin{exercice} \saut
+\begin{enumerate}
+    \item Représenter graphiquement à l'aide du tableur les 5 premiers termes de la suite $\left(u_n\right)$ définie pour tout $n\in \mathbb{N}$
+    par $u_n=n^2-2n$
+    \item Représenter graphiquement à l'aide du tableur les 5 premiers termes de la suite $\left(u_n\right)$ définie par $u_0=8$ et pour tout $n\in \mathbb{N}$, $u_{n+1}=-\dfrac{1}{2}u_n+1$
+\end{enumerate}
+\end{exercice}
+
+
+
+\section{Python: La Boucle For}
+
+En python, une boucle permet de répéter plusieurs fois de suite un même traitement.\\
+Lorsque le nombre n d'itérations est connu à l'avance, on parle de \textbf{boucle bornée} et on utilise un compteur qui s'incrémente de 1 (généralement ) à chaque itération jusqu'à la valeur n.
+
+\begin{minted}{python} 
+for i in range(n): 
+	bloc instructions # sera répétée n fois
+	#la variable i prenant successivement 
+	les valeurs 0, 1, ..., n-1
+\end{minted}
+
+     
+
+\begin{exercice}
+Pour calculer un terme de la suite $\left(u_n\right)$
+définie sur $ \mathbb{N}$, on utilise la fonction Python ci-dessous:
+
+
+\begin{minted}{python}
+def u(n):
+    u=12
+    for i in range(n): 
+        u=2*u-3
+    return u
+\end{minted}
+
+
+\begin{enumerate}
+    \item Quelle la valeur de la variable u à la fin du programme pour $n=3$?
+    \item Proposer une forme récurrente de la suite $\left(u_n\right)$
+    \item Réaliser le programme sur le notebook de Basthon et vérifier votre résultat pour $n=3$
+\end{enumerate}
+\end{exercice}
+
+\begin{exercice}
+Pour calculer un terme de la suite $\left(v_n\right)$
+définie sur $ \mathbb{N}$, on utilise la fonction Python ci-dessous:
+
+\begin{minted}{python} 
+def v(n):
+    v=4
+    for i in range(n):
+        v=2*v-5
+    return v
+\end{minted}
+
+\begin{enumerate}
+    \item Déterminer $v_0$
+    \item Proposer une forme récurrente de la suite $\left(v_n\right)$
+    \item Déterminer la valeur de $v_7$ en utilisant le notebook de Basthon
+\end{enumerate}
+\end{exercice}
+
+
+
+
+\begin{exercice}
+Compléter la fonction \mintinline{python}|somme(n)| pour qu'elle renvoie la somme $1+2+3+\ldots n$
+
+\begin{minted}{python} 
+def somme(n):
+	S=0
+    for i in range(n+1) :  # Pour i allant de 0 à n faire
+        S=......................
+    return(S)
+
+\end{minted}  
+
+\end{exercice}
+
+\begin{exercice}
+On considère la suite définie pour tout entier naturel $n$ par: $u_n=2n^2-n+1$
+
+\begin{enumerate}
+    \item Ecrire une fonction python \mintinline{python}|rang(n)| qui permet de retourner le terme de rang n de cette suite pour une valeur de n donnée
+    \item Que renvoie l'instruction \mintinline{python}|rang(5)| ? Quelle valeur renvoie-t-elle ?
+\end{enumerate}
+\end{exercice}
+
+\end{document}

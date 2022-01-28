@@ -1,0 +1,101 @@
+% Test tcolorbox
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%Mise à jour dynamique de la couleur de fond
+%Au lieu d'utiliser des options de transparence on pourra utiliser des couleurs comme red!10!bg ( 10% de rouge sur un fond de couleur bg )
+%Voir cours ensembles de nombres pour un exemple d'utilisation
+
+\colorlet{bg}{white}
+
+% Mise à jour dynamique de la couleur de textbf
+
+\colorlet{bfcolor}{black}
+\newcommand{\colorfadebg}{15}
+\tcbset{
+	frame hidden,
+	boxrule=0pt,
+	boxsep=0pt,
+	enlarge bottom by=0pt,
+	enhanced jigsaw,
+	boxed title style={sharp corners,boxrule=0pt,coltitle={white},titlerule=0pt},
+	fonttitle=\bfseries\boldmath,
+	top=10pt,
+	right=10pt,
+	bottom=10pt,
+	left=10pt,
+	sharp corners,
+}
+
+\newcommand{\deftcbUn}[6][10]{
+\definecolor{#2-titre}{Hsb}{#4,#5,#6}
+\colorlet{#2}{#2-titre!#1}
+\newtcolorbox{#2}[1][]{
+	colback=#2,
+	breakable,
+	borderline west={1pt}{0pt}{#2-titre},
+	title={\hspace{-10pt}\colorbox{#2-titre}{\rule[-3pt]{0pt}{14pt} \hspace{5pt}\MakeUppercase{#3}\ifstrempty{##1}{}{ (##1) }\hspace{10pt}}},
+	colbacktitle=#2,
+	before upper={\colorlet{bg}{#2} \definecolor{bfcolor}{Hsb}{#4,0.75,0.15}},
+	after upper={\colorlet{bg}{white} \colorlet{bfcolor}{black}},
+	%before upper={\tcolorboxsubtitle{#1}{##1}},
+}
+}
+
+\newcommand{\deftcb}[6][10]{ % Pour définir tous les types de thm en une ligne: voir options
+\deftcbUn[#1]{#2}{#3}{#4}{#5}{#6}
+\deftcbUn[#1]{#2s}{#3s}{#4}{#5}{#6}
+}
+
+\definecolor{remq-titre}{Hsb}{50,0.8,0.8}
+\colorlet{remq}{remq-titre!10}
+\newtcolorbox{remq}{
+	colback=remq,
+	colframe=remq-titre,
+	hbox,
+	flush right,
+	right=4pt,
+	left=4pt,
+	top=7pt,
+	bottom=7pt,
+	borderline west={2pt}{-2pt}{remq-titre},
+	%title={\hspace{-10pt}\colorbox{rmq-perso-titre}{\rule[-3pt]{0pt}{14pt} \hspace{5pt}\MakeUppercase{#3}\ifstrempty{##1}{}{ (##1) }\hspace{10pt}}},
+	%colbacktitle=#2,
+	before upper={\colorlet{bg}{remq} \definecolor{bfcolor}{Hsb}{50,0.75,0.15}},
+	after upper={\colorlet{bg}{white} \colorlet{bfcolor}{black}},
+	%before upper={\tcolorboxsubtitle{#1}{##1}},
+}
+
+%\definecolor{programme-titre}{Hsb}{0,0.8,0.75}
+%\colorlet{programme}{programme-titre!10}
+%\newtcolorbox{tcolor-programme}{
+%	colback=programme,
+%	borderline west={1pt}{0pt}{programme-titre},
+%	title={\hspace{-10pt}\colorbox{programme-titre}{\rule[-3pt]{0pt}{14pt} \hspace{5pt}\MakeUppercase{Programme}\hspace{10pt}}},
+%	colbacktitle=programme,
+%	before upper={\colorlet{bg}{programme} \definecolor{bfcolor}{Hsb}{0,0.75,0.15}},
+%	after upper={\colorlet{bg}{white} \colorlet{bfcolor}{black}},
+%	%before upper={\tcolorboxsubtitle{#1}{##1}},
+%}
+%
+%\definecolor{deroule-titre}{Hsb}{0,0.8,0.75}
+%\colorlet{deroule}{deroule-titre!10}
+%\newtcolorbox{tcolor-deroule}{
+%	colback=deroule,
+%	borderline west={1pt}{0pt}{deroule-titre},
+%	title={\hspace{-10pt}\colorbox{deroule-titre}{\rule[-3pt]{0pt}{14pt} \hspace{5pt}\MakeUppercase{Déroulé}\hspace{10pt}}},
+%	colbacktitle=deroule,
+%	before upper={\colorlet{bg}{deroule} \definecolor{bfcolor}{Hsb}{0,0.75,0.15}},
+%	after upper={\colorlet{bg}{white} \colorlet{bfcolor}{black}},
+%	%before upper={\tcolorboxsubtitle{#1}{##1}},
+%}
+
+\definecolor{fait-titre}{Hsb}{0,0,0.6} % Quand un résultat n'est pas vraiment catégorisé: intro d'une partie...
+\colorlet{fait}{fait-titre!10}
+\newtcolorbox{fait}[1][fait]{ % Option = couleur à prendre ( mettre nom de thm )
+    top=5pt,
+    bottom=5pt,
+	colback={#1},
+	borderline west={1pt}{0pt}{#1-titre},
+}
+
+\newcounter{compteurenonce}   % Pour des noms d'énoncés rares, a voir selon option cours

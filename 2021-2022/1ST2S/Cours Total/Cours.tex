@@ -1,0 +1,42 @@
+\documentclass[a4paper,french,12pt]{article} % Overleaf ne compile pas sans ça ...
+% Les deux lignes suivantes suffisent dans texmaker
+\usepackage{titling}
+\usepackage{anyfontsize}
+\usepackage{sectsty}
+\usepackage[eleve,cours]{../../../Style}
+\usetikzlibrary{calc} 
+\usepackage[subpreambles=false]{standalone}
+
+\renewcommand{\progres}{}
+
+\newcommand{\entre}{\setcounter{section}{0}\newpage}
+\setcounter{tocdepth}{0}
+\begin{document}
+\thispagestyle{empty}
+\include{Cover}
+\setcounter{page}{1}
+\addcontentsline{toc}{chapter}{Proportions, variations et pourcentages}
+\input{../Chap1 Proportions Variations/cours}
+\entre
+%
+\addcontentsline{toc}{chapter}{Fonctions: Généralités}
+\input{../Chap2 Généralités fonctions/cours v2}
+\entre
+%
+\addcontentsline{toc}{chapter}{Suites: Généralités}
+\input{../Chap3 Généralités Suites/cours}
+\entre
+%
+\addcontentsline{toc}{section}{Fonctions affines}
+\input{../Chap4 Fonctions affines/cours}
+\entre
+%
+\addcontentsline{toc}{section}{Fonctions polynômiales de degré 2}
+\input{../Chap5 Fonctions polynomiales de degré 2/cours v3}
+\entre
+%
+\addcontentsline{toc}{section}{Suites arithmétiques et géométriques}
+\input{../Chap6 Suites arithmétiques géométriques/cours}
+\entre
+
+\end{document}

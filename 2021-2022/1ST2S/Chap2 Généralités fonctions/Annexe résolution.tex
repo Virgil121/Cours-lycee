@@ -1,0 +1,186 @@
+\documentclass[,a4paper,12pt,french]{article}
+
+\usepackage{../../../Style}
+\pagestyle{empty}
+\renewcommand\tabularxcolumn[1]{p{#1}}
+% Début du document
+%%%%%%%%%%%%%%%%%%%
+\begin{document}
+\setcounter{section}{1}
+\section{Résolution graphique d'équations et d'inéquations}
+
+\subsection{Equations}
+
+\begin{center}
+\begin{tabularx}{\linewidth}{|X|X| } \hline
+\Centering{$f(x)=k$} & \Centering{$f(x)=g(x)$} \\ \hline
+\Centering{
+\begin{tikzpicture}[scale=1]
+\begin{axis}[
+axis x line=bottom,
+axis y line = left,
+axis lines=middle,
+width=1.2*\linewidth,
+height=0.9*\linewidth,
+xmin=-0.5, xmax=4.5,
+ymin=-1, ymax=4,
+enlargelimits={abs=0.2},
+xlabel={$x$},
+ylabel={$y$},
+%ytick distance=1,
+ticks=none,
+grid style=dashed,
+%axis equal,
+legend pos=north east,
+xlabel style={at={(ticklabel* cs:0.95)},below=0.1},
+]
+\addplot[samples=101,smooth,ultra thick,domain=(-2:5),mark=none]{3.5*e^(-0.4*(x-2)^2)} node [pos=0.75,right] {$\mathscr C_f$};
+
+\addplot +[mark=none,color=blue,style=dashed,very thick] coordinates {(-1,2.8) (5, 2.8)} node [pos=0.18,above right] {$k$};
+\node[circle, minimum size=1pt,fill,color=blue,inner sep=2pt] at (axis cs:1.25,2.8) {};
+\node[circle, minimum size=1pt,fill,color=blue,inner sep=2pt] at (axis cs:2.75,2.8) {};
+\addplot +[mark=none,color=blue,style=dashed,very thick] coordinates {(1.25,0) (1.25, 2.8)} node [pos=0,below] {$x_1$};
+\addplot +[mark=none,color=blue,style=dashed,very thick] coordinates {(2.75,0) (2.75, 2.8)} node [pos=0,below] {$x_2$};
+%\addplot +[mark=none,color=red,style=dashed,very thick] coordinates {(-1, 0) (-1, 2)};
+%\addplot +[mark=none,color=red,style=dashed,very thick] coordinates {(-1, 2) (0, 2)};
+%\node[label={0:{$(0,1)$}},rectangle,fill,inner sep=2pt] at (axis cs:0,1) {};
+%\node[label={[label distance=2pt]-90:{$(0,1)$}},rectangle,fill,inner sep=0pt, minimum height=0pt, minimum width=4pt] at (axis cs:1,1) {};
+\end{axis}
+\end{tikzpicture}}
+&
+\Centering{
+\begin{tikzpicture}[scale=1]
+\begin{axis}[
+axis x line=bottom,
+axis y line = left,
+axis lines=middle,
+width=1.2*\linewidth,
+height=0.9*\linewidth,
+xmin=-0.5, xmax=4.5,
+ymin=-1, ymax=4,
+enlargelimits={abs=0.2},
+xlabel={$x$},
+ylabel={$y$},
+ticks=none,
+%ytick distance=1,
+%axis equal,
+yticklabel=\empty,
+xticklabel=\empty,
+xlabel style={at={(ticklabel* cs:0.95)},below=0.1},
+]
+\addplot[samples=101,smooth,ultra thick,domain=(-2:5),mark=none]{3.5*e^(-0.4*(x-2)^2)} node [pos=0.5,above] {$\mathscr C_f$};
+\addplot[samples=101,smooth,ultra thick,domain=(-2:5),mark=none,color=red]{-0.69*x^3+3.49*x^2-3.72*x+1.85} node [pos=0.65,above right,color=red] {$\mathscr C_g$};
+
+\addplot +[mark=none,color=blue,style=dashed,very thick] coordinates {(0.3,0) (0.3, 1.05)} node [pos=0,below] {$x_1$} node[pos=1,circle, minimum size=1pt,fill,inner sep=2pt] {};
+\addplot +[mark=none,color=blue,style=dashed,very thick] coordinates {(2.3,0) (2.3, 3.35)} node [pos=0,below] {$x_2$} node[pos=1,circle, minimum size=1pt,fill,inner sep=2pt] {};
+\addplot +[mark=none,color=blue,style=dashed,very thick] coordinates {(3.65,0) (3.65, 1.15)} node [pos=0,below] {$x_3$} node[pos=1,circle, minimum size=1pt,fill,inner sep=2pt] {};
+%\addplot +[mark=none,color=red,style=dashed,very thick] coordinates {(-1, 0) (-1, 2)};
+%\addplot +[mark=none,color=red,style=dashed,very thick] coordinates {(-1, 2) (0, 2)};
+%\node[label={0:{$(0,1)$}},rectangle,fill,inner sep=2pt] at (axis cs:0,1) {};
+%\node[label={[label distance=2pt]-90:{$(0,1)$}},rectangle,fill,inner sep=0pt, minimum height=0pt, minimum width=4pt] at (axis cs:1,1) {};
+\end{axis}
+\end{tikzpicture}}
+\\ \hline
+Résoudre l'équation $f(x)=k$ signifie trouver les antécédents de $k$ par la fonction $f$.
+
+Cela revient donc à chercher l'abscisse des points d'intersection de la courbe avec la droite d'équation $y=k$.
+
+Ici, l'ensemble des solution de l'équation est:$$S=\{x_1;x_2 \}$$ \vspace{-5mm}
+&
+Résoudre l'équation $f(x)=g(x)$ signifie trouver les nombres qui ont la même image par $f$ et $g$.
+
+Cela revient donc à chercher l'abscisse des points d'intersection des deux courbes $\mathscr C_f$ et $\mathscr C_g$.
+
+Ici, l'ensemble des solution de l'équation est:$$S=\{x_1;x_2;x_3 \}$$ \vspace{-5mm}\\ \hline
+\end{tabularx}
+\vfill
+\subsection{Inéquations}
+
+\begin{tabularx}{\linewidth}{ |X|X|X| } \hline
+\Centering{$f(x)>k$} & \Centering{$f(x) \leq k$} & \Centering{$f(x)>g(x)$} \\ \hline
+\multicolumn{2}{|c|}{
+\begin{tikzpicture}[scale=1]
+\begin{axis}[
+axis x line=bottom,
+axis y line = left,
+axis lines=middle,
+width=0.4*\linewidth,
+height=0.33*\linewidth,
+xmin=-0.5, xmax=4.5,
+ymin=-1, ymax=4,
+enlargelimits={abs=0.2},
+xlabel={$x$},
+ylabel={$y$},
+%ytick distance=1,
+ticks=none,
+grid style=dashed,
+%axis equal,
+legend pos=north east,
+xlabel style={at={(ticklabel* cs:0.95)},below=0.1},
+]
+\addplot[samples=101,smooth,ultra thick,domain=(-2:5),mark=none]{3.5*e^(-0.4*(x-2)^2)} node [pos=0.75,right] {$\mathscr C_f$};
+
+\addplot +[mark=none,color=blue,style=dashed,very thick] coordinates {(-1,2.8) (5, 2.8)} node [pos=0.18,above right] {$k$};
+\node[circle, minimum size=1pt,fill,color=blue,inner sep=2pt] at (axis cs:1.25,2.8) {};
+\node[circle, minimum size=1pt,fill,color=blue,inner sep=2pt] at (axis cs:2.75,2.8) {};
+\addplot +[mark=none,color=blue,style=dashed,very thick] coordinates {(1.25,0) (1.25, 2.8)} node [pos=0,below] {$x_1$};
+\addplot +[mark=none,color=blue,style=dashed,very thick] coordinates {(2.75,0) (2.75, 2.8)} node [pos=0,below] {$x_2$};
+%\addplot +[mark=none,color=red,style=dashed,very thick] coordinates {(-1, 0) (-1, 2)};
+%\addplot +[mark=none,color=red,style=dashed,very thick] coordinates {(-1, 2) (0, 2)};
+%\node[label={0:{$(0,1)$}},rectangle,fill,inner sep=2pt] at (axis cs:0,1) {};
+%\node[label={[label distance=2pt]-90:{$(0,1)$}},rectangle,fill,inner sep=0pt, minimum height=0pt, minimum width=4pt] at (axis cs:1,1) {};
+\end{axis}
+\end{tikzpicture}}
+&
+\Centering{
+\begin{tikzpicture}[scale=1]
+\begin{axis}[
+axis x line=bottom,
+axis y line = left,
+axis lines=middle,
+width=1.25*\linewidth,
+height=1.08*\linewidth,
+xmin=-0.5, xmax=4.5,
+ymin=-1, ymax=4,
+enlargelimits={abs=0.2},
+xlabel={$x$},
+ylabel={$y$},
+ticks=none,
+%ytick distance=1,
+%axis equal,
+yticklabel=\empty,
+xticklabel=\empty,
+xlabel style={at={(ticklabel* cs:0.95)},below=0.1},
+]
+\addplot[samples=101,smooth,ultra thick,domain=(-2:5),mark=none]{3.5*e^(-0.4*(x-2)^2)} node [pos=0.5,above] {$\mathscr C_f$};
+\addplot[samples=101,smooth,ultra thick,domain=(-2:5),mark=none,color=red]{-0.69*x^3+3.49*x^2-3.72*x+1.85} node [pos=0.65,above right,color=red] {$\mathscr C_g$};
+
+\addplot +[mark=none,color=blue,style=dashed,very thick] coordinates {(0.3,0) (0.3, 1.05)} node [pos=0,below] {$x_1$} node[pos=1,circle, minimum size=1pt,fill,inner sep=2pt] {};
+\addplot +[mark=none,color=blue,style=dashed,very thick] coordinates {(2.3,0) (2.3, 3.35)} node [pos=0,below] {$x_2$} node[pos=1,circle, minimum size=1pt,fill,inner sep=2pt] {};
+\addplot +[mark=none,color=blue,style=dashed,very thick] coordinates {(3.65,0) (3.65, 1.15)} node [pos=0,below] {$x_3$} node[pos=1,circle, minimum size=1pt,fill,inner sep=2pt] {};
+%\addplot +[mark=none,color=red,style=dashed,very thick] coordinates {(-1, 0) (-1, 2)};
+%\addplot +[mark=none,color=red,style=dashed,very thick] coordinates {(-1, 2) (0, 2)};
+%\node[label={0:{$(0,1)$}},rectangle,fill,inner sep=2pt] at (axis cs:0,1) {};
+%\node[label={[label distance=2pt]-90:{$(0,1)$}},rectangle,fill,inner sep=0pt, minimum height=0pt, minimum width=4pt] at (axis cs:1,1) {};
+\end{axis}
+\end{tikzpicture}}
+\\ \hline
+Résoudre l'inéquation $f(x) > k$ signifie trouver les nombres qui ont une image supérieure à $k$.
+
+Cela revient donc à chercher l'abscisse des points de la courbe se situant "au dessus" de la droite d'équation $y=k$.
+
+Ici, l'ensemble des solution de l'inéquation est:$$S=\left] x_1;x_2 \right[$$ \vspace{-5mm}
+&
+Résoudre l'inéquation $f(x) \leq k$ signifie trouver les nombres qui ont une image inférieure à $k$.
+
+Cela revient donc à chercher l'abscisse des points de la courbe se situant "en dessous" de la droite d'équation $y=k$.
+
+Ici, l'ensemble des solution de l'inéquation est:$$S=\left] - \infty;x_1 \right] \cup \left[ x_2 ; + \infty \right[$$ \vspace{-5mm}
+&
+Résoudre l'inéquation $f(x) > g(x)$ signifie trouver les nombres dont l'image par $f$ est supérieure à l'image par $g$.
+
+Cela revient à chercher l'abscisse des points de $\mathscr C_f$ situés "au dessus" des points de $\mathscr C_g$. \vspace{-5mm} \\ \hline
+\end{tabularx}
+\end{center}
+
+\end{document}

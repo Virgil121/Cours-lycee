@@ -1,0 +1,224 @@
+\documentclass[landscape,a4paper,12pt,french, twocolumn]{article}
+
+\usepackage{../../../Style}
+
+\renewcommand\tabularxcolumn[1]{m{#1}}
+
+\pagestyle{empty}
+
+\setlength{\columnsep}{2cm}
+
+% Début du document
+%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+\titre{Equations du type $f(x)=k$}
+
+\begin{exercice}
+On se donne la fonction $f$ représentée ci-contre. Résoudre graphiquement les équations suivantes:
+
+\compo[0.4]
+{
+\begin{enumerate}
+\item $f(x)=3$:
+\vspace{5mm}
+\item $f(x)=-1$:
+\vspace{5mm}
+\item $f(x)=1,5$:
+\end{enumerate}
+}
+{
+\Centering{
+\begin{tikzpicture}[scale=\echellepgf]
+\begin{axis}[
+styleglobal,
+width=0.9*\echellepgfinv*\linewidth,
+xmin=-6, xmax= 6,
+ymin=-2, ymax=5,
+xtick distance=1,
+ytick distance=1,
+minor x tick num=0,
+minor y tick num=0,
+%tick label style = {font=\scriptsize},
+]
+\addplot[styleplot,domain=(-5:5)] plot {-1.4+5.5*e^(-0.1*(x-2)^2)} node[pos=0.8,above right] {$\mathscr C_f$} \pointsextremites;
+\end{axis}
+\end{tikzpicture}}
+}
+\end{exercice}
+
+\begin{exercice}
+De même avec la fonction $g$ représentée ci-dessous:
+
+\compo[0.4]
+{
+\begin{enumerate}
+\item $g(x)=1$:
+\vspace{5mm}
+\item $g(x)=0$:
+\vspace{5mm}
+\item $g(x)=5$:
+\end{enumerate}
+}
+{
+\Centering{
+\begin{tikzpicture}[scale=\echellepgf]
+\begin{axis}[
+styleglobal,
+width=0.9*\echellepgfinv*\linewidth,
+xmin=-7, xmax= 7,
+ymin=-2, ymax=6,
+xtick distance=1,
+ytick distance=1,
+minor x tick num=0,
+minor y tick num=0,
+%tick label style = {font=\scriptsize},
+]
+\addplot[styleplot] plot coordinates {(-6,1) (-4,3) (-1,-1) (1,3) (3,4) (4,2) (5,-1) (6,0)} node[pos=0.8,above right] {$\mathscr C_g$} \pointsextremites;
+\end{axis}
+\end{tikzpicture}}
+}
+\end{exercice}
+
+\begin{exercice}
+On définit maintenant les fonctions $f$ ( trait plein ) et $g$ ( pointillés ) représentées sur le graphe ci-dessous. Résoudre graphiquement les équations suivantes:
+
+\compo[0.4]
+{
+\begin{enumerate}
+\item $f(x)=0,5$:
+\vspace{5mm}
+\item $g(x)=-0.5$:
+\vspace{5mm}
+\item $g(x)=2$:
+\end{enumerate}
+}
+{
+\Centering{
+\begin{tikzpicture}[scale=\echellepgf]
+\begin{axis}[
+styleglobal,
+width=0.9*\echellepgfinv*\linewidth,
+xmin=-6, xmax= 6,
+ymin=-2, ymax=1.5,
+xtick distance=1,
+ytick distance=0.5,
+hauteurproptick,
+minor x tick num=0,
+minor y tick num=0,
+%tick label style = {font=\scriptsize},
+]
+\addplot[styleplot,domain=(-4:3)] plot coordinates {(-4,1) (-2,0) (3,0.7)} node[pos=0.75,above right] {$\mathscr C_f$} \pointsextremites;
+\addplot[styleplot,densely dashed,color=DarkBlue] plot coordinates {(-4,-1.5) (-1,1) (3,-1)} node[pos=0.95,above right] {$\mathscr C_g$} \pointsextremites;
+\end{axis}
+\end{tikzpicture}}
+}
+\end{exercice}
+
+\setcounter{exercice}{0}
+\newpage
+
+\titre{Equations du type $f(x)=k$}
+
+\begin{exercice}
+On se donne la fonction $f$ représentée ci-contre. Résoudre graphiquement les équations suivantes:
+
+\compo[0.4]
+{
+\begin{enumerate}
+\item $f(x)=3$:
+\vspace{5mm}
+\item $f(x)=-1$:
+\vspace{5mm}
+\item $f(x)=1,5$:
+\end{enumerate}
+}
+{
+\Centering{
+\begin{tikzpicture}[scale=\echellepgf]
+\begin{axis}[
+styleglobal,
+width=0.9*\echellepgfinv*\linewidth,
+xmin=-6, xmax= 6,
+ymin=-2, ymax=5,
+xtick distance=1,
+ytick distance=1,
+minor x tick num=0,
+minor y tick num=0,
+%tick label style = {font=\scriptsize},
+]
+\addplot[styleplot,domain=(-5:5)] plot {-1.4+5.5*e^(-0.1*(x-2)^2)} node[pos=0.8,above right] {$\mathscr C_f$} \pointsextremites;
+\end{axis}
+\end{tikzpicture}}
+}
+\end{exercice}
+
+\begin{exercice}
+De même avec la fonction $g$ représentée ci-dessous:
+
+\compo[0.4]
+{
+\begin{enumerate}
+\item $g(x)=1$:
+\vspace{5mm}
+\item $g(x)=0$:
+\vspace{5mm}
+\item $g(x)=5$:
+\end{enumerate}
+}
+{
+\Centering{
+\begin{tikzpicture}[scale=\echellepgf]
+\begin{axis}[
+styleglobal,
+width=0.9*\echellepgfinv*\linewidth,
+xmin=-7, xmax= 7,
+ymin=-2, ymax=6,
+xtick distance=1,
+ytick distance=1,
+minor x tick num=0,
+minor y tick num=0,
+%tick label style = {font=\scriptsize},
+]
+\addplot[styleplot] plot coordinates {(-6,1) (-4,3) (-1,-1) (1,3) (3,4) (4,2) (5,-1) (6,0)} node[pos=0.8,above right] {$\mathscr C_g$} \pointsextremites;
+\end{axis}
+\end{tikzpicture}}
+}
+\end{exercice}
+
+\begin{exercice}
+On définit maintenant les fonctions $f$ ( trait plein ) et $g$ ( pointillés ) représentées sur le graphe ci-dessous. Résoudre graphiquement les équations suivantes:
+
+\compo[0.4]
+{
+\begin{enumerate}
+\item $f(x)=0,5$:
+\vspace{5mm}
+\item $g(x)=-0.5$:
+\vspace{5mm}
+\item $g(x)=2$:
+\end{enumerate}
+}
+{
+\Centering{
+\begin{tikzpicture}[scale=\echellepgf]
+\begin{axis}[
+styleglobal,
+width=0.9*\echellepgfinv*\linewidth,
+xmin=-6, xmax= 6,
+ymin=-2, ymax=1.5,
+xtick distance=1,
+ytick distance=0.5,
+minor x tick num=0,
+minor y tick num=0,
+hauteurproptick,
+%tick label style = {font=\scriptsize},
+]
+\addplot[styleplot,domain=(-4:3)] plot coordinates {(-4,1) (-2,0) (3,0.7)} node[pos=0.75,above right] {$\mathscr C_f$} \pointsextremites;
+\addplot[styleplot,densely dashed,color=DarkBlue] plot coordinates {(-4,-1.5) (-1,1) (3,-1)} node[pos=0.95,above right] {$\mathscr C_g$} \pointsextremites;
+\end{axis}
+\end{tikzpicture}}
+}
+\end{exercice}
+
+\end{document}

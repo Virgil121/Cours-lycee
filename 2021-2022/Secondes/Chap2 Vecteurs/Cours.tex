@@ -1,0 +1,223 @@
+\documentclass[a4paper,12pt,french]{article}
+
+\usepackage[cours]{../../../Style}
+
+\begin{document}
+
+\titre{Vecteurs du plan: Première approche}
+
+\begin{FlushLeft}
+
+\section{Translations}
+
+\begin{defin}
+Soient $A,B,M$ trois points quelconques du plan. L'image de $M$ par la translation de vecteur $\vecc {AB}$ est l'unique point $N$ tel que le quadrilatère $ABNM$ soit un parallélogramme.
+
+\begin{center}
+\begin{tikzpicture}[scale=0.7]
+\node[color=black,circle,minimum size=1pt,fill,inner sep=2pt,label={90:\textbf{\large A}}] (A) at (0,0) {};
+\node[color=black,circle,minimum size=1pt,fill,inner sep=2pt,label={90:\textbf{\large B}}] (B) at (5,-2) {};
+\node[color=black,circle,minimum size=1pt,fill,inner sep=2pt,label={90:\textbf{\large M}}] (M) at (-2,-3) {};
+\node[draw=none] (N) at (3,-5) {};
+\draw[thick, -] (M) +(-17:5.385) arc (-17:-27:5.385);
+\draw[thick, -] (B) +(-115:3.606) arc (-115:-132:3.606);
+%\draw[dashed] (M) circle (5.3851);
+%\draw (B) circle (3.6055);
+
+\end{tikzpicture}
+\end{center}
+\end{defin}
+
+\rem{Demander quelles méthodes pour placer N: deux arcs de cercle, un arc et droite parallèle, deux droites parallèles, milieu diagonales+compas}
+
+\begin{rmqs}
+Lors de cette translation:
+\begin{itemize}
+\item Les droites $(AB)$ et $(MN)$ sont parallèles
+\item Les longueurs $AB$ et $MN$ sont égales
+%\item Le glissement de $M$ vers $N$ se fait dans la même sens que de $A$ vers $B$.
+\end{itemize}
+\end{rmqs}
+
+\rem{Exos 1,2,(3)}
+
+\section{Généralités sur les vecteurs}
+
+\begin{defin}
+Un vecteur $\vec u$ peut être représenté avec une origine $A$ et une extrémité $B$. Il est caractérisé par:
+\begin{itemize}
+\item Sa direction ( celle de la droite $(AB)$ )
+\item Son sens ( de $A$ vers $B$ )
+\item Sa norme ( ou sa longueur ), notée $\Vert \vec u \Vert$. On a $\Vert \vec u \Vert = AB$.
+\end{itemize}
+\end{defin}
+
+\begin{defin}
+Lorsque deux vecteurs symbolisent le même déplacement, on dit qu'ils sont égaux.
+\end{defin}
+
+\begin{ex}
+La figure précédente nous donne alors $\vecc{AB} = \vecc {MN}, \vecc{BA} = \vecc{NM}, \vecc {AM} = \vecc {BN}$.
+\end{ex}
+
+\begin{propr}
+Les quatre propositions suivantes sont \textbf{équivalentes}:
+\begin{itemize}
+\item $\vecc {AB} = \vecc {MN}$
+\item $N$ est l'image de $M$ par la translation de vecteur $\vecc{AB}$
+\item $[AN]$ et $[BM]$ se coupent en leur milieu
+\item $ABNM$ est un parallélogramme
+\end{itemize}
+\end{propr}
+
+\begin{casparts}
+\begin{itemize}
+\item Le vecteur nul, noté $\vecc 0$, est obtenu à partir de la translation qui transforme $A$ et $A$, $B$ en $B$ ... On a alors $\vecc 0 = \vecc {AA} = \vecc {BB} = \ldots$ Ce vecteur n'a ni direction, ni sens, et sa norme est nulle.
+\item L'opposé du vecteur $\vecc {AB}$ est le vecteur associé à la translation qui transforme $B$ en $A$. On le note $- \vecc {AB}$. Ainsi, $- \vecc {AB} = \vecc {BA}$. Il a la même direction et la même norme que $\vecc {AB}$ mais est de sens contraire.
+\end{itemize}
+\end{casparts}
+
+\rem{Exos 4,5,6,7}
+
+\section{Somme de deux vecteurs}
+
+\rem[eleve]{Activité Chasles}
+
+\begin{center}
+\begin{tikzpicture}
+\begin{axis}[
+%axis x line=bottom,
+%axis y line = left,
+%axis lines=middle,
+xmin=0, xmax=13,
+ymin=0, ymax=9,
+width=0.7\linewidth,
+height=0.4846\linewidth,
+%enlargelimits={abs=0.2},
+xtick distance=1,
+ytick distance=1,
+grid=both,
+xticklabels={},
+yticklabels={},
+grid style={black,line width=1pt, draw opacity=0.5},
+ticks=none,
+axis equal,
+scale only axis,
+legend pos=north east,
+axis line style={draw=none},
+scale=0.75
+]
+\node[color=black,circle,minimum size=1pt,fill,inner sep=2pt,fill opacity=1,label={-135:\textbf{\large A}}] (A) at (2,2) {};
+\node[color=black,circle,minimum size=1pt,fill,inner sep=2pt,fill opacity=1,label={90:\textbf{\large B}}] (B) at (3,7) {};
+\draw[ultra thick,->] (A) -- (B) node[pos=0.5,left] {\large $\vec u$};
+\draw[ultra thick,->] (9,6) -- (13,2) node[pos=0.5,above right] {\large $\vec v$};
+\node[color=black,circle,minimum size=1pt,fill,inner sep=2pt,fill opacity=1,label={-45:\textbf{\large C}}] (C) at (7,3) {};
+\draw[ultra thick,->] (B) -- (C) node[pos=0.5,above right] {\large $\vec v$};
+\draw[ultra thick,->,color=red] (A) -- (C) node[pos=0.5,below] {\large $\vec u + \vec v$};
+
+\end{axis}
+\end{tikzpicture}
+\end{center}
+
+\begin{ex}
+$\vecc {AB} + \vecc {BA} = \vecc {AA} = \vecc 0$
+\end{ex}
+
+\begin{rmq}
+En général, la longueur de $\vec u + \vec v$ n'est pas égale à la somme de celle de $\vec u$ et de $\vec v$: $\Vert \vec u + \vec v \Vert \neq \Vert \vec u \Vert + \Vert \vec v \Vert$
+\end{rmq}
+
+\begin{methode}
+Pour construire $\vecc {AB} + \vecc {AC}$, il suffit de construire le parallélogramme $ABDC$ et de prendre le vecteur $\vecc {AD}$.
+
+\begin{center}
+\begin{tikzpicture}[scale=0.8]
+
+\node[color=black,circle,minimum size=1pt,fill,inner sep=2pt,label={90:\textbf{\large A}}] (A) at (0,0) {};
+\node[color=black,circle,minimum size=1pt,fill,inner sep=2pt,label={90:\textbf{\large B}}] (B) at (5,-2) {};
+\node[color=black,circle,minimum size=1pt,fill,inner sep=2pt,label={120:\textbf{\large C}}] (C) at (-2,-3) {};
+\node[color=black,circle,minimum size=1pt,fill,inner sep=2pt,label={30:\textbf{\large D}}] (D) at (3,-5) {};
+\draw[thick, -] (C) +(-17:5.385) arc (-17:-27:5.385);
+\draw[thick, -] (B) +(-115:3.606) arc (-115:-132:3.606);
+\draw[ultra thick,->] (A) -- (B) node[pos=0.5,above] {\large $\vec u$};
+\draw[ultra thick,->] (A) -- (C) node[pos=0.5,above left] {\large $\vec v$};
+\draw[color=red,ultra thick,->] (A) -- (D) node[pos=0.5,above right] {\large $\vec u + \vec v$};
+\draw[dashed,thick,-] (B) -- (D);
+\draw[dashed,thick,-] (C) -- (D);
+
+\end{tikzpicture}
+\end{center}
+\end{methode}
+
+\rem{Exos 9 -> 12 (13,14)}
+
+\section{Produit d'un vecteur par un nombre réel}
+
+\begin{defin}
+Soit $k$ un réel et $\vec u$ un vecteur. Le produit de $k$ par $\vec u$ est le vecteur noté $k \vec u$ tel que:
+\begin{itemize}
+\item $\vec u$ et $k \vec u$ ont la même direction
+\item La longueur de $k \vec u$ est $\abs k \Vert \vec u \Vert$
+\item Si $k > 0$, $\vec u$ et $k \vec u$ ont le même sens. Sinon, ils ont des sens opposés.
+\end{itemize}
+\end{defin}
+
+\begin{rmq}
+En particulier, $0 \times \vec u = \vecc 0$.
+\end{rmq}
+
+\begin{ex} \saut
+\begin{center}
+\begin{tikzpicture}[scale=1]
+\begin{axis}[
+%axis x line=bottom,
+%axis y line = left,
+%axis lines=middle,
+width=\linewidth,
+height=0.625\linewidth,
+xmin=-3, xmax=13,
+ymin=-9, ymax=1,
+%enlargelimits={abs=0.2},
+xtick distance=1,
+ytick distance=1,
+grid=both,
+xticklabels={},
+yticklabels={},
+grid style={black,line width=1pt, draw opacity=0.5},
+ticks=none,
+axis equal,
+scale only axis,
+legend pos=north east,
+axis line style={draw=none},
+scale=0.6
+]
+
+
+\draw[ultra thick,->] (0,0) -- (4,0) node[pos=0,above left] {\large $\vec u$};
+\draw[ultra thick,->] (0,-2) -- (8,-2) node[pos=0,above left] {\large $2 \vec u$};
+\draw[ultra thick,<-] (0,-4) -- (4,-4) node[pos=0,above left] {\large $-\vec u$};
+\draw[ultra thick,->] (0,-6) -- (6,-6) node[pos=0,above left] {\large $\frac 3 2 \vec u$};
+\draw[ultra thick,<-] (0,-8) -- (12,-8) node[pos=0,above left] {\large $-3\vec u$};
+
+\end{axis}
+\end{tikzpicture}
+\end{center}
+
+\end{ex}
+
+\begin{app}
+$I$ est le milieu de $[AB]$ se traduit par $\vecc {AI} = \vecc {IB}$ ou $\vecc{AB} = 2\vecc{AI}$ ou $\vecc {AI} = \frac 1 2 \vecc{AB}$.
+\end{app}
+
+\begin{center}
+\begin{tikzpicture}
+\draw[line width=4pt,->] (0,0) -- (8,1) node[pos=0.75,above] {\large $\vec u$} node[pos=0,color=black,circle,minimum size=1pt,fill,inner sep=2pt,label={180:\textbf{\large A}}] {} node[pos=1,color=black,circle,minimum size=1pt,fill,inner sep=2pt,label={0:\textbf{\large B}}] {};
+\draw[line width=2pt, color=red, ->] (0,0) -- (4,0.5) node[pos=0.5,below] {\large { $0.5\vec u$} } node[pos=1,color=red,circle,minimum size=1pt,fill,inner sep=2pt,label={90:\textbf{\large I}}] {};
+\end{tikzpicture}
+\end{center}
+
+\rem{Feuille en plus: maths en ligne ex3d ou original}
+
+\end{FlushLeft}
+
+\end{document}

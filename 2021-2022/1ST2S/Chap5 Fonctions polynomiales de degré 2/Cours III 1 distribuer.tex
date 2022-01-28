@@ -1,0 +1,109 @@
+\documentclass[a4paper,12pt,french]{article}
+
+\usepackage[eleve,cours]{../../../Style}
+
+\pagestyle{empty}
+
+%\usepackage[theorems]{tcolorbox}
+
+%\newtcbtheorem
+%{defi}{Définition}
+%{colback=red!5,colframe=red!60!black!80,fonttitle=
+%\sffamily\bfseries}{th}
+
+% Début du document
+%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+\begin{prop}
+Les fonctions du type $f:x \mapsto a(x-x_1)(x-x_2)$ sont des fonctions de degré 2. On dit que cette forme est l'écriture factorisée de $f$ (lorsqu'elle existe).
+\end{prop}
+
+\begin{rems}
+Exos 79,80,(81->83) p125\\
+Remarque par rapport à la suite?
+\end{rems}
+
+\begin{defin}
+Soit $f$ une fonction de degré 2. On appelle \textbf{racines} de $f$ les solutions de l'équation $f(x)=0$. Ce sont donc les abscisses des points d'intersection entre la courbe représentative de $f$ et l'axe des abscisses.
+\begin{centrer}
+\begin{tikzpicture}[scale=\echellepgf]
+\begin{axis}[
+styleglobal,
+hauteurproptick,
+width=0.7*\echellepgfinv*\linewidth,
+xmin=-2, xmax=6,
+ymin=-1, ymax=2,
+xtick distance=1,
+ytick distance=1,
+domain=(-6:6),
+]
+\addplot[styleplot]{0.5*(x-1)*(x-3)} node[pos=0.52,right] {$\mathscr C_f$};
+\node[stylepoint,fill=red] (S) at (2,-0.5) {};
+\node (sommet) at (3,-0.7) {Sommet};
+\draw[->,>=latex,thick] (sommet.west) to[bend left=10] (S);
+\node[stylepoint,fill=blue] (x1) at (1,0) {};
+\node[stylepoint,fill=blue] (x2) at (3,0) {};
+\node (racines) at (2,1) {Racines};
+\draw[->,>=latex,thick] (racines) to[bend right=10] (x1);
+\draw[->,>=latex,thick] (racines) to[bend left=10] (x2);
+\end{axis}
+\end{tikzpicture}
+\end{centrer}
+\end{defin}
+
+\begin{rmq}
+Si $f(x)=a(x-x_1)(x-x_2)$ $(a \neq 0)$, les racines de $f$ sont $x_1$ et $x_2$.
+\end{rmq}
+
+\begin{ex}
+Les racines de la fonction $f:x \mapsto -2(x-2)(x+4)$ sont 2 et $-4$.
+\begin{centrer}
+\begin{tikzpicture}[scale=\echellepgf]
+\begin{axis}[
+styleglobal,
+%hauteurproptick,
+width=0.7*\echellepgfinv*\linewidth,
+xmin=-8, xmax=6,
+ymin=-5, ymax=20,
+xtick distance=1,
+ytick distance=5,
+domain=(-6:6),
+y post scale=0.2,
+]
+\addplot[styleplot]{-2*(x-2)*(x+4)} node[pos=0.52,right] {$\mathscr C_f$};
+\node[stylepoint,fill=blue] (x1) at (2,0) {};
+\node[stylepoint,fill=blue] (x2) at (-4,0) {};
+\end{axis}
+\end{tikzpicture}
+\end{centrer}
+On voit alors que la parabole associée par $f$ coupe l'axe des abscisses en $M(2;0)$ et $N(0;-4)$.
+\end{ex}
+
+\rem{Exos 84,85 p125}
+
+\begin{propr}
+Soit $f:x \mapsto a(x-x_1)(x-x_2)$ avec $a \neq 0$. On pose $s=\frac{x_1+x_2} 2$. Alors le sommet de la parabole associée a pour coordonnées $(s,f(s))$.
+\end{propr}
+
+\begin{ex}
+\compobase{0pt}{t}{0.55}
+{
+Pour la parabole précédente, on a $s=\frac{2-4} 2=-1$, et
+
+Les coordonnées du sommet de la parabole sont donc $(-1;18)$.
+}
+{
+$\begin{aligned}[t]
+f(s)&=f(-1)\\
+&=-2(-1-2)(-1+4)\\
+&=-2 \times (-3) \times 3\\
+&=18
+\end{aligned}
+$
+}
+\end{ex}
+
+\rem{Exos 26,27,29 p121}
+
+\end{document}

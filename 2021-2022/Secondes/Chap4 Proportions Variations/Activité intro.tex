@@ -1,0 +1,45 @@
+\documentclass[a4paper,12pt,french]{article}
+
+\usepackage{../../../Style}
+
+\pagestyle{empty}
+
+\newcommand{\act}{
+\titre{La crème des crèmes}
+\begin{center}
+Laquelle de ces crèmes contient la plus grande proportion d'eau?
+
+\includegraphics[width=0.5\linewidth]{creme.png}
+\end{center}
+}
+
+\newcommand{\contenua}{
+
+\compo[0.5]
+{
+\act
+}
+{
+\act
+}
+}
+
+% Début du document
+%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+\contenua
+
+\vfill
+
+\contenua
+
+\vfill
+
+\contenua
+
+\vfill
+
+\contenua
+
+\end{document}

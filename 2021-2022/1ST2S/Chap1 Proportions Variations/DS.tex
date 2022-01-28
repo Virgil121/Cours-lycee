@@ -1,0 +1,121 @@
+\documentclass[a4paper,12pt,french] {article}
+
+\usepackage{../../../Style}
+
+\renewcommand\tabularxcolumn[1]{m{#1}}
+
+\pagestyle{fancy}
+\setlength{\headheight}{10mm}
+\fancyhead[L]{29/09/2021}
+\fancyhead[C]{\textbf{DS1 : Proportions, variations, pourcentages - 1h}}
+\fancyhead[R]{1ST2S 2}
+\fancyfoot{}
+
+\begin{document}
+
+\rem{L'usage de la calculatrice est autorisée. L'usage de schémas est encouragé. La propreté et l'orthographe seront prises en compte. Des phrases de réponse sont demandées.}
+
+\begin{comment}
+\begin{exercice}[2 pts]
+En 2016, en France, 1 523 442 candidats se sont présentés aux épreuves théoriques du permis de conduire et 1 053 460 ont été reçus. En 2017, il y avait 1 544 546 candidats dont 1 021 557 reçus. Killian affirme que la proportion de reçus est meilleure en 2016 qu'en 2017. A-t-il raison?
+\end{exercice}
+\end{comment}
+
+\begin{exercice}[4 pts]
+En France métropolitaine, en 2018, la forêt couvre environ $34 \%$ du territoire. Les trois quarts de ces forêts appartiennent à des propriétaires privés.
+\begin{enumerate}
+\item Quel pourcentage de la superficie de la France métropolitaine occupent les forêts privées?
+\item On estime que la superficie de la France métropolitaine est $551695$ km$^2$. Quelle est, en km$^2$, la superficie des forêts privées? \textit{Arrondir à l'unité.}
+\end{enumerate}
+\end{exercice}
+
+\begin{exercice}[4 pts]
+Vrai ou faux? Justifier.
+\begin{enumerate}
+\item Le nombre de spectateurs d'une représentation a augmenté de 35 $\%$ en un an. Ce nombre a donc été multiplié par $1.35$.
+\item Un prix est passé de 90\euro{} à 100\euro{}. Alors il a augmenté de 10$\%$.
+\end{enumerate}
+\end{exercice}
+
+\begin{exercice}[4 pts]
+Un sac à dos est en soldes. Son étiquette indique que son prix a subi une première réduction de $40\%$, puis une deuxième de $10\%$. Son prix final est affiché à $29.99$\euro{}.
+\begin{enumerate}
+\item Calculer le taux de réduction global du prix de ce sac.
+\item En déduire le prix du sac avant les réductions. On arrondira au centime près.
+\end{enumerate}
+\end{exercice}
+
+\begin{exercice}[3 pts]
+Le tableau suivant donne la répartition des salariés d'une start-up.
+
+\compo[0.46]
+{
+\
+\begin{enumerate}
+\item Quelle est la proportion des femmes dans cette startup?
+\item Quelle est celle des commerciaux dans la startup?
+\item Quelle est celle des commerciales parmi les commerciaux?
+\end{enumerate}
+}
+{
+\begin{center}
+\begin{tabularx}{\linewidth}{
+|>{\centering\arraybackslash}c
+|>{\centering\arraybackslash}X
+|>{\centering\arraybackslash}X
+|>{\centering\arraybackslash}X|} \cline{2-4} \multicolumn{1}{c|}{}
+& Hommes & Femmes & Total \\ \hline
+Commerciaux & 15 & 9 & 24 \\ \hline
+Développeurs web & 7 & 9 & 16 \\ \hline
+Total & 22 & 18 & 40 \\ \hline
+\end{tabularx}
+\end{center}
+}
+
+\end{exercice}
+
+\begin{exercice}[4 pts]
+Le tableau ci-dessous donne les indices des bénéfices d'une société de 2014 à 2018.
+
+\compo[0.7]
+{
+\
+\begin{enumerate}
+\item Quelle est l'année de référence de ce tableau?
+\item \begin{enumerate}
+\item En quelle année la société a-t-elle réalisé le meilleur bénéfice?
+\item Quel était alors le taux d'évolution de ce bénéfice depuis 2014?
+\item Depuis 2016?
+\end{enumerate}
+%\item Une autre société, qui prend également pour base 100 son bénéfice de 2014, a atteint en 2018 un bénéfice correspondant à l'indice 105. Peut-on en déduire que cette société a réalisé en 2018 un bénéfice plus important que la première société?
+\end{enumerate}
+}
+{
+\begin{center}
+\begin{tabularx}{\linewidth}{
+|>{\centering\arraybackslash}X
+|>{\centering\arraybackslash}X|} \hline
+Année & Indice \\ \hline
+2014 & 100 \\ \hline
+2015 & 101.5 \\ \hline
+2016 & 98.3 \\ \hline
+2017 & 103 \\ \hline
+2018 & 102.9 \\ \hline
+\end{tabularx}
+\end{center}
+}
+\end{exercice}
+
+\begin{exercice}[Difficile - 1 pt]
+\
+
+\compo[0.4]
+{
+Une candidate à la présidentielle 2022 a proposé de doubler le salaire des enseignants. Cette augmentation sera échelonnée sur cinq années. Voici le compte rendu qu'en a fait TF1. Que dire de ce graphique? Expliquer leur démarche.
+}
+{
+\includegraphics[trim=35mm 45mm 15mm 3mm, clip, width=\linewidth]{"Erreur JT NB".png}
+}
+\end{exercice}
+
+\end{document}

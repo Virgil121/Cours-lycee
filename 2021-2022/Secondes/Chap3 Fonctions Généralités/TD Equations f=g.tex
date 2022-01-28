@@ -1,0 +1,68 @@
+\documentclass[landscape,a4paper,12pt,french, twocolumn]{article}
+
+\usepackage{../../../Style}
+
+\renewcommand\tabularxcolumn[1]{m{#1}}
+
+\pagestyle{empty}
+\setlist[enumerate]{align=parleft,left=5pt..20pt}
+\setlength{\columnsep}{1.8cm}
+
+\newcommand{\contenu}{
+\titre{Equations du type $f(x)=g(x)$}
+
+\noindent On définit les fonctions $f$ (trait plein), $g$ (pointillés) et $h$ (points) représentées sur le graphe ci-dessous. Résoudre graphiquement les équations suivantes:
+\compo[0.4]
+{
+$f(x)=g(x)$:
+
+\vspace{1cm}
+
+$g(x)=h(x)$:
+
+\vspace{1cm}
+
+$h(x)=g(x)$:
+}
+{
+\Centering{
+\begin{tikzpicture}[scale=\echellepgf]
+\begin{axis}[
+styleglobal,
+width=0.9*\echellepgfinv*\linewidth,
+xmin=-6, xmax= 6,
+ymin=-2.5, ymax=2,
+xtick distance=1,
+ytick distance=0.5,
+minor x tick num=0,
+minor y tick num=0,
+hauteurproptick,
+%tick label style = {font=\scriptsize},
+]
+\addplot[styleplot,domain=(-4:3)] plot coordinates {(-5,1.5) (-2,0) (0,-1.5) (2,1.8) (4,-2)} node[pos=0.72,above right] {$\mathscr C_f$} \pointsextremites;
+\addplot[styleplot,densely dashed,color=DarkBlue] plot coordinates {(-5,-1.5) (-1,1) (5,-1)} node[pos=0.95,above right] {$\mathscr C_g$} \pointsextremites;
+\addplot[styleplot,densely dotted,color=DarkRed] plot coordinates {(-5,-0.3) (-0.2,-2.1) (2,0) (5,1)} node[pos=0.95,below right] {$\mathscr C_h$} \pointsextremites;
+\end{axis}
+\end{tikzpicture}}
+}
+}
+% Début du document
+%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+\contenu
+
+\vfill
+
+\contenu
+
+\newpage
+
+\contenu
+
+\vfill
+
+\contenu
+
+
+\end{document}

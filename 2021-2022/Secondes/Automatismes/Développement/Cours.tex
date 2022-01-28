@@ -1,0 +1,16 @@
+\documentclass[a4paper,12pt,french]{article}
+
+\usepackage{../../../../Style}
+
+\usepackage{pdfpages}
+
+\begin{document}
+
+\begin{minipage}[t]{\linewidth}
+\includepdf[pages=-,trim=0mm 0cm 0mm 0cm,clip,offset=0 200]{Cours page.pdf}
+\end{minipage}
+
+\begin{minipage}[t]{\linewidth}
+\includepdf[pages=-,offset=0 -200]{Cours page.pdf}
+\end{minipage}
+\end{document}

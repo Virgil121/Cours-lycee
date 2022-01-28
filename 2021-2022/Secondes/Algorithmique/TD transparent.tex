@@ -1,0 +1,412 @@
+\documentclass[a4paper,12pt,french]{article}
+
+\usepackage[TD]{../../../Style}
+
+% Début du document
+%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+\nopagecolor
+
+\titre{Algorithmique - Introduction}
+
+\begin{multicols*}{2}
+
+\subsection{Variables}
+
+\begin{defin}
+Une variable est un objet possédant plusieurs caractéristiques, dont:
+\begin{itemize}
+\item Un nom
+\item Un type: Entier, flottant (nombre décimal), chaine de caractères, booléen (vrai ou faux) ...
+\item Une valeur
+\end{itemize}
+L'instruction $a \gets 0$ signifie que l'on crée une variable appelée $a$ et qu'on lui affecte la valeur 0.
+\end{defin}
+
+\begin{propr}
+Lors de l'exécution d'un programme, les lignes sont traitées \textbf{dans l'ordre, une par une}.
+\end{propr}
+
+\begin{exercice} \
+Après exécution de l'algorithme suivant, que vaut la variable $a$ ? \dotfill
+
+\begin{algorithme*}
+    $a \gets 0$ \;
+    $b \gets 1$ \;
+    $a \gets 2$ \;
+\end{algorithme*}
+
+\end{exercice}
+
+\begin{exercice} \
+Après exécution de l'algorithme suivant, que vaut la variable $a$ ? \dotfill
+
+\begin{algorithme*}
+    $a \gets 2$ \;
+    $b \gets 3$ \;
+    $a \gets b+1$ \;
+\end{algorithme*}
+\end{exercice}
+
+\begin{exercice} \
+Après exécution de l'algorithme suivant, que vaut la variable $a$ ? \dotfill
+
+\begin{algorithme*}
+    $a \gets 2$ \;
+    $a \gets a+1$ \;
+    $a \gets a*a$ \;
+\end{algorithme*}
+
+\end{exercice}
+
+\begin{exercice} \
+Après exécution de l'algorithme suivant, que vaut la variable $a$ ? \dotfill
+
+\begin{algorithme*}
+    $a \gets 2$ \;
+    $b \gets 3$ \;
+    $a \gets b+1$ \;
+    $b \gets 5$ \;
+\end{algorithme*}
+
+\end{exercice}
+
+\begin{exercice} \
+Après exécution de l'algorithme suivant, que vaut la variable $a$ ? \dotfill
+
+\begin{algorithme*}
+    $a \gets 2$ \;
+    $b \gets 3$ \;
+    $a \gets b$ \;
+    $b \gets a$ \;
+\end{algorithme*}
+
+\end{exercice}
+
+\begin{exercice}[*] \
+On se donne l'algorithme suivant:
+
+\begin{algorithme*}
+    $a \gets -1$ \;
+    $b \gets 4$ \;
+    $a \gets a+b$ \;
+    $c \gets b+1$ \;
+    $b \gets c+b-a$ \;
+    $a \gets 2*a$ \;
+    $c \gets b-a$ \;
+\end{algorithme*}
+
+Compléter le tableau suivant, donnant la valeur de chaque variable à la \textbf{fin} de chaque ligne:
+
+\noindent \begin{tabularx}{\linewidth}{
+	|*{8}{>{\centering\arraybackslash}X|}
+	} \hline
+ligne & 1 & 2 & 3 & 4 & 5 & 6 & 7 \\ \hline
+$a$ & $-1$ & & & & & & \\ \hline
+$b$ & \diagbox[innerwidth=\linewidth, height=\line]{}{} & & & & & & \\ \hline
+$c$ & \diagbox[innerwidth=\linewidth, height=\line]{}{} & & & & & & \\ \hline
+\end{tabularx}
+\end{exercice}
+
+\subsection{Fonctions}
+
+A partir de ce point, on écrira systématiquement des fonctions.
+
+\begin{exercice}
+On se donne l'algorithme suivant:
+
+\begin{algorithme*}
+	\algofonction{$f(x)$}{
+		$y \gets x*x+2$ \;		
+		\Retour{$y$}\;
+	}
+\end{algorithme*}
+
+\begin{enumerate}
+\item Que retourne-t-il avec $x=4$? \ldots $x=11$? \ldots
+\end{enumerate}
+\end{exercice}
+
+\begin{exercice}
+Ecrire un algorithme permettant d'obtenir l'image d'un nombre par la fonction $f:t \mapsto \frac {t^2+2t}{t^2+1}$.
+\end{exercice}
+
+\begin{exercice}
+On se donne l'algorithme suivant:
+
+\begin{algorithme*}
+	\algofonction{image$(x)$}{
+		$y \gets x*x+2$ \;
+		$y \gets y+x$ \;		
+		\Retour{$y$}\;
+	}
+\end{algorithme*}
+
+\begin{enumerate}
+\item Que retourne la fonction image avec $x=2$? \ldots $x=-3$? \ldots
+\item Que retourne-t-il dans le cas général? \points[1] 2
+\end{enumerate}
+\end{exercice}
+
+\begin{exercice}
+On se donne l'algorithme suivant:
+
+\begin{algorithme*}
+	\algofonction{$h(x)$}{
+		$y \gets x*x+2$ \;
+		$y \gets y \text{\^{}} 2-5$ \;
+		\Retour{$y$}\;
+	}
+\end{algorithme*}
+
+\begin{enumerate}
+\item Que retourne-t-il avec $x=0$? \ldots $x=-4$? \ldots
+\item Que retourne-t-il dans le cas général? \points[1] 2
+\end{enumerate}
+\end{exercice}
+
+\begin{exercice}
+On se donne l'algorithme suivant, où $L$, $l$ et $h$ sont trois réels positifs.
+
+\begin{algorithme*}
+	\algofonction{fonction\_{}mystère$(L,l,h)$}{
+		$V \gets L * l * h$ \;
+		\Retour{$V$} \;
+	}
+\end{algorithme*}
+
+\noindent Pouvez-vous interpréter ce que retourne cet algorithme? \points[1] 2
+
+\end{exercice}
+
+\begin{exercice}
+On se donne l'algorithme suivant, où $a$ et $b$ sont deux réels strictement positifs.
+
+\begin{algorithme*}
+	\algofonction{fonction\_{}mystère\_{}2$(a,b)$}{
+		$c \gets \ $sqrt$(a$\^{}$2+b$\^{}$2)$ \;
+		\Retour{c} \;
+	}
+\end{algorithme*}
+
+\noindent Pouvez-vous interpréter ce que retourne cet algorithme? \points[1] 2
+
+\end{exercice}
+
+\begin{exercice}[*]
+Ecrire un algorithme qui, à partir d'un nombre $r$, donne la somme de l'aire et du périmètre d'un cercle de rayon $r$.
+\end{exercice}
+
+\subsection{Structures conditionnelles}
+
+\begin{exercice}
+On se donne l'algorithme suivant:
+
+\begin{algorithme*}
+	\algofonction{géné\_{}appréciation(note)}{
+		\Si{note $\leq 8$}{
+			msg $\gets$ "A retravailler." \;
+		}
+		\Si{$8 < $ note $\leq 12$}{
+			msg $\gets$ "Ensemble correct." \;
+		}
+		\Si{$12 < $ note}{
+			msg $\gets$ "Bon travail!" \;
+		}
+		\Retour{msg} \;
+	}
+\end{algorithme*}
+
+\noindent Que retourne-t-il pour note $=5$? note $=12$? \newline \noindent\dotfill
+
+\end{exercice}
+
+\begin{exercice}
+On se donne l'algorithme suivant:
+
+\begin{algorithme*}
+	\algofonction{est\_{}reçu(note)}{
+		\eSi{note $\geq 10$}{
+			résultat $\gets$ Vrai \;
+		}
+		{
+			résultat $\gets$ Faux \;
+		}
+		\Retour{résultat} \;
+	}
+\end{algorithme*}
+
+\noindent Que retourne-t-il pour note $=5$? \ldots note $=10$? \ldots
+
+\end{exercice}
+
+\begin{exercice} \label{abs}
+On se donne l'algorithme suivant:
+
+\begin{algorithme*}
+	\algofonction{$f(x)$}{
+		\eSi{$x \geq 0$}{
+			$y \gets x$ \;
+		}
+		{
+			$y \gets -x$ \;
+		}
+		\Retour{$y$} \;
+	}
+\end{algorithme*}
+
+\noindent Après avoir fait quelques tests, pouvez-vous trouver que retourne cet algorithme pour $x$ quelconque? \points[1] 2
+
+\end{exercice}
+
+\begin{exercice}
+Modifier l'algorithme de l'exercice \ref{abs} pour qu'il retourne le signe de $x$.
+\end{exercice}
+
+\begin{exercice}
+Modifier l'algorithme de l'exercice \ref{abs} pour qu'il retourne la distance entre deux nombres $a$ et $b$.
+\end{exercice}
+
+\begin{exercice}[*]
+On se donne l'algorithme suivant:
+
+\begin{algorithme*}
+	\algofonction{mystère$(A,B,C)$}{
+		\eSi{$A \leq B$}{
+			\eSi{$B \leq C$}{
+				\Retour{$C$} \;
+			}
+			{
+				\Retour{$B$} \;
+			}
+		}
+		{
+			\eSi{$A \leq C$}{
+				\Retour{$C$} \;
+			}
+			{
+				\Retour{$A$} \;
+			}
+		}
+	}
+\end{algorithme*}
+
+\begin{enumerate}
+\item Tester cet algorithme pour les valeurs suivantes:
+\begin{itemize}
+\item $A=0$, $B=1$, $C=2$: \dotfill
+\item $A=-5$, $B=7$, $C=-10$: \dotfill
+\item $A=3$, $B=3$, $C=2$: \dotfill
+\item $A=10$, $B=3$, $C=5$: \dotfill
+\item $A=0$, $B=0$, $C=0$: \dotfill
+\end{itemize}
+\item Que retourne-t-il de manière générale? \points[1] 2
+\end{enumerate}
+\end{exercice}
+
+\begin{exercice}[*]
+Ecrire un algorithme qui, à partir de deux nombres, retourne le plus grand des deux s'ils sont positifs, et le plus petit des deux sinon.
+\end{exercice}
+
+\newpage
+
+\begin{exercice}
+Que retourne l'algorithme suivant pour var$=3$? var$=-7$? On réutilisera ici l'algorithme de l'exercice \ref{abs}.
+
+\begin{algorithme*}
+	\algofonction{Procédure\_{}spéciale(var)}{
+		\eSi{var$=f($var$)$}{
+			res $\gets$ var$^2-6$ \;
+			\eSi{res $\leq 0$}{
+				\Retour{res} \;
+			}
+			{
+				\Retour{$2*$res-5} \;
+			}
+		}
+		{
+			\Retour{$3*$var} \;
+		}
+	}
+\end{algorithme*}
+\end{exercice}
+
+\begin{exercice}
+On se donne l'algorithme suivant:
+
+\begin{algorithme*}
+	\algofonction{fonction$(A,B)$}{
+		\eSi{$A > B$}{
+			\eSi{$B > 0$}{
+				$C \gets A+B$ \;
+			}
+			{
+				$C \gets A-B$ \;
+			}
+		}
+		{
+			\eSi{$A > 0$}{
+				$C \gets A+B$ \;
+			}
+			{
+				$C \gets B-A$ \;
+			}
+		}
+	\Retour{$C$} \;
+	}
+\end{algorithme*}
+\begin{enumerate}
+\item Quelle est la valeur de $C$ pour $A=15$ et $B=25$? \ldots
+\item Pour $A=45$ et $B=-56$ ? \ldots
+\item \begin{enumerate}
+\item Démontrer que $C$ est toujours positif.
+\item Est-il strictement positif? 
+\end{enumerate}
+\end{enumerate}
+\end{exercice}
+
+\begin{exercice}
+Ecrire un algorithme qui retourne le maximum parmi deux nombres, parmi quatre nombres, puis parmi huit nombres.
+\end{exercice}
+
+\begin{exercice} On se donne les algorithmes suivants:
+
+\compo[0.5]
+{
+\begin{algorithme*}
+	\algofonction{calcul1$(x)$}{
+		$y \gets x^3-3*x^2+7*x-5$ \;
+		\Retour{$y$} \;
+	}
+\end{algorithme*}
+}
+{
+\begin{algorithme*}
+	\algofonction{calcul2$(x)$}{
+		$y \gets x$ \;
+		$y \gets y*x-3$ \;
+		$y \gets y*x+7$ \;
+		$y \gets y*x-5$ \;
+		\Retour{$y$} \;
+	}
+\end{algorithme*}
+}
+
+\begin{enumerate}
+\item Compléter le tableau de valeurs suivant:
+
+\noindent\begin{tabularx}{\linewidth}{|*4{Y|}} \hline
+$x$ & $-1$ & $2$ & $3$ \\ \hline
+calcul1$(x)$ & & & \\ \hline
+calcul2$(x)$ & & &\\ \hline
+\end{tabularx}
+
+\item Emettre et prouver une conjecture concernant ces deux algorithmes.
+
+\end{enumerate}
+\end{exercice}
+
+\end{multicols*}
+
+\end{document}

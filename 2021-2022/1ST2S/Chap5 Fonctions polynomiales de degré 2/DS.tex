@@ -1,0 +1,160 @@
+\documentclass[a4paper,12pt,french] {article}
+
+\usepackage[sujet]{../../../Style}
+
+\fancyhead[L]{02/02/2022}
+\fancyhead[C]{\textbf{DS5 : Fonctions polynomiales de degré 2}}
+\fancyhead[R]{\premiere ST2S 2}
+
+\renewcommand{\baselinestretch}{1.2}
+
+% Passage en A3
+%\geometry{a3paper,landscape,bottom=7mm,twocolumn}
+%\setlength{\headwidth}{39cm} %42cm-2*margin pour fancyhdr
+
+\begin{document}
+
+\rem[black]{L'usage de la calculatrice est interdit. La propreté et l'orthographe seront prises en compte. Tout le devoir peut être fait sur le sujet.}
+
+Nom: \hfill Prénom: \hfill \
+
+\begin{exercice} \
+
+\compo[0.7]
+{\fixcompo
+On se donne la parabole $\mathcal P$ ci-contre, et $f:x \mapsto ax^2+c$ la fonction de degré deux associée.
+\begin{enumerate}
+\item Quel est le signe de $a$? \dotfill
+\item Donner la valeur de $c$: \dotfill
+\item Placer le sommet de $\mathcal P$ et préciser ses coordonnées: \dotfill
+\item Quel est l'axe de symétrie de $f$? \dotfill
+\item Donner les deux racines de $f$: \dotfill
+\item Dresser le tableau de variations de $\mathcal P$:
+
+\begin{center}
+\begin{tikzpicture}
+\tkzTabInit[lgt=1.2]{ /1, /2}{,,}
+\end{tikzpicture}
+\end{center}
+\end{enumerate}
+}
+{
+\begin{centrer}
+\begin{tikzpicture}[scale=\echellepgf]
+\begin{axis}[
+styleglobal,
+width=0.95*\echellepgfinv*\linewidth,
+xmin=-4, xmax=4,
+ymin=-5, ymax=5,
+xtick distance=1,
+ytick distance=1,
+]
+\addplot[styleplot,domain=(-4:4)]{(-0.5*x^2+2} node[pos=0.6,above right]{$\mathcal P$};;
+\end{axis}
+\end{tikzpicture}
+\end{centrer}
+}
+\
+
+\begin{enumerate}[start=7]
+\item Déterminer $a$, et en déduire l'équation de $\mathcal P$, sous forme développée puis factorisée.
+\end{enumerate}
+\points 4
+\end{exercice}
+
+\begin{exercice}
+Une entreprise produit mensuellement entre 200 et 3 000 panneaux solaires.\\
+On modélise le résultat de l'entreprise réalisé sur la vente de $x$ centaines de panneaux
+solaires par la fonction f définie sur l'intervalle $[2~; ~30]$ par : $$f(x)=-2x^2+90x-400$$
+
+\begin{enumerate}
+\item On admet que, pour tout $x$ de l'intervalle  $[2~; ~30]$, on a $f(x)=-2(x-40)(x-5)$.\\
+Dresser le tableau de signes de la fonction $f$ sur l'intervalle $[2~; ~30]$:
+\compo
+{
+\points 4
+}
+{
+\begin{center}
+\begin{tikzpicture}
+\tkzTabInit[lgt=1.2]{ /1, /4}{,,}
+\end{tikzpicture}
+\end{center}
+}
+\item A partir de quel volume de production de panneaux solaires le résultat réalisé par
+l'entreprise est-il positif ?
+\item Donner le tableau de variations de la fonction f sur l'intervalle $[2~; ~30]$.
+\item Déterminer la valeur du bénéfice maximal et le volume de production correspondant.
+\end{enumerate}
+\end{exercice}
+
+\begin{exercice} \
+
+\compo[0.5]
+{\fixcompo
+On s'intéresse à la trajectoire d'un ballon de
+basketball lancé par un joueur faisant face
+au panneau. Cette trajectoire est modélisée
+dans le repère ci-contre.
+
+Dans ce repère, l'axe des abscisses
+correspond à la droite passant par les pieds
+du joueur et la base du panneau.
+
+On suppose que la position initiale du
+ballon se trouve au point $J$ et que le segment
+$[AB]$ représente le panneau sur lequel il
+faut que le ballon rebondisse pour atteindre
+le panier.
+
+La trajectoire du ballon est assimilée à la courbe $C_f$ représentant une fonction $f$.
+}
+{
+\begin{centrer}
+\begin{tikzpicture}[scale=\echellepgf]
+\begin{axis}[
+styleglobal,
+hauteurproptick,
+width=0.9*\echellepgfinv*\linewidth,
+xmin=-0.5, xmax=6,
+ymin=-0.5, ymax=5.5,
+xtick distance=1,
+ytick distance=1,
+%major grid style={line width=1pt},
+]
+\addplot[styleplot,domain=(0:4)]{-0.4*x^2+2.2*x+2} node[pos=0.9,above right] {$\mathscr C_f$};
+\node[stylepoint,inner sep=1pt,fill=blue,label={-60:A}] (A) at (5.3,2.9) {};
+\node[stylepoint,inner sep=1pt,fill=blue,label={60:B}] (B) at (5.3,3.5) {};
+\draw[very thick] (A) -- (B);
+\end{axis}
+\end{tikzpicture}
+\end{centrer}
+}
+
+\begin{enumerate}
+\item \textbf{ Étude graphique}:\\
+En exploitant la figure, répondre aux questions suivantes:
+\begin{enumerate}
+\item De quelle hauteur le ballon est-il lancé ?
+\item Quelle est la hauteur du ballon lorsque $x = 0,5$ m ?
+\item Quelle semble être la hauteur maximale atteinte par le ballon ?
+    
+\end{enumerate}
+      \item \textbf{Étude de la fonction $f$:}\\
+      La fonction $f$ est définie sur l'intervalle $[0; 6]$ par $f(x)= -0,4x^2+2,2x+2$:
+      
+\begin{enumerate}
+\item Calculer $f(2)$ et $f(3.5)$. Interpréter ces résultats par une phrase.
+\item En utilisant la symétrie de la courbe $C_f$, calculer la hauteur maximale atteinte par le ballon.
+      
+ \end{enumerate}     
+\item \textbf{Le joueur a-t-il marqué ?}\\
+Le panneau, représenté par le segment $[AB]$, se trouve à une distance de $5,3$ m du joueur.
+Le point $A$ est à une hauteur de $2,9$ m et le point $B$ est à une hauteur de $3,5$ m
+Le joueur a-t-il marqué ? Justifier par un calcul.
+\end{enumerate}
+\end{exercice}
+
+%\detokenize{%}
+
+\end{document}

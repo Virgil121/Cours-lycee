@@ -1,0 +1,91 @@
+\documentclass[a4paper,12pt,french] {article}
+
+\usepackage[sujet]{../../../Style}
+
+\fancyhead[L]{05/01/2022}
+\fancyhead[C]{\textbf{DS4 : Fonctions affines - Sujet 2}}
+\fancyhead[R]{\premiere ST2S 2}
+
+\begin{document}
+
+\rem[black]{L'usage de la calculatrice est interdit. La propreté et l'orthographe seront prises en compte. Tout le devoir peut être fait sur le sujet.}
+
+Nom: \hfill Prénom: \hfill \
+
+\ \renewcommand{\baselinestretch}{1.3}
+
+\compo
+{
+\begin{exercice} \
+Sur le repère ci-contre, tracer les droite $d_1$ et $d_2$ d'équation respective $y=-3x+1$ et $y=\frac 1 3 x -3$.
+\end{exercice}
+
+\begin{exercice} \
+Déterminer algébriquement (par le calcul) l'équation réduite de la droite passant par les points $A(-3;-6)$ et $B(6;12)$.
+
+\points 7
+\end{exercice}
+}
+{
+\begin{centrer}
+\begin{tikzpicture}[scale=\echellepgf]
+\begin{axis}[
+styleglobal,
+width=0.9*\echellepgfinv*\linewidth,
+xmin=-3, xmax=5,
+ymin=-4, ymax=6,
+xtick distance=1,
+ytick distance=1,
+%major grid style={line width=1pt},
+]
+\end{axis}
+\end{tikzpicture}
+\end{centrer}
+}
+
+\compo[0.6]
+{
+\begin{exercice}
+Déterminer l'équation réduite des droites $d_3$ et $d_4$ représentées ci-contre.
+
+\points {10}
+\end{exercice}
+}
+{
+\begin{centrer}
+\begin{tikzpicture}[scale=\echellepgf]
+\begin{axis}[
+styleglobal,
+width=0.9*\echellepgfinv*\linewidth,
+xmin=-2, xmax=6,
+ymin=-6, ymax=6,
+xtick distance=1,
+ytick distance=1,
+%major grid style={line width=1pt},
+]
+\addplot[styleplot,domain=(-5:5)]{3*x-4} node[pos=0.7,right] {$d_3$};
+\addplot[styleplot,domain=(-6:6)]{-4/5*x+2} node[pos=0.9,above right] {$d_4$};
+\end{axis}
+\end{tikzpicture}
+\end{centrer}
+}
+
+\begin{exercice} \ \vspace{3mm}
+\compo[0.45]
+{
+Dresser le tableau de signes de la fonction
+
+\centering $f:x \mapsto 9-3x$
+
+\points 2
+}
+{
+\begin{centrer}
+\begin{tikzpicture}
+\tkzTabInit[lgt=1.4,espcl=2]{/1,/1}{,,,}
+\end{tikzpicture}
+\end{centrer}
+}
+\end{exercice}
+
+\end{document}

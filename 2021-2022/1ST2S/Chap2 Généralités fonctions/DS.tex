@@ -1,0 +1,249 @@
+\documentclass[a4paper,12pt,french] {article}
+
+\usepackage{../../../Style}
+
+\renewcommand\tabularxcolumn[1]{m{#1}}
+
+\geometry{bottom=23mm}
+\pagestyle{fancy}
+\setlength{\headheight}{10mm}
+\fancyhead[L]{17/11/2021}
+\fancyhead[C]{\textbf{DS2 : Fonctions - Généralités}}
+\fancyhead[R]{\première ST2S 2}
+\fancyfoot[C]{Page \thepage}
+
+\renewcommand{\baselinestretch}{1.25}
+
+\begin{document}
+
+\rem[black]{L'usage de la calculatrice est autorisé. La propreté et l'orthographe seront prises en compte. Tout le devoir peut être fait sur le sujet.}
+
+Nom: \hfill Prénom: \hfill \
+
+\begin{exercice} \
+
+\compo[0.4]
+{
+\begin{center}
+\vspace{3mm}
+Questions 2 et 3
+\begin{tikzpicture}[scale=\echellepgf]
+\begin{axis}[
+styleglobal,
+width=\echellepgfinv*\linewidth,
+xmin=-2.5, xmax= 6.5,
+ymin=-1.5, ymax=4.5,
+xtick distance=1,
+ytick distance=1,
+]
+\addplot[samples=101,smooth,line width=1.3pt,domain=(0:4),mark=none] plot coordinates {(-2,2) (-1,4) (0.5,0) (1.5,-1) (3,-0.5) (4.5,2) (6,0.5)} node[pos=0.9,above right] {$\mathscr C_f$}  \pointsextremites;
+\end{axis}
+\end{tikzpicture}
+
+\vspace{3mm}
+Questions 4 et 5
+\begin{tikzpicture}[scale=\echellepgf]
+\begin{axis}[
+styleglobal,
+width=\echellepgfinv*\linewidth,
+xmin=-2.5, xmax= 6.5,
+ymin=-1.5, ymax=4.5,
+xtick distance=1,
+ytick distance=1,
+]
+\addplot[samples=101,smooth,line width=1.3pt,domain=(0:4),mark=none] plot coordinates {(-2,2) (-1,4) (0.5,0) (1.5,-1) (3,-0.5) (4.5,2) (6,0.5)} node[pos=0.9,above right] {$\mathscr C_f$} \pointsextremites;
+\end{axis}
+\end{tikzpicture}
+\end{center}
+}
+{
+On a représenté une fonction $f$ sur le repère ci-contre. Des constructions sont demandées pour les questions indiquées.
+\begin{enumerate}
+\item L'ensemble de définition de $f$ est $\dotfill$
+\item L'image de 2 est \dotfill
+\item L'image de -1 est \dotfill
+\item $1,5$ a pour antécédent(s) \dotfill
+\item $3$ possède \makebox[3cm]{\dotfill} antécédent(s).
+\item Dresser un tableau de signes de la fonction $f$.
+\end{enumerate}
+\begin{center}
+\begin{tabularx}{0.9\linewidth}{|c|X|} \hline
+\rule{0pt}{25pt} & \\ \hline
+\phantom{f(x)} & \rule{0pt}{25pt}\\ \hline
+\end{tabularx}
+\end{center}
+}
+\end{exercice}
+
+\begin{exercice} \
+
+\compo[0.6]
+{
+On a représenté deux fonctions $f$ et $g$ sur le repère ci-contre. Résoudre graphiquement les (in)équations suivantes:
+\begin{enumerate}
+\item $f(x) \leq 0$: \dotfill
+\item $f(x)=g(x)$: \dotfill
+\item $f(x) > g(x)$: \dotfill
+\end{enumerate}
+}
+{
+\begin{center}
+\begin{tikzpicture}[scale=\echellepgf]
+\begin{axis}[
+styleglobal,
+width=\echellepgfinv*\linewidth,
+xmin=-4, xmax= 4,
+ymin=-2, ymax=3,
+xtick distance=1,
+ytick distance=1,
+]
+\addplot[samples=101,smooth,line width=1.3pt,domain=(0:4),mark=none] plot coordinates {(-3,2) (-2.5,0) (-1,-1.5) (1,1) (3,2)} node[pos=0.9,above left] {$\mathscr C_f$}  \pointsextremites;
+\addplot[color=blue,densely dashed,samples=101,smooth,line width=1.3pt,domain=(-3:3),mark=none] plot {(2-0.3*x^2)*(1.2-e^(0.8*x-1.5))-0.5} node[pos=0.85,below] {$\mathscr C_g$}  \pointsextremites;
+\end{axis}
+\end{tikzpicture}
+\end{center}
+}
+
+\end{exercice}
+
+\begin{exercice}
+Soit $f:[0;5] \rightarrow \R$ la fonction qui a $x$ associe $\frac {2x-3}{x+6}$.
+
+\begin{enumerate}
+\item Compléter le tableau de valeurs suivant:
+
+\begin{center}
+\begin{tabularx}{0.8\linewidth}{|c|
+    >{\centering\arraybackslash}X|
+    >{\centering\arraybackslash}X|
+    >{\centering\arraybackslash}X|
+    >{\centering\arraybackslash}X|
+    >{\centering\arraybackslash}X|
+    >{\centering\arraybackslash}X|} \hline
+$x$ & $0$ & $1$ & $2$ & $3$ & $4$ & $5$ \\ \hline
+$f(x)$ & & & & & & \rule{0pt}{8mm} \\ \hline
+\end{tabularx}
+\end{center}
+\item Calculer le taux de variation de $f$ entre $3$ et $4$, puis entre $0$ et $5$.
+
+\points 3
+\end{enumerate}
+
+\end{exercice}
+\renewcommand{\baselinestretch}{1.1}
+\vspace{-3mm}
+\begin{exercice} \
+\vspace{3mm}
+\compo[0.5]
+{
+\quad Un hangar a une forme rectangulaire ABCD avec $AB=50$m et $BC=100$m. Pour surveiller ce hangar, on place une caméra au point M, milieu de $[AD]$. Son angle de vision est de $30^{\circ}$.
+
+\quad On note $x$ l'angle, en degrés, balayé par son axe de vision $(MN)$ lors de la rotation de la caméra.
+
+\quad On pose alors $f$ la fonction qui à un angle $x \in [0;180]$ associe l'aire du hangar observable par la caméra.
+}
+{
+\includegraphics[width=\linewidth]{Schéma contrôle.png}
+}
+\vspace{-2mm}
+\begin{center}
+\begin{tikzpicture}[scale=\echellepgf]
+\begin{axis}[
+styleglobal,
+hauteurproptick,
+width=0.85*\echellepgfinv*\linewidth,
+xmin=0, xmax= 180,
+ymin=0, ymax=1200,
+xlabel={Angle (degrés)},
+ylabel={Aire ($m^2$)},
+minor x tick num=1,
+minor y tick num=1,
+ytick distance=200,
+xtick distance=10,
+label style= {font=\normalsize}
+]
+\addplot[styleplot,domain=(0:15)] plot {1250*tan(x+15)};
+\addplot[styleplot,domain=(15:30)] plot {1250*(tan(x+15)-tan(x-15))};
+\addplot[styleplot,domain=(30:60)] plot {2500-1250*(tan(75-x)+tan(x-15))};
+\addplot[styleplot,domain=(60:90)] plot {2500-1250*sqrt(2)*(sin(x-60)/sin(195-x)+sin(120-x)/sin(15+x))};
+\addplot[styleplot,domain=(90:120)] plot {2500-1250*sqrt(2)*(sin(180-x-60)/sin(195+x-180)+sin(120+x-180)/sin(15+180-x))};
+\addplot[styleplot,domain=(120:150)] plot {2500-1250*(tan(75+x-180)+tan(180-x-15))} node[pos=1,above right] {$\mathscr C_f$};
+\addplot[styleplot,domain=(150:165)] plot {1250*(tan(180-x+15)-tan(180-x-15))};
+\addplot[styleplot,domain=(165:180)] plot {1250*tan(180-x+15)};
+
+\end{axis}
+\end{tikzpicture}
+\end{center}
+\vspace{-5mm}
+\begin{enumerate}
+\item Quelle est la surface observable lorsque l'angle de la caméra est de $60^{\circ}$?
+
+\points 1
+\item Réaliser un tableau de variations de la fonction $f$.
+
+\begin{center}
+\begin{tabularx}{0.9\linewidth}{|c|X|} \hline
+\rule{0pt}{20pt} & \\ \hline
+\phantom{f(x)} & \rule{0pt}{50pt}\\ \hline
+\end{tabularx}
+\end{center}
+
+\item Quels sont les angles de vision permettant de couvrir la plus grande surface?
+
+\points 2
+
+\item Justifier que l'aire du hangar est de $5000$m$^2$.
+
+\points 1
+
+\item Pour quels angles la caméra balaye-t-elle plus de $20\%$ de l'aire du hangar?
+
+\points 2
+
+\item Moins de $16\%$?
+
+\points 2
+
+\end{enumerate}
+
+\end{exercice}
+
+\begin{comment}
+
+\begin{exercice}
+Problème avec lecture graphique image, antécédent, résolution équation, tableaux signe variation, tx variation
+
+Par exemple production de deux entreprises avec deux fonctions, à mettre sur le même graphe?
+
+Bénéfices de deux entreprises pendant 
+
+\begin{center}
+\begin{tikzpicture}[scale=0.8]
+\begin{axis}[
+styleglobal,
+width=\echellepgfinv*\linewidth,
+xmin=0, xmax= 30,
+ymin=-1, ymax=4.5,
+xlabel={Temps (en jours)},
+ylabel={Population},
+minor x tick num=1,
+minor y tick num=1,
+ytick distance=2,
+xtick distance=1,
+yscale=0.5
+]
+\addplot[samples=101,smooth,ultra thick,mark=none] plot coordinates {(0,0) (0.5,4) (1,0) (2,-1) (4,0) (5,2)};
+
+\end{axis}
+\end{tikzpicture}
+\end{center}
+
+\end{exercice}
+
+\begin{exercice}
+Tableau de variations et de signes
+\end{exercice}
+
+\end{comment}
+
+\end{document}

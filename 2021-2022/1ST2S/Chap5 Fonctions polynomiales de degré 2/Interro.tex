@@ -1,0 +1,101 @@
+\documentclass[a4paper,12pt,french] {article}
+
+\usepackage[TD]{../../../Style}
+
+\renewcommand{\baselinestretch}{1.2}
+\geometry{margin=10mm}
+\pagestyle{empty}
+
+\newcommand{\entetedeux}{
+\vspace{-4mm}
+Nom: \hfill Prénom: \hfill \
+\vspace{4mm}
+}
+
+%\renewcommand{\echellepgf}{2}
+%\renewcommand{\echellepgfinv}{0.5}
+
+\begin{document}
+\entete{24/01/2022}{\textbf{Interrogation : Fonctions polynomiales de degré 2 - Sujet A}}{\premiere ST2S 2}
+
+\entetedeux
+
+\compo[0.7]
+{
+On se donne la parabole $\mathcal P$ ci-contre, et $f:x \mapsto ax^2+c$ la fonction de degré deux associée.
+\begin{enumerate}
+\item Quel est le signe de $a$? \dotfill
+\item Donner la valeur de $c$: \dotfill
+\item Placer le sommet de $\mathcal P$ et préciser ses coordonnées: \dotfill
+\item Quel est l'axe de symétrie de $\mathcal P$? \dotfill
+\item Dresser le tableau de variations de $\mathcal P$:
+
+\begin{center}
+\begin{tikzpicture}
+\tkzTabInit[lgt=1.2]{ /1, /2}{,,}
+\end{tikzpicture}
+\end{center}
+
+\end{enumerate}
+}
+{
+\begin{centrer}
+\begin{tikzpicture}[scale=\echellepgf]
+\begin{axis}[
+styleglobal,
+width=0.95*\echellepgfinv*\linewidth,
+xmin=-4, xmax=4,
+ymin=-5, ymax=8,
+xtick distance=1,
+ytick distance=1,
+]
+\addplot[styleplot,domain=(-4:4)]{(2*x^2-3} node[pos=0.6,below right]{$\mathcal P$};;
+\end{axis}
+\end{tikzpicture}
+\end{centrer}
+}
+
+\vfill
+
+\entete{24/01/2022}{\textbf{Interrogation : Fonctions polynomiales de degré 2 - Sujet B}}{\premiere ST2S 2}
+
+\entetedeux
+
+\compo[0.7]
+{
+On se donne la parabole $\mathcal P$ ci-contre, et $f:x \mapsto ax^2+c$ la fonction de degré deux associée.
+\begin{enumerate}
+\item Quel est le signe de $a$? \dotfill
+\item Donner la valeur de $c$: \dotfill
+\item Placer le sommet de $\mathcal P$ et préciser ses coordonnées: \dotfill
+\item Quel est l'axe de symétrie de $\mathcal P$? \dotfill
+\item Dresser le tableau de variations de $\mathcal P$:
+
+\begin{center}
+\begin{tikzpicture}
+\tkzTabInit[lgt=1.2]{ /1, /2}{,,}
+\end{tikzpicture}
+\end{center}
+
+\end{enumerate}
+}
+{
+\begin{centrer}
+\begin{tikzpicture}[scale=\echellepgf]
+\begin{axis}[
+styleglobal,
+width=0.95*\echellepgfinv*\linewidth,
+xmin=-4, xmax=4,
+ymin=-5, ymax=8,
+xtick distance=1,
+ytick distance=1,
+]
+\addplot[styleplot,domain=(-4:4)]{(-0.5*x^2+4} node[pos=0.6,above right]{$\mathcal P$};
+\end{axis}
+\end{tikzpicture}
+\end{centrer}
+}
+
+\vfill
+
+\end{document}

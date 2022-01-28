@@ -1,0 +1,102 @@
+\documentclass[french,12pt,a4paper]{article}
+
+%\makeatletter
+%\let\th@plain\relax
+%\makeatother
+
+\usepackage{../../../Style}
+
+\renewcommand\tabularxcolumn[1]{m{#1}}
+
+\setlist[itemize]{align=parleft,left=5pt..15pt}
+\setlist[enumerate]{align=parleft,left=5pt..20pt}
+
+\pagestyle{empty}
+
+\geometry{paperwidth=16cm,paperheight=12cm}
+
+\setlength{\columnsep}{2cm}
+
+% Début du document
+%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+\vfill
+
+\begin{itemize}
+\item Déterminer le signe de $a$.
+\item Déterminer $c$.
+%\item Identifier le sommet et préciser ses coordonnées.
+%\item Tracer l'axe de symétrie sur le repère.
+\end{itemize}
+
+\begin{tikzpicture}[scale=\echellepgf]
+\begin{axis}[
+styleglobal,
+width=0.6*\echellepgfinv*\linewidth,
+xmin=-4, xmax=6,
+ymin=-4, ymax=4,
+xtick distance=1,
+ytick distance=1,
+]
+\addplot[styleplot,domain=(-9:9)]{(x-1)^2-2};
+\end{axis}
+\end{tikzpicture}
+
+\vfill
+
+\newpage
+
+\vfill
+
+\begin{itemize}
+\item Déterminer le signe de $a$.
+\item Déterminer $c$ et les coordonnées du sommet.
+%\item Donner les coordonnées du sommet.
+%\item Tracer l'axe de symétrie sur le repère.
+\end{itemize}
+
+\begin{tikzpicture}[scale=\echellepgf]
+\begin{axis}[
+styleglobal,
+width=0.6*\echellepgfinv*\linewidth,
+xmin=-5, xmax=5,
+ymin=-4, ymax=4,
+xtick distance=1,
+ytick distance=1,
+]
+\addplot[styleplot,domain=(-9:9)]{-0.15*x^2+2};
+\end{axis}
+\end{tikzpicture}
+
+\vfill
+
+\newpage
+
+\vfill
+
+\begin{itemize}
+\item Déterminer le signe de $a$.
+\item Déterminer $c$ et les coordonnées du sommet.
+\item Déterminer les racines de la fonction associée.
+%\item Donner les coordonnées du sommet.
+%\item Tracer l'axe de symétrie sur le repère.
+\end{itemize}
+
+\begin{tikzpicture}[scale=\echellepgf]
+\begin{axis}[
+styleglobal,
+width=0.6*\echellepgfinv*\linewidth,
+xmin=-5, xmax=5,
+ymin=-4, ymax=4,
+xtick distance=1,
+ytick distance=1,
+labelgros,
+]
+\addplot[styleplot,domain=(-9:9)]{0.15*(x-3)*(x+3)};
+\end{axis}
+\end{tikzpicture}
+
+\vfill
+
+\end{document}

@@ -1,0 +1,191 @@
+\documentclass[a4paper,12pt,french]{article}
+
+\usepackage[cours]{../../../Style}
+
+\pgfplotsset{
+setupRepere/.style args={(#1,#2),(#3,#4)}{ % (Longueur x, angle x par rap à hori),(Longueur y,angle x->y)
+x={(#1*cos(#2),#1*sin(#2))},
+y={(#3*cos(#2+#4),#3*sin(#2+#4))},
+},
+reperesimple/.style={
+overlay,
+xticklabels={},
+yticklabels={},
+xlabel={},
+ylabel={},
+axis line style={-},
+grid=none,
+},
+}
+
+\def\defaultticksize{1pt}
+\def\ticksize{\defaultticksize}
+\def\xticksize{\ticksize}
+\def\yticksize{\ticksize}
+
+\tikzset{
+stylepoint/.style={
+color=black,circle,minimum size=1pt,fill,inner sep=2pt,fill opacity=1,
+},
+ytickscale/.style args={#1}{execute at begin scope={\def\yticksize{#1*\ticksize}},execute at end scope={\def\yticksize{\ticksize}}},
+xtickscale/.style args={#1}{execute at begin scope={\def\xticksize{#1*\ticksize}},execute at end scope={\def\xticksize{\ticksize}}},
+ticksize/.style args={#1}{execute at begin scope={\def\ticksize{#1}},execute at end scope={\def\xticksize{\defaultticksize}}},
+setupRepere/.style args={(#1,#2),(#3,#4)}{
+cm={#1*cos(#2),#1*sin(#2),#3*cos(#2+#4),#3*sin(#2+#4),(0,0)},
+execute at begin scope={\pgfmathsetmacro\taillex{max(1,#1/#3)}\pgfmathsetmacro\tailley{max(1,#3/#1)}},
+xtickscale=\taillex,
+ytickscale=\tailley,
+},
+}
+
+\usetikzlibrary{tikzmark}
+\usepackage{tkz-base}
+\usetikzlibrary{calc}
+
+\makeatletter
+\newsavebox{\measure@tikzpicture}
+\NewEnviron{scaletikzpicturetowidth}[1]{%
+  \def\tikz@width{#1}%
+  \def\tikzscale{1}\begin{lrbox}{\measure@tikzpicture}%
+  \BODY
+  \end{lrbox}%
+  \pgfmathparse{#1/\wd\measure@tikzpicture}%
+  \edef\tikzscale{\pgfmathresult}%
+  \BODY
+}
+\makeatother
+
+\NewDocumentEnvironment{axispenche}{mmmmmb}]{
+\draw[opacity=0.4,dashed] (#2,#3) rectangle (#4,#5);
+\clip (#2,#3)+(-0.01,-0.01) rectangle (#4,#5)+(0.01,0.01);
+\begin{scope}[#1]
+\draw[step=0.5,line width=0.4pt,densely dashed,opacity=0.2] (5*#2-5,5*#3-5)+(-0.01,-0.01) grid (5*#4+5,5*#5+5)+(0.01,0.01);
+\tkzInit[xmin=5*#2,xmax=5*#4,ymin=5*#3,ymax=5*#5]
+\tkzDrawX[label={},tickup=\xticksize,tickdn=\xticksize]
+\tkzDrawY[label={},ticklt=\yticksize,tickrt=\yticksize]
+%\tkzGrid[gray,line width=0.4pt,style=densely dashed,sub,subxstep=0.5,subystep=0.5]
+%\tkzGrid[gray,line width=0.4pt,style=densely dashed]
+%\draw (10*#2,0) -- (10*#4,0);
+%\draw (0,10*#3) -- (0,10*#5);
+#6
+\end{scope}
+}{}
+
+% Début du document
+%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+\title{Repères du plan et coordonnées}
+\maketitle
+
+\begin{programme}
+\item Base orthonormée. Coordonnées d'un vecteur. Expression de la norme d'un vecteur.
+\item Expression des coordonnées de $\vec{AB}$ en fonction de celles de $A$ et $B$.
+\item Déterminant de deux vecteurs dans une base orthonormée, critère de colinéarité. Application à l'alignement, au parallélisme.
+\item Capacités:
+\begin{itemize}
+\item Représenter un vecteur dont on connait les coordonnées. Lire les coordonnées d'un vecteur.
+\item Calculer les coordonnées d'une somme de vecteurs, d'un produit de vecteur par un réel.
+\item Calculer la distance entre deux points. Calculer les coordonnées du milieu d'un segment.
+\item Caractériser alignement et parallélisme par la colinéarité de vecteurs.
+\item Résoudre des problèmes en utilisant la représentation la plus adaptée des vecteurs.
+\end{itemize}
+\item Démonstration: Colinéarité $\Leftrightarrow$ déterminant nul
+\end{programme}
+
+%\begin{FlushLeft}
+
+\section{Généralités}
+
+\begin{defin}
+Soient $O,I,J$ trois points du plan non alignés. On pose $\vec i = \vec{OI}$ et $\vec j = \vec{OJ}$. Un repère du plan est un triplet $\left( O;\vec i; \vec j \right)$. On dit alors que :
+\begin{itemize}
+\item $O$ est l'origine du repère
+\item $(OI)$ est l'axe des abscisses
+\item $OJ$ est l'axe des ordonnées
+\end{itemize}
+\end{defin}
+
+\begin{propr}
+Tout point $M$ du plan est repéré par un unique couple de coordonnées $(x;y)$. $x$ est l'abscisse de $M$ et $y$ est l'ordonnée de $M$ 
+\end{propr}
+
+
+\compo[0.5]
+{
+\begin{tikzpicture}[scale=\echellepgf]
+%\clip (Bord1) rectangle (Bord2);
+\begin{axis}[
+%clip=false
+styleglobal,
+reperesimple,
+width=0.9*\echellepgfinv*\linewidth,
+xmin=-2,xmax=5,
+ymin=-2,ymax=5,
+xtick distance=1,
+ytick distance=1,
+%axis line style={shorten >=-1cm, shorten <=-1cm},
+%xslant=0.5,
+setupRepere={(1,40),(1,90)},
+]
+\draw[->,>=latex,thick] (0,0) -- (1,0) node[pos=0.5,below] {$\vec i$};
+\draw[->,>=latex,thick] (0,0) -- (0,1) node[pos=0.5,left] {$\vec j$};
+\node[draw=none] (lim) at (\pgfkeysvalueof{/pgfplots/xmin},\pgfkeysvalueof{/pgfplots/ymin}) {};
+\node[draw=none] (O) at (0,0) {};
+\node[draw=none] (I) at (\echellepgf,0) {};
+\node[draw=none] (J) at (0,\echellepgf) {};
+\node[draw=none] (lima) at (\pgfkeysvalueof{/pgfplots/xmin},0) {};
+\node[draw=none] (limb) at (\pgfkeysvalueof{/pgfplots/xmax},0) {};
+\node[draw=none] (limc) at (0,\pgfkeysvalueof{/pgfplots/ymin}) {};
+\node[draw=none] (limd) at (0,\pgfkeysvalueof{/pgfplots/ymax}) {};
+%\addplot[styleplot] {cos(deg(x))};
+\def\xmaxfirst{\pgfkeysvalueof{/pgfplots/xmax}}
+\edef\xmax{\xmaxfirst}
+\end{axis}
+\draw[draw=none] let \p1=($(lim)+\echellepgf*(lima)-\echellepgf*(lim)$) in (\x1,\y1) -- (0,0);
+\draw[draw=none] let \p2=($(lim)+\echellepgf*(limb)-\echellepgf*(lim)$) in (\x2,\y2) -- (0,0);
+\draw[draw=none] let \p3=($(lim)+\echellepgf*(limc)-\echellepgf*(lim)$) in (\x3,\y3) -- (0,0);
+\draw[draw=none] let \p4=($(lim)+\echellepgf*(limd)-\echellepgf*(lim)$) in (\x4,\y4) -- (0,0);
+\path[remember picture] let
+	\p1=($(lim)+\echellepgf*(lima)-\echellepgf*(lim)$),
+	\p2=($(lim)+\echellepgf*(limb)-\echellepgf*(lim)$),
+	\p3=($(lim)+\echellepgf*(limc)-\echellepgf*(lim)$),
+	\p4=($(lim)+\echellepgf*(limd)-\echellepgf*(lim)$),
+	in coordinate (Bord1) at ({min(\x1,\x2,\x3,\x4)},{min(\y1,\y2,\y3,\y4)});
+\path[remember picture] let
+	\p1=($(lim)+\echellepgf*(lima)-\echellepgf*(lim)$),
+	\p2=($(lim)+\echellepgf*(limb)-\echellepgf*(lim)$),
+	\p3=($(lim)+\echellepgf*(limc)-\echellepgf*(lim)$),
+	\p4=($(lim)+\echellepgf*(limd)-\echellepgf*(lim)$),
+	in coordinate (Bord2) at ({max(\x1,\x2,\x3,\x4)},{max(\y1,\y2,\y3,\y4)});
+	
+\draw (Bord1) rectangle (Bord2);
+\clip (Bord1) rectangle (Bord2);
+
+\draw[line width=0.4pt,shorten >=-10cm, shorten <=-10cm] ($(lim.center)+\echellepgf*(lima.center)-\echellepgf*(lim.center)$) -- ($(lim.center)+\echellepgf*(limb.center)-\echellepgf*(lim.center)$);
+
+\draw[line width=0.4pt,shorten >=-10cm, shorten <=-10cm] ($(lim.center)+\echellepgf*(limc.center)-\echellepgf*(lim.center)$) -- ($(lim.center)+\echellepgf*(limd.center)-\echellepgf*(lim.center)$);
+	
+%Grille
+
+%\draw (lim.center) -- ($(lim.center)+0.8*(lima.center)-0.8*(lim.center)$);
+\foreach \y in {-14,-13,...,28}{
+\draw[line width=0.4pt,densely dashed,opacity=0.2,shorten <= -10cm, shorten >= -10cm] ($(lim)+\y*0.5*(J.center)-\y*0.5*(O.center)$) -- ($(lim)+\y*0.5*(J.center)-\y*0.5*(O.center)+10*(I.center)-10*(O.center)$);
+}
+\foreach \x in {-14,-13,...,28}{
+\draw[line width=0.4pt,densely dashed,opacity=0.2,shorten <= -10cm, shorten >= -10cm] ($(lim)+\x*0.5*(I.center)-\x*0.5*(O.center)$) -- ($(lim)+\x*0.5*(I.center)-\x*0.5*(O.center)+10*(J.center)-10*(O.center)$);
+}
+\end{tikzpicture}
+}
+{
+\begin{scaletikzpicturetowidth}{0.9\linewidth}
+\begin{tikzpicture}[scale=\tikzscale]
+\begin{axispenche}{setupRepere={(2,20),(1,80)}}{-2}{-2}{10}{5} %ticksize=1pt
+\node[label={-135:{$O$}}] (O) at (0,0) {};
+\draw[->,>=latex,thick] (0,0) -- (1,0) node[pos=0.5,below] {$\vec i$};
+\draw[->,>=latex,thick] (0,0) -- (0,1) node[pos=0.5,left] {$\vec j$};
+\end{axispenche}
+\end{tikzpicture}
+\end{scaletikzpicturetowidth}
+}
+\end{document}
