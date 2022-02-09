@@ -1,0 +1,587 @@
+% Commandes qui perdent leur effet avec ce package simplifié:
+% \progres	\saut
+%
+
+% Liste des packages utilisés
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage[a4paper,margin=15mm,marginparwidth=15mm,marginparsep=0mm]{geometry}
+\usepackage[french]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsfonts,amssymb,amsmath}
+\usepackage{stmaryrd} % pour \llbracket
+\usepackage[explicit]{titlesec}
+\usepackage{setspace}
+\usepackage{dsfont}
+\usepackage{tabularx,tabulary}
+\usepackage{mathrsfs}
+\usepackage{marginnote}
+\usepackage[svgnames,rgb,dvipsnames]{xcolor}
+\usepackage{graphicx}
+\usepackage[thref,framed,thmmarks]{ntheorem}
+\usepackage[most]{tcolorbox}
+\usepackage{framed}
+\usepackage{comment}
+\usepackage{ragged2e}
+\usepackage{microtype}
+\usepackage{ifthen}
+\usepackage{multicol}
+\usepackage{enumitem}
+\usepackage{cancel}
+\usepackage{diagbox}
+\usepackage{fancyhdr}
+\usepackage{eurosym}
+\usepackage{icomma}
+\usepackage{xstring}
+\usepackage{etoolbox}
+\usepackage{xpatch}
+\usepackage[d]{esvect} % Problèmes de compatibilité quand on charge d'autres polices non otf
+\usepackage{lastpage}
+
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows.meta,calc}
+\usepackage{pgfplots}
+\usepackage{tkz-tab}
+
+\usepackage[french,linesnumbered,vlined]{algorithm2e}
+
+% Abréviations maths
+
+\newcommand{\C} {\mathbb{C}}
+\newcommand{\R} {\mathbb{R}}
+\newcommand{\Z} {\mathbb{Z}}
+\newcommand{\N} {\mathbb{N}}
+\newcommand{\K} {\mathbb K}
+\newcommand{\U} {\mathbb U}
+\newcommand{\D} {\mathbb D}
+\newcommand{\Q} {\mathbb Q}
+\newcommand{\Pro} {\mathbb P}
+\newcommand{\Esp} {\mathbb E}
+
+\newcommand{\fonction}[5]{\begin{array}[t]{ccccc}
+#1: & #2 & \longrightarrow & #3 \\
+    & #4 & \longmapsto & #5 \end{array}}
+
+\newcommand{\fonctionb}[4]{\begin{array}[t]{ccccc}
+#1 & \longrightarrow & #2 \\
+#3 & \longmapsto & #4 \end{array}}
+
+\newcommand{\abs}[1]{\left\vert #1 \right\vert}
+
+\let\vec\vv
+\let\vecc\vv
+
+\newcommand{\Oij}{$\left(\text{O},~\vec{i},~\vec{j}\right)$}
+
+% Gras dans titres en mode math
+
+\g@addto@macro\bfseries{\boldmath}
+\SetSymbolFont{stmry}{bold}{U}{stmry}{m}{n}
+
+
+% Centrer tabularx de base et ligne centrée Y
+
+\renewcommand\tabularxcolumn[1]{m{#1}}
+\newcommand{\tabularxgauche}{\renewcommand\tabularxcolumn[1]{p{##1}}}
+\newcommand{\tabularxcentrer}{\renewcommand\tabularxcolumn[1]{m{##1}}}
+\newcolumntype{Y}{>{\centering\arraybackslash}X}
+
+% Commandes cours
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\author{}
+\date{}
+
+\newcommand{\titre}[1]{\begin{center}{\fontfamily{cmr}\fontseries{bx}\selectfont \huge{#1}}\end{center}}
+
+\newcommand{\seconde}{2\textsuperscript{nde}}
+\newcommand{\premiere}{1\textsuperscript{ère}}
+
+\newcommand{\fakeitem}{\textemdash \ }
+
+% Compo
+
+\newlength{\colG}\newlength{\colD}
+
+\newlength{\composep} % Séparation des deux minipages
+\setlength{\composep}{10pt}
+
+\newcommand{\compobase}[5]{%
+\setlength{\colG}{#3\linewidth}\setlength{\colD}{\linewidth}%
+\addtolength{\colD}{-\colG}\addtolength{\colD}{-#1}%
+\addtolength{\colG}{-#1}%
+\par\noindent%
+\begin{minipage}[#2]{\colG}\vspace{0pt}%
+#4\end{minipage}\hfill%	%vspace=hack pour des problèmes d'alignement qui aparaissent avec compohaut
+\begin{minipage}[#2]{\colD}\vspace{0pt}%
+#5\end{minipage}\par}
+
+
+\newcommand{\compo}[3][0.5]{\compobase{\composep}{c}{#1}{#2}{#3}} % \compo[0.4]{...}{...}
+\newcommand{\compohaut}[3][0.5]{\compobase{\composep}{t}{#1}{#2}{#3}} % Pareil, alignement vers le haut
+
+% Compo avec ligne séparatrice: Même fonctionnement mais on doit prélever la hauteur de chaque minipage, prendre la plus grande puis tracer la ligne
+
+\newlength{\hauteurGauche} \newlength{\hauteurDroite} \newlength{\decalageLigne}
+\newsavebox{\partieGauche} \newsavebox{\partieDroite}
+
+\newcommand{\compolignebase}[5]{
+\setlength{\colG}{#3\linewidth}\setlength{\colD}{\linewidth}%
+\addtolength{\colD}{-\colG}\addtolength{\colD}{-#1}%
+\addtolength{\colG}{-#1}%
+\sbox{\partieGauche}{\begin{minipage}[#2]{\colG}\vspace{0pt}#4\end{minipage}}%
+\sbox{\partieDroite}{\begin{minipage}[#2]{\colD}\vspace{0pt}#5\end{minipage}}%
+\setlength{\hauteurGauche}{\ht\partieGauche} \setlength{\hauteurDroite}{\ht\partieDroite}%
+\addtolength{\hauteurGauche}{\dp\partieGauche} \addtolength{\hauteurGauche}{14pt}%
+\addtolength{\hauteurDroite}{\dp\partieDroite} \addtolength{\hauteurDroite}{14pt}%
+\par\noindent%
+\usebox{\partieGauche}%
+\setlength{\decalageLigne}{7pt}%
+\ifthenelse{\lengthtest{\hauteurGauche>\hauteurDroite}}%
+{\addtolength{\decalageLigne}{\dp\partieGauche} \hfill \rule[-\decalageLigne]{0.5pt}{\hauteurGauche} \hfill}%
+{\addtolength{\decalageLigne}{\dp\partieDroite} \hfill \rule[-\decalageLigne]{0.5pt}{\hauteurDroite} \hfill}%
+\usebox{\partieDroite}%
+\par
+}
+
+\newcommand{\compoligne}[3][0.5]{\compolignebase{\composep}{c}{#1}{#2}{#3}}
+\newcommand{\compolignehaut}[3][0.5]{\compolignebase{\composep}{t}{#1}{#2}{#3}}
+
+% Environnement centrer sans passage à la ligne
+
+\newenvironment{centrer}{\par \centering }{ \par} %Pas tout à fait le même résultat que center (espacement avant/après)
+
+% Le but est d'ignorer tout ce qui vient après la commande progres dans le fichier cours pour pouvoir avoir des cours partiels. La commande prend son sens avec l'option eleve.
+\newcommand{\progres}{}
+
+% Commandes sujets
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Lignes de points pour réponses, à modifier:
+
+\newcommand{\pointstretch}{1.5}
+\newcommand{\points}[2][\pointstretch]{\setstretch{#1}%
+\foreach \n in{1,...,#2}%
+{\noindent\dotfill
+
+}
+}
+
+% Entete pour interros ( quand il en faut plusieurs en une page, imitation fancyhdr )
+
+\newcommand{\entete}[3]{
+\begin{centrer}
+\par\smallskip\noindent\parbox[t]{.149\textwidth}{\raggedright #1}%
+\parbox[t]{.7\textwidth}{\centering #2}%
+\parbox[t]{.149\textwidth}{\raggedleft #3}%
+
+\rule[3.3mm]{\textwidth}{0.4pt}
+\end{centrer}
+}
+
+% Initialisation pgfplots, tikz et styles
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\echellepgf} {4/5} % Facteur d'échelle pour les graphiques: diminue la taille des traits, texte ... On réduit la taille de toute l'image ( paramètre du tikzpicture ) puis on grossit la taille du graphique pgf ( paramètre de axis )
+\newcommand{\echellepgfinv} {5/4}
+
+\pgfplotsset{ % Pas besoin de "styleglobal" en fait ... Important: ne pas faire xscale mais x post scale pour conserver la taille des ticks
+compat=1.18,
+%
+% Style global:
+%
+styleglobal/.style={
+height=\pgfkeysvalueof{/pgfplots/width}*(((\pgfkeysvalueof{/pgfplots/ymax})+((-1)*(\pgfkeysvalueof{/pgfplots/ymin})))/((\pgfkeysvalueof{/pgfplots/xmax})+((-1)*(\pgfkeysvalueof{/pgfplots/xmin}))))+0.1pt, %Hauteur auto en fonction des coordonnées et de l'échelle: hauteur=largeur*ratio hauteur/longueur avec coordonnées, +0.1pt pour que la grille aux bords apparaisse bien
+axis x line=bottom,
+axis y line = left,
+axis lines=middle,
+axis line style={-{Stealth}}, %Plus grosse flèche
+tick label style = {font=\footnotesize},
+scale only axis, %Pour que la hauteur automatique fonctionne comme prévu
+xlabel={$x$},
+ylabel={$y$},
+label style= {font=\scriptsize},
+minor x tick num=1, %Sous graduations
+minor y tick num=1,
+%xtick distance=1, %Graduations
+%ytick distance=1,
+enlargelimits={0.001}, % Pour éviter les bugs avec la grille
+grid=both,
+grid style={densely dashed,line width=0.4pt,draw=black!30},
+minor grid style={line width=0.25pt,draw=black!20},
+axis equal,
+legend pos=north east,
+domain=(\pgfkeysvalueof{/pgfplots/xmin}:\pgfkeysvalueof{/pgfplots/xmax}),
+},
+%
+% Style des courbes de fonctions
+%
+styleplot/.style={
+samples=101,
+smooth,
+line width=1.3pt,
+mark=none
+},
+%
+% Plus gros textes pour afficher au tableau
+%
+labelgros/.style={
+label style= {font=\large},
+tick label style = {font=\large}
+},
+%
+% Change la hauteur pour qu'elle dépende des ticks: si les graduations verticales sont de 2 en 2, le graphique est deux fois moins haut. => Repère non normé
+%
+hauteurproptick/.style={
+height=\pgfkeysvalueof{/pgfplots/width}*((\pgfkeysvalueof{/pgfplots/xtick distance}/\pgfkeysvalueof{/pgfplots/ytick distance})*((\pgfkeysvalueof{/pgfplots/ymax})+((-1)*(\pgfkeysvalueof{/pgfplots/ymin})))/((\pgfkeysvalueof{/pgfplots/xmax})+((-1)*(\pgfkeysvalueof{/pgfplots/xmin})))),
+axis equal=false,
+enlargelimits=0.001,
+}
+}
+
+\tikzset{
+stylepoint/.style={
+	draw=black,
+	color=black,
+	circle,
+	minimum size=1pt,
+	fill,
+	inner sep=2pt,
+	fill opacity=1
+},
+}
+
+%Format des nombres: virgule et séparation des milliers
+\pgfkeys{/pgf/number format/use comma,/pgf/number format/.cd,1000 sep={\,}}
+
+%Points aux extrémités des courbes
+\newcommand{\pointsextremites}{node[pos=0,stylepoint] {} node[pos=1,stylepoint] {}}
+
+% tcolorbox
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\tcbset{
+	% Style global de mes boites cours	
+	boitecours/.style={
+		frame hidden,
+		boxrule=0pt,
+		boxsep=0pt,
+		enlarge bottom by=0pt,
+		enhanced jigsaw,
+		toptitle=4pt,bottomtitle=4pt,
+		boxed title style={sharp corners,boxrule=0pt,coltitle={white},titlerule=0pt},
+		fonttitle=\bfseries\boldmath,
+		top=10pt,
+		right=10pt,
+		bottom=10pt,
+		left=10pt,
+		sharp corners,
+		breakable
+		},
+	}
+
+% Template: \deftcb[Facteur d'atténuation (en %)]{identifiant}{Nom}{Teinte}{Saturation}{Luminosité} ( Modèle HSB )
+% Définit la boite associée, en mettant la couleur précisée en arrière plan pour le titre et la couleur atténuée en fond.
+\newcommand{\deftcbUn}[6][10]{
+\definecolor{#2-titre}{Hsb}{#4,#5,#6}
+\newtcolorbox{#2}[1][]{
+	boitecours,
+	colback=#2-titre!#1,
+	borderline west={1pt}{0pt}{#2-titre},
+	title=\MakeUppercase{#3},
+	colbacktitle=#2-titre,
+}
+}
+
+\newcommand{\deftcb}[6][10]{ % Définit le thm et le même avec un s
+\deftcbUn[#1]{#2}{#3}{#4}{#5}{#6}
+\deftcbUn[#1]{#2s}{#3s}{#4}{#5}{#6} % Le même avec un s: exemple // exemples...
+}
+
+\definecolor{remq-titre}{Hsb}{50,0.8,0.8} % Pour les remarques perso
+\colorlet{remq}{remq-titre!10}
+\newtcolorbox{remq}{
+	boitecours,
+	colback=remq,
+	colframe=remq-titre,
+	hbox,
+	flush right,
+	right=4pt,
+	left=4pt,
+	top=7pt,
+	bottom=7pt,
+	borderline west={2pt}{-2pt}{remq-titre},
+}
+
+
+\definecolor{fait-titre}{Hsb}{0,0,0.6} % Quand un résultat n'est pas vraiment catégorisé: intro d'une partie...
+\colorlet{fait}{fait-titre!10}
+\newtcolorbox{fait}[1][fait]{ % Option = couleur à prendre ( mettre nom de thm )
+	boitecours,
+    top=5pt,
+    bottom=5pt,
+	colback={#1},
+	borderline west={1pt}{0pt}{#1-titre},
+}
+
+\newcounter{compteurenonce}   % Pour des noms d'énoncés rares, utilisé plus tard
+
+%%% Algorithmique
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% algoption nécessaire: Dans multicol il faut un H mais il est interdit en twocolumn ...
+
+\newcommand{\algoption}{H}
+\AtBeginEnvironment{multicols}{\renewcommand{\algoption}{H}}
+\AtBeginEnvironment{multicols*}{\renewcommand{\algoption}{H}}
+
+\setlength\columnsep{20pt}
+\newcounter{algonum}
+\SetKwInput{debutalgofix}{\rule[-7pt]{0pt}{5pt} \addtocounter{algonum}{1} \ \ \normalfont{\underline{Algorithme \thealgonum}}}
+\SetKwInput{debutalgofixetoile}{\rule[-7pt]{0pt}{5pt} \ \ \normalfont{\underline{Algorithme}}}
+\SetKwProg{algofonction}{Procédure}{:}{}
+\SetArgSty{normalfont}
+\renewcommand{\emph}[1]{#1}
+\newenvironment{algorithme}
+{
+\vspace{5pt}
+\begin{algorithm}[\algoption]
+	\debutalgofix
+	
+}
+{
+\end{algorithm}
+}
+
+\SetAlgoSkip{5pt}
+
+\newenvironment{algorithme*}
+{
+\vspace{5pt}
+\begin{algorithm}[\algoption]
+	\debutalgofixetoile
+	
+}
+{
+\end{algorithm}
+}
+
+% Options
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% C'est un peu bordélique ici:
+%Si on a l'option cours, tous les thm apparaissent dans des tcolorbox. Sinon on utilise ntheorem
+%Si on a l'option élève, on doit désactiver la commande rem sauf si option eleve dans la remarque( remarques perso dans le cours ), on a besoin de tester si elle est présente pour faire un si-sinon
+
+%
+%	Si cours alors boites tcolorbox
+%	Sinon
+%	Définir styles ntheorem classiques
+%	Si eleve alors désactiver les rmq perso, programme et déroulé
+%
+
+\newif\ifoptioncours
+\optioncoursfalse
+
+\newif\ifoptioneleve
+\optionelevefalse
+
+\newif\ifoptionTD
+\optionTDfalse
+
+\newif\ifoptionsujet
+\optionsujetfalse
+
+\DeclareOption{cours}{\optioncourstrue}
+
+\DeclareOption{eleve}{\optionelevetrue}
+
+\DeclareOption{TD}{\optionTDtrue}
+
+\DeclareOption{sujet}{\optionsujettrue}
+
+\DeclareOption*{} % Traitement des erreurs: ignorer les options inexistantes
+
+\ProcessOptions
+
+\ifoptioncours
+	
+	% Formats titres, sections, facultatif mais joli
+	
+%	\definecolor{titre}{HTML}{912c21}
+%	\definecolor{section}{HTML}{1c567d}
+%	\definecolor{subsection}{HTML}{2673a6}
+%	\definecolor{subsubsection}{HTML}{2f90d0}
+%
+%	\renewcommand{\thesection}{\Roman{section} - }
+%	\renewcommand{\thesubsection}{\arabic{subsection}. }
+%	\renewcommand{\thesubsubsection}{\alph{subsubsection}) }
+%
+%	\newcommand{\sectionstyle}{\normalfont\Large\bfseries\color{section}}
+%	\titleformat{\section}{\sectionstyle}{\thesection #1}{0pt}{}[{\color{gray}\hrule}]
+%	\titleformat{name=\section, numberless}{\sectionstyle}{#1}{0pt}{}[{\color{gray}\hrule}]
+%
+%	\newcommand{\subsectionstyle}{\normalfont\large\bfseries\color{subsection}}
+%	\titleformat{\subsection}{\subsectionstyle}{\hspace{0.1\linewidth}\thesubsection #1}{0pt}{}
+%	\titleformat{name=\subsection, numberless}{\subsectionstyle}{\hspace{0.1\linewidth}#1}{0pt}{}
+%	
+%	\newcommand{\subsubsectionstyle}{\normalfont\large\bfseries\color{subsubsection}}
+%	\titleformat{\subsubsection}{\subsubsectionstyle}{\hspace{0.2\linewidth}\thesubsubsection #1}{0pt}{}
+%	\titleformat{name=\subsubsection, numberless}{\subsubsectionstyle}{\hspace{0.2\linewidth}#1}{0pt}{}
+%	
+%	\def\@maketitle{\centering  \let \footnote \thanks {\fontfamily{cmr}\fontseries{bx}\selectfont\huge\scshape\color{titre} \@title \par}%
+%	\textcolor{darkgray}{\hrule}%
+%	\vspace{2pt}%
+%	\textcolor{darkgray}{\hrule height 2pt depth 0pt \relax}%
+%  \par
+%  \vskip 2em}
+%	\renewcommand{\titre}[1]{\title{#1} \maketitle}
+	
+	% Template: \deftcb{identifiant}{Nom}{Teinte}{Saturation}{Luminosité} ( Modèle HSB )
+	\deftcb{defin}{Définition}{211}{0.8}{0.75} % On utilisera \begin{defin} pour écrire une def, la couleur est bleue(211), assez vibrante (0.8) et lumineuse (0.75)
+	\deftcb{thm}{Théorème}{0}{0.8}{0.75}
+	\deftcb{prop}{Proposition}{15}{0.8}{0.75}
+	\deftcb[8]{ex}{Exemple}{120}{0.8}{0.58}
+	\deftcb[8]{cex}{Contre-exemple}{120}{0.8}{0.58}
+	\deftcb{rmq}{Remarque}{211}{0.8}{0.75}
+	\deftcb{caspart}{Cas particulier}{211}{0.8}{0.75}
+	\deftcb{cor}{Corollaire}{211}{0.8}{0.75}
+	\deftcb{app}{Application}{211}{0.8}{0.75}
+	\deftcb{propr}{Propriété}{211}{0.8}{0.75}
+	\deftcb{methode}{Méthode}{211}{0.8}{0.75}
+	\deftcb{exercice}{Exercice}{210}{0.6}{0.7}
+	
+	% Pour des noms rares: Vocabulaire ... Crée une tcbox dans le document, couleur bleue par défaut
+	\newenvironment{enonce}[1]{
+	\deftcbUn{enonce\thecompteurenonce}{#1}{211}{0.8}{0.75}
+	\begin{enonce\thecompteurenonce}}
+	{\end{enonce\thecompteurenonce} \refstepcounter{compteurenonce}}
+
+	% Boites pour écrire le programme du chapitre et le déroulé. Même principe, mais on commence un environnement itemize directement, et la police est plus petite	
+	
+	\deftcbUn{tcolor-programme}{Programme}{0}{0.8}{0.75}	
+	\deftcbUn{tcolor-deroule}{Déroulé}{0}{0.8}{0.75}
+	
+	\NewDocumentEnvironment{programme}{b}{\vspace{-2em}\begin{tcolor-programme}\setstretch{0.75}{\footnotesize{\begin{itemize}[align=left,leftmargin=8pt,labelwidth=10pt,itemindent=10pt]#1\end{itemize}}}\end{tcolor-programme}}{\par}
+	\NewDocumentEnvironment{deroule}{b}{\begin{tcolor-deroule}\setstretch{0.75}{\footnotesize{\begin{itemize}[align=left,leftmargin=8pt,labelwidth=10pt,itemindent=10pt]#1\end{itemize}}}\end{tcolor-deroule}}{\par}
+	
+	% Remarques perso, version tcolorbox. Alignement à droite de la page, et la longueur max de la boite est la moitié de la feuille.	
+	
+	\newcommand{\rem}[2][]{\begin{remq} \begin{tabulary}{0.5\linewidth}{>{$\blacktriangleright$ \ }L} #2 \end{tabulary} \end{remq}}
+	\NewDocumentEnvironment{rems}{ob}{\rem{#2}}{\par}
+	
+	%Les tcolorbox avec titre font un saut automatique mais pas les thm, si on passe souvent de l'un à l'autre on utilise saut qui s'adapte
+	\newcommand{\saut}{}
+
+
+\else % Style +- à l'ancienne
+
+	% Style des sections
+
+	\renewcommand{\thesection}{\Roman{section} - \hspace{-2ex}}
+	\renewcommand{\thesubsection}{\arabic{subsection}) \hspace{-2ex}}
+	\renewcommand{\thesubsubsection}{\alph{subsubsection}) \hspace{-2ex}}
+
+	\titlespacing*{\section}{0mm}{0mm}{1mm}
+	\titlespacing*{\subsection}{10mm}{0mm}{3mm}
+	\titlespacing*{\subsubsection}{20mm}{0mm}{3mm}
+
+	\def\@maketitle{\centering  \let \footnote \thanks {\huge \@title \par}\par\vskip 2em}
+	\NewDocumentEnvironment{programme}{b}{\section*{Programme}\setstretch{0.75}{\footnotesize{\begin{itemize}#1\end{itemize}}}}{\par}
+	\NewDocumentEnvironment{deroule}{b}{\section*{Déroulé}\setstretch{0.75}{\footnotesize{\begin{itemize}#1\end{itemize}}}}{\par}
+	
+	\renewenvironment{fait}[1][]{}{}
+	
+	\everymath{\displaystyle}
+	% Style général
+	
+	\theorembodyfont{\normalfont}
+	\theoremframepostskip{0mm}
+	\theoremframepreskip{0mm}
+	\theoreminframepostskip{0mm}
+	\theoreminframepreskip{0mm}
+	\theoremnumbering{arabic}
+	
+	\ifoptionTD
+	
+		\geometry{margin=10mm, bottom=17mm}
+		\setlength\columnsep{10pt}
+		
+	\fi	
+	
+	\ifoptionsujet
+		
+		\geometry{includeheadfoot,bottom=12.5mm,top=1.5mm}
+		\pagestyle{fancy}
+		\setlength{\headheight}{10mm}
+		\fancyfoot[C]{Page \thepage}
+		\setlength\columnsep{3cm}
+
+	\fi
+	
+	% Style théorèmes
+	
+	\theoremstyle{plain}
+	\theoremseparator{.}
+	\theorempreskip{\topsep}
+	\theorempostskip{\topsep}
+	\newtheorem{exercice}{Exercice}
+	\newtheorem{correction}{Correction}
+		
+	\theoremstyle{nonumberplain}	
+	
+	\theorembodyfont{\normalfont}
+	%\theorempostskip{2mm}
+	%\theorempreskip{2mm}
+	\theoremseparator{ :\par}
+	%\theoremsymbol{\rule{1.5mm}{1.5mm}}
+	
+	\newtheorem{defin}{Définition}
+	\newtheorem{thm}[defin]{Théorème}
+	\newtheorem{prop}[defin]{Proposition}
+	\newtheorem{lemme}[defin]{Lemme}
+	\newtheorem{ex}[defin]{Exemple}
+	\newtheorem{exs}[defin]{Exemples}
+	\newtheorem{cex}[defin]{Contre-exemple}
+	\newtheorem{rmq}[defin]{Remarque}
+	\newtheorem{rmqs}[defin]{Remarques}
+	\newtheorem{cor}[defin]{Corollaire}
+	\newtheorem{propr}[defin]{Propriété}
+	\newtheorem{proprs}[defin]{Propriétés}
+	\newtheorem{app}[defin]{Application}
+	\newtheorem{defprop}[defin]{Def-prop}
+	\newtheorem{algo}[defin]{Algorithme}
+	\newtheorem{rappel}[defin]{Rappel}
+	\newtheorem{methode}[defin]{Méthode}
+	\newtheorem{caspart}[defin]{Cas particulier}
+	\newtheorem{casparts}[defin]{Cas particuliers}
+	\newframedtheorem{thmframed}[defin]{Théorème}
+	\newframedtheorem{exframed}[defin]{Exemple}
+	
+	\newenvironment{enonce}[1]{
+	\newtheorem{enonce\thecompteurenonce}[defin]{#1}
+	\begin{enonce\thecompteurenonce}}
+	{\end{enonce\thecompteurenonce} \refstepcounter{compteurenonce}}
+	
+	\newcommand{\saut}{\
+	
+	}
+	
+	\newcommand{\rem}[2][black] {\begin{center}\color{#1}\textit{#2}\end{center}}
+	\NewDocumentEnvironment{rems}{ob}{\rem{#2}}{\par}
+	
+\fi
+
+\ifoptioneleve
+	
+	\RenewDocumentEnvironment{programme}{b}{}{\par}
+	\RenewDocumentEnvironment{deroule}{b}{}{\par}
+	\renewcommand{\rem}[2][]{}
+	
+	% Commande progres pour arrêter la compilation (uniquement pour les élèves)	
+	
+	\renewcommand{\progres}{\end{document}}
+
+\fi

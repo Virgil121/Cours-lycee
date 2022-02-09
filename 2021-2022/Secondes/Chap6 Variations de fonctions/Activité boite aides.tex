@@ -1,13 +1,11 @@
-\documentclass[,a4paper,12pt,french]{article}
+\documentclass[a4paper,12pt,french]{article}
 
-\usepackage{../../../Style}
+\usepackage[TD]{../../../Style}
 
 \setlength{\parindent}{0pt}
-
-\geometry{margin=5mm}
+%\geometry{margin=5mm}
 % Début du document
-%%%%%%%%%%%%%%%%%%%
-\begin{document}
+\renewcommand{\composep}{20pt}
 
 \newcommand{\contenua}{
 \titre{Indication}
@@ -21,10 +19,24 @@
 \titre{Indication}
 \centering Si la hauteur de la boite est de 2cm, quelle est sa hauteur? Quelle est sa largeur? En déduire son volume.}
 
-\foreach \i in {1,2} {\contenua \vfill}
-\foreach \i in {1,2} {\contenub \vfill}
-\foreach \i in {1,2} {\contenuc \vfill}
+%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+%\foreach \i in {1,2} {\compo{\contenua}{\contenua} \vfill}
+%\foreach \i in {1,2} {\compo{\contenub}{\contenub} \vfill}
+%\foreach \i in {1,2} {\compo{\contenuc}{\contenuc} \vfill}
+
+\compo{\contenua}{\contenua} \vfill
+\compo{\contenua}{\contenua} \vfill
+\compo{\contenub}{\contenub} \vfill
+\compo{\contenub}{\contenub} \vfill
+\compo{\contenuc}{\contenuc} \vfill
+\compo{\contenuc}{\contenuc}
+
 \newpage
+
+\newgeometry{margin=5mm}
+
 \ \vfill
 \begin{tikzpicture}
 \draw (0,0) -- (0,10cm) -- (10cm,10cm) -- (10cm,0cm) --cycle;

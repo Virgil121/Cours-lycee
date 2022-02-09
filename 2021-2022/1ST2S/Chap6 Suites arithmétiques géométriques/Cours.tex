@@ -17,20 +17,20 @@
 \maketitle
 
 \begin{programme}
-\item représentations graphiques des fonctions : $x \mapsto ax^2,x \mapsto ax^2+b, x \mapsto a(x-x_1)(x-x_2)$
-\item axes de symétrie ;
-\item racines et signe d'un polynôme de degré 2 donné sous forme factorisée (le calcul des
-racines à l'aide du discriminant ne figure pas au programme).
+\item Suites arithmétiques: évolutions absolues constantes (croissance linéaire).
+\item Suites géométriques: évolutions relatives constantes (croissance exponentielle).
+\begin{itemize}
+\item Relation de récurrence
+\item Sens de variation
+\item Représentation graphique
+\end{itemize}
 \item Compétences
 \begin{itemize}
-\item Associer une parabole à une expression algébrique de degré 2
-\item Déterminer des éléments caractéristiques de la fonction $x \mapsto a(x-x_1)(x-x_2)$: Signe, extremum, allure, axes de symétrie
-\item Vérifier qu'une valeur conjecturée est racine d'un polynôme de degré 2
-\item Savoir factoriser dans des cas simples une expression du second degré connaissant une racine.
-\item Utiliser la forme factorisée d'un poly pour trouver ses racines et étudier son signe.
+\item Reconnaitre si une situation relève d'un modèle discret de croissance linéaire ou exponentielle.
+\item Conjecturer, à partir de sa représentation graphique, la nature arithmétique ou géométrique d'une suite.
+\item Démontrer qu'une suite est arithmétique ou géométrique.
+\item Déterminer le sens de variation d'une suite arithmétique ou géométrique à l'aide de la raison.
 \end{itemize}
-\item déterminer le signe d'une expression factorisée du second degré
-\item résoudre une équation ou une inéquation du premier degré, une équation du type $x^2=a$ avec $a \geq 0$.
 \end{programme}
 
 \section{Suites arithmétiques}
@@ -39,8 +39,6 @@ racines à l'aide du discriminant ne figure pas au programme).
 
 \begin{defin}
 Un premier terme, un nombre r appelé raison et la relation $a_{n+1}=a_n+r$. 
-
-Mettre schéma bulles
 \end{defin}
 
 \begin{rmq}
@@ -54,7 +52,7 @@ On passe d'un terme au suivant en ajoutant toujours le même nombre. La différe
 \node (W5) at (6,0) {$\ldots$};
 \draw[->,>=latex,thick] (W0) to[bend left=20] node[midway,above]{$+r$} (W1);
 \draw[->,>=latex,thick] (W1) to[bend left=20] node[midway,above]{$+r$} (W2);
-\draw[->,>=latex,thick] (W2) to[bend left=20] node[midway,above]{$+r$} (W5);
+\draw[->,>=latex,thick,densely dashed] (W2) to[bend left=20] node[midway,above]{$+r$} (W5);
 \end{tikzpicture}
 \end{center}
 
@@ -72,16 +70,43 @@ u_4&=\ \ldots
 $$
 \end{ex}
 
-\begin{rmq}
-Points alignés
-\end{rmq}
+\begin{propr}
+Lorsqu'on représente graphiquement une suite arithmétique, les points obtenus sont alignés.
+\end{propr}
+
+\begin{ex}
+\begin{center}
+\begin{tikzpicture}[scale=\echellepgf]
+\begin{axis}[
+styleglobal,
+hauteurproptick,
+width=0.9*\echellepgfinv*\linewidth,
+xmin=0, xmax=10.5,
+ymin=-2.5, ymax=3.5,
+xtick distance=1,
+ytick distance=1
+]
+\addplot[samples=11,ultra thick,domain=(0:10),only marks,mark options={stylepoint,color=blue}]{-0.5*x+3};
+\end{axis}
+\end{tikzpicture}
+\end{center}
+
+On a représenté une suite $u$ ci-dessus. Son premier terme $u_0$ vaut $3$ et pour passer d'un terme au suivant, on retire $0.5$: $r=-0.5$. La suite $u$ est donc une suite arithmétique de premier terme $3$ et de raison $-0.5$.
+\end{ex}
 
 \begin{methode}
 Pour s'assurer qu'une suite \textbf{semble} arithmétique, on calcule la différence entre deux termes successifs, et l'on doit toujours trouver le même nombre (la raison).
 \end{methode}
 
 \begin{ex}
-Tableau de valeurs pour deux suites. L'une parait arithmétique, l'autre non.
+On se donne deux suites $u$ et $v$, dont quelques valeurs sont décrites dans le tableau ci-dessous:
+\begin{center}
+\begin{tabularx}{0.5\linewidth}{|c|*{4}{Y|}} \hline
+$n$ & 0 & 1 & 2 & 3 \\ \hline
+$u_n$ & 5 & 9 & 13 & 17 \\ \hline
+$v_n$ & 3 & 12 & 20 & 29 \\ \hline
+\end{tabularx}
+\end{center}
 \end{ex}
 
 \subsection{Variations des suites arithmétiques}
@@ -95,7 +120,7 @@ Tableau de valeurs pour deux suites. L'une parait arithmétique, l'autre non.
 \end{prop}
 
 \begin{ex}
-..
+Soit $a$ la suite arithmétique définie par $a_0=13$ et pour tout $n \in \N, a_{n+1}=a_n-5$. La raison de cette suite est $r=-5<0$ donc $a$ est décroissante.
 \end{ex}
 
 \section{Suites géométriques, cas positif}
@@ -105,7 +130,17 @@ Tableau de valeurs pour deux suites. L'une parait arithmétique, l'autre non.
 \begin{defin}
 Un premier terme, un nombre $q$ appelé raison et la relation de récurrence $g_{n+1}=q \times g_n$.
 
-Mettre schéma bulles
+\begin{center}
+\begin{tikzpicture}[scale=1]
+\node[draw,circle,thick, minimum size=13mm] (W0) at (-3,0) {$g_0$};
+\node[draw,circle,thick, minimum size=13mm] (W1) at (0,0) {$g_1$};
+\node[draw,circle,thick, minimum size=13mm] (W2) at (3,0) {$g_2$};
+\node (W5) at (6,0) {$\ldots$};
+\draw[->,>=latex,thick] (W0) to[bend left=20] node[midway,above]{$\times q$} (W1);
+\draw[->,>=latex,thick] (W1) to[bend left=20] node[midway,above]{$\times q$} (W2);
+\draw[->,>=latex,thick,densely dashed] (W2) to[bend left=20] node[midway,above]{$\times q$} (W5);
+\end{tikzpicture}
+\end{center}
 \end{defin}
 
 \begin{rmq}
@@ -127,7 +162,6 @@ ex
 \end{prop}
 
 \begin{ex}
-
 \end{ex}
 
 \begin{deroule}
