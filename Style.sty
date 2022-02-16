@@ -245,7 +245,9 @@ grid style={densely dashed,line width=0.4pt,draw=black!30},
 minor grid style={line width=0.25pt,draw=black!20},
 axis equal,
 legend pos=north east,
-domain=(\pgfkeysvalueof{/pgfplots/xmin}:\pgfkeysvalueof{/pgfplots/xmax}),
+domain=(\pgfkeysvalueof{/pgfplots/xmin}:\pgfkeysvalueof{/pgfplots/xmax}),	%Domaine de définition des fonctions à tracer
+restrict y to domain=\pgfkeysvalueof{/pgfplots/ymin}:\pgfkeysvalueof{/pgfplots/ymax},	%Evite des erreurs liées à des valeurs trop grandes
+mark size=\echellepgfinv*2pt,	% Taille marques indépendant de l'échelle
 },
 styleplot/.style={
 samples=101,
@@ -270,13 +272,14 @@ enlargelimits=0.001,
 
 \tikzset{
 stylepoint/.style={
-	draw=black,
+	draw=black,			%couleur bord
 	color=black,
 	circle,
 	minimum size=1pt,
 	fill,
-	inner sep=2pt,
-	fill opacity=1
+	inner sep=2pt,		% taille intérieur
+	fill opacity=1,
+	%,line width=0.5pt	%épaisseur bord
 },
 }
 
@@ -643,7 +646,6 @@ stylepoint/.style={
 	\renewcommand{\rem}[2][]{\rembase{#2}}
 	\NewDocumentEnvironment{rems}{ob}{\begin{remsbase}#2\end{remsbase}}{\par}
 			
-
 \else % Style +- à l'ancienne
 
 	% Style des sections

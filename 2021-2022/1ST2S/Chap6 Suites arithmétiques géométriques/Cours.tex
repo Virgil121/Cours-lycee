@@ -2,12 +2,7 @@
 
 \usepackage[cours]{../../../Style}
 
-%\usepackage[theorems]{tcolorbox}
-
-%\newtcbtheorem
-%{defi}{Définition}
-%{colback=red!5,colframe=red!60!black!80,fonttitle=
-%\sffamily\bfseries}{th}
+\pgfplotsset{styleglobal/.append style={xlabel={$n$}}}
 
 % Début du document
 %%%%%%%%%%%%%%%%%%%
@@ -81,12 +76,14 @@ Lorsqu'on représente graphiquement une suite arithmétique, les points obtenus 
 styleglobal,
 hauteurproptick,
 width=0.9*\echellepgfinv*\linewidth,
-xmin=0, xmax=10.5,
+xmin=-0.5, xmax=10.5,
 ymin=-2.5, ymax=3.5,
 xtick distance=1,
 ytick distance=1
 ]
-\addplot[samples=11,domain=(0:10),only marks,mark options={stylepoint,fill=blue}]{-0.5*x+3};
+\addplot[samples=11,domain=(0:10),only marks,stylepoint,fill=blue]{-0.5*x+3};
+%\addplot[styleplot,color=red,domain=(1:2)]{1} \pointsextremites;	%test
+%\node[stylepoint,fill=blue,inner sep=1.4pt] at (4.9,0.5) {};		%test
 \end{axis}
 \end{tikzpicture}
 \end{center}
@@ -148,7 +145,69 @@ On passe d'un terme au suivant en multipliant toujours par le même nombre. Le q
 \end{rmq}
 
 \begin{ex}
-ex
+Soit $g$ la suite géométrique de premier terme $g_0=3$ et de raison $q=2$. Alors:
+$$
+\begin{aligned}
+g_1&=g_0 \times 2=6\\
+g_2&=g_1 \times 2=12\\
+g_3&=g_2 \times 2=24\\
+g_4&=\ \ldots
+\end{aligned}
+$$
+\end{ex}
+
+\subsection{Représentation graphique des suites géométriques}
+
+\begin{ex}
+\compo{
+\begin{centrer}
+\textbf{Cas 1: $q > 1$}
+\begin{tikzpicture}[scale=\echellepgf]
+\begin{axis}[
+styleglobal,
+hauteurproptick,
+width=0.85*\echellepgfinv*\linewidth,
+xmin=-0.5, xmax=10.5,
+ymin=-1100, ymax=1100,
+xtick distance=1,
+ytick distance=200,
+legend style={at={(0.1,0.97)},anchor=north west},
+legend cell align=left,
+]
+\addplot[samples=11,domain=(0:10),only marks,fill=blue]{1*2^x};
+\addplot[samples=11,domain=(0:10),only marks,mark=square*,fill=red]{50*1.25^x};
+\addplot[samples=11,domain=(0:10),only marks,mark=triangle*,fill=green]{-400*1.1^x};
+\legend{$u_0=1,\ q=2$\\$v_0=50,\ q=1.25$\\$w_0=-400,\ q=1.1$\\} % \\ nécessaire pour que la virgule fonctionne
+%\addplot[styleplot,color=red,domain=(1:2)]{1} \pointsextremites;	%test
+%\node[stylepoint,fill=blue,inner sep=1.4pt] at (4.9,0.5) {};		%test
+\end{axis}
+\end{tikzpicture}
+\end{centrer}
+}
+{
+\begin{centrer}
+\textbf{Cas 2: $0<q<1$}
+\begin{tikzpicture}[scale=\echellepgf]
+\begin{axis}[
+styleglobal,
+hauteurproptick,
+width=0.85*\echellepgfinv*\linewidth,
+xmin=-0.5, xmax=10.5,
+ymin=-5.5, ymax=5.5,
+xtick distance=1,
+ytick distance=1,
+legend cell align=left,
+]
+\addplot[samples=11,domain=(0:10),only marks,fill=blue]{4*0.5^x};
+\addplot[samples=11,domain=(0:10),mark=square*,only marks,fill=red]{-5*0.9^x};
+\legend{$v_0=4,\ q=0.5$\\$v_0=-5,\ q=0.9$\\}
+%\addplot[styleplot,color=red,domain=(1:2)]{1} \pointsextremites;	%test
+%\node[stylepoint,fill=blue,inner sep=1.4pt] at (4.9,0.5) {};		%test
+\end{axis}
+\end{tikzpicture}
+\end{centrer}
+}
+
 \end{ex}
 
 \subsection{Variations des suites géométriques}
@@ -188,5 +247,71 @@ ex
 \item 1h: III.3 + Exos
 \end{itemize}
 \end{deroule}
+
+\begin{comment}
+\begin{ex}
+\compo{
+\begin{center}
+\begin{tikzpicture}[scale=\echellepgf]
+\begin{axis}[
+styleglobal,
+hauteurproptick,
+width=0.9*\echellepgfinv*\linewidth,
+xmin=-0.5, xmax=10.5,
+ymin=-0.5, ymax=1050,
+xtick distance=1,
+ytick distance=100,
+legend style={at={(0.1,0.97)},anchor=north west},
+]
+\addplot[samples=11,domain=(0:10),only marks,stylepoint,fill=blue]{1*2^x};
+\addlegendentry{$u_0=1, q=2$};
+%\addplot[styleplot,color=red,domain=(1:2)]{1} \pointsextremites;	%test
+%\node[stylepoint,fill=blue,inner sep=1.4pt] at (4.9,0.5) {};		%test
+\end{axis}
+\end{tikzpicture}
+\end{center}
+}
+{
+\begin{center}
+\begin{tikzpicture}[scale=\echellepgf]
+\begin{axis}[
+styleglobal,
+hauteurproptick,
+width=0.9*\echellepgfinv*\linewidth,
+xmin=-1, xmax=10.5,
+ymin=-0.5, ymax=3.5,
+xtick distance=1,
+ytick distance=1
+]
+\addplot[samples=11,domain=(0:10),only marks,stylepoint,fill=blue]{3*0.5^x};
+\addlegendentry{$v_0=3, q=0.7$};
+%\addplot[styleplot,color=red,domain=(1:2)]{1} \pointsextremites;	%test
+%\node[stylepoint,fill=blue,inner sep=1.4pt] at (4.9,0.5) {};		%test
+\end{axis}
+\end{tikzpicture}
+
+\
+
+\begin{tikzpicture}[scale=\echellepgf]
+\begin{axis}[
+styleglobal,
+hauteurproptick,
+width=0.9*\echellepgfinv*\linewidth,
+xmin=-1, xmax=10.5,
+ymin=-5.5, ymax=0.5,
+xtick distance=1,
+ytick distance=1,
+legend pos=south east,
+]
+\addplot[samples=11,domain=(0:10),only marks,stylepoint,fill=blue]{-5*0.9^x};
+\addlegendentry{$v_0=-5, q=0.9$};
+%\addplot[styleplot,color=red,domain=(1:2)]{1} \pointsextremites;	%test
+%\node[stylepoint,fill=blue,inner sep=1.4pt] at (4.9,0.5) {};		%test
+\end{axis}
+\end{tikzpicture}
+\end{center}
+}
+\end{ex}
+\end{comment}
 
 \end{document}

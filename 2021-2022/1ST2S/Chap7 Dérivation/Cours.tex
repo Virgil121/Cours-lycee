@@ -10,26 +10,95 @@
 %%%%%%%%%%%%%%%%%%%
 \begin{document}
 
-\title{Fonctions affines}
+\title{Dérivation}
 \maketitle
 
 \begin{programme}
-\item Fonctions affines: Capacités
+\item Point de vue local:
 \begin{itemize}
-\item Relier sens de variation, signe et droite représentative d'une fonction affine
-\item Tracer une droite donnée par son équation réduite ou par un point et son coefficient directeur
-\item Lire graphiquement l'équation réduite d'une droite
-\item Déterminer l'équation réduite d'une droite à partir des coordonnées de deux de ses
-points
-\item Résoudre une équation, une inéquation produit ou quotient à l'aide d'un tableau de signes.
+\item Sécantes à une courbe passant par un point donné, taux de variation en un point
+\item Tangente à une courbe en un point, définie comme position limite des sécantes
+\item Nombre dérivé en un point défini comme limite du taux de variation
+\item Equation réduite de la tangente en un point.
 \end{itemize}
-\item Interprétation du coefficient directeur comme taux d'accroissement, variations selon son signe
-\item Equation réduite d'une droite
+\item Point de vue global
+\begin{itemize}
+\item Fonction dérivée
+\item Dérivées de $x \mapsto x^2$, $x \mapsto x^3$, de combinaisons linéaires, de polynômes de degré $\leq 3$
+\item Sens de variation d'une fonction, lien avec le signe de la dérivée
+\item Tableau de variations, extremums
+\end{itemize}
+\item Capacités
+\begin{itemize}
+\item Interprétation du nombre dérivé comme coeff directeur de la tangente
+\item Construire la tangente à une courbe en un point
+\item Déterminer l'équation réduite de la tangente à une courbe en un point
+\item Calculer la dérivée d'un polynome de degré $\leq 3$
+\item Déterminer le sens de variation et les extremums d'une fonction polynome de degré $\leq 3$
+\end{itemize}
 \end{programme}
 
-%\begin{FlushLeft}
+\section{Point de vue local}
 
-\section{Généralités}
+\subsection{Tangentes}
+
+\compo
+{
+\begin{center}
+\begin{tikzpicture}[scale=\echellepgf]
+\begin{axis}[
+styleglobal,
+width=0.8*\echellepgfinv*\linewidth,
+xmin=-1, xmax=4,
+ymin=-1, ymax=4,
+xtick distance=1,
+ytick distance=1,
+ticks=none,
+declare function={f(\x)=e^(0.75*(\x-1)-0.5);}
+]
+\addplot[styleplot]{f(x)} node [pos=0.75,below right] {$\mathscr C_f$};
+\node[stylepoint,fill=blue] (A) at (0.5,{f(0.5)}) {};
+\node[stylepoint,fill=blue] (B) at (2.5,{f(2.5)}) {};
+\draw[color=blue,dashed,very thick] (0.5, 0) -- (A) node [pos=0,below] {$a$};% -- (0,{f(0.5)}) node [pos=1,left] {$f(x)$};
+\draw[color=blue,dashed,very thick] (2.5, 0) -- (B) node [pos=0,below] {$a+h$};% -- (0,{f(1.2)}) node [pos=1,left] {$f(y)$};
+\draw[line width=1.3pt,shorten <= -20cm,shorten >= -20cm,densely dotted] (A) -- (B);
+\end{axis}
+\end{tikzpicture}
+\end{center}
+}
+{
+\begin{center}
+\begin{tikzpicture}[scale=\echellepgf]
+\begin{axis}[
+styleglobal,
+width=0.8*\echellepgfinv*\linewidth,
+xmin=-1, xmax=4,
+ymin=-1, ymax=4,
+xtick distance=1,
+ytick distance=1,
+ticks=none,
+declare function={f(\x)=e^(0.75*(\x-1)-0.5);}
+]
+\addplot[styleplot]{f(x)} node [pos=0.75,below right] {$\mathscr C_f$};
+\node[stylepoint,fill=blue] (A) at (0.5,{f(0.5)}) {};
+\node[stylepoint,fill=blue,inner sep=1.3pt] (B) at (2.5,{f(2.5)}) {};
+\node[stylepoint,fill=blue,inner sep=1.5pt] (C) at (1.5,{f(1.5)}) {};
+\node[stylepoint,fill=blue,inner sep=1.7pt] (D) at (0.75,{f(0.75)}) {};
+\node[stylepoint,fill=blue,inner sep=1.9pt] (E) at (0.625,{f(0.625)}) {};
+\draw[color=blue,dashed,thick] (0.5, 0) -- (A) node [pos=0,below] {$a$};% -- (0,{f(0.5)}) node [pos=1,left] {$f(x)$};
+\draw[color=blue,dashed,thick] (2.5, 0) -- (B) node [pos=0,below] {$a+h$};% -- (0,{f(1.2)}) node [pos=1,left] {$f(y)$};
+\draw[color=blue,dashed,thick] (1.5, 0) -- (C);
+\draw[color=blue,dashed,thick] (0.75, 0) -- (D);
+\draw[color=blue,dashed,thick] (0.625, 0) -- (E);
+\draw[thick,shorten <= -20cm,shorten >= -20cm,densely dotted] (A) -- (B);
+\draw[thick,shorten <= -20cm,shorten >= -20cm,densely dotted] (A) -- (C);
+\draw[thick,shorten <= -20cm,shorten >= -20cm,densely dotted] (A) -- (D);
+\draw[line width=1.3pt,shorten <= -20cm,shorten >= -20cm,densely dotted] (A) -- (E);
+\addplot[styleplot,color=Crimson,ultra thick]{0.75*e^(0.75*(-0.5)-0.5)*(x-0.5)+f(0.5)};
+\end{axis}
+\end{tikzpicture}
+\end{center}
+}
 
 \begin{defin}
 Une fonction affine est une fonction définie sur $\R$ par $f(x)=ax+b$ où $a$ et $b$ désignent deux nombres réels donnés.

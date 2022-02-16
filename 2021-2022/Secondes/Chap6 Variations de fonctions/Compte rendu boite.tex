@@ -182,9 +182,8 @@ $$\fonction V {[0;5]} {\R} x {4x^3-40x^2+100x}$$
 Il faut maintenant trouver quelle est la valeur de $x$ qui donne un volume maximal. On trace la courbe représentative de $V$:
 
 \compobase{2pt}{c}{0.5}
-{
-\
-\hspace{-5mm}
+{%
+\hspace{-28mm}%
 \begin{tikzpicture}[scale=\echellepgf]
 \begin{axis}[
 styleglobal,
@@ -193,7 +192,7 @@ xmin=-0.5, xmax= 5.5,
 ymin=-5, ymax=80,
 xtick distance=0.5,
 ytick distance=10,
-hauteurproptick
+hauteurproptick,
 ]
 \addplot[styleplot,domain=(0:5)] plot {100*x-40*x^2+4*x^3} node[pos=0.9, right] {$\mathscr C_V$};
 \node[color=boite,circle,minimum size=1pt,fill,inner sep=2pt,fill opacity=1,draw=black,line width=0.5pt] (max) at (1.666,74.074) {};
