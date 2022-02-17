@@ -38,14 +38,16 @@
 \usepackage{xstring}
 \usepackage{etoolbox}					% Plein d'outils pour créer des macros
 \usepackage{xpatch}						% Pour modifier une macro déjà existante: chercher-remplacer
+\usepackage{xspace}						% Espaces intelligents (si point ou virgule, pas d'espace)
 \usepackage[d]{esvect} 					% Meilleurs vecteurs - Problèmess avec polices non otf
 \usepackage{lastpage}					% Trouve le numéro de la dernière page
 %\usepackage[pdfauthor={Virgil Delauney}]{hyperref}
 
 \usepackage{tikz}
-\usetikzlibrary{shapes,arrows.meta,calc}
+\usetikzlibrary{shapes,arrows.meta,calc,tikzmark}
 \usepackage{pgfplots}					% Graphes de fonctions
 \usepackage{tkz-tab}					% Tableaux de variations/signe
+\usepackage{tkz-base}					% Pour certains repères
 
 \usepackage[french,linesnumbered,vlined]{algorithm2e} % Algorithmes
 
@@ -77,7 +79,7 @@
 \let\vec\vv		% Redéfinitions pour utiliser le package esvect dans tous les cas
 \let\vecc\vv
 
-\newcommand{\Oij}{$\left(\text{O},~\vec{i},~\vec{j}\right)$}
+\newcommand{\Oij}{\ensuremath{\left(\text{O};\vec{i};\vec{j}\right)}\xspace}
 %\newcommand{\vecc}[1] {\overrightarrow{#1}}
 
 % Gras dans titres en mode math
@@ -223,47 +225,60 @@
 \newcommand{\echellepgfinv} {5/4}
 
 \pgfplotsset{ % Pas besoin de "styleglobal" en fait ... Important: ne pas faire xscale mais x post scale pour conserver la taille des ticks
-compat=1.18,
-styleglobal/.style={
-height=\pgfkeysvalueof{/pgfplots/width}*(((\pgfkeysvalueof{/pgfplots/ymax})+((-1)*(\pgfkeysvalueof{/pgfplots/ymin})))/((\pgfkeysvalueof{/pgfplots/xmax})+((-1)*(\pgfkeysvalueof{/pgfplots/xmin}))))+0.1pt, %Hauteur auto en fonction des coordonnées et de l'échelle
-axis x line=bottom,
-axis y line = left,
-axis lines=middle,
-axis line style={-{Stealth}}, %Plus grosse flèche
-tick label style = {font=\footnotesize},
-scale only axis, %Pour bien tomber sur la grille
-xlabel={$x$},
-ylabel={$y$},
-label style= {font=\scriptsize},
-minor x tick num=1, %Sous graduations
-minor y tick num=1,
-%xtick distance=1, %Graduations
-%ytick distance=1,
-enlargelimits={0.001},
-grid=both,
-grid style={densely dashed,line width=0.4pt,draw=black!30},
-minor grid style={line width=0.25pt,draw=black!20},
-axis equal,
-legend pos=north east,
-domain=(\pgfkeysvalueof{/pgfplots/xmin}:\pgfkeysvalueof{/pgfplots/xmax}),	%Domaine de définition des fonctions à tracer
-restrict y to domain=\pgfkeysvalueof{/pgfplots/ymin}:\pgfkeysvalueof{/pgfplots/ymax},	%Evite des erreurs liées à des valeurs trop grandes
-mark size=\echellepgfinv*2pt,	% Taille marques indépendant de l'échelle
-},
-styleplot/.style={
-samples=101,
-smooth,
-line width=1.3pt,
-mark=none
-},
-labelgros/.style={
-label style= {font=\large},
-tick label style = {font=\large}
-},
-hauteurproptick/.style={
-height=\pgfkeysvalueof{/pgfplots/width}*((\pgfkeysvalueof{/pgfplots/xtick distance}/\pgfkeysvalueof{/pgfplots/ytick distance})*((\pgfkeysvalueof{/pgfplots/ymax})+((-1)*(\pgfkeysvalueof{/pgfplots/ymin})))/((\pgfkeysvalueof{/pgfplots/xmax})+((-1)*(\pgfkeysvalueof{/pgfplots/xmin})))),
-axis equal=false,
-enlargelimits=0.001,
-}
+	compat=1.18,
+	styleglobal/.style={
+		height=\pgfkeysvalueof{/pgfplots/width}*(((\pgfkeysvalueof{/pgfplots/ymax})+((-1)*(\pgfkeysvalueof{/pgfplots/ymin})))/((\pgfkeysvalueof{/pgfplots/xmax})+((-1)*(\pgfkeysvalueof{/pgfplots/xmin}))))+0.1pt, %Hauteur auto en fonction des coordonnées et de l'échelle
+		axis x line=bottom,
+		axis y line = left,
+		axis lines=middle,							% Axes dans le repère et pas au bord
+		axis line style={-{Stealth}},				% Plus grosse flèche
+		tick label style = {font=\footnotesize},
+		scale only axis,							 %Pour bien tomber sur la grille
+		xlabel={$x$},
+		ylabel={$y$},
+		label style= {font=\scriptsize},
+		minor x tick num=1,							 %Sous graduations
+		minor y tick num=1,
+		%xtick distance=1, 							%Graduations(finalement enlevé pour que de base ce soit automatique)
+		%ytick distance=1,
+		enlargelimits={0.001},
+		grid=both,
+		grid style={densely dashed,line width=0.4pt,draw=black!30},
+		minor grid style={line width=0.25pt,draw=black!20},
+		axis equal,
+		legend pos=north east,
+		domain=(\pgfkeysvalueof{/pgfplots/xmin}:\pgfkeysvalueof{/pgfplots/xmax}),	%Domaine de définition des fonctions à tracer
+		restrict y to domain=\pgfkeysvalueof{/pgfplots/ymin}:\pgfkeysvalueof{/pgfplots/ymax},	%Evite des erreurs liées à des valeurs trop grandes (fonction inverse, exp...)
+		mark size=\echellepgfinv*2pt,	% Taille marques indépendant de l'échelle (quand on trace des suites)
+	},
+	styleplot/.style={
+		samples=101,
+		smooth,
+		line width=1.3pt,
+		mark=none
+	},
+	labelgros/.style={
+		label style= {font=\large},
+		tick label style = {font=\large}
+	},
+	hauteurproptick/.style={
+		height=\pgfkeysvalueof{/pgfplots/width}*((\pgfkeysvalueof{/pgfplots/xtick distance}/\pgfkeysvalueof{/pgfplots/ytick distance})*((\pgfkeysvalueof{/pgfplots/ymax})+((-1)*(\pgfkeysvalueof{/pgfplots/ymin})))/((\pgfkeysvalueof{/pgfplots/xmax})+((-1)*(\pgfkeysvalueof{/pgfplots/xmin})))), % Repère non normé
+		axis equal=false,
+		enlargelimits=0.001,
+	},
+	repere/.style={	% Pour les repères sans fonctions: juste la grille principale et les axes. A charger après styleglobal
+		xticklabels={},
+		yticklabels={},
+		minor x tick num=0,
+		minor y tick num=0,
+		xtick distance=1,
+		ytick distance=1,
+		tick style={thick,opacity=1,black},
+		major tick length=4pt,
+		axis line style={-},
+		xlabel={},
+		ylabel={},
+	},
 }
 
 \pgfkeys{/pgf/number format/use comma,/pgf/number format/.cd,1000 sep={\,}}
@@ -271,17 +286,40 @@ enlargelimits=0.001,
 \newcommand{\pointsextremites}{node[pos=0,circle,minimum size=1pt,fill,inner sep=1pt,fill opacity=1] {} node[pos=1,circle,minimum size=1pt,fill,inner sep=1pt,fill opacity=1] {}}
 
 \tikzset{
+>=latex,
 stylepoint/.style={
-	draw=black,			%couleur bord
+	draw=black,			% couleur bord
 	color=black,
 	circle,
-	minimum size=1pt,
+	minimum size=1pt,	% ne sert à rien ici apparemment...
 	fill,
-	inner sep=2pt,		% taille intérieur
+	inner sep=1.8pt,	% taille intérieur
 	fill opacity=1,
-	%,line width=0.5pt	%épaisseur bord
+	semithick,			% epaisseur bord
+	%,line width=0.5pt	% épaisseur bord
 },
 }
+
+% Pour agrandir des images tikz. Fait comme \resizebox mais sans agrandir le texte, l'épaisseur des traits...
+\newsavebox{\measure@tikzpicture}
+\NewEnviron{scaletikzpicturetowidth}[1]{%
+  \def\tikz@width{#1}%
+  \def\tikzscale{1}\begin{lrbox}{\measure@tikzpicture}%
+  \BODY
+  \end{lrbox}%
+  \pgfmathparse{#1/\wd\measure@tikzpicture}%
+  \edef\tikzscale{\pgfmathresult}%
+  \BODY
+}
+
+% Mémo tikz:
+% ultra thin=0.1pt
+% very thin=0.2pt
+% thin=0.4pt
+% semithick=0.6pt
+% thick=0.8pt
+% very thick=1.2pt
+% ultra thick=1.4pt
 
 %\raggedcolumns
 %\setlength{\columnsep}{1cm}
@@ -851,7 +889,7 @@ stylepoint/.style={
 
 	
 
-%%% Ajout option élève
+%%% Test
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{comment}

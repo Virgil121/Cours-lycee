@@ -2,74 +2,11 @@
 
 \usepackage[cours]{../../../Style}
 
-\pgfplotsset{
-setupRepere/.style args={(#1,#2),(#3,#4)}{ % (Longueur x, angle x par rap à hori),(Longueur y,angle x->y)
-x={(#1*cos(#2),#1*sin(#2))},
-y={(#3*cos(#2+#4),#3*sin(#2+#4))},
-},
-reperesimple/.style={
-overlay,
-xticklabels={},
-yticklabels={},
-xlabel={},
-ylabel={},
-axis line style={-},
-grid=none,
-},
-}
-
-\def\defaultticksize{1pt}
-\def\ticksize{\defaultticksize}
-\def\xticksize{\ticksize}
-\def\yticksize{\ticksize}
-
 \tikzset{
-stylepoint/.style={
-color=black,circle,minimum size=1pt,fill,inner sep=2pt,fill opacity=1,
-},
-ytickscale/.style args={#1}{execute at begin scope={\def\yticksize{#1*\ticksize}},execute at end scope={\def\yticksize{\ticksize}}},
-xtickscale/.style args={#1}{execute at begin scope={\def\xticksize{#1*\ticksize}},execute at end scope={\def\xticksize{\ticksize}}},
-ticksize/.style args={#1}{execute at begin scope={\def\ticksize{#1}},execute at end scope={\def\xticksize{\defaultticksize}}},
-setupRepere/.style args={(#1,#2),(#3,#4)}{
+setupRepereTransformation/.style args={(#1,#2),(#3,#4)}{
 cm={#1*cos(#2),#1*sin(#2),#3*cos(#2+#4),#3*sin(#2+#4),(0,0)},
-execute at begin scope={\pgfmathsetmacro\taillex{max(1,#1/#3)}\pgfmathsetmacro\tailley{max(1,#3/#1)}},
-xtickscale=\taillex,
-ytickscale=\tailley,
 },
 }
-
-\usetikzlibrary{tikzmark}
-\usepackage{tkz-base}
-\usetikzlibrary{calc}
-
-\makeatletter
-\newsavebox{\measure@tikzpicture}
-\NewEnviron{scaletikzpicturetowidth}[1]{%
-  \def\tikz@width{#1}%
-  \def\tikzscale{1}\begin{lrbox}{\measure@tikzpicture}%
-  \BODY
-  \end{lrbox}%
-  \pgfmathparse{#1/\wd\measure@tikzpicture}%
-  \edef\tikzscale{\pgfmathresult}%
-  \BODY
-}
-\makeatother
-
-\NewDocumentEnvironment{axispenche}{mmmmmb}]{
-\draw[opacity=0.4,dashed] (#2,#3) rectangle (#4,#5);
-\clip (#2,#3)+(-0.01,-0.01) rectangle (#4,#5)+(0.01,0.01);
-\begin{scope}[#1]
-\draw[step=0.5,line width=0.4pt,densely dashed,opacity=0.2] (5*#2-5,5*#3-5)+(-0.01,-0.01) grid (5*#4+5,5*#5+5)+(0.01,0.01);
-\tkzInit[xmin=5*#2,xmax=5*#4,ymin=5*#3,ymax=5*#5]
-\tkzDrawX[label={},tickup=\xticksize,tickdn=\xticksize]
-\tkzDrawY[label={},ticklt=\yticksize,tickrt=\yticksize]
-%\tkzGrid[gray,line width=0.4pt,style=densely dashed,sub,subxstep=0.5,subystep=0.5]
-%\tkzGrid[gray,line width=0.4pt,style=densely dashed]
-%\draw (10*#2,0) -- (10*#4,0);
-%\draw (0,10*#3) -- (0,10*#5);
-#6
-\end{scope}
-}{}
 
 % Début du document
 %%%%%%%%%%%%%%%%%%%
@@ -93,12 +30,10 @@ ytickscale=\tailley,
 \item Démonstration: Colinéarité $\Leftrightarrow$ déterminant nul
 \end{programme}
 
-%\begin{FlushLeft}
-
-\section{Généralités}
+\section{Généralités sur les repères}
 
 \begin{defin}
-Soient $O,I,J$ trois points du plan non alignés. On pose $\vec i = \vec{OI}$ et $\vec j = \vec{OJ}$. Un repère du plan est un triplet $\left( O;\vec i; \vec j \right)$. On dit alors que :
+Soient $O,I,J$ trois points du plan non alignés. On pose $\vec i = \vec{OI}$ et $\vec j = \vec{OJ}$. Un repère du plan est un triplet \Oij. On dit alors que :
 \begin{itemize}
 \item $O$ est l'origine du repère
 \item $(OI)$ est l'axe des abscisses
@@ -106,86 +41,253 @@ Soient $O,I,J$ trois points du plan non alignés. On pose $\vec i = \vec{OI}$ et
 \end{itemize}
 \end{defin}
 
+\begin{fait}
+On se donne maintenant un repère \Oij pour la suite du cours.
+\end{fait}
+
 \begin{propr}
-Tout point $M$ du plan est repéré par un unique couple de coordonnées $(x;y)$. $x$ est l'abscisse de $M$ et $y$ est l'ordonnée de $M$ 
+Tout point $M$ du plan est repéré par un unique couple de coordonnées $(x;y)$. $x$ est l'abscisse de $M$ et $y$ est l'ordonnée de $M$.
 \end{propr}
 
+\begin{exs}
 
-\compo[0.5]
-{
-\begin{tikzpicture}[scale=\echellepgf]
-%\clip (Bord1) rectangle (Bord2);
-\begin{axis}[
-%clip=false
-styleglobal,
-reperesimple,
-width=0.9*\echellepgfinv*\linewidth,
-xmin=-2,xmax=5,
-ymin=-2,ymax=5,
-xtick distance=1,
-ytick distance=1,
-%axis line style={shorten >=-1cm, shorten <=-1cm},
-%xslant=0.5,
-setupRepere={(1,40),(1,90)},
-]
-\draw[->,>=latex,thick] (0,0) -- (1,0) node[pos=0.5,below] {$\vec i$};
-\draw[->,>=latex,thick] (0,0) -- (0,1) node[pos=0.5,left] {$\vec j$};
-\node[draw=none] (lim) at (\pgfkeysvalueof{/pgfplots/xmin},\pgfkeysvalueof{/pgfplots/ymin}) {};
-\node[draw=none] (O) at (0,0) {};
-\node[draw=none] (I) at (\echellepgf,0) {};
-\node[draw=none] (J) at (0,\echellepgf) {};
-\node[draw=none] (lima) at (\pgfkeysvalueof{/pgfplots/xmin},0) {};
-\node[draw=none] (limb) at (\pgfkeysvalueof{/pgfplots/xmax},0) {};
-\node[draw=none] (limc) at (0,\pgfkeysvalueof{/pgfplots/ymin}) {};
-\node[draw=none] (limd) at (0,\pgfkeysvalueof{/pgfplots/ymax}) {};
-%\addplot[styleplot] {cos(deg(x))};
-\def\xmaxfirst{\pgfkeysvalueof{/pgfplots/xmax}}
-\edef\xmax{\xmaxfirst}
-\end{axis}
-\draw[draw=none] let \p1=($(lim)+\echellepgf*(lima)-\echellepgf*(lim)$) in (\x1,\y1) -- (0,0);
-\draw[draw=none] let \p2=($(lim)+\echellepgf*(limb)-\echellepgf*(lim)$) in (\x2,\y2) -- (0,0);
-\draw[draw=none] let \p3=($(lim)+\echellepgf*(limc)-\echellepgf*(lim)$) in (\x3,\y3) -- (0,0);
-\draw[draw=none] let \p4=($(lim)+\echellepgf*(limd)-\echellepgf*(lim)$) in (\x4,\y4) -- (0,0);
-\path[remember picture] let
-	\p1=($(lim)+\echellepgf*(lima)-\echellepgf*(lim)$),
-	\p2=($(lim)+\echellepgf*(limb)-\echellepgf*(lim)$),
-	\p3=($(lim)+\echellepgf*(limc)-\echellepgf*(lim)$),
-	\p4=($(lim)+\echellepgf*(limd)-\echellepgf*(lim)$),
-	in coordinate (Bord1) at ({min(\x1,\x2,\x3,\x4)},{min(\y1,\y2,\y3,\y4)});
-\path[remember picture] let
-	\p1=($(lim)+\echellepgf*(lima)-\echellepgf*(lim)$),
-	\p2=($(lim)+\echellepgf*(limb)-\echellepgf*(lim)$),
-	\p3=($(lim)+\echellepgf*(limc)-\echellepgf*(lim)$),
-	\p4=($(lim)+\echellepgf*(limd)-\echellepgf*(lim)$),
-	in coordinate (Bord2) at ({max(\x1,\x2,\x3,\x4)},{max(\y1,\y2,\y3,\y4)});
-	
-\draw (Bord1) rectangle (Bord2);
-\clip (Bord1) rectangle (Bord2);
-
-\draw[line width=0.4pt,shorten >=-10cm, shorten <=-10cm] ($(lim.center)+\echellepgf*(lima.center)-\echellepgf*(lim.center)$) -- ($(lim.center)+\echellepgf*(limb.center)-\echellepgf*(lim.center)$);
-
-\draw[line width=0.4pt,shorten >=-10cm, shorten <=-10cm] ($(lim.center)+\echellepgf*(limc.center)-\echellepgf*(lim.center)$) -- ($(lim.center)+\echellepgf*(limd.center)-\echellepgf*(lim.center)$);
-	
-%Grille
-
-%\draw (lim.center) -- ($(lim.center)+0.8*(lima.center)-0.8*(lim.center)$);
-\foreach \y in {-14,-13,...,28}{
-\draw[line width=0.4pt,densely dashed,opacity=0.2,shorten <= -10cm, shorten >= -10cm] ($(lim)+\y*0.5*(J.center)-\y*0.5*(O.center)$) -- ($(lim)+\y*0.5*(J.center)-\y*0.5*(O.center)+10*(I.center)-10*(O.center)$);
-}
-\foreach \x in {-14,-13,...,28}{
-\draw[line width=0.4pt,densely dashed,opacity=0.2,shorten <= -10cm, shorten >= -10cm] ($(lim)+\x*0.5*(I.center)-\x*0.5*(O.center)$) -- ($(lim)+\x*0.5*(I.center)-\x*0.5*(O.center)+10*(J.center)-10*(O.center)$);
-}
-\end{tikzpicture}
-}
-{
-\begin{scaletikzpicturetowidth}{0.9\linewidth}
+\begin{tabularx}{\linewidth}{YYY}
+\begin{scaletikzpicturetowidth}{0.9\linewidth} % Repère quelconque à la main
 \begin{tikzpicture}[scale=\tikzscale]
-\begin{axispenche}{setupRepere={(2,20),(1,80)}}{-2}{-2}{10}{5} %ticksize=1pt
-\node[label={-135:{$O$}}] (O) at (0,0) {};
-\draw[->,>=latex,thick] (0,0) -- (1,0) node[pos=0.5,below] {$\vec i$};
-\draw[->,>=latex,thick] (0,0) -- (0,1) node[pos=0.5,left] {$\vec j$};
-\end{axispenche}
+% Cadre
+\coordinate (liminf) at (-2,-2);
+\coordinate (limsup) at (8,5);
+\draw[line width=0.4pt,draw=black!30,densely dashed] (liminf) rectangle (limsup);
+\clip (liminf)+(-0.01,-0.01) rectangle (limsup)+(0.01,0.01);
+
+% Sous-image, changement de coordonnées
+\begin{scope}[setupRepereTransformation={(2,20),(1,80)}]
+% Initialisation des axes, de la grille
+\draw[step=1,line width=0.4pt,draw=black!30,densely dashed] ($5*(liminf)+(-5,-5)$)+(-0.01,-0.01) grid ($5*(limsup)+(5,5)$)+(0.01,0.01);
+\tkzInit[xmin=5*(-2),xmax=5*10,ymin=5*(-2),ymax=5*5]
+\tkzDrawX[label={},tickup=3pt,tickdn=3pt]
+\tkzDrawY[label={},ticklt=1.5pt,tickrt=1.5pt]
+
+% Initialisation du repère
+\node[label={-135:{O}}] (O) at (0,0) {};
+\draw[->,>=latex,line width=1pt,cap=round,color=black!30!red] (0,0) -- (1,0) node[pos=0.5,below] {$\vec i$};
+\draw[->,>=latex,line width=1pt,cap=round,color=black!30!red] (0,0) -- (0,1) node[pos=0.5,left] {$\vec j$};
+
+%Contenu
+\node[stylepoint,label=45:{$M$},fill=blue,semithick] (M) at (1,3) {}; 
+\end{scope}
 \end{tikzpicture}
 \end{scaletikzpicturetowidth}
+&
+\begin{tikzpicture}
+\begin{axis}[
+styleglobal,
+repere,
+width=0.45\linewidth,
+xmin=-1,xmax=4,
+ymin=-2,ymax=5,
+x post scale=2
+]
+\node[label={-135:{O}}] (O) at (0,0) {};
+\draw[->,>=latex,line width=1pt,cap=round,color=black!30!red] (0,0) -- (1,0) node[pos=0.5,below] {$\vec i$};
+\draw[->,>=latex,line width=1pt,cap=round,color=black!30!red] (0,0) -- (0,1) node[pos=0.5,left] {$\vec j$};
+
+% Contenu
+\node[stylepoint,fill=blue,label={-5:$M$}] (A) at (2,-1) {};
+\end{axis}
+\end{tikzpicture}
+&
+\begin{scaletikzpicturetowidth}{0.9\linewidth} % Repère quelconque à la main
+\begin{tikzpicture}[scale=\tikzscale]
+\coordinate (liminf) at (-5,-2);
+\coordinate (limsup) at (5,5);
+\draw[line width=0.4pt,draw=black!30,densely dashed] (liminf) rectangle (limsup);
+\clip (liminf)+(-0.01,-0.01) rectangle (limsup)+(0.01,0.01);
+\begin{scope}[setupRepereTransformation={(1.5,20),(1,80)}]
+\draw[step=1,line width=0.4pt,draw=black!30,densely dashed]($5*(-2,-2)$)+(-5.01,-5.01) grid ($5*(8,5)$)+(5.01,5.01);
+\tkzInit[xmin=5*(-2),xmax=5*10,ymin=5*(-2),ymax=5*5]
+\tkzDrawX[label={},tickup=3pt,tickdn=3pt]
+\tkzDrawY[label={},ticklt=2pt,tickrt=2pt]
+
+\node[label={-135:{O}}] (O) at (0,0) {};
+\draw[->,>=latex,line width=1pt,cap=round,color=black!30!red] (0,0) -- (1,0) node[pos=0.5,below] {$\vec i$};
+\draw[->,>=latex,line width=1pt,cap=round,color=black!30!red] (0,0) -- (0,1) node[pos=0.5,left] {$\vec j$};
+\node[stylepoint,label=45:{$M$},fill=blue,semithick] (M) at (-2,4) {}; 
+\end{scope}
+\end{tikzpicture}
+\end{scaletikzpicturetowidth}
+\\
+$M(1;3)$&$M(2;-1)$&$M(-2;4)$
+\end{tabularx}
+\end{exs}
+
+\section{Coordonnées d'un vecteur}
+
+\begin{defin}
+Soit $\vec u$ un vecteur du plan. On se donne le point $M(x;y)$ tel que $\vec{OM} = \vec u$. Les coordonnées de $\vec u$ sont celles de $M$, et l'on note $\vec u \displaystyle\binom x y$.
+\end{defin}
+
+\begin{prop}
+Soient $A(x_A;y_A)$ et $B(x_B;y_B)$ deux points du plan. Alors on a $\vec{AB} \displaystyle\binom {x_B-x_A} {y_B-y_A}$.
+\end{prop}
+
+\begin{ex}
+\compo[0.6]
+{
+\setstretch{2.5}
+On se donne $A(1;2)$, $B(5;-1)$ et $C(6,3)$.
+
+Alors on a $\vec{AB} \displaystyle\binom {5-1}{-1-2}$ d'où $\vec{AB} \displaystyle\binom {4} {-3}$.
+
+De même, on a $\vec{BC} \displaystyle\binom {6-5}{3-(-1)}$ d'où $\vec{BC} \displaystyle\binom 1 4$.
 }
+{\vspace{-1.5em}
+\begin{tikzpicture}
+\begin{axis}[
+styleglobal,
+repere,
+width=0.9\linewidth,
+xmin=-2,xmax=8,
+ymin=-2,ymax=5,
+]
+\node[label={-135:{O}}] (O) at (0,0) {};
+\draw[->,>=latex,line width=1pt,cap=round,color=black!30!red] (0,0) -- (1,0) node[pos=0.5,below] {$\vec i$};
+\draw[->,>=latex,line width=1pt,cap=round,color=black!30!red] (0,0) -- (0,1) node[pos=0.5,left] {$\vec j$};
+
+% Contenu
+\node[stylepoint,fill=blue,label=-60:B] (B) at (5,-1) {};
+\node[stylepoint,fill=blue,label=120:A] (A) at (1,2) {};
+\node[stylepoint,fill=blue,label=60:C] (C) at (6,3) {};
+\draw[line width=1pt,->,cap=round] (A.center) -- (B.center);
+\draw[line width=1pt,->,cap=round] (B.center) -- (C.center);
+\end{axis}
+\end{tikzpicture}
+}
+\end{ex}
+
+\begin{proprs}
+Soient $\vec u \displaystyle\binom {x_{\vec u}} {y_{\vec u}}$ et $\vec v \displaystyle\binom {x_{\vec v}} {y_{\vec v}}$ deux vecteurs du plan, et $\lambda \in \R$. Alors:
+\begin{itemize}
+\item Les coordonnées de $\vec u + \vec v$ sont $\displaystyle\binom {x_{\vec u}+x_{\vec v}} {y_{\vec u}+y_{\vec v}}$.
+\item Les coordonnées de $\lambda \vec u$ sont $\displaystyle\binom {\lambda x_{\vec u}} {\lambda y_{\vec u}}$.
+\end{itemize}
+\end{proprs}
+
+Alors $\vec u=x \vec i + y \vec j$. $x$ et $y$ sont les coordonnées de $\vec u$ et o
+
+\section{Norme/milieu}
+
+Repère orthonormé à définir
+
+\begin{prop}
+Soit $\vec u \displaystyle\binom x y$ un vecteur du plan, dont les coordonnées sont exprimées dans un repère orthonormé. Alors la norme de $\vec u$ est donnée par:
+$$\Vert \vec u \Vert = \sqrt{x^2+y^2}$$
+\end{prop}
+
+\begin{cor}
+Soient $A(x_A;y_A)$ et $B(x_B;y_B)$ deux points du plan, dont les coordonnées sont exprimées dans un repère orthonormé. Alors la distance entre $A$ et $B$ vaut:
+$$AB=\sqrt{(x_B-x_A)^2+(y_B-y_A)^2}$$
+\end{cor}
+
+\section{Colinéarité}
+
 \end{document}
+
+%\NewDocumentEnvironment{axispenche}{mmmmmb}]{
+%\draw[line width=0.4pt,draw=black!30,densely dashed] (#2,#3) rectangle (#4,#5);
+%\clip (#2,#3)+(-0.01,-0.01) rectangle (#4,#5)+(0.01,0.01);
+%\begin{scope}[#1]
+%\draw[step=1,line width=0.4pt,draw=black!30,densely dashed] (5*#2-5,5*#3-5)+(-0.01,-0.01) grid (5*#4+5,5*#5+5)+(0.01,0.01);
+%\tkzInit[xmin=5*#2,xmax=5*#4,ymin=5*#3,ymax=5*#5]
+%\tkzDrawX[label={},tickup=\xticksize,tickdn=\xticksize]
+%\tkzDrawY[label={},ticklt=\yticksize,tickrt=\yticksize]
+%%\tkzGrid[gray,line width=0.4pt,style=densely dashed,sub,subxstep=0.5,subystep=0.5]
+%%\tkzGrid[gray,line width=0.4pt,style=densely dashed]
+%%\draw (10*#2,0) -- (10*#4,0);
+%%\draw (0,10*#3) -- (0,10*#5);
+%#6
+%\end{scope}
+%}{}
+
+% Quelques tests
+%
+%\def\defaultticksize{2pt}
+%\def\ticksize{\defaultticksize}
+%\def\xticksize{\ticksize}
+%\def\yticksize{\ticksize}
+%
+%\tikzset{
+%ytickscale/.style args={#1}{execute at begin scope={\def\yticksize{#1*\ticksize}},execute at end scope={\def\yticksize{\ticksize}}},
+%xtickscale/.style args={#1}{execute at begin scope={\def\xticksize{#1*\ticksize}},execute at end scope={\def\xticksize{\ticksize}}},
+%ticksize/.style args={#1}{execute at begin scope={\def\ticksize{#1}},execute at end scope={\def\xticksize{\defaultticksize}}},
+%setupRepere/.style args={(#1,#2),(#3,#4)}{
+%cm={#1*cos(#2),#1*sin(#2),#3*cos(#2+#4),#3*sin(#2+#4),(0,0)},
+%%execute at begin scope={\pgfmathsetmacro\taillex{max(1,#1/#3)}\pgfmathsetmacro\tailley{max(1,#3/#1)}},
+%xtickscale=1/#3,
+%ytickscale=1/#1,
+%},
+%}
+
+%\tikzstyle{every label}=[font=\large];
+
+%\begin{scaletikzpicturetowidth}{0.9\linewidth}
+%\begin{tikzpicture}[scale=\tikzscale]
+%\coordinate (liminf) at (-2,-2);
+%\coordinate (limsup) at (8,5);
+%%\draw[line width=0.4pt,draw=black!30,densely dashed] (liminf) rectangle (limsup);
+%\clip (liminf)+(-0.01,-0.01) rectangle (limsup)+(0.01,0.01);
+%\begin{scope}[scale=1]
+%\draw[step=1,line width=0.4pt,draw=black!30,densely dashed] ($5*(liminf)+(-5,-5)$)+(-0.01,-0.01) grid ($5*(limsup)+(5,5)$)+(0.01,0.01);
+%\tkzInit[xmin=5*(-2),xmax=5*10,ymin=5*(-2),ymax=5*5]
+%\tkzDrawX[label={},tickup=3pt,tickdn=3pt]
+%\tkzDrawY[label={},ticklt=3pt,tickrt=3pt]
+%
+%\node[label={-135:{O}}] (O) at (0,0) {};
+%\draw[->,>=latex,thick] (0,0) -- (1,0) node[pos=0.5,below] {$\vec i$};
+%\draw[->,>=latex,thick] (0,0) -- (0,1) node[pos=0.5,left] {$\vec j$};
+%\node[stylepoint,label=-5:{$M$},fill=blue,semithick] (M) at (5,-1) {}; 
+%\end{scope}
+%\end{tikzpicture}
+%\end{scaletikzpicturetowidth}
+
+%\begin{scaletikzpicturetowidth}{0.5\linewidth}
+%\begin{tikzpicture}[scale=1]
+%% Limites et grille
+%\node[draw=none] (liminf) at (-2,-2) {};
+%\node[draw=none] (limsup) at (13,11) {};
+%\draw[gray] (liminf) rectangle (limsup);
+%\clip (liminf) rectangle (limsup);
+%\draw[step=1,line width=0.5pt,densely dashed,gray,opacity=0.5] (liminf)+(-0.01,-0.01) grid (limsup)+(0.01,0.01);
+%
+%% Repère
+%\tkzInit[xmin=5*(-2),xmax=5*10,ymin=5*(-2),ymax=5*5]
+%\tkzDrawX[label={},tickup=3pt,tickdn=3pt]
+%\tkzDrawY[label={},ticklt=2pt,tickrt=2pt]
+%\node[label={-135:{O}}] (O) at (0,0) {};
+%\draw[->,>=latex,thick] (0,0) -- (1,0) node[pos=0.5,below] {$\vec i$};
+%\draw[->,>=latex,thick] (0,0) -- (0,1) node[pos=0.5,left] {$\vec j$};
+%
+%% Contenu
+%\node[stylepoint,fill=blue,label={180:\textbf{\large A}}] (A) at (3,6) {};
+%\node[stylepoint,fill=blue,label={180:\textbf{\large B}}] (B) at (6,7) {};
+%\node[stylepoint,fill=blue,label={-2:\textbf{\large C}}] (C) at (7,-1) {};
+%\node[stylepoint,fill=blue,label={2:\textbf{\large D}}] (D) at (2,1) {};
+%\draw[line width=1pt,->,>=latex] (9,-8) -- ++(2,3) node[pos=0.5,above left] {$\vec u$};
+%%\node[color=black,circle,minimum size=1pt,fill,inner sep=2pt,fill opacity=1,label={90:\textbf{\large E}}] (E) at (4,-4) {};
+%%\draw[line width=1pt, shorten <= -10cm, shorten >= -10cm] (A) -- (B);
+%\end{tikzpicture}
+%\end{scaletikzpicturetowidth}
+
+% Pour aller plus vite:
+
+%\begin{scaletikzpicturetowidth}{0.9\linewidth}
+%\begin{tikzpicture}[scale=\tikzscale]
+%\begin{axispenche}{setupRepere={(2,20),(1,80)}}{-2}{-2}{10}{5} %ticksize=1pt
+%\node[label={-135:{O}}] (O) at (0,0) {};
+%\draw[->,>=latex,thick] (0,0) -- (1,0) node[pos=0.5,below] {$\vec i$};
+%\draw[->,>=latex,thick] (0,0) -- (0,1) node[pos=0.5,left] {$\vec j$};
+%\end{axispenche}
+%\end{tikzpicture}
+%\end{scaletikzpicturetowidth}
+
+%$$\setlength{\fboxsep}{2\fboxsep}\boxed{...}$$
