@@ -45,6 +45,8 @@
 
 \usepackage{tikz}
 \usetikzlibrary{shapes,arrows.meta,calc,tikzmark}
+% decorations? decorations.pathmorphing,decorations.markings,shadows
+
 \usepackage{pgfplots}					% Graphes de fonctions
 \usepackage{tkz-tab}					% Tableaux de variations/signe
 \usepackage{tkz-base}					% Pour certains repères
@@ -283,7 +285,7 @@
 
 \pgfkeys{/pgf/number format/use comma,/pgf/number format/.cd,1000 sep={\,}}
 
-\newcommand{\pointsextremites}{node[pos=0,circle,minimum size=1pt,fill,inner sep=1pt,fill opacity=1] {} node[pos=1,circle,minimum size=1pt,fill,inner sep=1pt,fill opacity=1] {}}
+\newcommand{\pointsextremites}{node[pos=0,stylepointextremites] {} node[pos=1,stylepointextremites] {}}
 
 \tikzset{
 >=latex,
@@ -297,6 +299,13 @@ stylepoint/.style={
 	fill opacity=1,
 	semithick,			% epaisseur bord
 	%,line width=0.5pt	% épaisseur bord
+},
+stylepointextremites/.style={
+	circle,
+	minimum size=1pt,
+	fill,
+	inner sep=1pt,
+	fill opacity=1
 },
 }
 

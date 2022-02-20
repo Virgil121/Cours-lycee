@@ -1,6 +1,6 @@
 \documentclass[a4paper,12pt,french]{article}
 
-\usepackage[eleve,cours]{../../../Style}
+\usepackage[cours]{../../../Style}
 
 \pgfplotsset{styleglobal/.append style={xlabel={$n$}}}
 
@@ -44,7 +44,9 @@ On a alors la relation $a_{n+1}=a_n+r$ pour tout $n \in \N$.
 
 \begin{center}
 \begin{tikzpicture}[scale=1]
-\node[draw,circle,thick, minimum size=13mm] (W0) at (-3,0) {$a_0$};
+% Fond: fill=white,fill opacity=0.8,text opacity=1
+% Ombre portée: fill=white,drop shadow={opacity=0.3}
+\node[draw,circle,thick, minimum size=13mm] (W0) at (-3,0) {$a_0$}; 
 \node[draw,circle,thick, minimum size=13mm] (W1) at (0,0) {$a_1$};
 \node[draw,circle,thick, minimum size=13mm] (W2) at (3,0) {$a_2$};
 \node (W5) at (6,0) {$\ldots$};
@@ -72,6 +74,10 @@ $$
 La différence entre deux termes successifs vaut toujours $r$: Pour tout $n \in \N, a_{n+1}-a_n=r$.
 \end{rmq}
 
+\rem{Exos 32,(33) p91\\Exos 70,71 p94\\Exos 37,76,(78) p91/94\\Exo 75p94}
+\rem{Preuves: Exos 75,77 p94}
+\subsection{Représentation graphique}
+
 \begin{propr}
 Lorsqu'on représente graphiquement une suite arithmétique, les points obtenus sont alignés.
 \end{propr}
@@ -82,7 +88,7 @@ Lorsqu'on représente graphiquement une suite arithmétique, les points obtenus 
 \begin{axis}[
 styleglobal,
 hauteurproptick,
-width=0.9*\echellepgfinv*\linewidth,
+width=0.6*\echellepgfinv*\linewidth,
 xmin=-0.5, xmax=10.5,
 ymin=-2.5, ymax=3.5,
 xtick distance=1,
@@ -95,9 +101,12 @@ ytick distance=1
 \end{tikzpicture}
 \end{center}
 
-On a représenté une suite $u$ ci-dessus. Son premier terme $u_0$ vaut $3$ et pour passer d'un terme au suivant, on retire $0.5$: $r=-0.5$. La suite $u$ est donc une suite arithmétique de premier terme $3$ et de raison $-0.5$.
+On a représenté une suite arithmétique $u$ ci-dessus. On a $u_0 = 3$ et $u_1=2,5$. Alors $r=u_1-u_0=2,5-3=-0.5$. La suite $u$ est donc une suite arithmétique de premier terme $3$ et de raison $r=-0.5$.
 \end{ex}
 
+\rem{Exo 36 p91}
+
+\begin{comment}
 \begin{methode}
 Pour s'assurer qu'une suite \textbf{semble} arithmétique, on calcule la différence entre deux termes successifs, et l'on doit toujours trouver le même nombre (la raison).
 \end{methode}
@@ -112,6 +121,7 @@ $v_n$ & 3 & 12 & 20 & 29 \\ \hline
 \end{tabularx}
 \end{center}
 \end{ex}
+\end{comment}
 
 \subsection{Variations des suites arithmétiques}
 
@@ -126,6 +136,8 @@ $v_n$ & 3 & 12 & 20 & 29 \\ \hline
 \begin{ex}
 Soit $a$ la suite arithmétique définie par $a_0=13$ et pour tout $n \in \N, a_{n+1}=a_n-5$. La raison de cette suite est $r=-5<0$ donc $a$ est décroissante.
 \end{ex}
+
+\rem{Exo 83 p95}
 
 \section{Suites géométriques, cas positif}
 
@@ -154,7 +166,7 @@ On a alors la relation $g_{n+1}=q \times g_n$ pour tout $n \in \N$.
 \end{center}
 \end{defin}
 
-\rem[eleve]{On se restreindra au cas $q>0$.}
+\rem[eleve]{On se restreindra au cas où $g_0$ et $q$ sont strictement positifs.}
 
 \begin{ex}
 Soit $g$ la suite géométrique de premier terme $g_0=3$ et de raison $q=2$. Alors:
@@ -172,9 +184,12 @@ $$
 Le quotient de deux termes successifs vaut toujours $q$: $\frac{g_{n+1}}{g_n}=q$.
 \end{rmq}
 
+\rem{Exos 34,35 p91\\Exos 72,73,(82) p94\\Exo 79p94}
+\rem{Preuves: Exos 79,81 p94}
+
 \subsection{Représentation graphique des suites géométriques}
 
-\begin{ex}
+\begin{exs}
 \compo{
 \begin{centrer}
 \textbf{Cas 1: $q > 1$}
@@ -184,16 +199,16 @@ styleglobal,
 hauteurproptick,
 width=0.8*\echellepgfinv*\linewidth,
 xmin=-0.5, xmax=10.5,
-ymin=-1100, ymax=1100,
+ymin=-100, ymax=1500,
 xtick distance=1,
 ytick distance=200,
 legend style={at={(0.1,0.97)},anchor=north west},
 legend cell align=left,
 ]
 \addplot[samples=11,domain=(0:10),only marks,fill=blue,semithick]{1*2^x};
-\addplot[samples=11,domain=(0:10),only marks,mark=square*,semithick,fill=red]{50*1.25^x};
-\addplot[samples=11,domain=(0:10),only marks,mark=triangle*,semithick,fill=green]{-400*1.1^x};
-\legend{$u_0=1,\ q=2$\\$v_0=50,\ q=1.25$\\$w_0=-400,\ q=1.1$\\} % \\ nécessaire pour que la virgule fonctionne
+\addplot[samples=11,domain=(0:10),only marks,mark=square*,semithick,fill=red]{60*1.25^x};
+\addplot[samples=11,domain=(0:10),only marks,mark=triangle*,semithick,fill=green]{300*1.1^x};
+\legend{$u_0=1,\ q=2$\\$v_0=60,\ q=1.25$\\$w_0=300,\ q=1.1$\\} % \\ nécessaire pour que la virgule fonctionne
 %\addplot[styleplot,color=red,domain=(1:2)]{1} \pointsextremites;	%test
 %\node[stylepoint,fill=blue,inner sep=1.4pt] at (4.9,0.5) {};		%test
 \end{axis}
@@ -209,22 +224,23 @@ styleglobal,
 hauteurproptick,
 width=0.8*\echellepgfinv*\linewidth,
 xmin=-0.5, xmax=10.5,
-ymin=-5.5, ymax=5.5,
+ymin=-0.5, ymax=7.5,
 xtick distance=1,
 ytick distance=1,
 legend cell align=left,
 ]
 \addplot[samples=11,domain=(0:10),only marks,semithick,fill=blue]{4*0.5^x};
-\addplot[samples=11,domain=(0:10),mark=square*,only marks,semithick,fill=red]{-5*0.9^x};
-\legend{$v_0=4,\ q=0.5$\\$v_0=-5,\ q=0.9$\\}
+\addplot[samples=11,domain=(0:10),mark=square*,only marks,semithick,fill=red]{5*0.9^x};
+\legend{$v_0=4,\ q=0.5$\\$v_0=5,\ q=0.9$\\}
 %\addplot[styleplot,color=red,domain=(1:2)]{1} \pointsextremites;	%test
 %\node[stylepoint,fill=blue,inner sep=1.4pt] at (4.9,0.5) {};		%test
 \end{axis}
 \end{tikzpicture}
 \end{centrer}
 }
+\end{exs}
 
-\end{ex}
+\rem{Exo 40p91}
 
 \subsection{Variations des suites géométriques}
 
@@ -237,32 +253,12 @@ legend cell align=left,
 \end{prop}
 
 \begin{ex}
+Soit $g$ la suite géométrique définie par $g_0=5$ et pour tout $n \in \N, g_{n+1}=0,9 \times g_n$. La raison de cette suite est $q=0,9 < 1$ donc $g$ est décroissante.
 \end{ex}
 
-\begin{deroule}
-\item \textbf{Total: 3.5 semaines}
-\item Semaine 1
-\begin{itemize} 
-\item 30m - Cours I partie 1: Définitions et exo
-\item 15m - Graphe de $x \mapsto x^2$
-\item 1h - Cours: Représentation graphique, sommet, variations, exo
-\item 30m - Cours II: Généralités+Exos
-\end{itemize}
-\item Semaine 2
-\begin{itemize}
-\item 1h - Suite
-\item 1h - II.2 + Exos
-\item 45m - III.1.1 + Exos
-\item 45m - III.1.2 + Exos
-\end{itemize}
-\item Semaine 3
-\begin{itemize}
-\item 30m - Suite
-\item 45m: III.1.3 + Exos
-\item 1h: III.2 + Exos
-\item 1h: III.3 + Exos
-\end{itemize}
-\end{deroule}
+\rem{Exo 84 p95}
+
+\rem{Exo 74 p94\\Exo 94 p96\\Exos 86,88 p95}
 
 \begin{comment}
 \begin{ex}

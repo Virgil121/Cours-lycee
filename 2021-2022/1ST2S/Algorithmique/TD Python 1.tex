@@ -1,0 +1,91 @@
+\documentclass[a4paper,12pt,french]{article}
+
+\usepackage[minted,TD]{../../../Style}
+
+% Début du document
+%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+\titre{TP Python}
+
+\section{Python: La Boucle For}
+
+En python, une boucle permet de répéter plusieurs fois de suite un même traitement.\\
+Lorsque le nombre n d'itérations est connu à l'avance, on parle de \textbf{boucle bornée} et on utilise un compteur qui s'incrémente de 1 (généralement ) à chaque itération jusqu'à la valeur n.
+
+\begin{minted}{python} 
+for i in range(n): 
+	bloc instructions # sera répétée n fois
+	#la variable i prenant successivement 
+	les valeurs 0, 1, ..., n-1
+\end{minted}
+
+     
+
+\begin{exercice}
+Pour calculer un terme de la suite $\left(u_n\right)$
+définie sur $ \mathbb{N}$, on utilise la fonction Python ci-dessous:
+
+
+\begin{minted}{python}
+def u(n):
+    u=12
+    for i in range(n): 
+        u=2*u-3
+    return u
+\end{minted}
+
+
+\begin{enumerate}
+    \item Quelle la valeur de la variable u à la fin du programme pour $n=3$?
+    \item Proposer une forme récurrente de la suite $\left(u_n\right)$
+    \item Réaliser le programme sur le notebook de Basthon et vérifier votre résultat pour $n=3$
+\end{enumerate}
+\end{exercice}
+
+\begin{exercice}
+Pour calculer un terme de la suite $\left(v_n\right)$
+définie sur $ \mathbb{N}$, on utilise la fonction Python ci-dessous:
+
+\begin{minted}{python} 
+def v(n):
+    v=4
+    for i in range(n):
+        v=2*v-5
+    return v
+\end{minted}
+
+\begin{enumerate}
+    \item Déterminer $v_0$
+    \item Proposer une forme récurrente de la suite $\left(v_n\right)$
+    \item Déterminer la valeur de $v_7$ en utilisant le notebook de Basthon
+\end{enumerate}
+\end{exercice}
+
+
+
+
+\begin{exercice}
+Compléter la fonction \mintinline{python}|somme(n)| pour qu'elle renvoie la somme $1+2+3+\ldots n$
+
+\begin{minted}{python} 
+def somme(n):
+	S=0
+    for i in range(n+1) :  # Pour i allant de 0 à n faire
+        S=......................
+    return(S)
+
+\end{minted}  
+
+\end{exercice}
+
+\begin{exercice}
+On considère la suite définie pour tout entier naturel $n$ par: $u_n=2n^2-n+1$
+
+\begin{enumerate}
+    \item Ecrire une fonction python \mintinline{python}|rang(n)| qui permet de retourner le terme de rang n de cette suite pour une valeur de n donnée
+    \item Que renvoie l'instruction \mintinline{python}|rang(5)| ? Quelle valeur renvoie-t-elle ?
+\end{enumerate}
+\end{exercice}
+
+\end{document}

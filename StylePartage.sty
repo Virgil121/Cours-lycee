@@ -40,7 +40,7 @@
 \usepackage{lastpage}
 
 \usepackage{tikz}
-\usetikzlibrary{shapes,arrows.meta,calc}
+\usetikzlibrary{shapes,arrows.meta,calc,tikzmark}
 \usepackage{pgfplots}
 \usepackage{tkz-tab}
 
@@ -192,52 +192,66 @@ compat=1.18,
 % Style global:
 %
 styleglobal/.style={
-height=\pgfkeysvalueof{/pgfplots/width}*(((\pgfkeysvalueof{/pgfplots/ymax})+((-1)*(\pgfkeysvalueof{/pgfplots/ymin})))/((\pgfkeysvalueof{/pgfplots/xmax})+((-1)*(\pgfkeysvalueof{/pgfplots/xmin}))))+0.1pt, %Hauteur auto en fonction des coordonnées et de l'échelle: hauteur=largeur*ratio hauteur/longueur avec coordonnées, +0.1pt pour que la grille aux bords apparaisse bien
-axis x line=bottom,
-axis y line = left,
-axis lines=middle,
-axis line style={-{Stealth}}, %Plus grosse flèche
-tick label style = {font=\footnotesize},
-scale only axis, %Pour que la hauteur automatique fonctionne comme prévu
-xlabel={$x$},
-ylabel={$y$},
-label style= {font=\scriptsize},
-minor x tick num=1, %Sous graduations
-minor y tick num=1,
-%xtick distance=1, %Graduations
-%ytick distance=1,
-enlargelimits={0.001}, % Pour éviter les bugs avec la grille
-grid=both,
-grid style={densely dashed,line width=0.4pt,draw=black!30},
-minor grid style={line width=0.25pt,draw=black!20},
-axis equal,
-legend pos=north east,
-domain=(\pgfkeysvalueof{/pgfplots/xmin}:\pgfkeysvalueof{/pgfplots/xmax}),
+	height=\pgfkeysvalueof{/pgfplots/width}*(((\pgfkeysvalueof{/pgfplots/ymax})+((-1)*(\pgfkeysvalueof{/pgfplots/ymin})))/((\pgfkeysvalueof{/pgfplots/xmax})+((-1)*(\pgfkeysvalueof{/pgfplots/xmin}))))+0.1pt, %Hauteur auto en fonction des coordonnées et de l'échelle: hauteur=largeur*ratio hauteur/longueur avec coordonnées, +0.1pt pour que la grille aux bords apparaisse bien
+	axis x line=bottom,
+	axis y line = left,
+	axis lines=middle,
+	axis line style={-{Stealth}}, %Plus grosse flèche
+	tick label style = {font=\footnotesize},
+	scale only axis, %Pour que la hauteur automatique fonctionne comme prévu
+	xlabel={$x$},
+	ylabel={$y$},
+	label style= {font=\scriptsize},
+	minor x tick num=1, %Sous graduations
+	minor y tick num=1,
+	%xtick distance=1, %Graduations
+	%ytick distance=1,
+	enlargelimits={0.001}, % Pour éviter les bugs avec la grille
+	grid=both,
+	grid style={densely dashed,line width=0.4pt,draw=black!30},
+	minor grid style={line width=0.25pt,draw=black!20},
+	axis equal,
+	legend pos=north east,
+	domain=(\pgfkeysvalueof{/pgfplots/xmin}:\pgfkeysvalueof{/pgfplots/xmax}),
+	restrict y to domain=\pgfkeysvalueof{/pgfplots/ymin}:\pgfkeysvalueof{/pgfplots/ymax},	%Evite des erreurs liées à des valeurs trop grandes (fonction inverse, exp...)
 },
 %
 % Style des courbes de fonctions
 %
 styleplot/.style={
-samples=101,
-smooth,
-line width=1.3pt,
-mark=none
+	samples=101,
+	smooth,
+	line width=1.3pt,
+	mark=none
 },
 %
 % Plus gros textes pour afficher au tableau
 %
 labelgros/.style={
-label style= {font=\large},
-tick label style = {font=\large}
+	label style= {font=\large},
+	tick label style = {font=\large}
 },
 %
 % Change la hauteur pour qu'elle dépende des ticks: si les graduations verticales sont de 2 en 2, le graphique est deux fois moins haut. => Repère non normé
 %
 hauteurproptick/.style={
-height=\pgfkeysvalueof{/pgfplots/width}*((\pgfkeysvalueof{/pgfplots/xtick distance}/\pgfkeysvalueof{/pgfplots/ytick distance})*((\pgfkeysvalueof{/pgfplots/ymax})+((-1)*(\pgfkeysvalueof{/pgfplots/ymin})))/((\pgfkeysvalueof{/pgfplots/xmax})+((-1)*(\pgfkeysvalueof{/pgfplots/xmin})))),
-axis equal=false,
-enlargelimits=0.001,
-}
+	height=\pgfkeysvalueof{/pgfplots/width}*((\pgfkeysvalueof{/pgfplots/xtick distance}/\pgfkeysvalueof{/pgfplots/ytick distance})*((\pgfkeysvalueof{/pgfplots/ymax})+((-1)*(\pgfkeysvalueof{/pgfplots/ymin})))/((\pgfkeysvalueof{/pgfplots/xmax})+((-1)*(\pgfkeysvalueof{/pgfplots/xmin})))),
+	axis equal=false,
+	enlargelimits=0.001,
+},
+repere/.style={	% Pour les repères sans fonctions: juste la grille principale et les axes. A charger après styleglobal
+	xticklabels={},
+	yticklabels={},
+	minor x tick num=0,
+	minor y tick num=0,
+	xtick distance=1,
+	ytick distance=1,
+	tick style={thick,opacity=1,black},
+	major tick length=4pt,
+	axis line style={-},
+	xlabel={},
+	ylabel={},
+},
 }
 
 \tikzset{
@@ -250,13 +264,20 @@ stylepoint/.style={
 	inner sep=2pt,
 	fill opacity=1
 },
+stylepointextremites/.style={
+	circle,
+	minimum size=1pt,
+	fill,
+	inner sep=1pt,
+	fill opacity=1
+},
 }
 
 %Format des nombres: virgule et séparation des milliers
 \pgfkeys{/pgf/number format/use comma,/pgf/number format/.cd,1000 sep={\,}}
 
 %Points aux extrémités des courbes
-\newcommand{\pointsextremites}{node[pos=0,stylepoint] {} node[pos=1,stylepoint] {}}
+\newcommand{\pointsextremites}{node[pos=0,stylepointextremites] {} node[pos=1,stylepointextremites] {}}
 
 % tcolorbox
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

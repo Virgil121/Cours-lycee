@@ -1,0 +1,58 @@
+\documentclass[twocolumn,landscape,a4paper,12pt,french]{article}
+
+\usepackage[TD]{../../../Style}
+
+\setlength{\columnsep}{2cm}
+
+\newcommand{\contenu}{
+\setcounter{exercice}{8}
+\titre{Variations de fonctions +}
+
+\begin{exercice}
+On se donne une fonction $f$ définie sur $[-5;4]$. On a dressé son tableau de variations et son tableau de signes ci-dessous:
+
+\compo{
+\begin{tikzpicture}
+\tkzTabInit[lgt=1.2,espcl=1.2,deltacl=0.4]{$x$/1, $f(x)$/1.7}{$-5$,$-2$,1,4}
+\tkzTabVar{+/2, -/$-5$, +/3, -/$-1$}
+\end{tikzpicture}
+}
+{
+\hspace{-8mm}\begin{tikzpicture} % Un peu barbare
+\tkzTabInit[lgt=1.2,espcl=1.2,deltacl=0.4]{$x$/1, $f(x)$/1}{$-5$,$-4$,$-1$,3,4}
+\tkzTabLine{,+,z,-,z,+,z,-,}
+\end{tikzpicture}
+}
+
+\begin{enumerate}
+\item Tracer dans un repère une courbe représentative potentielle de $f$.
+\item Combien de solutions l'équation $f(x)=1$ peut-elle avoir?
+\end{enumerate}
+\end{exercice}
+
+\begin{exercice} \
+\begin{enumerate}
+\item Démontrer que la fonction $f:x \mapsto 2x$ est croissante. On se donnera $x,y \in \R$ avec $x \leq y$ et on montrera que $f(x) \leq f(y)$.
+\item Plus généralement, montrer qu'une fonction affine $f:x \mapsto ax+b$ est croissante si $a>0$, décroissante si $a<0$.
+\item Soit $g:x \mapsto x^2$. Dresser le tableau de variations de $g$ sur $\R$, à l'aide de la calculatrice.
+\item Démontrons que $g$ est croissante sur $[0;+\infty[$. Soient $x,y \geq 0$ tels que $x<y$.
+\begin{enumerate}
+\item Quel est le signe de $y+x$? de $y-x$?
+\item Quel est alors le signe de $(y+x)(y-x)$?
+\item Déterminer alors le signe de $f(y)-f(x)$, puis conclure.
+\end{enumerate}
+\end{enumerate}
+\end{exercice}
+}
+
+% Début du document
+%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+\contenu
+
+\newpage
+
+\contenu
+
+\end{document}
