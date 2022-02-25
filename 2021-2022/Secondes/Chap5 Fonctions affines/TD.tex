@@ -140,4 +140,36 @@ Dresser le tableau de signes des fonctions:
 
 \end{multicols*}
 
+\foreach{\i} in {0,1} {\vfill
+\setcounter{exercice}{0}
+\begin{exercice}
+Le tarif de stationnement en centre ville (payant de 8h à 18h) en centimes d'euros est donné à la minute par:
+\begin{itemize}
+\item 2 centimes par minute pendant la première heure
+\item 4 centimes par minute pour la deuxième et la troisième heure
+\item 1 centime par minute de la quatrième à la dixième heure.
+\end{itemize}
+On note $t$ le temps de stationnement en heures et $f(t)$ le tarif correspondant en euros.
+\begin{enumerate}
+\item Montrer que:
+$$f(t)=\left\{ \begin{matrix}
+1,2t & \text{si} & 0 \leq t \leq 1 \\
+2,4t-1,2 & \text{si} & 1 \leq t \leq 3 \\
+0,6t+4,2 & \text{si} & 3 \leq t \leq 10 \end{matrix} \right.$$
+\item Représenter graphiquement $f$.
+\item Déterminer par le calcul de combien de temps de stationnement on dispose pour 5 \euro{}.
+\end{enumerate}
+\end{exercice}
+
+\begin{exercice}
+Soit $m \in \R$ et $f:x \mapsto (m-2)x+2m$. Déterminer la ou les valeurs de $m$ dans chaque cas:
+\begin{enumerate}
+\item $f$ est une fonction linéaire
+\item $f(3)=1$
+\item $f$ est négative uniquement sur $]3;+\infty[$
+\item $f$ est une fonction constante
+\item $f(-2)=4$
+\end{enumerate}
+\end{exercice}
+}
 \end{document}
