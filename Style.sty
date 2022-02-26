@@ -229,35 +229,52 @@
 \pgfplotsset{ % Pas besoin de "styleglobal" en fait ... Important: ne pas faire xscale mais x post scale pour conserver la taille des ticks
 	compat=1.18,
 	styleglobal/.style={
+		%
+		% Taille
+		%
 		height=\pgfkeysvalueof{/pgfplots/width}*(((\pgfkeysvalueof{/pgfplots/ymax})+((-1)*(\pgfkeysvalueof{/pgfplots/ymin})))/((\pgfkeysvalueof{/pgfplots/xmax})+((-1)*(\pgfkeysvalueof{/pgfplots/xmin}))))+0.1pt, %Hauteur auto en fonction des coordonnées et de l'échelle
+		scale only axis,							 %Pour bien tomber sur la grille
+		enlargelimits={0.001},
+		%		
+		% Axes
+		%
 		axis x line=bottom,
 		axis y line = left,
 		axis lines=middle,							% Axes dans le repère et pas au bord
 		axis line style={-{Stealth}},				% Plus grosse flèche
 		tick label style = {font=\footnotesize},
-		scale only axis,							 %Pour bien tomber sur la grille
 		xlabel={$x$},
 		ylabel={$y$},
 		label style= {font=\scriptsize},
+		axis equal,
+		%
+		% Grille et graduations
+		%
 		minor x tick num=1,							 %Sous graduations
 		minor y tick num=1,
 		%xtick distance=1, 							%Graduations(finalement enlevé pour que de base ce soit automatique)
 		%ytick distance=1,
-		enlargelimits={0.001},
 		grid=both,
 		grid style={densely dashed,line width=0.4pt,draw=black!30},
 		minor grid style={line width=0.25pt,draw=black!20},
-		axis equal,
 		legend pos=north east,
+		%
+		% Evite des erreurs liées à des valeurs trop grandes (fonction inverse, exp...)
+		%
 		domain=(\pgfkeysvalueof{/pgfplots/xmin}:\pgfkeysvalueof{/pgfplots/xmax}),	%Domaine de définition des fonctions à tracer
-		restrict y to domain=\pgfkeysvalueof{/pgfplots/ymin}:\pgfkeysvalueof{/pgfplots/ymax},	%Evite des erreurs liées à des valeurs trop grandes (fonction inverse, exp...)
+		execute at begin axis={
+			\pgfmathsetmacro\yminetendu{\pgfkeysvalueof{/pgfplots/ymin}-1*(\pgfkeysvalueof{/pgfplots/ymax}-\pgfkeysvalueof{/pgfplots/ymin})}
+			\pgfmathsetmacro\ymaxetendu{\pgfkeysvalueof{/pgfplots/ymax}+1*(\pgfkeysvalueof{/pgfplots/ymax}-\pgfkeysvalueof{/pgfplots/ymin})}}, % Limites en ordonnées, calculs préalables
+		%
+		%x=1pt,y=1pt, %Evite aussi les erreurs... Fonctionnement assez bizarre: la mise à l'échelle se fait après donc tous les calculs se font avec une base d'un pt par unité, ce qui évite d'atteindre des dimensions trop grandes
 		mark size=\echellepgfinv*2pt,	% Taille marques indépendant de l'échelle (quand on trace des suites)
 	},
 	styleplot/.style={
 		samples=101,
 		smooth,
 		line width=1.3pt,
-		mark=none
+		mark=none,
+		restrict y to domain={\yminetendu:\ymaxetendu}, %Limitation ordonnées
 	},
 	labelgros/.style={
 		label style= {font=\large},
@@ -833,7 +850,9 @@ stylepointextremites/.style={
 	%\theoremsymbol{\rule{1.5mm}{1.5mm}}
 	
 	\newtheorem{defin}{Définition}
+	\newtheorem{defins}{Définitions}
 	\newtheorem{thm}[defin]{Théorème}
+	\newtheorem{thms}[defin]{Théorèmes}
 	\newtheorem{prop}[defin]{Proposition}
 	\newtheorem{lemme}[defin]{Lemme}
 	\newtheorem{ex}[defin]{Exemple}

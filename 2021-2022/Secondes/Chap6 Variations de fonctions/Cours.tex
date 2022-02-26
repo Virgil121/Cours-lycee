@@ -70,7 +70,7 @@ Graphiquement,la courbe de $f$ "descend": \searrow
 \begin{tikzpicture}[scale=\echellepgf]
 \begin{axis}[
 styleglobal,
-width=0.8*\echellepgfinv*\linewidth,
+width=0.9*\echellepgfinv*\linewidth,
 xmin=-0.5, xmax=2,
 ymin=-0.5, ymax=2,
 xtick distance=0.5,
@@ -89,10 +89,43 @@ declare function={f(\x)=e^(0.5-\x);}
 }
 \end{defins}
 
+\begin{ex}
+\compo[0.67]{
+On se donne la fonction $f$, définie sur $\left[1;7\right]$ et représentée ci-contre.
+
+\begin{itemize}
+\item $f$ est croissante sur $[1;4]$ puis décroissante sur $[4;7]$.
+\item $f$ est croissante sur $[1;4]$ et $2 \leq 3$ donc $f(2) \leq f(3)$.
+\item $f$ est décroissante sur $[4;7]$ et $5 \leq 6$ donc $f(5) \geq f(6)$.
+\end{itemize}
+}
+{
+%\vspace{-0.5em}
+\begin{center}
+\begin{tikzpicture}[scale=\echellepgf]
+\begin{axis}[
+styleglobal,
+width=1*\echellepgfinv*\linewidth,
+xmin=-0.5, xmax=7.5,
+ymin=-0.5, ymax=3.5,
+ytick distance=1,
+xtick distance=1
+%scale=0.7
+]
+\addplot[styleplot,tension=0.7] plot coordinates {(1,1) (4,3) (7,0.5)} node [pos=0.9,above right] {$\mathscr C_f$} \pointsextremites;
+\end{axis}
+\end{tikzpicture}
+\end{center}
+}
+\end{ex}
+
 \begin{defins}
 
 \begin{itemize}
-\item On dit que $f$ est constante sur $I$ si elle prend toujours la même valeur: Pour $x,y \in I$, on a $f(x)=f(y)$.
+\item On dit que $f$ est constante sur $I$ si elle prend toujours la même valeur:
+\begin{center}
+Pour $x,y \in I$, on a $f(x)=f(y)$.
+\end{center}
 \item On dit que $f$ est monotone sur $I$ si elle est soit croissante, soit décroissante sur I (son sens de variation ne change pas).
 \end{itemize}
 \end{defins}
@@ -145,7 +178,7 @@ Soit $f$ une fonction définie sur un intervalle $I$.
 \end{defins}
 
 \begin{rmq}
-Le maximum d'une fonction correspond au point le plut "haut" de sa courbe représentative, et le minimum au point le plus "bas".
+Le maximum d'une fonction correspond au point le plus "haut" de sa courbe représentative, et le minimum au point le plus "bas".
 \end{rmq}
 
 \begin{ex}
@@ -158,6 +191,8 @@ On reprend la fonction $f$ de l'exemple précédent.
 Son maximum sur $I$ est $4$, atteint en $-1$.
 
 Son minimum sur $I$ est $-1$, atteint en $2$.
+
+Son minimum sur $[-2;0]$ est $1,5$, atteint en $-2$.
 }
 {
 \begin{center}

@@ -1,0 +1,64 @@
+\documentclass[12pt,a4paper,french] {article}
+
+\pagestyle{empty}
+
+\usepackage{../../../Style}
+
+\renewcommand{\baselinestretch}{1.25}
+
+\begin{document}
+ 
+\titre{Direction instantanée}
+
+\compo
+{
+Trois voitures $A$, $B$ et $C$ sont en train de tourner sur un rond-point. Imaginons que chaque conducteur redresse d'un coup son volant pour le remettre droit. Tracer alors une demi-droite représentant la direction que prendra chacune des trois voitures.
+}
+{
+\begin{center}
+\includegraphics[width=0.9\linewidth]{Voiture_NB.jpg}
+\end{center}
+}
+
+\compo
+{
+On représente maintenant le rond-point par un cercle et les voitures par des points $A$ et $B$. Tracer cette fois-ci une droite représentant la direction que prendra chacune des voitures si elles redressent leur volant d'un coup.
+}
+{
+\begin{center}
+\begin{tikzpicture}
+\draw[thick] (-4,-3) rectangle (4,3);
+\draw[thick] (0,0) circle (2);
+\draw[thick,densely dashed,->] ({1.1*cos(135)},{1.1*sin(135)}) arc[start angle=135,end angle=405,radius=1.1cm];
+\node[stylepoint,fill=blue,label=90:$A$] (A) at ({2*cos(100)},{2*sin(100)}) {};
+\node[stylepoint,fill=blue,label=180:$B$] (A) at ({2*cos(190)},{2*sin(190)}) {};
+\end{tikzpicture}
+\end{center}
+}
+\compo
+{
+On suppose maintenant que les voitures $A$ et $B$ se déplacent le long de la courbe d'une fonction $f$. Tracer les droites associées comme précédemment.
+}
+{
+\begin{center}
+\begin{tikzpicture}[scale=\echellepgf]
+\begin{axis}[
+styleglobal,
+width=0.8*\echellepgfinv*\linewidth,
+xmin=-3.5, xmax=6.5,
+ymin=-2.5, ymax=4.5,
+xtick distance=1,
+ytick distance=1,
+minor x tick num=1,
+minor y tick num=1,
+]
+\addplot[styleplot] {0.1*x*(x+2)*(x-4)} node[pos=0.6,right] {$\mathscr C_f$};
+\node[stylepoint,fill=blue,label=-45:$A$] at (3,-1.5) {};
+\node[stylepoint,fill=blue,label=90:$B$] at (-1,0.5) {};
+%\addplot[styleplot] {-0.25*(x+2)*(x-4)}; %Dérivée en 3,2,-2 pas trop compliquée (-1,-0.5,0.5)
+\end{axis}
+\end{tikzpicture}
+\end{center}
+}
+
+\end{document}
