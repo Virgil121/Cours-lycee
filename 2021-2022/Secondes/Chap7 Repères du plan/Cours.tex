@@ -2,12 +2,6 @@
 
 \usepackage[cours]{../../../Style}
 
-\tikzset{
-setupRepereTransformation/.style args={(#1,#2),(#3,#4)}{
-cm={#1*cos(#2),#1*sin(#2),#3*cos(#2+#4),#3*sin(#2+#4),(0,0)},
-},
-}
-
 % Début du document
 %%%%%%%%%%%%%%%%%%%
 \begin{document}
@@ -37,7 +31,7 @@ Soient $O,I,J$ trois points du plan non alignés. On pose $\vec i = \vec{OI}$ et
 \begin{itemize}
 \item $O$ est l'origine du repère
 \item $(OI)$ est l'axe des abscisses
-\item $OJ$ est l'axe des ordonnées
+\item $(OJ)$ est l'axe des ordonnées
 \end{itemize}
 \end{defin}
 
@@ -52,8 +46,8 @@ Tout point $M$ du plan est repéré par un unique couple de coordonnées $(x;y)$
 \begin{exs}
 
 \begin{tabularx}{\linewidth}{YYY}
-\begin{scaletikzpicturetowidth}{0.9\linewidth} % Repère quelconque à la main
-\begin{tikzpicture}[scale=\tikzscale]
+\begin{resizetikz}{0.9\linewidth} % Repère quelconque à la main
+\begin{tikzpicture}
 % Cadre
 \coordinate (liminf) at (-2,-2);
 \coordinate (limsup) at (8,5);
@@ -77,7 +71,7 @@ Tout point $M$ du plan est repéré par un unique couple de coordonnées $(x;y)$
 \node[stylepoint,label=45:{$M$},fill=blue,semithick] (M) at (1,3) {}; 
 \end{scope}
 \end{tikzpicture}
-\end{scaletikzpicturetowidth}
+\end{resizetikz}
 &
 \begin{tikzpicture}
 \begin{axis}[
@@ -97,8 +91,8 @@ x post scale=2
 \end{axis}
 \end{tikzpicture}
 &
-\begin{scaletikzpicturetowidth}{0.9\linewidth} % Repère quelconque à la main
-\begin{tikzpicture}[scale=\tikzscale]
+\begin{resizetikz}{0.9\linewidth} % Repère quelconque à la main
+\begin{tikzpicture}
 \coordinate (liminf) at (-5,-2);
 \coordinate (limsup) at (5,5);
 \draw[line width=0.4pt,draw=black!30,densely dashed] (liminf) rectangle (limsup);
@@ -115,38 +109,68 @@ x post scale=2
 \node[stylepoint,label=45:{$M$},fill=blue,semithick] (M) at (-3,2) {}; 
 \end{scope}
 \end{tikzpicture}
-\end{scaletikzpicturetowidth}
+\end{resizetikz}
 \\
 $M(1;3)$&$M(2;-1)$&$M(-3;2)$
 \end{tabularx}
 \end{exs}
 
+\begin{defin}
+\compo[0.75]
+{
+On dit que le repère \Oij est orthonormé si:
+\begin{itemize}
+\item Ses axes sont perpendiculaires: $(OI) \perp (OJ)$
+\item Les vecteurs unité $\vec i$ et $\vec j$ sont de même longueur:  $\Vert \vec i \Vert = \Vert \vec j \Vert$
+\end{itemize}
+}
+{
+\vspace{-2em}
+\begin{tikzpicture}
+\begin{axis}[
+styleglobal,
+repere,
+width=0.9*\linewidth,
+xmin=-2,xmax=5,
+ymin=-2,ymax=3,
+]
+\node[label={-135:{O}}] (O) at (0,0) {};
+\draw[->,>=latex,line width=1pt,cap=round,color=black!30!red] (0,0) -- (1,0) node[pos=0.5,below] {$\vec i$};
+\draw[->,>=latex,line width=1pt,cap=round,color=black!30!red] (0,0) -- (0,1) node[pos=0.5,left] {$\vec j$};
+
+% Contenu
+\node[stylepoint,fill=blue,label=-60:M] (M) at (3,2) {};
+\end{axis}
+\end{tikzpicture}
+\centering $M(3;2)$
+}
+\end{defin}
+
 \section{Coordonnées d'un vecteur}
 
 \begin{defin}
-Soit $\vec u$ un vecteur du plan. On se donne le point $M(x;y)$ tel que $\vec{OM} = \vec u$. Les coordonnées de $\vec u$ sont celles de $M$, et l'on note $\vec u \displaystyle\binom x y$.
+Soit $\vec u$ un vecteur du plan. On se donne le point $M(x;y)$ tel que $\vec{OM} = \vec u$. Les coordonnées de $\vec u$ sont celles de $M$, et l'on note $\vec u \dbinom x y$.
 \end{defin}
 
 \begin{prop}
-Soient $A(x_A;y_A)$ et $B(x_B;y_B)$ deux points du plan. Alors on a $\vec{AB} \displaystyle\binom {x_B-x_A} {y_B-y_A}$.
+Soient $A(x_A;y_A)$ et $B(x_B;y_B)$ deux points du plan. Alors on a $\vec{AB} \dbinom {x_B-x_A} {y_B-y_A}$.
 \end{prop}
-
 \begin{ex}
 \compo[0.6]
 {
 \setstretch{2.5}
 On se donne $A(1;2)$, $B(5;-1)$ et $C(6,3)$.
 
-Alors on a $\vec{AB} \displaystyle\binom {5-1}{-1-2}$ d'où $\vec{AB} \displaystyle\binom {4} {-3}$.
+Alors on a $\vec{AB} \dbinom {5-1}{-1-2}$ d'où $\vec{AB} \dbinom {4} {-3}$.
 
-De même, on a $\vec{BC} \displaystyle\binom {6-5}{3-(-1)}$ d'où $\vec{BC} \displaystyle\binom 1 4$.
+De même, on a $\vec{BC} \dbinom {6-5}{3-(-1)}$ d'où $\vec{BC} \dbinom 1 4$.
 }
 {\vspace{-1.5em}
 \begin{tikzpicture}
 \begin{axis}[
 styleglobal,
 repere,
-width=0.9\linewidth,
+width=0.9*\linewidth,
 xmin=-2,xmax=8,
 ymin=-2,ymax=5,
 ]
@@ -165,22 +189,30 @@ ymin=-2,ymax=5,
 }
 \end{ex}
 
+\rem{Exos}
+
 \begin{proprs}
-Soient $\vec u \displaystyle\binom {x_{\vec u}} {y_{\vec u}}$ et $\vec v \displaystyle\binom {x_{\vec v}} {y_{\vec v}}$ deux vecteurs du plan, et $\lambda \in \R$. Alors:
+Soient $\vec u \dbinom {x_{\vec u}} {y_{\vec u}}$ et $\vec v \dbinom {x_{\vec v}} {y_{\vec v}}$ deux vecteurs du plan, et $\lambda \in \R$. Alors:
 \begin{itemize}
-\item Les coordonnées de $\vec u + \vec v$ sont $\displaystyle\binom {x_{\vec u}+x_{\vec v}} {y_{\vec u}+y_{\vec v}}$.
-\item Les coordonnées de $\lambda \vec u$ sont $\displaystyle\binom {\lambda x_{\vec u}} {\lambda y_{\vec u}}$.
+\item Les coordonnées de $\vec u + \vec v$ sont $\dbinom {x_{\vec u}+x_{\vec v}} {y_{\vec u}+y_{\vec v}}$.
+\item Les coordonnées de $\lambda \vec u$ sont $\dbinom {\lambda x_{\vec u}} {\lambda y_{\vec u}}$.
 \end{itemize}
 \end{proprs}
+\begin{ex}
+Soient $\vec u \dbinom 1 3$ et $\vec v \dbinom 2 {-1}$. Alors on a:
+\begin{itemize}
+\item $\left( \vec u + \vec v  \right) \dbinom {1+2} {3+(-1)}$ d'où $\left( \vec u + \vec v  \right) \dbinom 3 2$.
+\item $3\vec v \dbinom {3 \times 2} {3 \times (-1)}$ d'où $3\vec v \dbinom {6} {-3}$.
+\item $\left( 2 \vec u - 5\vec v \right) \dbinom {2 \times 1 -5 \times 2} {2 \times 3 -5 \times (-1)}$ d'où $\left( 2 \vec u - 5\vec v \right) \dbinom {-8}{11}$.
+\end{itemize}
+\end{ex}
 
-Alors $\vec u=x \vec i + y \vec j$. $x$ et $y$ sont les coordonnées de $\vec u$ et o
+\rem{Exos}
 
 \section{Norme/milieu}
 
-Repère orthonormé à définir
-
 \begin{prop}
-Soit $\vec u \displaystyle\binom x y$ un vecteur du plan, dont les coordonnées sont exprimées dans un repère orthonormé. Alors la norme de $\vec u$ est donnée par:
+Soit $\vec u \dbinom x y$ un vecteur du plan, dont les coordonnées sont exprimées dans un repère orthonormé. Alors la norme de $\vec u$ est donnée par:
 $$\Vert \vec u \Vert = \sqrt{x^2+y^2}$$
 \end{prop}
 
@@ -189,7 +221,90 @@ Soient $A(x_A;y_A)$ et $B(x_B;y_B)$ deux points du plan, dont les coordonnées s
 $$AB=\sqrt{(x_B-x_A)^2+(y_B-y_A)^2}$$
 \end{cor}
 
+\begin{ex}
+Soient $A \dbinom 1 7$ et $B \dbinom 6 {-5}$.
+Alors $\begin{aligned}[t]AB&=\sqrt{(6-1)^2+(-5-7)^2}\\
+							&=\sqrt{5^2+(-12)^2}\\
+							&=\sqrt{25+144}\\
+							&=\sqrt{169}\\
+							&=13 \end{aligned}$
+\end{ex}
+
+\begin{apps}
+On peut alors montrer l'appartenance d'un point à un cercle, ou déterminer la nature d'un polygone en utilisant des coordonnées.
+\end{apps}
+
 \section{Colinéarité}
+
+\subsection{Définitions et caractérisations}
+
+\begin{defin}
+Deux vecteurs $\vec u$ et $\vec v$ sont dits colinéaires s'ils ont la même direction, autrement dit s'il existe $\lambda \in \R$ tel que $\vec u = \lambda \vec v$.
+\end{defin}
+
+\begin{rmq}
+Cela revient à dire que les coordonnées de $\vec u$ et $\vec v$ sont proportionnelles.
+\end{rmq}
+
+\begin{ex}
+On se donne $\vec u \dbinom 2 5$ et $\vec v \dbinom 4 {10}$. On remarque que $\vec v = 2 \vec u$. Alors $\vec u$ et $\vec v$ sont colinéaires.
+\end{ex}
+
+\begin{defin}
+Soient $\vec u \dbinom {x} {y}$ et $\vec v \dbinom {x'} {y'}$ deux vecteurs du plan. On appelle déterminant de $\vec u$ et $\vec v$ le réel: $$\det(\vec u;\vec v)=xy'-x'y$$
+\end{defin}
+
+\begin{prop}
+Deux vecteurs sont colinéaires si et seulement si leur déterminant est nul.
+\end{prop}
+
+\begin{ex}
+Soient $\vec u \dbinom {-15}{40}$ et $\vec v \dbinom {9}{-24}$.
+On a $\begin{aligned}[t] \det (\vec u ; \vec v) &= -15 \times (-24) -9 \times 40\\&= 360 - 360\\&=0\end{aligned}$
+
+Donc $\vec u$ et $\vec v$ sont colinéaires. (On a en fait $\vec u = -\frac 5 3 \vec v$).
+\end{ex}
+
+\subsection{Applications en géométrie}
+
+\begin{methode}
+On peut montrer que des droites sont parallèles ou l'alignement de points grâce à la colinéarité.
+\end{methode}
+
+\begin{ex}
+\compo[0.6]
+{\setstretch{2.5}
+On se donne les points $A(2;4)$, $B(11;10)$ et $C(-4;0)$.
+
+Alors on a $\vec{AB} \dbinom 9 6$ et $\vec{AC} \dbinom {-6}{-4}$.
+
+On a $\det (\vec{AB};\vec{AC})=9 \times (-4) - (-6) \times 6 = -36+36=0$.
+}
+{
+\begin{tikzpicture}
+\begin{axis}[
+styleglobal,
+repere,
+width=0.9*\linewidth,
+xmin=-5,xmax=12,
+ymin=-2,ymax=11,
+]
+\node[label={-135:{O}}] (O) at (0,0) {};
+\draw[->,>=latex,line width=1pt,cap=round,color=black!30!red] (0,0) -- (1,0) node[pos=0.5,below] {$\vec i$};
+\draw[->,>=latex,line width=1pt,cap=round,color=black!30!red] (0,0) -- (0,1) node[pos=0.5,left] {$\vec j$};
+
+% Contenu
+\node[stylepoint,fill=blue,label=-90:B] (B) at (11,10) {};
+\node[stylepoint,fill=blue,label=120:A] (A) at (2,4) {};
+\node[stylepoint,fill=blue,label=-45:C] (C) at (-4,0) {};
+\draw[line width=1pt,->,cap=round] (A) -- (B.center);
+\draw[line width=1pt,->,cap=round] (A) -- (C.center);
+\end{axis}
+\end{tikzpicture}
+}
+
+On en déduit que les vecteurs $\vec{AB}$ et $\vec{AC}$ sont colinéaires, d'où $(AB) \parallel (AC)$. Comme ces deux droites sont confondues, les points $A$, $B$ et $C$ sont alors alignés.
+\end{ex}
 
 \end{document}
 

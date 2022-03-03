@@ -1,0 +1,221 @@
+\documentclass[a4paper,12pt,french]{article}
+
+\usepackage[cours,eleve,NB]{../../../Style}
+
+\geometry{margin=1cm,top=5mm,bottom=5mm}
+% Début du document
+%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+%\title{Repères du plan et coordonnées}
+%\maketitle
+\thispagestyle{empty}
+
+%\section{Généralités sur les repères}
+
+\begin{defin}
+Soient $O,I,J$ trois points du plan non alignés. On pose $\vec i = \vec{OI}$ et $\vec j = \vec{OJ}$. Un repère du plan est un triplet \makebox[2cm]{\dotfill} On dit alors que :
+\begin{itemize}
+\item $O$ est \dotfill\hspace{6cm}\strut
+\item $(OI)$ est \dotfill\hspace{6cm}\strut
+\item $(OJ)$ est \dotfill\hspace{6cm}\strut
+\end{itemize}
+\end{defin}
+
+\begin{propr}
+Tout point $M$ du plan est repéré par un unique couple de coordonnées $(x;y)$. $x$ est \makebox[2cm]{\dotfill} de $M$ et $y$ est \makebox[2cm]{\dotfill} de $M$.
+\end{propr}
+
+\begin{exs}
+
+\begin{tabularx}{\linewidth}{YYY}
+\begin{resizetikz}{0.9\linewidth} % Repère quelconque à la main
+\begin{tikzpicture}
+% Cadre
+\coordinate (liminf) at (-2,-2);
+\coordinate (limsup) at (8,5);
+\draw[line width=0.4pt,draw=black!30,densely dashed] (liminf) rectangle (limsup);
+\clip (liminf)+(-0.01,-0.01) rectangle (limsup)+(0.01,0.01);
+
+% Sous-image, changement de coordonnées
+\begin{scope}[setupRepereTransformation={(2,20),(1,80)}]
+% Initialisation des axes, de la grille
+\draw[step=1,line width=0.4pt,draw=black!30,densely dashed] ($5*(liminf)+(-5,-5)$)+(-0.01,-0.01) grid ($5*(limsup)+(5,5)$)+(0.01,0.01);
+\tkzInit[xmin=5*(-2),xmax=5*10,ymin=5*(-2),ymax=5*5]
+\tkzDrawX[label={},tickup=3pt,tickdn=3pt]
+\tkzDrawY[label={},ticklt=1.5pt,tickrt=1.5pt]
+
+% Initialisation du repère
+\node[label={-135:{O}}] (O) at (0,0) {};
+\draw[->,>=latex,line width=1pt,cap=round,color=black!30!red] (0,0) -- (1,0) node[pos=0.5,below] {$\vec i$};
+\draw[->,>=latex,line width=1pt,cap=round,color=black!30!red] (0,0) -- (0,1) node[pos=0.5,left] {$\vec j$};
+
+%Contenu
+\node[stylepoint,label=45:{$M$},fill=blue,semithick] (M) at (1,3) {}; 
+\end{scope}
+\end{tikzpicture}
+\end{resizetikz}
+&
+\begin{tikzpicture}
+\begin{axis}[
+styleglobal,
+repere,
+width=0.45\linewidth,
+xmin=-1,xmax=4,
+ymin=-2,ymax=5,
+x post scale=2
+]
+\node[label={-135:{O}}] (O) at (0,0) {};
+\draw[->,>=latex,line width=1pt,cap=round,color=black!30!red] (0,0) -- (1,0) node[pos=0.5,below] {$\vec i$};
+\draw[->,>=latex,line width=1pt,cap=round,color=black!30!red] (0,0) -- (0,1) node[pos=0.5,left] {$\vec j$};
+
+% Contenu
+\node[stylepoint,fill=blue,label={-5:$M$}] (A) at (2,-1) {};
+\end{axis}
+\end{tikzpicture}
+&
+\begin{resizetikz}{0.9\linewidth} % Repère quelconque à la main
+\begin{tikzpicture}
+\coordinate (liminf) at (-5,-2);
+\coordinate (limsup) at (5,5);
+\draw[line width=0.4pt,draw=black!30,densely dashed] (liminf) rectangle (limsup);
+\clip (liminf)+(-0.01,-0.01) rectangle (limsup)+(0.01,0.01);
+\begin{scope}[setupRepereTransformation={(1.5,-5),(1.5,70)}]
+\draw[step=1,line width=0.4pt,draw=black!30,densely dashed]($5*(-2,-2)$)+(-5.01,-5.01) grid ($5*(8,5)$)+(5.01,5.01);
+\tkzInit[xmin=5*(-2),xmax=5*10,ymin=5*(-2),ymax=5*5]
+\tkzDrawX[label={},tickup=3pt,tickdn=3pt]
+\tkzDrawY[label={},ticklt=2pt,tickrt=2pt]
+
+\node[label={-135:{O}}] (O) at (0,0) {};
+\draw[->,>=latex,line width=1pt,cap=round,color=black!30!red] (0,0) -- (1,0) node[pos=0.5,below] {$\vec i$};
+\draw[->,>=latex,line width=1pt,cap=round,color=black!30!red] (0,0) -- (0,1) node[pos=0.5,left] {$\vec j$};
+\node[stylepoint,label=45:{$M$},fill=blue,semithick] (M) at (-3,2) {}; 
+\end{scope}
+\end{tikzpicture}
+\end{resizetikz}
+\\
+$M( \ldots ; \ldots )$&$\makebox[2cm]{\dotfill}$&$\makebox[2cm]{\dotfill}$
+\end{tabularx}
+\end{exs}
+
+\vfill
+
+\begin{defin}
+Soient $O,I,J$ trois points du plan non alignés. On pose $\vec i = \vec{OI}$ et $\vec j = \vec{OJ}$. Un repère du plan est un triplet \makebox[2cm]{\dotfill} On dit alors que :
+\begin{itemize}
+\item $O$ est \dotfill\hspace{6cm}\strut
+\item $(OI)$ est \dotfill\hspace{6cm}\strut
+\item $(OJ)$ est \dotfill\hspace{6cm}\strut
+\end{itemize}
+\end{defin}
+
+\begin{propr}
+Tout point $M$ du plan est repéré par un unique couple de coordonnées $(x;y)$. $x$ est \makebox[2cm]{\dotfill} de $M$ et $y$ est \makebox[2cm]{\dotfill} de $M$.
+\end{propr}
+
+\begin{exs}
+
+\begin{tabularx}{\linewidth}{YYY}
+\begin{resizetikz}{0.9\linewidth} % Repère quelconque à la main
+\begin{tikzpicture}
+% Cadre
+\coordinate (liminf) at (-2,-2);
+\coordinate (limsup) at (8,5);
+\draw[line width=0.4pt,draw=black!30,densely dashed] (liminf) rectangle (limsup);
+\clip (liminf)+(-0.01,-0.01) rectangle (limsup)+(0.01,0.01);
+
+% Sous-image, changement de coordonnées
+\begin{scope}[setupRepereTransformation={(2,20),(1,80)}]
+% Initialisation des axes, de la grille
+\draw[step=1,line width=0.4pt,draw=black!30,densely dashed] ($5*(liminf)+(-5,-5)$)+(-0.01,-0.01) grid ($5*(limsup)+(5,5)$)+(0.01,0.01);
+\tkzInit[xmin=5*(-2),xmax=5*10,ymin=5*(-2),ymax=5*5]
+\tkzDrawX[label={},tickup=3pt,tickdn=3pt]
+\tkzDrawY[label={},ticklt=1.5pt,tickrt=1.5pt]
+
+% Initialisation du repère
+\node[label={-135:{O}}] (O) at (0,0) {};
+\draw[->,>=latex,line width=1pt,cap=round,color=black!30!red] (0,0) -- (1,0) node[pos=0.5,below] {$\vec i$};
+\draw[->,>=latex,line width=1pt,cap=round,color=black!30!red] (0,0) -- (0,1) node[pos=0.5,left] {$\vec j$};
+
+%Contenu
+\node[stylepoint,label=45:{$M$},fill=blue,semithick] (M) at (1,3) {}; 
+\end{scope}
+\end{tikzpicture}
+\end{resizetikz}
+&
+\begin{tikzpicture}
+\begin{axis}[
+styleglobal,
+repere,
+width=0.45\linewidth,
+xmin=-1,xmax=4,
+ymin=-2,ymax=5,
+x post scale=2
+]
+\node[label={-135:{O}}] (O) at (0,0) {};
+\draw[->,>=latex,line width=1pt,cap=round,color=black!30!red] (0,0) -- (1,0) node[pos=0.5,below] {$\vec i$};
+\draw[->,>=latex,line width=1pt,cap=round,color=black!30!red] (0,0) -- (0,1) node[pos=0.5,left] {$\vec j$};
+
+% Contenu
+\node[stylepoint,fill=blue,label={-5:$M$}] (A) at (2,-1) {};
+\end{axis}
+\end{tikzpicture}
+&
+\begin{resizetikz}{0.9\linewidth} % Repère quelconque à la main
+\begin{tikzpicture}
+\coordinate (liminf) at (-5,-2);
+\coordinate (limsup) at (5,5);
+\draw[line width=0.4pt,draw=black!30,densely dashed] (liminf) rectangle (limsup);
+\clip (liminf)+(-0.01,-0.01) rectangle (limsup)+(0.01,0.01);
+\begin{scope}[setupRepereTransformation={(1.5,-5),(1.5,70)}]
+\draw[step=1,line width=0.4pt,draw=black!30,densely dashed]($5*(-2,-2)$)+(-5.01,-5.01) grid ($5*(8,5)$)+(5.01,5.01);
+\tkzInit[xmin=5*(-2),xmax=5*10,ymin=5*(-2),ymax=5*5]
+\tkzDrawX[label={},tickup=3pt,tickdn=3pt]
+\tkzDrawY[label={},ticklt=2pt,tickrt=2pt]
+
+\node[label={-135:{O}}] (O) at (0,0) {};
+\draw[->,>=latex,line width=1pt,cap=round,color=black!30!red] (0,0) -- (1,0) node[pos=0.5,below] {$\vec i$};
+\draw[->,>=latex,line width=1pt,cap=round,color=black!30!red] (0,0) -- (0,1) node[pos=0.5,left] {$\vec j$};
+\node[stylepoint,label=45:{$M$},fill=blue,semithick] (M) at (-3,2) {}; 
+\end{scope}
+\end{tikzpicture}
+\end{resizetikz}
+\\
+$M( \ldots ; \ldots )$&$\makebox[2cm]{\dotfill}$&$\makebox[2cm]{\dotfill}$
+\end{tabularx}
+\end{exs}
+
+\end{document}
+
+\begin{defin}
+\compo[0.75]
+{
+On dit que le repère \Oij est orthonormé si:
+\begin{itemize}
+\item Ses axes sont perpendiculaires: $(OI) \ldots (OJ)$
+\item Les vecteurs unité $\vec i$ et $\vec j$ sont de même longueur: \makebox[2cm]{\dotfill}
+\end{itemize}
+}
+{
+\vspace{-2em}
+\begin{tikzpicture}
+\begin{axis}[
+styleglobal,
+repere,
+width=0.9*\linewidth,
+xmin=-2,xmax=5,
+ymin=-2,ymax=3,
+]
+\node[label={-135:{O}}] (O) at (0,0) {};
+\draw[->,>=latex,line width=1pt,cap=round,color=black!30!red] (0,0) -- (1,0) node[pos=0.5,below] {$\vec i$};
+\draw[->,>=latex,line width=1pt,cap=round,color=black!30!red] (0,0) -- (0,1) node[pos=0.5,left] {$\vec j$};
+
+% Contenu
+\node[stylepoint,fill=blue,label=-60:M] (M) at (3,2) {};
+\end{axis}
+\end{tikzpicture}
+\centering $\makebox[2cm]{\dotfill}$
+}
+\end{defin}
+
+\end{document}

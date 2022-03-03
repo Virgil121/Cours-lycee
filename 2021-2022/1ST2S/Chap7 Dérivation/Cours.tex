@@ -44,6 +44,8 @@
 
 Tangente, lim des sécantes. Lecture graphique de la dérivée
 
+\subsection{Détermination algébrique de la dérivée}
+
 \compo
 {
 \begin{center}
@@ -102,7 +104,9 @@ declare function={f(\x)=e^(0.75*(\x-1)-0.5);}
 \end{center}
 }
 
-\subsection{Détermination algébrique de la dérivée}
+\begin{prop}
+Soit $a \in \R$ et $h \in \R$. Alors le taux de variation $\dfrac{f(a+h)-f(a)}{h}$ se rapproche de $f'(a)$ à mesure que $h$ se rapproche de $0$.
+\end{prop}
 
 Formule générale avec schéma
 
@@ -110,9 +114,37 @@ Formule générale avec schéma
 
 \subsection{Généralités}
 
+\begin{defin}
+On définit la fonction dérivée de $f$, notée $f'$, qui à $x$ associe le coefficient directeur de la tangente à la courbe de $f$ au point d'abscisse $x$.
+\end{defin}
+
 \subsection{Dérivées usuelles et règles de calcul}
 
-$x,x^2,x^3$
+\begin{prop}
+On a les dérivées usuelles suivantes:
+\begin{center}\renewcommand{\arraystretch}{1.5}
+\begin{tabularx}{5cm}{|Y|Y|} \hline
+$f(x)$ & $f'(x)$ \\ \hline
+$k \in \R$ & $0$ \\ \hline
+$x$ & $1$ \\ \hline
+$x^2$ & $2x$ \\ \hline
+$x^3$ & $3x^2$ \\ \hline
+\end{tabularx}
+\end{center}
+\end{prop}
+
+
+\begin{prop}
+Soient $f$ et $g$ deux fonctions, et $\lambda \in \R$. Alors:
+\begin{itemize}
+\item $(f+g)'=f'+g'$
+\item $(\lambda f)'=\lambda f'$
+\end{itemize}
+\end{prop}
+
+\begin{ex}
+Soit $f:x \mapsto {\color{DarkRed}x^2}+{\color{DarkBlue}2x}+{\color{black}1}$. Alors $f'(x)={\color{DarkRed}2x}+{\color{DarkBlue}2 \times 1} + {\color{black}0} =2x+2$.
+\end{ex}
 
 $f(x)=\tikzmark{cube} \ 2x^{\tikzmark{expcube} 3}-\tikzmark{carre}3x^{\tikzmark{expcarre} 2}+5\cancel{x} \cancel{-1}$
 
@@ -123,5 +155,13 @@ somme, combinaisons linéaires
 
 \subsection{Lien avec les variations}
 
+\begin{thm}
+Soit $f$ une fonction et $a \in \R$, $b \in \R$.
+\begin{itemize}
+\item Si $f'$ est positive sur $[a;b]$, alors $f$ est croissante sur $[a;b]$.
+\item Si $f'$ est négative sur $[a;b]$, alors $f$ est décroissante sur $[a;b]$.
+\item Si $f'$ est nulle sur $[a;b]$, alors $f$ est constante sur $[a;b]$.
+\end{itemize}
+\end{thm}
 
 \end{document}

@@ -95,8 +95,6 @@
 \author{}
 \date{}
 
-\newcommand{\titre}[1]{\begin{center}{\fontfamily{cmr}\fontseries{bx}\selectfont \huge{#1}}\end{center}}
-
 \newcommand{\seconde}{2\textsuperscript{nde}}
 \newcommand{\premiere}{1\textsuperscript{ère}}
 
@@ -160,16 +158,6 @@
 % Environnement centrer sans passage à la ligne
 
 \newenvironment{centrer}{\par \centering }{ \par}
-
-% Remarques (avec compatibilité)
-% A refaire entièrement: problème avec options définies avant d'où les ifthenelse à foison
-
-\colorlet{couleurrem}{DarkGreen}
-
-\newcommand{\rembase}[1] {\begin{center} \color{couleurrem}\textit{#1} \end{center}}
-\newcommand{\remmbase}[1] {\rem{#1}} % A supprimer quand je serai sûr que ca n'est plus utilisé
-
-\newcommand{\rem}[2][]{\ifthenelse{\equal{#1}{black}}{\colorlet{couleurrem}{black}}{}\rembase{#2}\colorlet{couleurrem}{DarkGreen}} % Pour pouvoir utiliser l'option eleve sur les remarques plus tard. Option If pour compatibilité ...
 
 % Commandes sujets
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -305,30 +293,48 @@
 \newcommand{\pointsextremites}{node[pos=0,stylepointextremites] {} node[pos=1,stylepointextremites] {}}
 
 \tikzset{
->=latex,
-stylepoint/.style={
-	draw=black,			% couleur bord
-	color=black,
-	circle,
-	minimum size=1pt,	% ne sert à rien ici apparemment...
-	fill,
-	inner sep=1.8pt,	% taille intérieur
-	fill opacity=1,
-	semithick,			% epaisseur bord
-	%,line width=0.5pt	% épaisseur bord
-},
-stylepointextremites/.style={
-	circle,
-	minimum size=1pt,
-	fill,
-	inner sep=1pt,
-	fill opacity=1
-},
+	>=latex,
+	stylepoint/.style={
+		draw=black,			% couleur bord
+		color=black,
+		circle,
+		minimum size=1pt,	% ne sert à rien ici apparemment...
+		fill,
+		inner sep=1.8pt,	% taille intérieur
+		fill opacity=1,
+		semithick,			% epaisseur bord
+		%,line width=0.5pt	% épaisseur bord
+	},
+	stylepointextremites/.style={
+		circle,
+		minimum size=1pt,
+		fill,
+		inner sep=1pt,
+		fill opacity=1
+	},
+	stylegrille/.style={
+		step=1,
+		densely dashed,
+		line width=0.4pt,
+		draw=black!30
+	},
+	stylevecteur/.style={
+		line width=1pt,
+		->,
+		>=latex,
+		cap=round
+	},
+	setupRepereTransformation/.style args={(#1,#2),(#3,#4)}{	% Pour les repères non orthonormés
+		cm={#1*cos(#2),#1*sin(#2),#3*cos(#2+#4),#3*sin(#2+#4),(0,0)},
+	},
 }
 
 % Pour agrandir des images tikz. Fait comme \resizebox mais sans agrandir le texte, l'épaisseur des traits...
+\edef\tikzscale{1}
+\tikzset{every picture/.append style={scale=\tikzscale}}%
+
 \newsavebox{\measure@tikzpicture}
-\NewEnviron{scaletikzpicturetowidth}[1]{%
+\NewEnviron{resizetikz}[1]{%
   \def\tikz@width{#1}%
   \def\tikzscale{1}\begin{lrbox}{\measure@tikzpicture}%
   \BODY
@@ -336,6 +342,37 @@ stylepointextremites/.style={
   \pgfmathparse{#1/\wd\measure@tikzpicture}%
   \edef\tikzscale{\pgfmathresult}%
   \BODY
+  \edef\tikzscale{1}%
+}
+
+% Repères (Oij)
+
+\define@key{repere}{xmin}{\def\repere@xmin{#1}} % Définitions keys comme tikz
+\define@key{repere}{xmax}{\def\repere@xmax{#1}}
+\define@key{repere}{ymin}{\def\repere@ymin{#1}}
+\define@key{repere}{ymax}{\def\repere@ymax{#1}}
+%\savekeys{repere}{xmin,xmax,ymin,ymax}
+\presetkeys{repere}{xmin=-5,xmax=5,ymin=-5,ymax=5}{}
+
+% Les clés permettent d'avoir une syntaxe comme tikz: au lieu de faire \repereOij{xmin}{xmax}{ymin}{ymax}, on fait \repereOij[xmin=..xmax=..,ymin=..,ymax=..], dans le sens qu'on veut.
+
+%On pourra ajouter d'autres clés: origine=false, vecteursij=false pour supprimer les vecteurs i et j ou l'origine... On verra si c'est utile
+
+\newcommand{\repereOij}[1][]{
+\setkeys{repere}{#1}
+%Grille
+\draw[stylegrille] (\repere@xmin,\repere@ymin) grid (\repere@xmax,\repere@ymax);
+%Création des axes avec tkz-base
+\tkzInit[xmin=\repere@xmin,xmax=\repere@xmax,ymin=\repere@ymin,ymax=\repere@ymax]
+%On peut utiliser \tkzGrid pour la grille, mais la personnalisation est mal faite	
+\tkzSetUpAxis[ticka=3.5pt,tickb=3.5pt]	%Taille graduations
+\tkzDrawX[label={},right space=0pt,-]	%Axe X,pas de nombres,pas de flèche
+\tkzDrawY[label={},up space=0pt,-]	%Axe Y
+% Origine, vecteurs unité
+\coordinate[label={-135:{\scriptsize O}}] (O) at (0,0) {};	%Origine
+\draw[stylevecteur,color=black!30!red] (0,0) -- (1,0) node[pos=0.5,below] {$\scriptstyle \vec i$};
+\draw[stylevecteur,color=black!30!red] (0,0) -- (0,1) node[pos=0.5,left] {$\scriptstyle \vec j$};
+\clip (\repere@xmin,\repere@ymin) rectangle (\repere@xmax,\repere@ymax);
 }
 
 % Mémo tikz:
@@ -382,14 +419,20 @@ stylepointextremites/.style={
 	bottom=10pt,
 	left=10pt,
 	sharp corners,
+	breakable,
+	styleraster/.style={			% Pour aligner des tcbox sur une ligne
+		raster every box/.append style={breakable=false},			% Ne marche pas sans ça
+		raster columns=2,			% Nombre de tcbox par ligne
+		raster equal height,		% Même hauteur
+		raster column skip=10pt		% Ecartement horizontal
+	},
 }
 
 \newcommand{\deftcbUn}[6][10]{
 \definecolor{#2-titre}{Hsb}{#4,#5,#6}
 \colorlet{#2}{#2-titre!#1}
-\newtcolorbox{#2}[1][]{
+\newtcolorbox{#2}[1][]{	
 	colback=#2,
-	breakable,
 	borderline west={1pt}{0pt}{#2-titre},
 	title={\hspace{-10pt}\colorbox{#2-titre}{\hspace{7pt}\rule[-3pt]{0pt}{14.3pt}\MakeUppercase{#3}\ifstrempty{##1}{}{ (##1)}\hspace{7pt}}},
 	colbacktitle=#2,
@@ -595,57 +638,20 @@ stylepointextremites/.style={
 
 \DeclareOption{NB}{\optionNBtrue}
 
-\DeclareOption{minted}{
-	\optionmintedtrue
-}
+\DeclareOption{minted}{\optionmintedtrue}
 
-\DeclareOption{coursInline}{
-	\renewcommand{\baselinestretch}{1.1}
-	\tcbset{
-		rounded corners=southwest,
-		arc=5pt,
-		auto outer arc,
-		styletitre/.style={
-			sharp corners,
-			boxrule=0pt,
-			%boxsep=0pt,
-			enlarge bottom by=2pt,
-			enhanced jigsaw,
-			on line,
-			top=0pt,
-			bottom=0pt,
-			right=0mm,
-			left=3pt,
-		},
-	}
-	\renewcommand{\deftcbUn}[6][10]{
-	\definecolor{#2-titre}{Hsb}{#4,#5,#6}
-	\colorlet{#2}{#2-titre!#1}
-	\newtcolorbox{#2}[1][]{
-		colback=#2,
-		title={},
-		colbacktitle=#2,
-		top=0pt,
-		bottom=5pt,
-		enlarge bottom by=0pt,
-		%borderline west={1pt}{0pt}{#2-titre},
-		before upper={\colorlet{bg}{#2}\definecolor{bfcolor}{Hsb}{#4,0.75,0.15}\hspace{-10pt}\tcbox[styletitre,colback=#2-titre]{\rule[-3pt]{0pt}{14.3pt}{\color{white}\bfseries\MakeUppercase{#3}\ifstrempty{##1}{}{ (##1)} :}}\ },
-		after upper={\colorlet{bg}{white} \colorlet{bfcolor}{black}},
-	}
-	}
-}
+\DeclareOption*{}
 
 \ProcessOptions
+
+\definecolor{titre}{HTML}{912c21}
+\definecolor{section}{HTML}{1c567d}
+\definecolor{subsection}{HTML}{2673a6}
+\definecolor{subsubsection}{HTML}{2f90d0}
 
 \ifoptioncours
 	
 	% Formats titres, sections
-	
-	\definecolor{titre}{HTML}{912c21}
-	\definecolor{section}{HTML}{1c567d}
-	\definecolor{subsection}{HTML}{2673a6}
-	\definecolor{subsubsection}{HTML}{2f90d0}
-
 	\renewcommand{\thesection}{\Roman{section} - }
 	\renewcommand{\thesubsection}{\arabic{subsection}. }
 	\renewcommand{\thesubsubsection}{\alph{subsubsection}) }
@@ -671,7 +677,7 @@ stylepointextremites/.style={
   
   	% Si fourier-otf, retirer le changement de police+Huge+enlever bf
 
-	\renewcommand{\titre}[1]{\title{#1} \maketitle}
+	\newcommand{\titre}[1]{\title{#1} \maketitle}
 	
 	% Template: \deftcb{identifiant}{Nom}{Teinte}{Saturation}{Luminosité} ( Modèle HSB )
 	\deftcb{defin}{Définition}{211}{0.8}{0.75}
@@ -704,24 +710,46 @@ stylepointextremites/.style={
 	
 	\renewcommand{\textbf}[1]{{\color{bfcolor}\TextOrMath{{\bfseries #1}}{\mathbf{#1}}}}
 	
-	\renewcommand{\rembase}[1]{\begin{remq} \begin{tabulary}{0.5\linewidth}{>{$\blacktriangleright$ \ }L} #1 \end{tabulary} \end{remq}}
+	% Remarques perso	
+	
+	\newcommand{\rembase}[1]{\begin{remq} \begin{tabulary}{0.5\linewidth}{>{$\blacktriangleright$ \ }L} #1 \end{tabulary} \end{remq}}
 	\NewDocumentEnvironment{remsbase}{b}{\begin{remq} \begin{tabulary}{0.5\linewidth}{>{$\blacktriangleright$ \ }L} #1 \end{tabulary} \end{remq}}{\par}	
 	
-	\renewcommand{\rem}[2][]{\rembase{#2}}
+	\newcommand{\rem}[2][]{\rembase{#2}}
 	\NewDocumentEnvironment{rems}{ob}{\begin{remsbase}#2\end{remsbase}}{\par}
 			
 \else % Style +- à l'ancienne
 
 	% Style des sections
 
-	\renewcommand{\thesection}{\Roman{section} - \hspace{-2ex}}
-	\renewcommand{\thesubsection}{\arabic{subsection}) \hspace{-2ex}}
-	\renewcommand{\thesubsubsection}{\alph{subsubsection}) \hspace{-2ex}}
+	\renewcommand{\thesection}{\Roman{section} - }
+	\renewcommand{\thesubsection}{\arabic{subsection}) }
+	\renewcommand{\thesubsubsection}{\alph{subsubsection}) }
 
-	\titlespacing*{\section}{0mm}{0mm}{1mm}
-	\titlespacing*{\subsection}{10mm}{0mm}{3mm}
-	\titlespacing*{\subsubsection}{20mm}{0mm}{3mm}
+	\newcommand{\sectionstyle}{\normalfont\Large\bfseries}
+	\titleformat{\section}{\sectionstyle}{\hspace{0.1\linewidth}\thesection #1}{0pt}{}[]
+	\titleformat{name=\section, numberless}{\sectionstyle}{\hspace{0.1\linewidth}#1}{0pt}{}
 
+	\newcommand{\subsectionstyle}{\normalfont\large\bfseries}
+	\titleformat{\subsection}{\subsectionstyle}{\hspace{0.13\linewidth}\thesubsection #1}{0pt}{}
+	\titleformat{name=\subsection, numberless}{\subsectionstyle}{\hspace{0.13\linewidth}#1}{0pt}{}
+	
+	\newcommand{\subsubsectionstyle}{\normalfont\large\bfseries}
+	\titleformat{\subsubsection}{\subsubsectionstyle}{\hspace{0.16\linewidth}\thesubsubsection #1}{0pt}{}
+	\titleformat{name=\subsubsection, numberless}{\subsubsectionstyle}{\hspace{0.16\linewidth}#1}{0pt}{}
+
+%	\titlespacing*{\section}{0mm}{0mm}{1mm}
+%	\titlespacing*{\subsection}{10mm}{0mm}{3mm}
+%	\titlespacing*{\subsubsection}{20mm}{0mm}{3mm}
+
+%	\newcommand{\titre}[1]{\begin{center}{\fontfamily{cmr}\fontseries{bx}\selectfont \huge\color{titre!70!black}{#1}}\par\vspace{-5pt}\textcolor{darkgray}{\hrule}%
+%	\vspace{2pt}%
+%	\textcolor{darkgray}{\hrule height 2pt depth 0pt \relax}%
+%	\end{center}
+%	}
+	\newcommand{\titre}[1]{\begin{center}{\fontfamily{cmr}\fontseries{bx}\selectfont\huge{#1}}
+	\end{center}
+	}
 	\def\@maketitle{\centering  \let \footnote \thanks {\huge \@title \par}\par\vskip 2em}
 	\NewDocumentEnvironment{programme}{b}{\section*{Programme}\setstretch{0.75}{\footnotesize{\begin{itemize}#1\end{itemize}}}}{\par}
 	\NewDocumentEnvironment{deroule}{b}{\section*{Déroulé}\setstretch{0.75}{\footnotesize{\begin{itemize}#1\end{itemize}}}}{\par}
@@ -738,12 +766,24 @@ stylepointextremites/.style={
 	\theoreminframepreskip{0mm}
 	\theoremnumbering{arabic}
 	
+	% Remarques (avec compatibilité)
+	% A refaire entièrement: problème avec options définies avant d'où les ifthenelse à foison
+	
+	\colorlet{couleurrem}{DarkGreen}
+	
+	\newcommand{\rembase}[1] {\begin{center}\textit{#1}\end{center}}
+	\newcommand{\remmbase}[1] {\rem{#1}} % A supprimer quand je serai sûr que ca n'est plus utilisé
+	
+	\newcommand{\rem}[2][]{\rembase{#2}} % Pour pouvoir utiliser l'option eleve sur les remarques plus tard. Option If pour compatibilité ...	
+	
 	\ifoptionTD
 	
 		\geometry{margin=10mm, bottom=17mm}
-		\setlength\columnsep{10pt}
-		
-		\renewcommand{\titre}[1]{\begin{center}{\fontfamily{cmr}\fontseries{bx}\selectfont\huge{#1}}\end{center}}
+		\setlength\columnsep{20pt}	
+		\renewcommand{\sectionstyle}{\normalfont\large\bfseries\color{section!50!black}}
+		\renewcommand{\subsectionstyle}{\normalfont\large\bfseries\color{subsection!50!black}}
+		\renewcommand{\subsubsectionstyle}{\normalfont\large\bfseries\color{subsubsection!50!black}}
+	
 		%\color[HTML]{682018}
 		
 	\fi
@@ -830,17 +870,6 @@ stylepointextremites/.style={
 	
 	\fi
 	
-	\ifoptionNB
-	
-		\definecolor{couleurExo}{Hsb}{0,0,0.25}
-		%\newcommand{\NB}{ NB}
-		
-	\else
-	
-		%\newcommand{\NB}{}
-		
-	\fi	
-	
 	% Style théorèmes
 	
 	\theorembodyfont{\normalfont}
@@ -915,7 +944,13 @@ stylepointextremites/.style={
 	
 \fi
 
+\ifoptionNB
 	
+	\tcbset{opacityback=0.5,opacitybacktitle=0.5}
+	\definecolor{couleurExo}{Hsb}{0,0,0.25}
+	\def\tkzTabDefaultBackgroundColor{bg!50}
+	%\newcommand{\NB}{ NB}
+\fi
 
 %%% Test
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -946,4 +981,41 @@ stylepointextremites/.style={
 \deftcbUn{exotcbbase}{Exercice \thecompteurexostcb}{30}{0.8}{0.75} % Ne pas utiliser, compteur pas incrémenté ( utiliser exercice)
 
 %\newenvironment{exercice}[1][]{\stepcounter{compteurexostcb}\begin{exotcbbase}[#1]}{\end{exotcbbase}}
+
+\DeclareOption{coursInline}{
+	\renewcommand{\baselinestretch}{1.1}
+	\tcbset{
+		rounded corners=southwest,
+		arc=5pt,
+		auto outer arc,
+		styletitre/.style={
+			sharp corners,
+			boxrule=0pt,
+			%boxsep=0pt,
+			enlarge bottom by=2pt,
+			enhanced jigsaw,
+			on line,
+			top=0pt,
+			bottom=0pt,
+			right=0mm,
+			left=3pt,
+		},
+	}
+	\renewcommand{\deftcbUn}[6][10]{
+	\definecolor{#2-titre}{Hsb}{#4,#5,#6}
+	\colorlet{#2}{#2-titre!#1}
+	\newtcolorbox{#2}[1][]{
+		colback=#2,
+		title={},
+		colbacktitle=#2,
+		top=0pt,
+		bottom=5pt,
+		enlarge bottom by=0pt,
+		%borderline west={1pt}{0pt}{#2-titre},
+		before upper={\colorlet{bg}{#2}\definecolor{bfcolor}{Hsb}{#4,0.75,0.15}\hspace{-10pt}\tcbox[styletitre,colback=#2-titre]{\rule[-3pt]{0pt}{14.3pt}{\color{white}\bfseries\MakeUppercase{#3}\ifstrempty{##1}{}{ (##1)} :}}\ },
+		after upper={\colorlet{bg}{white} \colorlet{bfcolor}{black}},
+	}
+	}
+}
+
 \end{comment}

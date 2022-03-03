@@ -1,112 +1,310 @@
 \documentclass[,a4paper,12pt,french]{article}
 
-\usepackage{../../../Style}
+\usepackage[TD]{../../../Style}
 
-\renewcommand\tabularxcolumn[1]{m{#1}}
+%Quelques tests
 
-\setlist[itemize]{align=parleft,left=5pt..15pt}
-\setlist[enumerate]{align=parleft,left=5pt..20pt}
+%\NewDocumentEnvironment{scaletikzpicture}{mO{}b}{
+%\begin{resizetikz}{#1} % Repère quelconque à la main
+%\begin{tikzpicture}[scale=\tikzscale,#2]
+%#3
+%\end{tikzpicture}
+%\end{resizetikz}}{}
 
-\pagestyle{empty}
+%\usepackage{xkeyval}
+
+%\NewDocumentCommand{\repereOij}{>{\SplitArgument{4}{,}}m}{\repereOijbase #1} % Pour faire {xmin,xmax,ymin,ymax} au lieu de {xmin}{xmax}{ymin}{ymax} dans la fonction repereOijbase -- j'ai mieux maitenant
+
+%Pour la géométrie, mieux vaut utiliser tkz-base // tkz-euclide plutôt que pgfplots... Gestion des angles et coordonnées en ++ moins bonnes
+
+%\renewcommand\tkzGrid{%
+%\begingroup
+%	 \edef\tkz@gxa{\fpeval{(\tkz@tmp@xa-\tkz@init@xorigine)/\tkz@init@xstep}}
+%	 \edef\tkz@gxb{\fpeval{(\tkz@tmp@xb-\tkz@init@xorigine)/\tkz@init@xstep}}
+%	 \edef\tkz@gya{\fpeval{(\tkz@tmp@ya-\tkz@init@yorigine)/\tkz@init@ystep}}
+%	 \edef\tkz@gyb{\fpeval{(\tkz@tmp@yb-\tkz@init@yorigine)/\tkz@init@ystep}}
+%\draw [color= black!30,line width = 0.4pt,densely dashed]%
+%           (\tkz@gxa,\tkz@gya) grid (\tkz@gxb,\tkz@gyb);
+%\endgroup}
 
 % Début du document
 %%%%%%%%%%%%%%%%%%%
 \begin{document}
+\titre{Repères et coordonnées - Exercices}
 
-\titre{Fonctions affines - Exercices}
+\begin{multicols*}{2}
 
-\begin{exercice}
-Parmi les fonctions suivantes, lesquelles sont des fonctions affines?
-
-\noindent $ f:x \mapsto 3x-2 \hfill g:x \mapsto x^2 \hfill h:x \mapsto 1 \hfill i:x \mapsto \frac 1 x + 1 \hfill j:x \mapsto -(x-4)+3x-1$
-\end{exercice}
-
-\begin{exercice} \label{exorep} \ 
-
-\compo[0.4]
-{
-Associer aux trois droites ci-dessous la fonction affine qui leur est associée parmi les suivantes:
-
-\begin{itemize}
-\item $ f:x \mapsto 2x$
-\item $g:x \mapsto -0.5x+2$
-\item $h:x \mapsto \frac x 5 +1$
-\end{itemize}
-}
-{
-\vspace{-5mm}
-\begin{centrer}
-\begin{tikzpicture}[scale=\echellepgf]
-\begin{axis}[
-styleglobal,
-width=0.95*\echellepgfinv*\linewidth,
-xmin=-3, xmax=9,
-ymin=-2, ymax=4,
-xtick distance=1,
-ytick distance=1,
-]
-\addplot[styleplot,domain=(-9:9)]{2*x};
-\addplot[color=red,styleplot,densely dashed,domain=(-9:9)]{-0.5*x+2};
-\addplot[color=blue,styleplot,densely dotted,domain=(-9:9)]{0.2*x+1};
-\end{axis}
-\end{tikzpicture}
-\end{centrer}
-}
-\end{exercice}
+\section{Coordonnées de vecteurs}
 
 \begin{exercice}
-Représenter sur un même repère les droites d'équation $y=x-2$, $y=0.25x$ et $y=3-1.5x$.
-\end{exercice}
-
-\begin{exercice}
-Représenter sur un même repère les droites suivantes:
-\begin{itemize}
-\item $d_1$ passant par $A(0;-1)$ et de coefficient directeur $1$
-\item $d_2$ passant par $B(-3;2)$ et de coefficient directeur $-2$
-\item $d_3$ passant par $C(-1;1)$ et de coefficient directeur $\frac 1 2$
-\end{itemize}
-\end{exercice}
-
-\begin{exercice}
-Trouver l'équation réduite de chaque droite:
+Par lecture graphique, donner les coordonnées des vecteurs représentés ci-dessous:
 
 \begin{centrer}
-\begin{tikzpicture}[scale=\echellepgf]
-\begin{axis}[
-styleglobal,
-width=0.8*\echellepgfinv*\linewidth,
-xmin=-3, xmax=9,
-ymin=-2, ymax=4,
-xtick distance=1,
-ytick distance=1,
-%major grid style={line width=1pt},
+\begin{resizetikz}{0.9\linewidth}
+\begin{tikzpicture}
+\repereOij[
+xmin=-5,
+xmax=9,
+ymin=-2,
+ymax=5
 ]
-\addplot[styleplot,domain=(-1:3)]{3*x-0.5} node[pos=0.55,right] {$d_1$};
-\addplot[color=red,styleplot,densely dashed,domain=(-9:9)]{0.25*x+2} node[pos=0.9,below] {$d_2$};
-\addplot[color=blue,styleplot,densely dotted,domain=(-9:9)]{-0.5*x+1} node[pos=0.8,above right] {$d_3$};
-\end{axis}
+\draw[stylevecteur] (-4,3) -- ++(5,-1) node[pos=0.5,above] {$\vec u$};
+\draw[stylevecteur] (4,4) -- ++(-2,-3) node[pos=0.5,above left] {$\vec v$};
+\draw[stylevecteur] (-3,-1) -- ++(11,2) node[pos=0.5,above] {$\vec w$};
+\draw[stylevecteur] (8,0) -- ++(-3,3) node[pos=0.5,above right] {$\vec \alpha$};
 \end{tikzpicture}
+\end{resizetikz}
 \end{centrer}
 \end{exercice}
 
-\begin{exercice}
-Par lecture graphique, retrouver les équations des trois droites de l'exercice \ref{exorep}.
+\begin{exercice} On se donne le repère ci-dessous:
+
+\begin{centrer}
+\begin{resizetikz}{0.9\linewidth}
+\begin{tikzpicture}
+\repereOij[
+xmin=-5,
+xmax=9,
+ymin=-2,
+ymax=5
+];
+\end{tikzpicture}
+\end{resizetikz}
+\end{centrer}
+
+\begin{enumerate}
+\item Sur le repère ci-dessous, placer les points $A(6;2)$, $B(3;-1)$ et $C(-2;4)$.
+\item En déduire les coordonnées des vecteurs $\vec{AB}$, $\vec{AC}$ et $\vec{BC}$.
+\item Retrouver par le calcul les résultats précédents.
+\end{enumerate}
 \end{exercice}
 
 \begin{exercice}
-Déterminer l'équation réduite des droites suivantes:
-\begin{itemize}
-\item $d_1$ qui passe par $A_1(0;1)$ et $B_1(2;5)$
-\item $d_2$ qui passe par $A_2(-3;5)$ et $B_2(1;-7)$
-\item $d_3$ qui passe par $A_3(2;0.5)$ et $B_3(-1;-1)$
-\end{itemize}
+Soient $A(3;3)$, $B(6;-1)$ et $C(-4;7)$. Donner les coordonnées des vecteurs $\vv{AB}, \vv{AC}, \vv{BC}$.
 \end{exercice}
 
 \begin{exercice}
-Dresser le tableau de signes des fonctions affines suivantes:
-
-\noindent $f:x \mapsto 3x-2 \hfill g:x \mapsto 2-5x \hfill h:x \mapsto \frac 1 2 + 4x \hfill i:x \mapsto -(x-4)+3x-1 \hfill j:x \mapsto \frac x 4 - \frac 2 3$
-
+Soient $A(-2;-1)$, $B(3;1)$, $C(1;3)$ et $D(-4;1)$. Montrer que $ABCD$ est un parallélogramme.
 \end{exercice}
 
+\begin{exercice}
+On donne les points: $A(0;5)$, $B(-2;1)$ et $C(5;4)$. 
+
+\begin{enumerate}
+\item Calculer les coordonnées du vecteur $\vv{AB}$.
+\item Déterminer les coordonnées du point $D$ tel que $ABCD$ soit un parallélogramme.
+\end{enumerate}
+\end{exercice}
+
+\begin{exercice}
+On se donne les vecteurs $\vv{u}\binom{1}{2}$, $\vv{v}\binom{-1}{3}$ et $\vv{w}\binom{\frac{1}{2}}{-7}$. Calculer les coordonnées de:\\
+$\vv{u}+\vv{v} \hfill 3\vv v \hfill \vv{u}-\vv{w} \hfill 4\vv{w}+\vv{v} \hfill \dfrac{3}{4}\vv{u}-\dfrac{1}{3}\vv{v}$
+\end{exercice}
+
+\section{Norme d'un vecteur}
+
+On suppose à partir de maintenant que tous les repères utilisés sont orthonormés.
+
+\begin{exercice}
+On considère les points $A(2;3)$, $B(-1;4)$, $C(2,1)$. Calculer les normes suivantes:\\
+$\strut\hfill \left\Vert \vv{AB} \right\Vert
+\hfill \left\Vert \vv{BC} \right\Vert
+\hfill \left\Vert 2\vv{AB} \right\Vert
+\hfill \left\Vert \vv{AC} \right\Vert \hfill$
+\end{exercice}
+
+\begin{exercice}
+Soient $\mathcal{C}$ le cercle de centre $I(1;2)$ et de rayon $5$ et $M(5;5)$.
+\begin{enumerate}
+    \item Calculer la distance $IM$.
+    \item Le point $M$ appartient-il au cercle $\mathcal{C}$?
+\end{enumerate}
+\end{exercice}
+
+\begin{exercice}
+Soient $A(6;5)$,$B(2;-3)$ et $C(-4;0)$. Quelle est la nature du triangle $ABC$?
+\begin{centrer}
+	\begin{resizetikz}{0.9\linewidth}
+    \begin{tikzpicture}
+    \repereOij[xmin=-7,xmax=7,ymin=-3,ymax=5]
+    \coordinate[label=above right:$A$] (A) at (5,4) {};
+    \coordinate[label=below:$B$] (B) at (2,-2) {};
+    \coordinate[label=above left:$C$] (C) at (-4,1) {};
+    \draw[line width=1pt] (A) -- (B) -- (C) -- (A) -- cycle; %join=round?
+    \end{tikzpicture}
+    \end{resizetikz}
+\end{centrer}
+\end{exercice}
+
+\begin{exercice}
+Soit $A(2;3)$, $B(-1,3)$ et $C(4,-5)$. Donner les coordonnées des milieux $I$ de $[AB]$, $J$ de $[AC]$ et $K$ de $[BC]$.
+\end{exercice}
+
+\begin{exercice}
+$A$ est un point et $k\in \R^{*}$. On appelle homothétie de centre $A$ et rapport $k$ la fonction qui transforme pour tout point $M$ du plan le vecteur $\vv{AM}$ en $k\vv{AM}$. On note alors $M'$ le point tel que $\vv{AM'}=k\vv{AM}$.\\
+Considérons une homothétie de rapport $k$.
+\begin{enumerate}
+    \item Montrer que pour $N,M$, $\vv{M'N'}=k\vv{MN}$.
+    \item En déduire que les droites $(MN)$ et $(M'N')$ sont parallèles.
+    \item Démontrer que $M'N'=\vert k\vert MN$.
+    \item Construire l'image de la figure $f$ par une homothétie de rapport $2$ de centre $A$.
+    \item Quel est le rapport d'aire entre celui de $f$ et celui de $f'$?
+\end{enumerate}
+\begin{centrer}
+    \begin{resizetikz}{0.9\linewidth}
+    \begin{tikzpicture}
+    \repereOij
+    \draw[fill=white] (-3,2) rectangle (-1,3);
+    \draw (-2,2.5) node{$f$};
+    \draw (-4,4) node{$\times$};
+    \draw (-4,4) node[above]{$A$};
+    \end{tikzpicture}
+    \end{resizetikz}
+\end{centrer}
+\end{exercice}
+
+\begin{exercice}
+On considère les points $A(2;3)$ et $B(-1;4)$.
+\begin{center}
+	\begin{resizetikz}{0.9\linewidth}
+    \begin{tikzpicture}
+    \repereOij[xmin=-2,xmax=7,ymin=-2,ymax=7]
+    \draw (2,3) node{$\times$};
+    \draw (2,3) node[above]{$A$};
+    \draw (-1,4) node{$\times$};
+    \draw (-1,4) node[above]{$B$};
+    \end{tikzpicture}
+    \end{resizetikz}
+\end{center}
+Donner l'ensemble des points $C(x;y)$ tel que $ABC$ soit isocèle en $C$.
+\end{exercice}
+
+\begin{exercice}
+Prenons les points $A(1;-2)$ $B(2;5)$.
+Déterminer l'intersection de la médiatrice du segment $[AB]$ avec l'axe des abscisses.
+\end{exercice}
+
+\section{Colinéarité}
+
+\begin{exercice}
+Déterminer les déterminants des couples de vecteurs suivants:
+\begin{enumerate}
+    \item $\vv{u}\binom{1}{4}$ et $\vv{v}\binom{7}{3}$
+    \item $\vv{u}\binom{-1}{2}$ et $\vv{v}\binom{-3}{5}$
+    \item $\vv{u}\binom{4}{2}$ et $\vv{v}\binom{-2}{1}$
+\end{enumerate}
+\end{exercice}
+
+\begin{exercice}
+Considérons les vecteurs $\vv{u}\binom{3}{9}$ et $\vv{v}\binom{6}{18}$. $\vv{u}$ et $\vv{v}$ sont-ils colinéaires?
+\end{exercice}
+
+\begin{exercice}
+Prenons $\vv{u}\binom{3}{-1}$ et $\vv{v}\binom{4}{m}$ où $m\in \R$. Pour quelle valeur de $m$ les vecteurs $\vv{u}$ et $\vv{v}$ sont-ils colinéaires?
+\end{exercice}
+
+\begin{exercice}
+Dans un repère orthonormée on considère les points suivants:\\
+$A(-1;4) \hfill B(\frac{1}{2};1) \hfill C(3;-4) \hfill D(-1;0) \hfill E(0;-2)$
+\begin{enumerate}
+    \item Placer les points dans le repère ci-dessous
+    \begin{center}
+    	\begin{resizetikz}{0.9\linewidth}
+        \begin{tikzpicture}
+        \repereOij
+        \end{tikzpicture}
+        \end{resizetikz}
+    \end{center}
+    \item Montrer que $A,B,C$ sont alignés.
+    \item Démontrer que $(DE)$ et $(AB)$ sont parallèles.
+\end{enumerate}
+\end{exercice}
+
+\begin{exercice}
+Considérons les points: $A(2;3),\; B(5;7)$ et  $C(-7;-9)$.\\
+Les points $A,B$ et $C$ sont-ils alignés?
+        \begin{center}
+        \begin{resizetikz}{0.9\linewidth}
+        \begin{tikzpicture}
+        \repereOij[xmin=-10,xmax=8,ymin=-10,ymax=10]
+        \node[stylepoint,fill=blue,label=south east:$A$] (A) at (2,3) {};
+        \node[stylepoint,fill=blue,label=south east:$B$] (B) at (5,7) {};
+        \node[stylepoint,fill=blue,label=north west:$C$] (C) at (-7,-9) {};
+        \end{tikzpicture}
+        \end{resizetikz}
+        \end{center}
+\end{exercice}
+
+\end{multicols*}
 \end{document}
+
+
+
+
+
+
+
+
+\begin{comment}
+\begin{resizetikz}{0.9\linewidth} % Repère quelconque à la main
+\begin{tikzpicture}
+\binominate (liminf) at (-5,-2);
+\binominate (limsup) at (9,5);
+%\draw[line width=0.4pt,draw=black!30,densely dashed] (liminf) rectangle (limsup);
+%\clip (liminf)+(-0.01,-0.01) rectangle (limsup)+(0.01,0.01);
+%\draw[step=1,line width=0.4pt,draw=black!30,densely dashed](liminf) grid (limsup);
+\tkzInit[xmin=-5,xmax=9,ymin=-2,ymax=5]
+\tkzGrid
+\tkzDrawX[label={},tickup=4pt,tickdn=4pt]
+\tkzDrawY[label={},ticklt=4pt,tickrt=4pt]
+\node[label={-135:{O}}] (O) at (0,0) {};
+\draw[->,>=latex,line width=1pt,cap=round,color=black!30!red] (0,0) -- (1,0) node[pos=0.5,below] {$\vec i$};
+\draw[->,>=latex,line width=1pt,cap=round,color=black!30!red] (0,0) -- (0,1) node[pos=0.5,left] {$\vec j$};
+% Contenu
+\draw[stylevecteur] (-4,3) -- ++(5,-1) node[pos=0.5,above] {$\vec u$};
+\draw[stylevecteur] (4,4) -- ++(-2,-3) node[pos=0.5,above left] {$\vec v$};
+\draw[stylevecteur] (-3,-1) -- ++(11,2) node[pos=0.5,above] {$\vec w$};
+\draw[stylevecteur] (8,0) -- ++(-3,3) node[pos=0.5,above right] {$\vec \alpha$};
+\end{tikzpicture}
+\end{resizetikz}
+
+\begin{tikzpicture}
+\begin{axis}[
+styleglobal,
+repere,
+width=0.9*\linewidth,
+xmin=-5,xmax=9,
+ymin=-2,ymax=5,
+]
+\node[label={-135:{O}}] (O) at (0,0) {};
+\draw[->,>=latex,line width=1pt,cap=round,color=black!30!red] (0,0) -- (1,0) node[pos=0.5,below] {$\vec i$};
+\draw[->,>=latex,line width=1pt,cap=round,color=black!30!red] (0,0) -- (0,1) node[pos=0.5,left] {$\vec j$};
+
+% Contenu
+\draw[stylevecteur] (-4,3) -- ++(axis direction cs:5,-1) node[pos=0.5,above] {$\vec u$};
+\draw[stylevecteur] (4,4) -- ++(axis direction cs:-2,-3) node[pos=0.5,above left] {$\vec v$};
+\draw[stylevecteur] (-3,-1) -- ++(axis direction cs:11,2) node[pos=0.5,above] {$\vec w$};
+\draw[stylevecteur] (8,0) -- ++(axis direction cs:-3,3) node[pos=0.5,above right] {$\vec \alpha$};
+\end{axis}
+\end{tikzpicture}
+\begin{resizetikz}{0.9\linewidth} % Repère quelconque à la main
+\begin{tikzpicture}
+\binominate (liminf) at (-5,-2);
+\binominate (limsup) at (9,5);
+%\draw[line width=0.4pt,draw=black!30,densely dashed] (liminf) rectangle (limsup);
+%\clip (liminf)+(-0.01,-0.01) rectangle (limsup)+(0.01,0.01);
+\draw[step=1,line width=0.4pt,draw=black!30,densely dashed](liminf) grid (limsup);
+\tkzInit[xmin=-5,xmax=9,ymin=-2,ymax=5]
+\tkzDrawX[label={},tickup=4pt,tickdn=4pt]
+\tkzDrawY[label={},ticklt=4pt,tickrt=4pt]
+\node[label={-135:{O}}] (O) at (0,0) {};
+\draw[->,>=latex,line width=1pt,cap=round,color=black!30!red] (0,0) -- (1,0) node[pos=0.5,below] {$\vec i$};
+\draw[->,>=latex,line width=1pt,cap=round,color=black!30!red] (0,0) -- (0,1) node[pos=0.5,left] {$\vec j$};
+% Contenu
+\draw[stylevecteur] (-4,3) -- ++(5,-1) node[pos=0.5,above] {$\vec u$};
+\draw[stylevecteur] (4,4) -- ++(-2,-3) node[pos=0.5,above left] {$\vec v$};
+\draw[stylevecteur] (-3,-1) -- ++(11,2) node[pos=0.5,above] {$\vec w$};
+\draw[stylevecteur] (8,0) -- ++(-3,3) node[pos=0.5,above right] {$\vec \alpha$};
+\end{tikzpicture}
+\end{resizetikz}
+\end{comment}

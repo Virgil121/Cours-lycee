@@ -1,13 +1,18 @@
 \documentclass[a4paper,12pt,french]{article}
 
-\usepackage[cours,eleve]{../../../Style}
+\usepackage[cours,eleve,NB]{../../../Style}
 %\geometry{bottom=1cm}
 \usetikzlibrary{decorations.markings}
 
 \newlength{\longueurpoints}
 \newcommand{\pointscompleter}[1]{%
 \settowidth{\longueurpoints}{#1}%
-\makebox[1.2\longueurpoints]{\strut\dotfill}%
+%\leavevmode
+%  \linebreak[0]%
+%  \mbox{}\nobreak
+%  \cleaders \hb@xt@ .44em{\hss.\hss}\hskip\longueurpoints plus 1fill minus 0pt
+%  \kern\z@
+\makebox[\longueurpoints]{\strut\dotfill}%
 }
 
 \pagestyle{empty}
@@ -32,15 +37,15 @@ On se donne dans cette partie $f$ une fonction définie sur un intervalle $I$.
 On dit que $f$ est \pointscompleter{croissante} sur $I$ si lorsque la variable augmente dans $I$, les images augmentent aussi. L'ordre est conservé:
 
 \begin{center}
-Pour $x,y \in I$, si $x \leq y$ alors \pointscompleter{$f(x) \leq f(y)$}.
+Pour $x,y \in I$, si $x \leq y$ alors \pointscompleter{$f(x) \leq f(y)$.}
 \end{center}
 
-Graphiquement, la courbe de $f$ "monte": \nearrow
+Graphiquement, la courbe de $f$ \pointscompleter{"monte": \nearrow}
 \begin{center}
 \begin{tikzpicture}[scale=\echellepgf]
 \begin{axis}[
 styleglobal,
-width=0.8*\echellepgfinv*\linewidth,
+width=0.9*\echellepgfinv*\linewidth,
 xmin=-0.5, xmax=2,
 ymin=-0.5, ymax=2,
 xtick distance=0.5,
@@ -61,10 +66,10 @@ declare function={f(\x)=e^(\x-1);}
 On dit que $f$ est \pointscompleter{décroissante} sur $I$ si lorsque la variable augmente dans $I$, les images diminuent. L'ordre n'est pas conservé:
 
 \begin{center}
-Pour $x,y \in I$, si $x \leq y$ alors \pointscompleter{$f(x) \geq f(y)$}.
+Pour $x,y \in I$, si $x \leq y$ alors \pointscompleter{$f(x) \geq f(y)$.}
 \end{center}
 
-Graphiquement,la courbe de $f$ "descend": \searrow
+Graphiquement,la courbe de $f$ \pointscompleter{"descend": \searrow}
 \begin{center}
 \begin{tikzpicture}[scale=\echellepgf]
 \begin{axis}[
@@ -93,7 +98,7 @@ declare function={f(\x)=e^(0.5-\x);}
 On se donne la fonction $f$, définie sur $\left[1;7\right]$ et représentée ci-contre.
 
 \begin{itemize}
-\item $f$ est \pointscompleter{croissante} sur $[1;4]$ puis \pointscompleter{décroissante} sur $[4;7]$.
+\item $f$ est \pointscompleter{croissante} sur $[1;4]$ puis \pointscompleter{décroissante} sur \ldots\ldots\ldots
 \item $f$ est \pointscompleter{croissante} sur $[1;4]$ et $2 \ldots 3$ donc $f(2) \ldots f(3)$.
 \item $f$ est \pointscompleter{décroissante} sur $[4;7]$ et $5 \ldots 6$ donc $f(5) \ldots f(6)$.
 \end{itemize}
@@ -131,6 +136,7 @@ Pour $x,y \in I$, on a $f(x)=f(y)$.
 
 \newpage
 
+\setcounter{section}{2}
 \section{Extrémas d'une fonction sur un intervalle}
 
 \begin{defins}
@@ -148,7 +154,7 @@ Le maximum d'une fonction correspond au point le plus \pointscompleter{"haut"} d
 \begin{ex} \saut
 \compo[0.55]
 {
-On reprend la fonction $f$ de l'exemple précédent.
+On reprend la fonction $g$ de l'exemple précédent.
 
 \
 
@@ -171,7 +177,7 @@ ytick distance=1,
 xtick distance=1
 %scale=0.7
 ]
-\addplot[styleplot,tension=0.45] plot coordinates {(-2,1.5) (-1,4) (1,0) (2,-1) (4,0) (5,2)} node [pos=0.9,above left] {$\mathscr C_f$} \pointsextremites;
+\addplot[styleplot,tension=0.45] plot coordinates {(-2,1.5) (-1,4) (1,0) (2,-1) (4,0) (5,2)} node [pos=0.9,above left] {$\mathscr C_g$} \pointsextremites;
 %\node[stylepoint,fill=DarkGreen] at (-1,4) {};
 %\node[stylepoint,fill=DarkGreen] at (2,-1) {};
 %\addplot[styleplot,dashed,color=DarkGreen] plot {4} node[pos=0.8,above] {\textbf{maximum}};
@@ -184,7 +190,7 @@ xtick distance=1
 
 \vfill
 
-\setcounter{section}{1}
+\setcounter{section}{2}
 \section{Extrémas d'une fonction sur un intervalle}
 
 \begin{defins}
@@ -202,7 +208,7 @@ Le maximum d'une fonction correspond au point le plus \pointscompleter{"haut"} d
 \begin{ex} \saut
 \compo[0.55]
 {
-On reprend la fonction $f$ de l'exemple précédent.
+On reprend la fonction $g$ de l'exemple précédent.
 
 \
 
@@ -225,7 +231,7 @@ ytick distance=1,
 xtick distance=1
 %scale=0.7
 ]
-\addplot[styleplot,tension=0.45] plot coordinates {(-2,1.5) (-1,4) (1,0) (2,-1) (4,0) (5,2)} node [pos=0.9,above left] {$\mathscr C_f$} \pointsextremites;
+\addplot[styleplot,tension=0.45] plot coordinates {(-2,1.5) (-1,4) (1,0) (2,-1) (4,0) (5,2)} node [pos=0.9,above left] {$\mathscr C_g$} \pointsextremites;
 %\node[stylepoint,fill=DarkGreen] at (-1,4) {};
 %\node[stylepoint,fill=DarkGreen] at (2,-1) {};
 %\addplot[styleplot,dashed,color=DarkGreen] plot {4} node[pos=0.8,above] {\textbf{maximum}};
