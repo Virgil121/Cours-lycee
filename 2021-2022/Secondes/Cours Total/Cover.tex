@@ -11,13 +11,12 @@
 % 14:15, 03:03:2020 
 
 \documentclass[a4paper,french,12pt]{article}
-\usepackage[dvipsnames]{xcolor}
+\usepackage[dvipsnames,svgnames]{xcolor}
 \usepackage{tikz}
 \usetikzlibrary{calc}
 \usepackage{anyfontsize}
 \usepackage{sectsty}
 \usepackage[a4paper,margin=15mm,marginparwidth=0mm,marginparsep=0mm]{geometry}
-
 \begin{document}
 
 \pagestyle{empty}
@@ -25,10 +24,14 @@
 \tikzset{
 imgmaths/.style={
 path picture={
-      \node[opacity=0.5,anchor=west,rotate=-20] at (path picture bounding box.west) {
-        \includegraphics[scale=0.2]{Fond}};}
+      \node[opacity=0.5,anchor=west,rotate=-20] at (path picture bounding box.north west) {
+        \includegraphics[scale=0.6]{Fondmoitie}};}
 }
 }
+
+\definecolor{MonRose}{RGB}{238,16,89}
+\definecolor{MonEmeraude}{RGB}{0,169,157}
+\definecolor{MonBleuRoyal}{RGB}{0,114,188}
 
 \begin{tikzpicture}[overlay,remember picture]
 
@@ -38,7 +41,7 @@ top color=black!4,
 bottom color=black!2,
 path picture={
       \node[opacity=0.03,rotate=10] at ($(-3,-3)+(path picture bounding box.west)$) {
-        \includegraphics[scale=0.6]{FondNegatif}};}
+        \includegraphics[scale=1.2]{FondNegatifmoitie}};}
 ]
 (current page.south west) rectangle (current page.north east);
 
@@ -88,7 +91,7 @@ transform canvas ={rotate around ={45:($(current page.north west)+(4,-15.5)$)}}]
 
 \shade[
 imgmaths,
-left color=RoyalBlue,
+left color=DodgerBlue,
 right color=Emerald,
 rounded corners=0.75cm,
 transform canvas ={rotate around ={45:($(current page.north west)+(13,-10)$)}}]
@@ -110,7 +113,7 @@ transform canvas ={rotate around ={45:($(current page.north west)+(19,-5.65)$)}}
 
 \shade[
 imgmaths,
-left color=OrangeRed,
+left color=DeepPink,
 right color=red!80,
 rounded corners=0.6cm,
 transform canvas ={rotate around ={45:($(current page.north west)+(20,-9)$)}}] 
@@ -144,6 +147,7 @@ anchor=north east,
 };
 \end{tikzpicture}
 
+%\textcolor{RoyalBlue}{\rule{20pt}{20pt}} \textcolor{MonBleuRoyal}{\rule{20pt}{20pt}}
 %\vspace{16cm}
 %\begin{center}
 %{\fontsize{50}{60} \selectfont\scshape {Mathématiques}} \\[1cm]

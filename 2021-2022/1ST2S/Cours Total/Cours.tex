@@ -11,35 +11,22 @@
 
 \newcommand{\entre}{\setcounter{section}{0}\newpage}
 \setcounter{tocdepth}{0}
+
+\newcommand{\chap}[2][]{%
+\addcontentsline{toc}{chapter}{#1}
+\input{#2}
+\entre
+}
+
 \begin{document}
 \thispagestyle{empty}
 \include{Cover}
 \setcounter{page}{1}
-\addcontentsline{toc}{chapter}{Proportions, variations et pourcentages}
-\input{../Chap1 Proportions Variations/cours}
-\entre
-%
-\addcontentsline{toc}{chapter}{Fonctions: Généralités}
-\input{../Chap2 Généralités fonctions/cours v2}
-\entre
-%
-\addcontentsline{toc}{chapter}{Suites: Généralités}
-\input{../Chap3 Généralités Suites/cours}
-\entre
-%
-\addcontentsline{toc}{chapter}{Fonctions affines}
-\input{../Chap4 Fonctions affines/cours}
-\entre
-%
-\addcontentsline{toc}{chapter}{Fonctions polynômiales de degré 2}
-\input{../Chap5 Fonctions polynomiales de degré 2/cours v4}
-\entre
-%
-\addcontentsline{toc}{chapter}{Suites arithmétiques et géométriques}
-\input{../Chap6 Suites arithmétiques géométriques/cours}
-\entre
-%
-\addcontentsline{toc}{chapter}{Dérivation}
-\input{../Chap7 Dérivation/cours}
-\entre
+\chap[Proportions, variations et pourcentages]{../Chap1 Proportions Variations/cours}
+\chap[Fonctions: Généralités]{../Chap2 Généralités fonctions/cours v2}
+\chap[Suites: Généralités]{../Chap3 Généralités Suites/cours}
+\chap[Fonctions affines]{../Chap4 Fonctions affines/cours}
+\chap[Fonctions polynômiales de degré 2]{../Chap5 Fonctions polynomiales de degré 2/cours v4}
+\chap[Suites arithmétiques et géométriques]{../Chap6 Suites arithmétiques géométriques/cours}
+\chap[Dérivation: Point de vue local]{../Chap7 Dérivation locale/cours}
 \end{document}

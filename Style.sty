@@ -370,8 +370,8 @@
 \tkzDrawY[label={},up space=0pt,-]	%Axe Y
 % Origine, vecteurs unité
 \coordinate[label={-135:{\scriptsize O}}] (O) at (0,0) {};	%Origine
-\draw[stylevecteur,color=black!30!red] (0,0) -- (1,0) node[pos=0.5,below] {$\scriptstyle \vec i$};
-\draw[stylevecteur,color=black!30!red] (0,0) -- (0,1) node[pos=0.5,left] {$\scriptstyle \vec j$};
+	\draw[stylevecteur,color=black!30!red] (0,0) -- (1,0) node[pos=0.5,below] {$\scriptstyle \vec i$};
+	\draw[stylevecteur,color=black!30!red] (0,0) -- (0,1) node[pos=0.5,left] {$\scriptstyle \vec j$};
 \clip (\repere@xmin,\repere@ymin) rectangle (\repere@xmax,\repere@ymax);
 }
 
@@ -747,7 +747,7 @@
 %	\textcolor{darkgray}{\hrule height 2pt depth 0pt \relax}%
 %	\end{center}
 %	}
-	\newcommand{\titre}[1]{\begin{center}{\fontfamily{cmr}\fontseries{bx}\selectfont\huge{#1}}
+	\newcommand{\titre}[1]{\begin{center}{\fontfamily{cmr}\fontseries{bx}\selectfont\color{titre}\huge{#1}}
 	\end{center}
 	}
 	\def\@maketitle{\centering  \let \footnote \thanks {\huge \@title \par}\par\vskip 2em}

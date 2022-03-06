@@ -149,12 +149,68 @@ ymin=-2,ymax=3,
 \section{Coordonnées d'un vecteur}
 
 \begin{defin}
+\compo[0.75]
+{
 Soit $\vec u$ un vecteur du plan. On se donne le point $M(x;y)$ tel que $\vec{OM} = \vec u$. Les coordonnées de $\vec u$ sont celles de $M$, et l'on note $\vec u \dbinom x y$.
+}
+{\vspace{-2em}
+\begin{tikzpicture}
+\begin{axis}[
+styleglobal,
+repere,
+width=0.9*\linewidth,
+xmin=-2,xmax=5,
+ymin=-2,ymax=3,
+]
+\node[label={-135:{O}}] (O) at (0,0) {};
+\draw[->,>=latex,line width=1pt,cap=round,color=black!30!red] (0,0) -- (1,0) node[pos=0.5,below] {$\vec i$};
+\draw[->,>=latex,line width=1pt,cap=round,color=black!30!red] (0,0) -- (0,1) node[pos=0.5,left] {$\vec j$};
+
+% Contenu
+\node[stylepoint,fill=blue,label=-60:M] (M) at (3,2) {};
+\draw[stylevecteur] (O.center) -- (M.center) node[pos=0.5,above] {$\vv u$};
+\end{axis}
+\end{tikzpicture}
+\centering $M(3;2)$ donc $\vv u \dbinom 3 2$
+}
 \end{defin}
+
+\rem[eleve]{On écrit $\vec u \binom 3 2$ et pas $\vec u = \binom 3 2$ !}
+
+\begin{ex}
+\compo[0.6]
+{
+On a représenté ci-contre deux vecteurs $\vec u$ et $\vec v$.
+
+On a $\vec u \dbinom 3 {-1}$, et $\vec v \dbinom {-2} {0}$.
+}
+{\vspace{-1.5em}
+\begin{tikzpicture}
+\begin{axis}[
+styleglobal,
+repere,
+width=0.9*\linewidth,
+xmin=-5,xmax=3,
+ymin=-1,ymax=4,
+]
+\node[label={-135:{O}}] (O) at (0,0) {};
+\draw[->,>=latex,line width=1pt,cap=round,color=black!30!red] (0,0) -- (1,0) node[pos=0.5,below] {$\vec i$};
+\draw[->,>=latex,line width=1pt,cap=round,color=black!30!red] (0,0) -- (0,1) node[pos=0.5,left] {$\vec j$};
+
+% Contenu
+\draw[line width=1pt,->,cap=round] (-3,3) -- (2,1) node[pos=0.5,above] {$\vec u$};
+\draw[line width=1pt,->,cap=round] (-2,1) -- (-4,1) node[pos=0.5,above] {$\vec v$};
+\end{axis}
+\end{tikzpicture}
+}
+\end{ex}
+
+\rem{Exo 1}
 
 \begin{prop}
 Soient $A(x_A;y_A)$ et $B(x_B;y_B)$ deux points du plan. Alors on a $\vec{AB} \dbinom {x_B-x_A} {y_B-y_A}$.
 \end{prop}
+
 \begin{ex}
 \compo[0.6]
 {
@@ -189,7 +245,7 @@ ymin=-2,ymax=5,
 }
 \end{ex}
 
-\rem{Exos}
+\rem{Exos 2,3,4 (par deux),(5)}
 
 \begin{proprs}
 Soient $\vec u \dbinom {x_{\vec u}} {y_{\vec u}}$ et $\vec v \dbinom {x_{\vec v}} {y_{\vec v}}$ deux vecteurs du plan, et $\lambda \in \R$. Alors:
@@ -207,9 +263,27 @@ Soient $\vec u \dbinom 1 3$ et $\vec v \dbinom 2 {-1}$. Alors on a:
 \end{itemize}
 \end{ex}
 
-\rem{Exos}
+\rem{Exo 6}
 
-\section{Norme/milieu}
+\section{Calculs de distances et de milieux}
+
+\subsection{Milieu d'un segment}
+
+\begin{prop}
+Soient $A(x_A;y_A)$ et $B(x_B;y_B)$ deux points du plan. On se donne de plus $I$ le milieu de $[AB]$. Alors les coordonnées de $I$ sont $\left( \dfrac{x_A+x_B} 2 ; \dfrac{y_A+y_B} 2 \right)$.
+\end{prop}
+
+\begin{rmq}
+On fait en fait la moyenne des coordonnées des deux points.
+\end{rmq}
+
+\begin{ex}
+Soient $A(1;7)$, $B (6;-5)$ et $I$ le milieu de $[AB]$. Alors on a $I\left( \frac{1+6} 2;\frac {7-5} 2 \right)$ d'où $I\left( \frac 7 2 ; \frac 2 2 \right)$, et enfin $I(3,5 ; 1)$.
+\end{ex}
+
+\rem{Exo 7}
+
+\subsection{Normes et distances}
 
 \begin{prop}
 Soit $\vec u \dbinom x y$ un vecteur du plan, dont les coordonnées sont exprimées dans un repère orthonormé. Alors la norme de $\vec u$ est donnée par:
@@ -222,7 +296,7 @@ $$AB=\sqrt{(x_B-x_A)^2+(y_B-y_A)^2}$$
 \end{cor}
 
 \begin{ex}
-Soient $A \dbinom 1 7$ et $B \dbinom 6 {-5}$.
+Soient $A (1;7)$ et $B (6;-5)$.
 Alors $\begin{aligned}[t]AB&=\sqrt{(6-1)^2+(-5-7)^2}\\
 							&=\sqrt{5^2+(-12)^2}\\
 							&=\sqrt{25+144}\\
@@ -233,6 +307,8 @@ Alors $\begin{aligned}[t]AB&=\sqrt{(6-1)^2+(-5-7)^2}\\
 \begin{apps}
 On peut alors montrer l'appartenance d'un point à un cercle, ou déterminer la nature d'un polygone en utilisant des coordonnées.
 \end{apps}
+
+\rem{Exos 8,9,10}
 
 \section{Colinéarité}
 
@@ -250,26 +326,34 @@ Cela revient à dire que les coordonnées de $\vec u$ et $\vec v$ sont proportio
 On se donne $\vec u \dbinom 2 5$ et $\vec v \dbinom 4 {10}$. On remarque que $\vec v = 2 \vec u$. Alors $\vec u$ et $\vec v$ sont colinéaires.
 \end{ex}
 
+\subsection{Déterminant de deux vecteurs}
+
 \begin{defin}
 Soient $\vec u \dbinom {x} {y}$ et $\vec v \dbinom {x'} {y'}$ deux vecteurs du plan. On appelle déterminant de $\vec u$ et $\vec v$ le réel: $$\det(\vec u;\vec v)=xy'-x'y$$
 \end{defin}
+
+\begin{ex}
+Soient $\vec u \dbinom {-15}{40}$ et $\vec v \dbinom {9}{-24}$.
+On a $\begin{aligned}[t] \det (\vec u ; \vec v) &= -15 \times (-24) -9 \times 40\\&= 360 - 360\\&=0\end{aligned}$
+\end{ex}
+
+\rem{Exo 11}
 
 \begin{prop}
 Deux vecteurs sont colinéaires si et seulement si leur déterminant est nul.
 \end{prop}
 
 \begin{ex}
-Soient $\vec u \dbinom {-15}{40}$ et $\vec v \dbinom {9}{-24}$.
-On a $\begin{aligned}[t] \det (\vec u ; \vec v) &= -15 \times (-24) -9 \times 40\\&= 360 - 360\\&=0\end{aligned}$
-
-Donc $\vec u$ et $\vec v$ sont colinéaires. (On a en fait $\vec u = -\frac 5 3 \vec v$).
+Les vecteurs $\vec u$ et $\vec v$ de l'exemple précédent sont donc colinéaires. (On a en fait $\vec u = -\frac 5 3 \vec v$).
 \end{ex}
+
+\rem{Exos 12,13}
 
 \subsection{Applications en géométrie}
 
-\begin{methode}
-On peut montrer que des droites sont parallèles ou l'alignement de points grâce à la colinéarité.
-\end{methode}
+\begin{propr}
+Deux droites $(AB)$ et $(CD)$ sont parallèles si et seulement si les vecteurs $\vv{AB}$ et $\vv{CD}$ sont colinéaires.
+\end{propr}
 
 \begin{ex}
 \compo[0.6]
@@ -303,8 +387,10 @@ ymin=-2,ymax=11,
 \end{tikzpicture}
 }
 
-On en déduit que les vecteurs $\vec{AB}$ et $\vec{AC}$ sont colinéaires, d'où $(AB) \parallel (AC)$. Comme ces deux droites sont confondues, les points $A$, $B$ et $C$ sont alors alignés.
+On en déduit que les vecteurs $\vec{AB}$ et $\vec{AC}$ sont colinéaires, d'où $(AB) \parallel (AC)$. De plus, ces deux droites sont confondues, donc les points $A$, $B$ et $C$ sont alignés.
 \end{ex}
+
+\rem{Exos 14,15}
 
 \end{document}
 

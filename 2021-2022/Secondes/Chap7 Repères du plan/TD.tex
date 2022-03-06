@@ -101,7 +101,11 @@ On se donne les vecteurs $\vv{u}\binom{1}{2}$, $\vv{v}\binom{-1}{3}$ et $\vv{w}\
 $\vv{u}+\vv{v} \hfill 3\vv v \hfill \vv{u}-\vv{w} \hfill 4\vv{w}+\vv{v} \hfill \dfrac{3}{4}\vv{u}-\dfrac{1}{3}\vv{v}$
 \end{exercice}
 
-\section{Norme d'un vecteur}
+\section{Normes, distances, milieux}
+
+\begin{exercice}
+Soit $A(2;3)$, $B(-1,3)$ et $C(4,-5)$. Donner les coordonnées des milieux $I$ de $[AB]$, $J$ de $[AC]$ et $K$ de $[BC]$.
+\end{exercice}
 
 On suppose à partir de maintenant que tous les repères utilisés sont orthonormés.
 
@@ -122,7 +126,7 @@ Soient $\mathcal{C}$ le cercle de centre $I(1;2)$ et de rayon $5$ et $M(5;5)$.
 \end{exercice}
 
 \begin{exercice}
-Soient $A(6;5)$,$B(2;-3)$ et $C(-4;0)$. Quelle est la nature du triangle $ABC$?
+On a représenté trois points $A$,$B$ et $C$. Quelle est la nature du triangle $ABC$?
 \begin{centrer}
 	\begin{resizetikz}{0.9\linewidth}
     \begin{tikzpicture}
@@ -136,11 +140,70 @@ Soient $A(6;5)$,$B(2;-3)$ et $C(-4;0)$. Quelle est la nature du triangle $ABC$?
 \end{centrer}
 \end{exercice}
 
+\section{Colinéarité}
+
 \begin{exercice}
-Soit $A(2;3)$, $B(-1,3)$ et $C(4,-5)$. Donner les coordonnées des milieux $I$ de $[AB]$, $J$ de $[AC]$ et $K$ de $[BC]$.
+Déterminer les déterminants des couples de vecteurs suivants:
+\begin{enumerate}
+    \item $\vv{u}\binom{1}{4}$ et $\vv{v}\binom{7}{3}$
+    \item $\vv{u}\binom{-1}{2}$ et $\vv{v}\binom{-3}{5}$
+    \item $\vv{u}\binom{4}{2}$ et $\vv{v}\binom{-2}{1}$
+\end{enumerate}
 \end{exercice}
 
 \begin{exercice}
+Les vecteurs $\vv{u}\binom{3}{9}$ et $\vv{v}\binom{6}{18}$ sont-ils colinéaires?
+\end{exercice}
+
+\begin{exercice}
+Prenons $\vv{u}\binom{3}{-1}$ et $\vv{v}\binom{4}{m}$ où $m\in \R$. Pour quelle valeur de $m$ les vecteurs $\vv{u}$ et $\vv{v}$ sont-ils colinéaires?
+\end{exercice}
+
+\begin{exercice}
+Dans un repère orthonormé on considère les points suivants:\\
+$A(-1;4) \hfill B \left(\frac{1}{2};1 \right) \hfill C(3;-4) \hfill D(-1;0) \hfill E(0;-2)$
+\begin{enumerate}
+    \item Placer les points dans le repère ci-dessous
+    \begin{center}
+    	\begin{resizetikz}{0.9\linewidth}
+        \begin{tikzpicture}
+        \repereOij
+        \end{tikzpicture}
+        \end{resizetikz}
+    \end{center}
+    \item Montrer que $A$,$B$ et $C$ sont alignés.
+    \item Démontrer que $(DE) \parallel (AB)$.
+\end{enumerate}
+\end{exercice}
+
+\begin{exercice}
+Considérons les points $A(2;3)$, $B(5;7)$ et $C(-7;-9)$. Sont-ils alignés?
+\end{exercice}
+
+\section{Problèmes avancés}
+
+\begin{exercice}[*]
+On considère les points $A(2;3)$ et $B(-1;4)$.
+%\begin{center}
+%	\begin{resizetikz}{0.9\linewidth}
+%    \begin{tikzpicture}
+%    \repereOij[xmin=-2,xmax=7,ymin=-2,ymax=7]
+%    \draw (2,3) node{$\times$};
+%    \draw (2,3) node[above]{$A$};
+%    \draw (-1,4) node{$\times$};
+%    \draw (-1,4) node[above]{$B$};
+%    \end{tikzpicture}
+%    \end{resizetikz}
+%\end{center}
+Donner l'ensemble des points $C(x;y)$ tel que $ABC$ soit isocèle en $C$.
+\end{exercice}
+
+\begin{exercice}[*]
+Prenons les points $A(1;-2)$ et $B(2;5)$.
+Déterminer l'intersection de la médiatrice du segment $[AB]$ avec l'axe des abscisses.
+\end{exercice}
+
+\begin{exercice}[*]
 $A$ est un point et $k\in \R^{*}$. On appelle homothétie de centre $A$ et rapport $k$ la fonction qui transforme pour tout point $M$ du plan le vecteur $\vv{AM}$ en $k\vv{AM}$. On note alors $M'$ le point tel que $\vv{AM'}=k\vv{AM}$.\\
 Considérons une homothétie de rapport $k$.
 \begin{enumerate}
@@ -163,76 +226,33 @@ Considérons une homothétie de rapport $k$.
 \end{centrer}
 \end{exercice}
 
+\section{Exos en + hyperbole}
+
 \begin{exercice}
-On considère les points $A(2;3)$ et $B(-1;4)$.
-\begin{center}
-	\begin{resizetikz}{0.9\linewidth}
-    \begin{tikzpicture}
-    \repereOij[xmin=-2,xmax=7,ymin=-2,ymax=7]
-    \draw (2,3) node{$\times$};
-    \draw (2,3) node[above]{$A$};
-    \draw (-1,4) node{$\times$};
-    \draw (-1,4) node[above]{$B$};
-    \end{tikzpicture}
-    \end{resizetikz}
-\end{center}
-Donner l'ensemble des points $C(x;y)$ tel que $ABC$ soit isocèle en $C$.
+On reprend les points de l'exercice 4. Calculer les coordonnées du milieu de $ABCD$.
 \end{exercice}
 
 \begin{exercice}
-Prenons les points $A(1;-2)$ $B(2;5)$.
-Déterminer l'intersection de la médiatrice du segment $[AB]$ avec l'axe des abscisses.
+Soient $A(-2;3)$ et $\vec u \binom 4 {-2}$. Calculer les coordonnées du point $B$ image de $A$ par la translation de vecteur $\vec u$.
 \end{exercice}
 
-\section{Colinéarité}
+\begin{exercice}[*]
+Soient $A(-2;-1)$, $B(4;1)$ et $I(0;1)$. Calculer les coordonnées des points $C$ et $D$ tels que $ABCD$ soit un parallélogramme de centre $I$.
+\end{exercice}
 
 \begin{exercice}
-Déterminer les déterminants des couples de vecteurs suivants:
+Soit $\mathcal C$ le cercle de centre $I(1,8;-3,5)$ passant par $A(-1,8;1,3)$. Calculer le rayon du cercle $\mathcal C$.
+\end{exercice}
+
+\begin{exercice}
+Dans un repère orthonormé on considère les points suivants:\\
+$\strut\hfill A \left(-1;-\frac 3 2 \right) \hfill B \left(0;\frac{1}{2}\right) \hfill C \left(-2;\frac 3 2 \right) \hfill$\\
+$\strut\hfill D \left(\frac 3 2;\frac 7 2 \right) \hfill E(1;-2) \hfill F(3;-1) \hfill$
 \begin{enumerate}
-    \item $\vv{u}\binom{1}{4}$ et $\vv{v}\binom{7}{3}$
-    \item $\vv{u}\binom{-1}{2}$ et $\vv{v}\binom{-3}{5}$
-    \item $\vv{u}\binom{4}{2}$ et $\vv{v}\binom{-2}{1}$
+    \item Placer ces points dans un repère.
+    \item Conjecturer des alignements de trois points.
+    \item Démontrer ces conjectures par le calcul.
 \end{enumerate}
-\end{exercice}
-
-\begin{exercice}
-Considérons les vecteurs $\vv{u}\binom{3}{9}$ et $\vv{v}\binom{6}{18}$. $\vv{u}$ et $\vv{v}$ sont-ils colinéaires?
-\end{exercice}
-
-\begin{exercice}
-Prenons $\vv{u}\binom{3}{-1}$ et $\vv{v}\binom{4}{m}$ où $m\in \R$. Pour quelle valeur de $m$ les vecteurs $\vv{u}$ et $\vv{v}$ sont-ils colinéaires?
-\end{exercice}
-
-\begin{exercice}
-Dans un repère orthonormée on considère les points suivants:\\
-$A(-1;4) \hfill B(\frac{1}{2};1) \hfill C(3;-4) \hfill D(-1;0) \hfill E(0;-2)$
-\begin{enumerate}
-    \item Placer les points dans le repère ci-dessous
-    \begin{center}
-    	\begin{resizetikz}{0.9\linewidth}
-        \begin{tikzpicture}
-        \repereOij
-        \end{tikzpicture}
-        \end{resizetikz}
-    \end{center}
-    \item Montrer que $A,B,C$ sont alignés.
-    \item Démontrer que $(DE)$ et $(AB)$ sont parallèles.
-\end{enumerate}
-\end{exercice}
-
-\begin{exercice}
-Considérons les points: $A(2;3),\; B(5;7)$ et  $C(-7;-9)$.\\
-Les points $A,B$ et $C$ sont-ils alignés?
-        \begin{center}
-        \begin{resizetikz}{0.9\linewidth}
-        \begin{tikzpicture}
-        \repereOij[xmin=-10,xmax=8,ymin=-10,ymax=10]
-        \node[stylepoint,fill=blue,label=south east:$A$] (A) at (2,3) {};
-        \node[stylepoint,fill=blue,label=south east:$B$] (B) at (5,7) {};
-        \node[stylepoint,fill=blue,label=north west:$C$] (C) at (-7,-9) {};
-        \end{tikzpicture}
-        \end{resizetikz}
-        \end{center}
 \end{exercice}
 
 \end{multicols*}
@@ -246,6 +266,19 @@ Les points $A,B$ et $C$ sont-ils alignés?
 
 
 \begin{comment}
+
+\begin{center}
+        \begin{resizetikz}{0.9\linewidth}
+        \begin{tikzpicture}
+        \repereOij[xmin=-10,xmax=8,ymin=-10,ymax=10]
+        \node[stylepoint,fill=blue,label=south east:$A$] (A) at (2,3) {};
+        \node[stylepoint,fill=blue,label=south east:$B$] (B) at (5,7) {};
+        \node[stylepoint,fill=blue,label=north west:$C$] (C) at (-7,-9) {};
+        \end{tikzpicture}
+        \end{resizetikz}
+\end{center}
+
+
 \begin{resizetikz}{0.9\linewidth} % Repère quelconque à la main
 \begin{tikzpicture}
 \binominate (liminf) at (-5,-2);

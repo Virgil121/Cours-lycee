@@ -1,0 +1,82 @@
+\documentclass[twocolumn,landscape,a4paper,12pt,french]{article}
+
+\usepackage[TD]{../../../Style}
+
+\setlength{\columnsep}{2cm}
+\geometry{margin=1cm}
+% Début du document
+%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+\newcommand{\contenu}{
+\titre{Repérage de bateaux}
+
+\compo[0.5]
+{
+Sur l'océan, trois bateaux sont initialement situés à des points A,B et C. On modélise une carte géographique par un repère (1 unité = 1 km sur chaque axe). De plus chaque axe représente l'un des points cardinaux Nord, Sud,Est, Ouest.
+}
+{
+%\includegraphics[width=0.8\linewidth]{bateau.png}
+%
+\begin{center}
+\begin{resizetikz}{\linewidth}
+    \begin{tikzpicture}
+    %Grille
+	\draw[stylegrille] (-7,-3) grid (4,4);
+	%Création des axes avec tkz-base
+	\tkzInit[xmin=-7,xmax=4,ymin=-3,ymax=4]
+	%On peut utiliser \tkzGrid pour la grille, mais la personnalisation est mal faite	
+	%\tkzSetUpAxis[ticka=3.5pt,tickb=3.5pt]	%Taille graduations
+	\tkzDrawX[label={},right space=0pt]	%Axe X,pas de nombres,pas de flèche
+	\tkzDrawY[label={},up space=0pt]	%Axe Y
+	% Origine, vecteurs unité
+	%\coordinate[label={-135:{\scriptsize O}}] (O) at (0,0) {};	%Origine
+	%\draw[stylevecteur,color=black!30!red] (0,0) -- (1,0) node[pos=0.5,below] {$\scriptstyle \vec i$};
+	%\draw[stylevecteur,color=black!30!red] (0,0) -- (0,1) node[pos=0.5,left] {$\scriptstyle \vec j$};
+	%\clip (\repere@xmin,\repere@ymin) rectangle (\repere@xmax,\repere@ymax);
+    \node[stylepoint,cross out,label=above left:$B$] (B) at (-5,1) {};
+    \node[stylepoint,cross out,label=below left:$A$] (A) at (-4,-1) {};
+	\node[stylepoint,cross out,label=below right:$C$] (B) at (-1,-2) {};    
+    \draw (0,0) node[below]{$0$};
+    \draw (1,0) node[below]{$1$};
+    \draw (3.5,0) node[below]{Est};
+    \draw (-6.3,0) node[below]{Ouest};
+    \draw (0,3.5) node[right]{Nord};
+    \draw (0,-2.5) node[right]{Sud};
+    \end{tikzpicture}
+    \end{resizetikz}
+\end{center}
+}
+\begin{enumerate}
+    \item Placer les points $A,B,C$ sur géogébra.
+    \item Le bateau A se déplace de $5$km vers l'est et de $2$km vers le nord. 
+    \begin{enumerate}
+        \item Placer sa nouvelle position $A'$.
+        \item Quelles sont les coordonnées de $A'$?
+    \end{enumerate}
+    \item Tracer le vecteur $\vv{AA'}$. On pourra soit utiliser l'outil Vecteur, soit écrire dans la fenêtre de saisie "vecteur(A,A')". Comment est alors décrit ce vecteur dans la fenêtre algèbre?
+
+Les nombres $5,2$ sont appelés les coordonnées du vecteur $\vv{AA'}$.
+    \item 
+        \begin{enumerate}
+            \item Le bateau $B$ décrit le même déplacement que le bateau $A$. Placer la nouvelle position $B'$ du bateau $B$.
+            \item Donner les coordonnées du vecteur $\vv{BB'}$.
+            \item Que remarque-t-on par rapport au vecteur $\vv{AA'}$?
+        \end{enumerate}
+    \item Le bateau $C$ est plus lent. Il effectue un déplacement de vecteur $\vv{u}\binom{-1}{3}$
+    \begin{enumerate}
+        \item Décrire le déplacement de ce bateau en utilisant les points cardinaux (nord/sud ...).
+        \item Placer le point $C'$.
+        \item Exhiber une relation entre les coordonnées de $C$, de $C'$ et de $\vv u$. On pourra regarder les abscisses et les ordonnées séparément.
+        \item Comment peut-on trouver les coordonnées du vecteur $\vec{CC'}$ à l'aide des points $C$ et $C'$?
+    \end{enumerate}
+    \item Pour la suite, rendez-vous sur capytale et entrer le code suivant: c1e9-403698.
+\end{enumerate}}
+
+\contenu
+
+\newpage
+
+\contenu
+
+\end{document}
