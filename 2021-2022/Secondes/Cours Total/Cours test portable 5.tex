@@ -1,5 +1,5 @@
 %\documentclass[a4paper,french,12pt]{article} % Overleaf ne compile pas sans ça ...
-\documentclass[12pt,french,a4paper,varwidth=20cm,margin=0.5cm,multi={unepage}]{standalone}
+\documentclass[12pt,french,a4paper,varwidth=11cm,margin=0.5cm,multi={unepage}]{standalone}
 % Les deux lignes suivantes suffisent dans texmaker
 \usepackage{titling}
 \usepackage{anyfontsize}
@@ -8,10 +8,11 @@
 \usetikzlibrary{calc} 
 \usepackage[subpreambles=false]{standalone}
 \usepackage{fontsize}
-\changefontsize[25]{20} % ou 22/18
+%\changefontsize[25]{20} % ou 22/18
 \geometry{pass}
+%\geometry{paperwidth=13cm}
 \pagestyle{empty}
-
+%\tikzset{every picture/.append style={scale=0.5}}
 \renewcommand{\progres}{}
 
 \renewcommand{\compo}[3][]{%
@@ -35,6 +36,22 @@
 #3
 }
 
+\edef\tikzscale{0.5}
+\renewcommand{\echellepgf}{10/4}
+\renewcommand{\echellepgfinv}{8/5}
+\makeatletter
+\RenewEnviron{resizetikz}[1]{%
+  \def\tikz@width{#1}%
+  \def\tikzscale{1}\begin{lrbox}{\measure@tikzpicture}%
+  \BODY
+  \end{lrbox}%
+  \pgfmathparse{#1/\wd\measure@tikzpicture}%
+  \edef\tikzscale{\pgfmathresult}%
+  \BODY
+  \edef\tikzscale{0.5}%
+}
+\makeatother
+
 \newcommand{\redeftcbUn}[6][10]{
 \definecolor{#2-titre}{Hsb}{#4,#5,#6}
 \colorlet{#2}{#2-titre!#1}
@@ -48,24 +65,24 @@
 	%before upper={\tcolorboxsubtitle{#1}{##1}},
 }
 }
-
+\tcbset{scale=2}
 \newcommand{\redeftcb}[6][10]{ % Pour définir tous les types de thm en une ligne: voir options
 \redeftcbUn[#1]{#2}{#3}{#4}{#5}{#6}
 \redeftcbUn[#1]{#2s}{#3s}{#4}{#5}{#6}
 }
 
-	\redeftcb{defin}{Définition}{211}{0.8}{0.75}
-	\redeftcb{thm}{Théorème}{0}{0.8}{0.75}
-	\redeftcb{prop}{Proposition}{15}{0.8}{0.75}
-	\redeftcb[8]{ex}{Exemple}{120}{0.8}{0.58}
-	\redeftcb[8]{cex}{Contre-exemple}{120}{0.8}{0.58}
-	\redeftcb{rmq}{Remarque}{211}{0.8}{0.75}
-	\redeftcb{caspart}{Cas particulier}{211}{0.8}{0.75}
-	\redeftcb{cor}{Corollaire}{211}{0.8}{0.75}
-	\redeftcb{app}{Application}{211}{0.8}{0.75}
-	\redeftcb{propr}{Propriété}{211}{0.8}{0.75}
-	\redeftcb{methode}{Méthode}{211}{0.8}{0.75}
-	\redeftcb{exercice}{Exercice}{210}{0.6}{0.7}
+%	\redeftcb{defin}{Définition}{211}{0.8}{0.75}
+%	\redeftcb{thm}{Théorème}{0}{0.8}{0.75}
+%	\redeftcb{prop}{Proposition}{15}{0.8}{0.75}
+%	\redeftcb[8]{ex}{Exemple}{120}{0.8}{0.58}
+%	\redeftcb[8]{cex}{Contre-exemple}{120}{0.8}{0.58}
+%	\redeftcb{rmq}{Remarque}{211}{0.8}{0.75}
+%	\redeftcb{caspart}{Cas particulier}{211}{0.8}{0.75}
+%	\redeftcb{cor}{Corollaire}{211}{0.8}{0.75}
+%	\redeftcb{app}{Application}{211}{0.8}{0.75}
+%	\redeftcb{propr}{Propriété}{211}{0.8}{0.75}
+%	\redeftcb{methode}{Méthode}{211}{0.8}{0.75}
+%	\redeftcb{exercice}{Exercice}{210}{0.6}{0.7}
 
 \newcommand{\entre}{\setcounter{section}{0}\newpage}
 \newcommand{\chap}[2][]{%
