@@ -1,5 +1,5 @@
 %\documentclass[a4paper,french,12pt]{article} % Overleaf ne compile pas sans ça ...
-\documentclass[12pt,french,a4paper,varwidth=11cm,margin=0.5cm,multi={unepage}]{standalone}
+\documentclass[12pt,french,a4paper,varwidth=9cm,margin=0.5cm,multi={unepage}]{standalone}
 % Les deux lignes suivantes suffisent dans texmaker
 \usepackage{titling}
 \usepackage{anyfontsize}
@@ -36,7 +36,8 @@
 #3
 }
 
-\edef\tikzscale{0.5}
+%\tikzset{transform shape}
+
 \renewcommand{\echellepgf}{10/4}
 \renewcommand{\echellepgfinv}{8/5}
 \makeatletter
@@ -58,7 +59,7 @@
 \renewtcolorbox{#2}[1][]{	
 	colback=#2,
 	borderline west={1pt}{0pt}{#2-titre},
-	title={\hspace{-10pt}\colorbox{#2-titre}{\hspace{7pt}\rule[-4.5pt]{0pt}{21.4pt}\MakeUppercase{#3}\ifstrempty{##1}{}{ (##1)}\hspace{7pt}}},
+	title={\hspace{-10pt}\colorbox{#2-titre}{\hspace{7pt}\rule[-3pt]{0pt}{14.3pt}\MakeUppercase{#3}\ifstrempty{##1}{}{ (##1)}\hspace{7pt}}},
 	colbacktitle=#2,
 	before upper={\colorlet{bg}{#2} \definecolor{bfcolor}{Hsb}{#4,0.75,0.15}},
 	after upper={\colorlet{bg}{white} \colorlet{bfcolor}{black}},
@@ -104,6 +105,7 @@
 \input{CoverPortable}
 \end{unepage}
 %
+\edef\tikzscale{0.5}
 \setcounter{page}{1}
 \chap[Réels, intervalles]{../Chap1 Réels Intervalles/cours}
 \chap[Vecteurs du plan: Première approche]{../Chap2 Vecteurs/cours}

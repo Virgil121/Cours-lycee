@@ -165,8 +165,8 @@ On veut écrire plus simplement " Tous les nombres réels compris entre 2 et 5, 
     \draw[thick,->] (-0.5,0) --(6.5,0);
     \node[] (2) at (2,0) {$\textbf{\Big[}$};
     \node[] (5) at (5,0) {$\Big[$};
-    \node[] (cf) at (1,-1) {crochet fermé};
-    \node[] (co) at (6,-1) {crochet ouvert};
+    \node[anchor=north] (cf) at (1,-1) {crochet fermé};
+    \node[anchor=north] (co) at (6,-1) {crochet ouvert};
     \draw[ultra thick,-] (2,0) --(5,0);
     \foreach \xp in {0,1,...,6}{\node[] at (\xp,0) {$\mid$};}
     \foreach \xp in {0,1,...,6}{\node[below=10pt] at (\xp,0) {\xp};}

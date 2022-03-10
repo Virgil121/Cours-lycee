@@ -86,11 +86,11 @@ minor x tick num=0,
 minor y tick num=0,
 ]
 \addplot[styleplot,domain=(-2:11)]{2*x-1} node[pos=0.33,right] {$d_1$};
-\draw[->,>=latex,thick] (1,1) -- (2,1) node[midway,below] {$1$};
-\draw[->,>=latex,thick] (2,1) -- (2,3) node[midway,right] {$2$};
+\draw[stylevecteur] (1,1) -- (2,1) node[midway,below] {$1$};
+\draw[stylevecteur] (2,1) -- (2,3) node[midway,right] {$2$};
 \addplot[styleplot,densely dashed,color=blue,domain=(-2:11)]{-1/3*x+3} node[pos=0.8, above right] {$d_2$};
-\draw[->,>=latex,thick,color=blue] (3,2) -- (6,2) node[midway,above] {$3$};
-\draw[->,>=latex,thick,color=blue] (6,2) -- (6,1) node[midway,right] {$-1$};
+\draw[stylevecteur,color=blue] (3,2) -- (6,2) node[midway,above] {$3$};
+\draw[stylevecteur,color=blue] (6,2) -- (6,1) node[midway,right] {$-1$};
 \end{axis}
 \end{tikzpicture}
 \end{centrer}

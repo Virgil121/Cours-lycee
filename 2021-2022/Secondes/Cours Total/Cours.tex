@@ -1,30 +1,23 @@
-\documentclass[a4paper,french,12pt]{article} % Overleaf ne compile pas sans ça ...
-% Les deux lignes suivantes suffisent dans texmaker
+\documentclass[a4paper,french,12pt]{article}
 \usepackage{titling}
-\usepackage{anyfontsize}
 \usepackage{sectsty}
 \usepackage[eleve,cours]{../../../Style}
-\usetikzlibrary{calc} 
 \usepackage[subpreambles=false]{standalone}
 
-\renewcommand{\progres}{}
-%\usepackage{fontsize}
-%\changefontsize[22]{18}
-%\geometry{margin=5mm}
-\newcommand{\entre}{\setcounter{section}{0}\newpage}
+\renewcommand{\progres}{} % Commande progrès termine le document en version élève, on en veut pas ici
 \setcounter{tocdepth}{0}
 
 \newcommand{\chap}[2][]{%
 \addcontentsline{toc}{chapter}{#1}
 \input{#2}
-\entre
+\setcounter{section}{0}\newpage
 }
 
 \begin{document}
 \thispagestyle{empty}
 \include{Cover}
 \setcounter{page}{1}
-\chap[Réels, intervalles]{../Chap1 Réels Intervalles/cours}\end{document}
+\chap[Réels, intervalles]{../Chap1 Réels Intervalles/cours}
 \chap[Vecteurs du plan: Première approche]{../Chap2 Vecteurs/cours}
 \chap[Fonctions: Généralités]{../Chap3 Fonctions Généralités/cours v3}
 \chap[Proportions, variations et pourcentages]{../Chap4 Proportions Variations/cours}

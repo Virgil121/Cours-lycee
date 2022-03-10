@@ -33,10 +33,10 @@ Soit $D \subset \R$. On appelle fonction $f$ sur l'ensemble $D$ le processus qui
 \begin{center}
 \begin{tikzpicture}[scale=1]
 \node[draw,rectangle,thick, minimum height=10mm, minimum width=15mm, rounded corners] (x) at (-3,0) {$x$};
-\node[yshift=10mm] at (x) {Valeur d'entrée ( dans $D$)};
+\node[anchor=south east,xshift=1cm] at (x.north east) {Valeur d'entrée (dans $D$)};
 \node[draw,rectangle,thick, minimum height=10mm, minimum width=15mm, rounded corners] (f) at (0,0) {Fonction $f$};
 \node[draw,rectangle,thick, minimum height=10mm, minimum width=15mm, rounded corners] (fx) at (3,0) {$f(x)$};
-\node[yshift=10mm] at (fx) {Valeur de sortie ( dans $\R$)};
+\node[anchor=south west,xshift=-1cm] at (fx.north west) {Valeur de sortie (dans $\R$)};
 \draw[-,>=latex,thick] (x) to (f);
 \draw[->,>=latex,thick] (f) to (fx);
 \end{tikzpicture}
@@ -540,57 +540,13 @@ minor y tick num=0,
 Dresser le tableau de signes d'une fonction $f$, c'est indiquer sur quels intervalles la fonction est négative, positive ou nulle.
 
 Avec la même fonction que précédemment, on obtient:
-%:-+-+-+-+- Engendré par : http://math.et.info.free.fr/TikZ/TableauxVariations/
+
 \begin{center}
-\begin{tikzpicture}[scale=0.875]
-% Styles 
-\tikzstyle{cadre}=[thin]
-\tikzstyle{fleche}=[->,>=latex,thin]
-\tikzstyle{nondefini}=[lightgray]
-% Dimensions Modifiables
-\def\Lrg{1.5}
-\def\HtX{1}
-\def\HtY{0.5}
-% Dimensions Calculées
-\def\lignex{-0.5*\HtX}
-\def\lignef{-1.5*\HtX}
-\def\separateur{-0.5*\Lrg}
-% Largeur du tableau
-\def\gauche{-1.5*\Lrg}
-\def\droite{6.5*\Lrg}
-% Hauteur du tableau
-\def\haut{0.5*\HtX}
-\def\bas{-2.5*\HtX-2*\HtY}
-% Ligne de l'abscisse : x
-\node at (-1*\Lrg,0) {$x$};
-\node at (0*\Lrg,0) {$-2$};
-\node at (2*\Lrg,0) {$-1$};
-\node at (4*\Lrg,0) {$2$};
-\node at (6*\Lrg,0) {$5$};
-% Ligne de la dérivée : f'(x)
-\node at (-1*\Lrg,-1*\HtX) {$f(x)$};
-\node at (1*\Lrg,-1*\HtX) {$+$};
-\node at (3*\Lrg,-1*\HtX) {$-$};
-\node at (5*\Lrg,-1*\HtX) {$+$};
-\draw[cadre] (2*\Lrg,-0.5*\HtX) -- (2*\Lrg,-1.5*\HtX) node[pos=0.5,line width=0.6pt,draw=black,circle,minimum size=7pt,fill=bg,inner sep=2pt,yscale=1.25] {};
-\draw[cadre] (4*\Lrg,-0.5*\HtX) -- (4*\Lrg,-1.5*\HtX) node[pos=0.5,line width=0.6pt,draw=black,circle,minimum size=7pt,fill=bg,inner sep=2pt,yscale=1.25] {};
-% Ligne de la fonction : f(x)
-% Encadrement
-\draw[cadre] (\separateur,\haut) -- (\separateur, \lignef);
-\draw[cadre] (\gauche,\haut) rectangle  (\droite, \lignef);
-\draw[cadre] (\gauche,\lignex) -- (\droite,\lignex);
+\begin{tikzpicture}
+\tkzTabInit[lgt=1.4,espcl=2]{$x$/1,$f(x)$/1}{$-2$,$-1$,$2$,$5$}
+\tkzTabLine{,+,z,-,z,+,}
 \end{tikzpicture}
 \end{center}
-%:-+-+-+-+- Fin
-
-%:>>>>> code du tableau à ré-injecter
-%[
-%	["x", "f(x)", ""],
-%	["-2", "", "+", ""],
-%	["-1", "0", "-", ""],
-%	["2", "0", "+", ""],
-%	["5", "", "?", ""]
-%]
 
 \end{methode}
 

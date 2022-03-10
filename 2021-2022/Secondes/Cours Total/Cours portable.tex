@@ -1,4 +1,7 @@
 %\documentclass[a4paper,french,12pt]{article} % Overleaf ne compile pas sans ça ...
+
+% N'essayez pas de déchiffrer ça, c'est complètement immonde
+
 \documentclass[12pt,french,a4paper,varwidth=20cm,margin=0.5cm,multi={unepage}]{standalone}
 % Les deux lignes suivantes suffisent dans texmaker
 \usepackage{titling}
@@ -8,15 +11,16 @@
 \usetikzlibrary{calc} 
 \usepackage[subpreambles=false]{standalone}
 \usepackage{fontsize}
-\changefontsize[25]{20} % ou 22/18
+\changefontsize[25]{20} % ou 22/18 30/24 ou 25/20
 \geometry{pass}
 \pagestyle{empty}
-
+\usepackage{fourier}
 \renewcommand{\progres}{}
 
 \renewcommand{\compo}[3][]{%
 #2
 
+\renewcommand{\vspace}[1]{}
 #3
 }
 \renewcommand{\compohaut}[3][]{%
@@ -34,6 +38,32 @@
 
 #3
 }
+
+\newcommand{\tkzMult}{1.5} %1.5/1.7
+\newcommand{\tkzMultsc}{1.7} %1.7/2
+\makeatletter
+%\def\cmdTAB@tbs@espcl{\cmdTAB@tbs@espcl*1.5}
+%\def\cmdTAB@tbs@lgt{\cmdTAB@tbs@lgt*1.5}
+\xpatchcmd{\tkzTabInit}{\setkeys[TAB]{tbs}{#1}}{\setkeys[TAB]{tbs}{#1}\setkeys[TAB]{tbs}{espcl=3,lgt=4,deltacl=1}
+\pgfmathmultiply{0.93}{\tkzMultsc}\global\let\tkzxsca\pgfmathresult
+\pgfmathmultiply{0.7}{\tkzMultsc}\global\let\tkzxscb\pgfmathresult
+\pgfmathmultiply{1.3}{\tkzMultsc}\global\let\tkzysca\pgfmathresult
+\pgfmathmultiply{1.18}{\tkzMultsc}\global\let\tkzyscb\pgfmathresult}{}{}
+\xpatchcmd{\tkzTabInit}{\pgfmathadd{\tkz@deltaY}{\tkz@deltaH}}{\pgfmathmultiply{\tkz@deltaH}{\tkzMult}\global\let\tkz@deltaHplus\pgfmathresult\pgfmathadd{\tkz@deltaY}{\tkz@deltaHplus}}{}{}
+\xpatchcmd{\tkzTabInit}{\pgfmathdivide{\tkz@deltaH}{2}}{\pgfmathdivide{\tkz@deltaHplus}{2}}{}{}
+
+
+\xpatchcmd{\tkzTabLine}{xscale=0.93}{xscale=\tkzxsca}{}{}
+\xpatchcmd{\tkzTabLine}{xscale=0.7}{xscale=\tkzxscb}{}{}
+\xpatchcmd{\tkzTabLine}{yscale=1.3}{yscale=\tkzysca}{}{}
+\xpatchcmd{\tkzTabLine}{yscale=1.18}{yscale=\tkzyscb}{}{}
+
+\tikzset{double style/.append style = {double distance=2pt}}
+
+\makeatother
+%\xpatchcmd{\tkzTabInit}{\pgfmathparse{\cmdTAB@tbs@lgt+2*\cmdTAB@tbs@deltacl+\cmdTAB@tbs@espcl*\tkz@nbinterv}}{\pgfmathparse{\cmdTAB@tbs@lgt+2*\cmdTAB@tbs@deltacl+\cmdTAB@tbs@espcl*\tkz@nbinterv*\espclmult}}{}{}
+%
+%\xpatchcmd{\tkzTabInit}{
 
 \newcommand{\redeftcbUn}[6][10]{
 \definecolor{#2-titre}{Hsb}{#4,#5,#6}
@@ -67,6 +97,39 @@
 	\redeftcb{methode}{Méthode}{211}{0.8}{0.75}
 	\redeftcb{exercice}{Exercice}{210}{0.6}{0.7}
 
+\pgfplotsset{ % Pas besoin de "styleglobal" en fait ... Important: ne pas faire xscale mais x post scale pour conserver la taille des ticks
+	styleglobal/.append style={
+		line width=2pt,
+		grid style={densely dashed,line width=0.8pt,draw=black!30},
+		minor grid style={line width=0.5pt,draw=black!20},
+		mark size=\echellepgfinv*4pt,
+	},
+	styleplot/.append style={
+		line width=2.6pt,
+	},
+}
+
+\tikzset{
+	>=latex,
+	stylepoint/.append style={
+		minimum size=2pt,	% ne sert à rien ici apparemment...
+		inner sep=3pt,	% taille intérieur
+		line width=1.2pt	% épaisseur bord
+	},
+	stylepointextremites/.append style={
+		minimum size=4pt,
+		inner sep=3pt,
+		line width=1.6pt,
+	},
+	stylegrille/.append style={
+		line width=1.6pt,
+	},
+	stylevecteur/.append style={
+		line width=2pt,
+		-{Latex[length=4mm]},
+	},
+}
+
 \newcommand{\entre}{\setcounter{section}{0}\newpage}
 \newcommand{\chap}[2][]{%
 \begin{unepage}
@@ -82,7 +145,7 @@
 \begin{unepage}
 \thispagestyle{empty}
 %\noindent%
-\rule{0pt}{25cm}%
+\rule{0pt}{25cm}%{25cm}%
 \rule{20cm}{0pt}%
 \input{CoverPortable}
 \end{unepage}
