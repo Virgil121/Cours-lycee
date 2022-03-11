@@ -155,6 +155,45 @@
 \newcommand{\compoligne}[3][0.5]{\compolignebase{\composep}{c}{#1}{#2}{#3}}
 \newcommand{\compolignehaut}[3][0.5]{\compolignebase{\composep}{t}{#1}{#2}{#3}}
 
+% Compo test: tabularx plus stable (espaces avant/après)
+
+%\renewcommand{\compo}[3][0.5]{%
+%\renewcommand\tabularxcolumn[1]{m{##1}}%
+%\setlength{\colG}{#1\linewidth}%
+%\par\noindent%
+%\begin{tabularx}{\linewidth}{m{\colG}X}%
+%\vspace{0pt}#2%
+%&
+%\vspace{0pt}#3%
+%\end{tabularx}}
+%
+%\renewcommand{\compohaut}[3][0.5]{%
+%\renewcommand\tabularxcolumn[1]{p{##1}}%
+%\setlength{\colG}{#1\linewidth}%
+%\par\noindent%
+%\begin{tabularx}{\linewidth}{p{\colG}X}%
+%\renewcommand\tabularxcolumn[1]{m{##1}}%
+%\vspace{0pt}#2%
+%&
+%\renewcommand\tabularxcolumn[1]{m{##1}}%
+%\vspace{0pt}#3%
+%\end{tabularx}}
+
+% Compohaut: deuxième version
+
+% Avantage: plus simple
+% Désavantages:
+%	Problème avec environnements center ou centrer, trop d'espacement en bas de tableau à cause de la ligne supplémentaire
+%	"Hack" avec l'espacement gauche/droite
+%	Versions non équilibrées nécessitant plus de calculs...
+%\newlength{\tabcompoligne}
+%\renewcommand{\compoligne}[3][0.5]{%
+%\setlength{\tabcompoligne}{\linewidth}%
+%\addtolength{\tabcompoligne}{12pt}%
+%\noindent\hspace{-6pt}\begin{tabularx}{\tabcompoligne}{X|X}%
+%#2&#3%
+%\end{tabularx}\par}
+
 % Environnement centrer sans passage à la ligne
 
 \newenvironment{centrer}{\par \centering }{ \par}
@@ -393,11 +432,11 @@
 %\setlist[enumerate]{align=parleft,left=5pt..20pt}
 
 
-% Test tcolorbox
+% Boites cours tcolorbox
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %Mise à jour dynamique de la couleur de fond
-%Au lieu d'utiliser des options de transparence on pourra utiliser des couleurs comme red!10!bg ( 10% de rouge sur un fond de couleur bg )
+%On pourra utiliser des couleurs comme red!10!bg ( 10% de rouge sur un fond de couleur bg )
 %Voir cours ensembles de nombres pour un exemple d'utilisation
 
 \colorlet{bg}{white}

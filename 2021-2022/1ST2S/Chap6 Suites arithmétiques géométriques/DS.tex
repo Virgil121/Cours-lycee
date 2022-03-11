@@ -6,9 +6,7 @@
 \fancyhead[C]{\textbf{DS6 : Suites arithmétiques et géométriques}}
 \fancyhead[R]{\premiere ST2S 2}
 
-
-%\renewcommand{\points}[2][]{}
-\renewcommand{\baselinestretch}{1.2}
+\renewcommand{\baselinestretch}{1.35}
 
 \begin{document}
 
@@ -39,23 +37,23 @@ Pour tout entier naturel non nul $n$, on note $C_n$ le chiffre d'affaires en eur
 \begin{enumerate}
 \item Justifier qu'augmenter une valeur de $5 \%$ revient à la multiplier par $1,05$.
 
-\points 1
+\points 4
 
 \item Calculer $C_1$, et interpréter cette valeur dans le contexte de l'exercice.
 
-\points 2
+\points 4
 
 \item Quelle est la nature de $C$? On précisera la raison et le premier terme.
 
-\points 2
+\points 4
 
 \item Justifier qu'on a l'égalité $C_{n+1} = C_n \times 1,05$ pour $n \in \N$.
 
-\points 2
+\points 4
 
 \item Compléter le tableau suivant \textit{(On arrondira à l'unité)}:
 
-\points 3
+\points 4
 
 \begin{center} %tikzmark pour réutiliser des points sur la page dans d'autres tikzpictures, c'est assez instable donc à revoir...
 \begin{tabularx}{0.9\linewidth}{|*{6}{Y|}} \hline
@@ -70,6 +68,11 @@ $C_n$ & \tikzmark{C1} & \tikzmark{C2} & \tikzmark{C3} & \tikzmark{C4} & \tikzmar
 \node at ($0.5*(pic cs:C\i)+0.5*(pic cs:C\j)+(0,-1.3)$) {\makebox[2cm]{\dotfill}};};
 \end{tikzpicture}
 
+\vspace{7mm}
+
+\item Au bout de combien de temps le chiffre d'affaires de cette start-up dépassera-t-il 100 000\euro{} par mois? \textit{(On utilisera la calculatrice)}
+
+\points 4
 
 \end{enumerate}
 \end{exercice}
@@ -82,11 +85,11 @@ $C_n$ & \tikzmark{C1} & \tikzmark{C2} & \tikzmark{C3} & \tikzmark{C4} & \tikzmar
 \begin{enumerate}
 \item Parmi ces suites, lesquelles paraissent arithmétiques? On précisera le premier terme et la raison.
 
-\points 4
+\points 5
 
 \item Quelle suite semble être une suite géométrique de raison entre 0 et 1? Justifier.
 
-\points 4
+\points 5
 \end{enumerate}
 }
 {
@@ -97,7 +100,7 @@ styleglobal,
 %hauteurproptick,
 width=0.9*\echellepgfinv*\linewidth,
 xmin=0, xmax= 5,
-ymin=-1.5, ymax=6.5,
+ymin=-2.5, ymax=6.5,
 xlabel={$n$},
 ylabel={$u_n$},
 minor x tick num=1,
@@ -136,29 +139,63 @@ Sa banque lui propose deux formules de placements.
 \begin{enumerate} 
 \item Quel sera le capital acquis par Olivier au 1\textsuperscript{er} janvier 2021 ? au 1\textsuperscript{er} janvier 2022 ?
 
-\points 3
+\points 5
 
 \item On  modélise  le  capital  acquis  par  Olivier  au  1er  Janvier  de l'année 2020 + $n$ à l'aide d'une suite $A$. Préciser la nature, le premier terme et la raison de cette suite.
 
-\points 3
+\points 5
 
 \end{enumerate} 
 \item Dans cette question Olivier choisit la formule B.
 \begin{enumerate}
 \item On modélise le capital acquis par Olivier au 1\textsuperscript{er} janvier de l'année 2020 + $n$ à l'aide d'une suite géométrique $B$  de  premier  terme  $B_0=2000$. Justifier que la raison de cette suite est $1,035$. 
 
-\points 3
+\points 5
 
 \item Quel sera le capital acquis par Olivier au 1er Janvier 2024 ?
 
-\points 3
+\points 5
 
 \end{enumerate}
 \item Sans faire de calculs, quelle formule serait la plus souhaitable à long terme?
 
-\points 2
+\points 5
 
 \end{enumerate}
 \end{exercice}
 
+\begin{exercice} \
+
+\compo[0.57]
+{
+Un zoologiste a relevé les populations de renards et de lapins dans une réserve naturelle au fil des mois. Il a reporté ses premiers résultats dans le tableau ci-contre.
+
+Estimer la population de chaque espèce en Mai. Justifier.
+}
+{
+\begin{tabularx}{\linewidth}{|c|Y|Y|}  \hline	% Suite géo arrondie trop dur?
+Mois & Pop. renards & Pop. lapins \\ \hline
+Janvier & $620$ & $1500$ \\ \hline
+Février & $1160$ & $2100$ \\ \hline
+Mars & $1700$ & $2940$ \\ \hline
+Avril & $2240$ & $4116$ \\ \hline
+\end{tabularx}
+}
+
+\
+
+\points {10}
+\end{exercice}
+
 \end{document}
+
+
+% Supprimé
+
+
+\begin{exercice}
+Exo T1CMATH04843 math2t-133a0-1007
+Un jardinier vient de planter 100 cyprès en ligne droite, à 4 mètres d'intervalle, pour protéger son terrain de vents violents. Au pied de chaque cyprès, il souhaite déposer, à l'aide d'une brouette, un sac de paillis. Les sacs sont entreposés dans une remise située à 15 mètres du premier arbre. Le jardinier ne peut transporter qu'un sac à chaque trajet.
+
+A finir
+\end{exercice}

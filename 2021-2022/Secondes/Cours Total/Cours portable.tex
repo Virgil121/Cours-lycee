@@ -1,7 +1,6 @@
 %\documentclass[a4paper,french,12pt]{article} % Overleaf ne compile pas sans ça ...
 
 % N'essayez pas de déchiffrer ça, c'est complètement immonde
-
 \documentclass[12pt,french,a4paper,varwidth=20cm,margin=0.5cm,multi={unepage}]{standalone}
 % Les deux lignes suivantes suffisent dans texmaker
 \usepackage{titling}
@@ -96,6 +95,25 @@
 	\redeftcb{propr}{Propriété}{211}{0.8}{0.75}
 	\redeftcb{methode}{Méthode}{211}{0.8}{0.75}
 	\redeftcb{exercice}{Exercice}{210}{0.6}{0.7}
+
+%\makeatletter
+%\def\tikz@semiaddlinewidth#1{\tikz@addoption{\pgfsetlinewidth{2*#1}}\pgfmathsetlength\pgflinewidth{2*#1}}%
+%\makeatother
+\tikzset{every picture/.append style={line width=0.8pt}}
+\pgfplotsset{every axis/.append style={line width=0.8pt}}
+\pgfsetlinewidth{0.8pt}
+\newlength\mylinewidth
+\setlength\mylinewidth{2pt}
+
+\tikzset{
+    ultra thin/.style= {line width=0.1\mylinewidth},
+    very thin/.style=  {line width=0.2\mylinewidth},
+    thin/.style=       {line width=0.4\mylinewidth},
+    semithick/.style=  {line width=0.6\mylinewidth},
+    thick/.style=      {line width=0.8\mylinewidth},
+    very thick/.style= {line width=1.2\mylinewidth},
+    ultra thick/.style={line width=1.6\mylinewidth}
+}
 
 \pgfplotsset{ % Pas besoin de "styleglobal" en fait ... Important: ne pas faire xscale mais x post scale pour conserver la taille des ticks
 	styleglobal/.append style={
