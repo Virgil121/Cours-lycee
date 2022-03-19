@@ -1,0 +1,72 @@
+\documentclass[a4paper,12pt,french]{article}
+
+\usepackage{../../../Style}
+
+\pagestyle{empty}
+
+\geometry{margin=1cm}
+
+\newcommand{\contenua}{
+\compo
+{
+\begin{center}
+\begin{resizetikz}{0.9\linewidth}
+\begin{tikzpicture}
+\repereOij[xmin=-2,xmax=8,ymin=-2,ymax=5];
+
+\node[stylepoint,fill=blue,label=-60:B] (B) at (5,-1) {};
+\node[stylepoint,fill=blue,label=120:A] (A) at (1,2) {};
+\node[stylepoint,fill=blue,label=60:C] (C) at (6,3) {};
+\draw[stylevecteur] (A.center) -- (B.center);
+\draw[stylevecteur] (B.center) -- (C.center);
+\end{tikzpicture}
+\end{resizetikz}
+\end{center}
+}
+{
+\begin{center}
+\begin{resizetikz}{0.9\linewidth}
+\begin{tikzpicture}
+\repereOij[xmin=-2,xmax=8,ymin=-2,ymax=5];
+
+\node[stylepoint,fill=blue,label=-60:B] (B) at (5,-1) {};
+\node[stylepoint,fill=blue,label=120:A] (A) at (1,2) {};
+\node[stylepoint,fill=blue,label=60:C] (C) at (6,3) {};
+\draw[stylevecteur] (A.center) -- (B.center);
+\draw[stylevecteur] (B.center) -- (C.center);
+\end{tikzpicture}
+\end{resizetikz}
+\end{center}
+}
+}
+
+% Début du document
+%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+\contenua \vfill \contenua \vfill \contenua \vfill \contenua% \vfill \contenua
+%
+%\newpage
+%
+%\vfill \contenub \vfill \contenub \vfill \contenub \vfill \contenub% \contenub \vfill
+%
+%\newpage
+%
+%\vfill \contenuc \vfill \contenuc \vfill \contenuc \vfill \contenuc \vfill \contenuc \vfill
+%
+%\newpage
+%
+%\contenud \vfill \contenud \vfill \contenud \vfill \contenud \vfill \contenud
+%
+%\newpage
+%
+%\contenue \vfill \contenue \vfill \contenue
+%
+%\newpage
+%
+%\contenuf \vfill \contenuf \vfill \contenuf
+
+%\contenua \contenub \contenuc \contenud \contenuee \contenuf
+
+\end{document}

@@ -8,26 +8,13 @@
 
 \renewcommand{\baselinestretch}{1.35}
 
+%\renewcommand{\points}[2][]{}
+
 \begin{document}
 
 \rem{L'usage de la calculatrice est autorisé. La propreté et l'orthographe seront prises en compte. Tout le devoir peut être fait sur le sujet.}
 
 Nom: \hfill Prénom: \hfill \
-
-\begin{exercice}
-Compléter le tableau suivant, en cochant la case adaptée à chaque situation:
-
-\begin{center}
-\begin{tabularx}{1\linewidth}{|X|c|c|} \hline
-\centering Description & Arithmétique & Géométrique \\ \hline
-On part de 2 et on ajoute 1 à chaque étape & & \\ \hline
-Tous les jours, le nombre de nénuphars sur un lac double. & & \\ \hline
-$0,2 \%$ de l'eau d'une piscine s'évapore chaque jour lors de l'été. & & \\ \hline
-Le quota de pêche du cabillaud diminue chaque année de 30 tonnes. & & \\ \hline
-
-\end{tabularx}
-\end{center}
-\end{exercice}
 
 \begin{exercice}
 Depuis sa création au 1\textsuperscript{er} janvier 2019, une start-up a vu son chiffre d'affaires augmenter de $5\%$ par mois sachant que ce chiffre d'affaires était de 32 000\euro{} pour le mois de janvier 2019. On fait l'hypothèse que cette évolution va se poursuivre dans les mois à venir.
@@ -37,23 +24,23 @@ Pour tout entier naturel non nul $n$, on note $C_n$ le chiffre d'affaires en eur
 \begin{enumerate}
 \item Justifier qu'augmenter une valeur de $5 \%$ revient à la multiplier par $1,05$.
 
-\points 4
+\points 5
 
 \item Calculer $C_1$, et interpréter cette valeur dans le contexte de l'exercice.
 
-\points 4
+\points 5
 
 \item Quelle est la nature de $C$? On précisera la raison et le premier terme.
 
 \points 4
 
-\item Justifier qu'on a l'égalité $C_{n+1} = C_n \times 1,05$ pour $n \in \N$.
+\item Déterminer $C_{n+1}$ en fonction de $C_n$.
 
 \points 4
 
-\item Compléter le tableau suivant \textit{(On arrondira à l'unité)}:
+\item Compléter le tableau suivant. \textit{(On justifiera les calculs pour au moins un terme et on arrondira à l'unité)}:
 
-\points 4
+\points 5
 
 \begin{center} %tikzmark pour réutiliser des points sur la page dans d'autres tikzpictures, c'est assez instable donc à revoir...
 \begin{tabularx}{0.9\linewidth}{|*{6}{Y|}} \hline
@@ -125,17 +112,32 @@ mark size=3pt
 \end{exercice}
 
 \begin{exercice}
+Compléter le tableau suivant, en cochant la case adaptée à chaque situation:
+
+\begin{center}
+\begin{tabularx}{1\linewidth}{|X|c|c|} \hline
+\centering Description & Arithmétique & Géométrique \\ \hline
+On part de 2 et on ajoute 1 à chaque étape & & \\ \hline
+Tous les jours, le nombre de nénuphars sur un lac double. & & \\ \hline
+$0,2 \%$ de l'eau d'une piscine s'évapore chaque jour lors de l'été. & & \\ \hline
+Le quota de pêche du cabillaud diminue chaque année de 30 tonnes. & & \\ \hline
+
+\end{tabularx}
+\end{center}
+\end{exercice}
+
+\begin{exercice}
 Le 1\textsuperscript{er} janvier 2020, Olivier dispose d'un capital de 2000 euros qu'il désire faire fructifier en le plaçant sur un livret.
 
 Sa banque lui propose deux formules de placements.
 
 \begin{itemize}[label=\bullet]
-\item Formule A: placement à intérêts annuels simples de $4\%$, ce qui signifie qu'à chaque 1\textsuperscript{er} Janvier, le capital de l'année précédente augmente de $4\%$ \textbf{\underline{du capital initial}} (Les intérêts ne sont pas comptés dans le calcul d'une année sur l'autre). 
-\item Formule B: placement à intérêts annuels composés de $3,5\%$, ce qui signifie qu'à chaque 1\textsuperscript{er} janvier, le capital de l'année précédente augmente de $3\%$.
+\item Formule A: placement à intérêts annuels simples à hauteur de 80\euro{}, ce qui signifie qu'à chaque 1\textsuperscript{er} Janvier, le capital de l'année précédente augmente de 80\euro{}.
+\item Formule B: placement à intérêts annuels composés de $3\%$, ce qui signifie qu'à chaque 1\textsuperscript{er} janvier, le capital de l'année précédente augmente de $3\%$.
 \end{itemize}
 
 \begin{enumerate}
-\item Dans cette question Olivier choisit la formule A.
+\item Dans cette question Olivier choisit la \textbf{formule A}.
 \begin{enumerate} 
 \item Quel sera le capital acquis par Olivier au 1\textsuperscript{er} janvier 2021 ? au 1\textsuperscript{er} janvier 2022 ?
 
@@ -146,9 +148,9 @@ Sa banque lui propose deux formules de placements.
 \points 5
 
 \end{enumerate} 
-\item Dans cette question Olivier choisit la formule B.
+\item Dans cette question Olivier choisit la \textbf{formule B}.
 \begin{enumerate}
-\item On modélise le capital acquis par Olivier au 1\textsuperscript{er} janvier de l'année 2020 + $n$ à l'aide d'une suite géométrique $B$  de  premier  terme  $B_0=2000$. Justifier que la raison de cette suite est $1,035$. 
+\item On modélise le capital acquis par Olivier au 1\textsuperscript{er} janvier de l'année 2020 + $n$ à l'aide d'une suite $B$. Déterminer la nature de $B$, son premier terme et sa raison.
 
 \points 5
 
@@ -168,9 +170,9 @@ Sa banque lui propose deux formules de placements.
 
 \compo[0.57]
 {
-Un zoologiste a relevé les populations de renards et de lapins dans une réserve naturelle au fil des mois. Il a reporté ses premiers résultats dans le tableau ci-contre.
+\strut Un zoologiste a relevé les populations de renards et de lapins dans une réserve naturelle au fil des mois. Il a reporté ses premiers résultats dans le tableau ci-contre.
 
-Estimer la population de chaque espèce en Mai. Justifier.
+En supposant que ces population continuent à évoluer de cette façon, estimer la population de chaque espèce en Mai. Justifier.
 }
 {
 \begin{tabularx}{\linewidth}{|c|Y|Y|}  \hline	% Suite géo arrondie trop dur?
@@ -184,7 +186,7 @@ Avril & $2240$ & $4116$ \\ \hline
 
 \
 
-\points {10}
+\points {12}
 \end{exercice}
 
 \end{document}

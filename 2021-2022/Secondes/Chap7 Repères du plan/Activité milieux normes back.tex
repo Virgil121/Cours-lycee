@@ -1,0 +1,105 @@
+\documentclass[a4paper,12pt,french]{article}
+
+\usepackage[TD]{../../../Style}
+
+\setlength{\columnsep}{2cm}
+\setlength{\composep}{1cm}
+\geometry{margin=1cm}
+
+%%% Contenu
+
+\newcommand{\contenuabase}{
+\titre{Milieu d'un segment}
+
+Soient $A$ et $B$ deux points du plan. Déterminer les coordonnées du milieu du segment $[AB]$ dans les cas suivants:
+\begin{enumerate}
+\item $A(-2;1)$ et $B(2;1)$
+\item $A(1;4)$ et $B(5;2)$
+\item $A(x_A;y_A)$ et $B(x_B;y_B)$
+\end{enumerate}}
+\newcommand{\contenua}{\compo{\contenuabase}{\contenuabase}}
+
+
+
+\newcommand{\contenuaindbase}{
+\titre{Indication}
+
+Si à l'issue de deux devoirs, vous obteniez les notes 8 et 16, que calculeriez-vous?
+}
+\newcommand{\contenuaind}{\compo{\contenuaindbase}{\contenuaindbase}}
+
+
+
+\newcommand{\contenubbase}{
+\titre{Norme d'un vecteur}
+
+Soit $\vv u$ un vecteur du plan. Déterminer la norme de $\vv u$ dans les cas suivants:
+
+\vspace{2mm}
+
+\hfill $\vv u \binom 4 0$ \hfill $\vv u \binom 4 {-2}$ \hfill $\vv u \binom x y$ \hfill \ }
+\newcommand{\contenub}{\compo{\contenubbase}{\contenubbase}}
+
+
+
+\newcommand{\contenucbase}{
+\titre{Longueur d'un segment}
+
+Soient $A$ et $B$ deux points du plan. Déterminer la longueur du segment $[AB]$ dans les cas suivants:
+\begin{enumerate}
+\item $A(-2;1)$ et $B(2;1)$
+\item $A(1;4)$ et $B(5;2)$
+\item $A(x_A;y_A)$ et $B(x_B;y_B)$
+\end{enumerate}}
+\newcommand{\contenuc}{\compo{\contenucbase}{\contenucbase}}
+
+
+
+\newcommand{\contenubcindbase}{
+\titre{Indication}
+
+Essayez de faire apparaitre un triangle sur un schéma.
+}
+\newcommand{\contenubcind}{\compo{\contenubcindbase}{\contenubcindbase}}
+
+% Début du document
+%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+\contenua \vfill \contenua \vfill \contenua \vfill \contenua %\vfill \contenua
+%
+\newpage
+%
+\contenub \vfill \contenub \vfill \contenub \vfill \contenub \vfill \contenub
+%
+\newpage
+%
+\contenuc \vfill \contenuc \vfill \contenuc \vfill \contenuc %\vfill \contenua
+
+\newpage
+
+\contenuaind \vfill\contenuaind \vfill \contenuaind \vfill \contenubcind \vfill \contenubcind \vfill \contenubcind
+
+% Page avec tout
+
+\newpage
+
+\contenua
+
+\vfill
+
+\contenuaind
+
+\vfill
+
+\contenub
+
+\vfill
+
+\contenuc
+
+\vfill
+
+\contenubcind
+
+\end{document}

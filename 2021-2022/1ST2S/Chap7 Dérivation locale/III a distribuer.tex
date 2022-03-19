@@ -1,0 +1,114 @@
+\documentclass[a4paper,12pt,french,twocolumn,landscape]{article}
+
+\usepackage[cours,NB]{../../../Style}
+
+\pagestyle{empty}
+
+\setlength{\columnsep}{1.3cm}
+
+\geometry{margin=1cm}
+
+\newcommand{\contenua}{
+\begin{defin}
+\compo[0.65]
+{
+Soit $f$ une fonction, avec $A$ et $M$ deux points sur la courbe de $f$ d'abscisses respectives $a$ et $a+h$ ($h \neq 0$).
+
+Le taux de variation de $f$ entre $a$ et $a+h$ (autrement dit le coefficient directeur de la sécante associée) vaut: $$\frac{\text{déplacement vertical}}{\text{déplacement horizontal}}=\frac{\makebox[3cm]{}}{}\ $$
+}
+{
+\vspace{-1.5em}
+\begin{center}
+\begin{tikzpicture}[scale=\echellepgf]
+\begin{axis}[
+styleglobal,
+width=1*\echellepgfinv*\linewidth,
+xmin=-1.5, xmax=4,
+ymin=-1, ymax=5.5,
+xtick distance=1,
+ytick distance=1,
+ticks=none,
+declare function={f(\x)=e^(0.75*(\x-1)-0.5);}
+]
+\addplot[styleplot]{f(x)} node [pos=0.05,below=1mm] {$\mathscr C_f$};
+\node[stylepoint,fill=blue,label=above:$A$] (A) at (0.5,{f(0.5)}) {};
+\node[stylepoint,fill=blue,label=above left:$M$] (B) at (3.5,{f(3.5)}) {};
+%
+%\draw[color=blue,dashed,very thick] (0.5, 0) -- (A) node [pos=0,below] {$a$};% -- (0,{f(0.5)}) node [pos=1,left] {$f(x)$};
+%\draw[color=blue,dashed,very thick] (3, 0) -- (B) node [pos=0,below] {$a+h$};% -- (0,{f(1.2)}) node [pos=1,left] {$f(y)$};
+%\draw[<->,color=DarkGreen,densely dashed,ultra thick] (0.5,0) -- (3,0) node[pos=0.5,below] {$h$};
+%%
+%\draw[color=blue,dashed,very thick] (0,{f(0.5)}) -- (A) node [pos=0,left] {$f(a)$};% -- (0,{f(0.5)}) node [pos=1,left] {$f(x)$};
+%\draw[color=blue,dashed,very thick] (0,{f(3)}) -- (B) node [pos=0,left] {$f(a+h)$};% -- (0,{f(1.2)}) node [pos=1,left] {$f(y)$};
+%\draw[<->,color=DarkGreen,densely dashed,ultra thick] (0,{f(0.5)}) -- (0,{f(3)}) node[pos=0.5,left] {$f(a+h)-f(a)$};
+%
+\draw[line width=1.3pt,shorten <= -20cm,shorten >= -20cm,densely dotted] (A) -- (B);
+\end{axis}
+\end{tikzpicture}
+\end{center}
+}
+\end{defin}
+
+\begin{propr}
+Si le taux de variation $\frac{\text{déplacement vertical}}{\text{déplacement horizontal}}=\dfrac{\makebox[3cm]{}}{}$  se rapproche d'un nombre réel quand $h$ \textit{tend} vers $0$, on dit que $f$ est \makebox[2.5cm]{\dotfill} en $a$, et le nombre en question est noté $f'(a)$.
+\end{propr}
+
+\begin{ex}
+\compohaut[0.67]
+{
+On se donne la fonction $f:x \mapsto x^2$, et le point $A(1;1)$ sur $\mathscr C_f$. Soit $h \in \R$, $h \neq 0$.
+On a:\vspace{6.9cm}
+}
+{
+\vspace{-1.5em}
+\begin{tikzpicture}[scale=\echellepgf]
+\begin{axis}[
+styleglobal,
+width=0.9*\echellepgfinv*\linewidth,
+xmin=-1, xmax=3,
+ymin=-1, ymax=4,
+xtick distance=1,
+ytick distance=1,
+minor x tick num=1,
+minor y tick num=1,
+declare function={f(\x)=\x^2;}
+]
+\addplot[styleplot] {f(x)} node[pos=0.76,left] {$\mathscr C_f$};
+\node[stylepoint,fill=blue,label=above right:$A$] (A) at (1,{f(1)}) {};
+%\addplot[styleplot,densely dashed,color=DarkBlue] {{2*(x-1)+f(1)}};
+\end{axis}
+\end{tikzpicture}
+}
+\end{ex}
+}
+
+% Début du document
+%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+\contenua \newpage \contenua% \vfill \contenua \vfill \contenua% \vfill \contenua \vfill \contenua
+%
+%\newpage
+%
+%\contenub \vfill \contenub% \vfill \contenub \vfill \contenub% \contenub \vfill
+%
+%\newpage
+%
+%\vfill \contenuc \vfill \contenuc \vfill \contenuc \vfill \contenuc \vfill \contenuc \vfill
+%
+%\newpage
+%
+%\contenud \vfill \contenud \vfill \contenud \vfill \contenud \vfill \contenud
+%
+%\newpage
+%
+%\contenue \vfill \contenue \vfill \contenue
+%
+%\newpage
+%
+%\contenuf \vfill \contenuf \vfill \contenuf
+
+%\contenua \contenub \contenuc \contenud \contenuee \contenuf
+
+\end{document}

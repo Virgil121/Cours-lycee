@@ -1,0 +1,154 @@
+\documentclass[a4paper,12pt,french]{article}
+
+\usepackage[TD]{../../../Style}
+
+\setlength{\columnsep}{2cm}
+\setlength{\composep}{1cm}
+\geometry{margin=1cm}
+
+%%% Contenu
+
+\newcommand{\contenuabase}{
+\titre{Milieu d'un segment}
+Soient $A$ et $B$ deux points du plan. Déterminer les coordonnées du \underline{milieu} du segment $[AB]$ dans les cas suivants:
+\begin{enumerate}
+\item $A(-2;1)$ et $B(2;1)$
+\item $A(1;4)$ et $B(5;2)$
+\item $A(-2;-3)$ et $B(10;-1)$
+\item $A(10;20)$ et $B(12;20)$
+\item $A(x_A;y_A)$ et $B(x_B;y_B)$
+\end{enumerate}}
+\newcommand{\contenua}{\compo{\contenuabase}{\contenuabase}}
+
+
+
+\newcommand{\contenuaindbase}{
+\titre{Indication}
+
+Si à l'issue de deux devoirs, vous obteniez les notes 8 et 16, que calculeriez-vous?
+}
+\newcommand{\contenuaind}{\compo{\contenuaindbase}{\contenuaindbase}}
+
+
+
+\newcommand{\contenubbase}{
+\titre{Norme d'un vecteur}
+\setlength{\composep}{10pt}
+Sur l'océan, trois bateaux sont initialement situés à des points A,B et C. On modélise une carte géographique par un repère (1 unité = 1 km sur chaque axe). De plus chaque axe représente l'un des points cardinaux Nord, Sud, Est, Ouest. Chaque bateau se déplace suivant un vecteur donné:
+
+\compo[0.68]
+{
+\begin{itemize}
+\item Le bateau A se déplace en suivant le vecteur $\vec u \dbinom 0 4$.
+\item Le bateau B se déplace en suivant le vecteur $\vec v \dbinom 4 {-3}$.
+\item Le bateau C se déplace en suivant le vecteur $\vec u \dbinom 3 3$.
+\end{itemize}
+\begin{enumerate}
+\item Déterminer la distance exacte en km parcourue par chaque bateau.
+\item Quelle serait la formule générale si un bateau X se déplaçait en suivant le vecteur $\vec \alpha \dbinom x y$?
+\end{enumerate}
+}
+{
+\begin{center}
+\begin{resizetikz}{0.9\linewidth}
+\begin{tikzpicture}
+\repereOij[xmin=-7,xmax=4,ymin=-3,ymax=7];
+\node[stylepoint,cross out,label=above left:$B$] (B) at (-5,5) {};
+\node[stylepoint,cross out,label=below left:$A$] (A) at (-4,-1) {};
+\node[stylepoint,cross out,label=below right:$C$] (B) at (-1,-2) {};    
+\end{tikzpicture}
+\end{resizetikz}
+\end{center}
+}
+\setlength{\composep}{1cm}
+}
+\newcommand{\contenub}{\contenubbase}
+
+\newcommand{\contenucbase}{
+\titre{Longueur d'un segment}
+
+Soient $A$ et $B$ deux points du plan. Déterminer la longueur du segment $[AB]$ dans les cas suivants:
+\begin{enumerate}
+\item $A(-2;1)$ et $B(2;1)$
+\item $A(1;4)$ et $B(5;2)$
+\item $A(-2;-3)$ et $B(10;-1)$
+\item $A(10;20)$ et $B(12;20)$
+\item $A(x_A;y_A)$ et $B(x_B;y_B)$
+\end{enumerate}}
+\newcommand{\contenuc}{\compo{\contenucbase}{\contenucbase}}
+
+
+
+\newcommand{\contenubcindbase}{
+\titre{Indication}
+
+Essayez de faire apparaitre un triangle sur un schéma.
+}
+\newcommand{\contenubcind}{\compo{\contenubcindbase}{\contenubcindbase}}
+
+\newcommand{\contenudbase}{
+\titre{Un lecteur éclairé?}
+Dans la pièce ci-contre, un lampadaire est placé en $L$ et un fauteuil en $F$. Le lampadaire donne un éclairage satisfaisant pour la lecture dans un rayon de $3,5$ mètres. L'éclairage est-il suffisant si on lit un livre dans un fauteuil placé en $F$?
+
+\begin{center}
+\begin{resizetikz}{0.7\linewidth}
+\begin{tikzpicture}
+\node[stylepoint,fill=blue,label=above right:$F$] (F) at (7,1) {};
+\node[stylepoint,fill=blue,label=below left:$L$] (L) at (9,4) {};
+\draw[very thick] (0,0) rectangle (10,6);
+\draw[shift={(0,-0.3)},<->] (0,0) -- (10,0) node[below,pos=0.5]{10m};
+\draw[shift={(-0.3,0)},<->,overlay] (0,0) -- (0,6) node[left,pos=0.5]{6m};
+\draw[<->] (0,1) -- (F) node[above,pos=0.5] {7m};
+\draw[<->] (7,0) -- (F) node[right,pos=0.5] {1m};
+\draw[<->] (9,6) -- (L) node[left,pos=0.5] {2m};
+\draw[<->] (10,4) -- (L) node[below,pos=0.5] {1m};
+\end{tikzpicture}
+\end{resizetikz}
+\end{center}
+}
+
+\newcommand{\contenud}{\compo{\contenudbase}{\contenudbase}}
+% Début du document
+%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+\contenua \vfill \contenua \vfill \contenua \vfill \contenua %\vfill \contenua
+%
+\newpage
+%
+\contenub \vfill \contenub \vfill \contenub
+%
+\newpage
+%
+\contenuc \vfill \contenuc \vfill \contenuc \vfill \contenuc %\vfill \contenua
+\end{document}%
+\newpage
+%
+%\contenuaind \vfill\contenuaind \vfill \contenuaind \vfill \contenubcind \vfill \contenubcind \vfill \contenubcind
+%
+%\newpage
+%
+\contenud \vfill \contenud \vfill \contenud
+%
+% Page avec tout
+%
+\newpage
+
+\contenua
+
+\vfill
+
+%\contenuaind
+
+%\vfill
+
+\contenub
+
+\vfill
+
+\contenuc
+
+%\vfill
+
+%\contenubcind
+\end{document}

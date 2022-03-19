@@ -1,17 +1,16 @@
 \documentclass[a4paper,12pt,french]{article}
 
 \usepackage[cours]{../../../Style}
-
-%\selectcolormodel{cmyk}
-
 %\usepackage{wrapfig}
 %\makeatletter
 %\setlength{\parskip}{1ex}
 %\newcommand{\@minipagerestore}{\setlength{\parskip}{1ex}}
-
+%\frenchsetup{ItemLabels=\textendash}
 % Début du document
 %%%%%%%%%%%%%%%%%%%
 \begin{document}
+
+% Compilation avec lualatex nécessaire pour utiliser declare function dans tikz, à cause d'un conflit avec babel ( statut du ; )
 
 \title{Dérivation - Point de vue local}
 \maketitle
@@ -30,7 +29,6 @@
 \end{programme}
 
 \section{Sécantes et tangentes}
-
 %Tangente, lim des sécantes. Lecture graphique de la dérivée
 \begin{defin}
 \compo[0.6]
@@ -157,8 +155,6 @@ declare function={f(\x)=-0.5*(\x-1)*(\x-1)+3;}%0.2*\x*(\x+2)*(\x-3);}
 	 Equations de tangentes: Exos 48,49,50,51,(52) p151\\
 	 Interprétation de la dérivée: Exos 42, (46), (53) }
 
-\progres
-
 \section{Lien avec le taux de variation}
 
 \begin{defin}
@@ -166,7 +162,7 @@ declare function={f(\x)=-0.5*(\x-1)*(\x-1)+3;}%0.2*\x*(\x+2)*(\x-3);}
 {
 Soit $f$ une fonction, avec $A$ et $M$ deux points sur la courbe de $f$ d'abscisses respectives $a$ et $a+h$ ($h \neq 0$).
 
-Le taux d'accroissement de $f$ entre $a$ et $a+h$ (autrement dit le coefficient directeur de la sécante associée) vaut: $$\frac{\text{déplacement vertical}}{\text{déplacement horizontal}}=\frac{f(a+h)-f(a)}{h}$$
+Le taux de variation de $f$ entre $a$ et $a+h$ (autrement dit le coefficient directeur de la sécante associée) vaut: $$\frac{\text{déplacement vertical}}{\text{déplacement horizontal}}=\frac{f(a+h)-f(a)}{h}$$
 }
 {
 \vspace{-1.5em}
@@ -202,7 +198,7 @@ declare function={f(\x)=e^(0.75*(\x-1)-0.5);}
 \end{defin}
 
 \begin{propr}
-Si le taux d'accroissement $\frac{\text{déplacement vertical}}{\text{déplacement horizontal}}=\frac{f(a+h)-f(a)}{h}$  se rapproche d'un nombre réel quand $h$ \textit{tend} vers $0$, on dit que $f$ est \textbf{dérivable} en $a$, et le nombre en question est noté $f'(a)$.
+Si le taux de variation $\frac{\text{déplacement vertical}}{\text{déplacement horizontal}}=\frac{f(a+h)-f(a)}{h}$  se rapproche d'un nombre réel quand $h$ \textit{tend} vers $0$, on dit que $f$ est \textbf{dérivable} en $a$, et le nombre en question est noté $f'(a)$.
 \end{propr}
 
 \begin{ex}
