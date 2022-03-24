@@ -131,7 +131,7 @@ $M(1;3)$&$M(2;-1)$&$M(-3;2)$
 On dit que le repère \Oij est orthonormé si:
 \begin{itemize}
 \item Ses axes sont perpendiculaires: $(OI) \perp (OJ)$
-\item Les vecteurs unité $\vec i$ et $\vec j$ sont de même longueur:  $\Vert \vec i \Vert = \Vert \vec j \Vert$
+\item Les vecteurs unité $\vec i$ et $\vec j$ ont pour longueur 1:  $\Vert \vec i \Vert = \Vert \vec j \Vert=1$
 \end{itemize}
 }
 {
@@ -180,7 +180,7 @@ Soit $\vec u$ un vecteur du plan. On se donne le point $M(x;y)$ tel que $\vec{OM
 {
 On a représenté ci-contre deux vecteurs $\vec u$ et $\vec v$.
 
-On a $\vec u \dbinom 3 {-1}$, et $\vec v \dbinom {-2} {0}$.
+On a $\vec u \dbinom 5 {-2}$, et $\vec v \dbinom {-2} {0}$.
 }
 {\vspace{-1.5em}
 \begin{center}
@@ -269,13 +269,17 @@ Soient $A(1;7)$, $B (6;-5)$ et $I$ le milieu de $[AB]$. Alors on a $I\left( \fra
 \progres
 \subsection{Normes et distances}
 
+\begin{fait}
+Dans toute cette partie, on se place dans un repère orthonormé.
+\end{fait}
+
 \begin{prop}
-Soit $\vec u \dbinom x y$ un vecteur du plan, dont les coordonnées sont exprimées dans un repère orthonormé. Alors la norme de $\vec u$ est donnée par:
+Soit $\vec u \dbinom x y$ un vecteur du plan. Alors la norme de $\vec u$ est donnée par:
 $$\Vert \vec u \Vert = \sqrt{x^2+y^2}$$
 \end{prop}
 
 \begin{cor}
-Soient $A(x_A;y_A)$ et $B(x_B;y_B)$ deux points du plan, dont les coordonnées sont exprimées dans un repère orthonormé. Alors la distance entre $A$ et $B$ vaut:
+Soient $A(x_A;y_A)$ et $B(x_B;y_B)$ deux points du plan. Alors la distance entre $A$ et $B$ vaut:
 $$AB=\sqrt{(x_B-x_A)^2+(y_B-y_A)^2}$$
 \end{cor}
 
@@ -292,6 +296,15 @@ Alors $\begin{aligned}[t]AB&=\sqrt{(6-1)^2+(-5-7)^2}\\
 On peut alors montrer l'appartenance d'un point à un cercle, ou déterminer la nature d'un polygone en utilisant des coordonnées.
 \end{apps}
 
+\begin{ex}
+Soit $\mathcal C$ le cercle de centre $A(3;5)$ de rayon 3, et le point $M(5;7)$. On a:
+$$\begin{aligned}[t] \left\Vert \vv{AM} \right\Vert &= \sqrt{(5-3)^2+(7-5)^2}\\
+&=\sqrt{2^2+2^2}\\
+&=\sqrt{4+4}\\
+&=\sqrt 8 \simeq 2,83\end{aligned}$$
+Comme $\left\Vert \vv{AM} \right\Vert \neq 3$, $M$ n'appartient pas au cercle $\mathcal C$.
+\end{ex}
+
 \rem{Exos 10,11,12,(13)}
 
 \section{Colinéarité}
@@ -299,16 +312,20 @@ On peut alors montrer l'appartenance d'un point à un cercle, ou déterminer la 
 \subsection{Définitions et caractérisations}
 
 \begin{defin}
-Deux vecteurs $\vec u$ et $\vec v$ sont dits colinéaires s'ils ont la même direction, autrement dit s'il existe $\lambda \in \R$ tel que $\vec u = \lambda \vec v$.
+Deux vecteurs $\vec u$ et $\vec v$ sont dits colinéaires s'il existe $\lambda \in \R$ tel que $\vec u = \lambda \vec v$. Dans le cas où ils sont non nuls, cela revient à dire qu'ils ont la même direction.
 \end{defin}
 
 \begin{rmq}
-Cela revient à dire que les coordonnées de $\vec u$ et $\vec v$ sont proportionnelles.
+Deux vecteurs sont colinéaire si et seulement si leurs coordonnées sont proportionnelles.
 \end{rmq}
 
-\begin{ex}
-On se donne $\vec u \dbinom 2 5$ et $\vec v \dbinom 4 {10}$. On remarque que $\vec v = 2 \vec u$. Alors $\vec u$ et $\vec v$ sont colinéaires.
-\end{ex}
+\begin{exs}
+\begin{itemize}
+\item On se donne $\vec u \dbinom 2 5$ et $\vec v \dbinom 4 {10}$. On remarque que $\vec v = 2 \vec u$. Alors $\vec u$ et $\vec v$ sont colinéaires.
+
+\item On prend maintenant $\vv a \dbinom 4 {11}$ et $\vv b \dbinom {-7} {-20}$. On a $11 \times (-7) = -77$ et $4 \times (-20) = -80$. Comme $-77 \neq -80$, les coordonnées de $\vv a$ et $\vv b$ ne sont pas proportionnelles donc $\vv a$ et $\vv b$ ne sont pas colinéaires.
+\end{itemize}
+\end{exs}
 
 \subsection{Déterminant de deux vecteurs}
 
@@ -335,9 +352,12 @@ Les vecteurs $\vec u$ et $\vec v$ de l'exemple précédent sont donc colinéaire
 
 \subsection{Applications en géométrie}
 
-\begin{propr}
-Deux droites $(AB)$ et $(CD)$ sont parallèles si et seulement si les vecteurs $\vv{AB}$ et $\vv{CD}$ sont colinéaires.
-\end{propr}
+\begin{proprs}
+\begin{itemize}
+\item Deux droites $(AB)$ et $(CD)$ sont parallèles si et seulement si les vecteurs $\vv{AB}$ et $\vv{CD}$ sont colinéaires.
+\item Trois points $A$,$B$,$C$ sont alignés si et seulement si les vecteurs $\vv{AB}$ et $\vv{AC}$ sont colinéaires.
+\end{itemize}
+\end{proprs}
 
 \begin{ex}
 \compo[0.6]
@@ -364,7 +384,7 @@ On a $\det (\vec{AB};\vec{AC})=9 \times (-4) - (-6) \times 6 = -36+36=0$.
 \end{center}
 }
 
-On en déduit que les vecteurs $\vec{AB}$ et $\vec{AC}$ sont colinéaires, d'où $(AB) \parallel (AC)$. De plus, ces deux droites sont confondues, donc les points $A$, $B$ et $C$ sont alignés.
+On en déduit que les vecteurs $\vec{AB}$ et $\vec{AC}$ sont colinéaires, d'où $(AB) \parallel (AC)$, et les points $A$, $B$ et $C$ sont alignés.
 \end{ex}
 
 \rem{Exos 19,20}

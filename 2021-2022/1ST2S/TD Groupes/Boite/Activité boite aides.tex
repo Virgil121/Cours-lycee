@@ -1,0 +1,50 @@
+\documentclass[a4paper,12pt,french]{article}
+
+\usepackage[TD]{../../../Style}
+
+\setlength{\parindent}{0pt}
+%\geometry{margin=5mm}
+% Début du document
+\renewcommand{\composep}{20pt}
+
+\newcommand{\contenua}{
+\titre{Indication}
+\centering Faites un schéma de la situation. Connaissez-vous la formule du volume d'une boite ?}
+
+\newcommand{\contenub}{
+\titre{Indication}
+\centering Volume d'une boite: Longueur $\times$ largeur $\times$ hauteur}
+
+\newcommand{\contenuc}{
+\titre{Indication}
+\centering Si la hauteur de la boite est de 2cm, quelle est sa hauteur? Quelle est sa largeur? En déduire son volume.}
+
+%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+%\foreach \i in {1,2} {\compo{\contenua}{\contenua} \vfill}
+%\foreach \i in {1,2} {\compo{\contenub}{\contenub} \vfill}
+%\foreach \i in {1,2} {\compo{\contenuc}{\contenuc} \vfill}
+
+\compo{\contenua}{\contenua} \vfill
+\compo{\contenua}{\contenua} \vfill
+\compo{\contenub}{\contenub} \vfill
+\compo{\contenub}{\contenub} \vfill
+\compo{\contenuc}{\contenuc} \vfill
+\compo{\contenuc}{\contenuc}
+
+\newpage
+
+\newgeometry{margin=5mm}
+
+\ \vfill
+\begin{tikzpicture}
+\draw (0,0) -- (0,10cm) -- (10cm,10cm) -- (10cm,0cm) --cycle;
+\draw (10cm,0) -- (20cm,0) -- (20cm,10cm) -- (10cm,10cm) --cycle;
+\begin{scope}[yshift=-10cm]
+\draw (0,0) -- (0,10cm) -- (10cm,10cm) -- (10cm,0cm) --cycle;
+\draw (10cm,0) -- (20cm,0) -- (20cm,10cm) -- (10cm,10cm) --cycle;
+\end{scope}
+\end{tikzpicture}
+\vfill
+\end{document}

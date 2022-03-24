@@ -34,28 +34,32 @@ Si à l'issue de deux devoirs, vous obteniez les notes 8 et 16, que calculeriez-
 \newcommand{\contenubbase}{
 \titre{Norme d'un vecteur}
 \setlength{\composep}{10pt}
-Sur l'océan, trois bateaux sont initialement situés à des points A,B et C. On modélise une carte géographique par un repère (1 unité = 1 km sur chaque axe). De plus chaque axe représente l'un des points cardinaux Nord, Sud, Est, Ouest. Chaque bateau se déplace suivant un vecteur donné:
+Sur l'océan, trois bateaux sont initialement situés à des points A,B et C. On modélise une carte géographique par un repère orthonormé (1 unité = 1 km sur chaque axe). De plus chaque axe représente l'un des points cardinaux Nord, Sud, Est, Ouest. Chaque bateau se déplace suivant un vecteur donné:
 
-\compo[0.68]
+\compo[0.55]
 {
 \begin{itemize}
-\item Le bateau A se déplace en suivant le vecteur $\vec u \dbinom 0 4$.
-\item Le bateau B se déplace en suivant le vecteur $\vec v \dbinom 4 {-3}$.
-\item Le bateau C se déplace en suivant le vecteur $\vec u \dbinom 3 3$.
+\item Le bateau A se déplace en suivant le vecteur $\vec a \dbinom 0 4$.
+\item Le bateau B se déplace en suivant le vecteur $\vec b \dbinom 4 3$.
+\item Le bateau C se déplace en suivant le vecteur $\vec c \dbinom 2 3$.
 \end{itemize}
 \begin{enumerate}
 \item Déterminer la distance exacte en km parcourue par chaque bateau.
-\item Quelle serait la formule générale si un bateau X se déplaçait en suivant le vecteur $\vec \alpha \dbinom x y$?
+\item Quelle serait la formule générale si un bateau X se déplaçait en suivant le vecteur $\vec u \dbinom x y$?
 \end{enumerate}
+
+\textit{Cette formule permet donc d'obtenir la norme d'un vecteur $\vv u$ (notée $\Vert \vv u \Vert$).}
+
+\textbf{Applications:} Calculer la norme des vecteurs $\vv u \binom 8 6$, $\vv v \binom 3 4$, $\vv w \binom 4 5$.
 }
 {
 \begin{center}
 \begin{resizetikz}{0.9\linewidth}
 \begin{tikzpicture}
-\repereOij[xmin=-7,xmax=4,ymin=-3,ymax=7];
+\repereOij[xmin=-7,xmax=4,ymin=-4,ymax=10];
 \node[stylepoint,cross out,label=above left:$B$] (B) at (-5,5) {};
 \node[stylepoint,cross out,label=below left:$A$] (A) at (-4,-1) {};
-\node[stylepoint,cross out,label=below right:$C$] (B) at (-1,-2) {};    
+\node[stylepoint,cross out,label=below right:$C$] (B) at (1,2) {};    
 \end{tikzpicture}
 \end{resizetikz}
 \end{center}
@@ -73,8 +77,9 @@ Soient $A$ et $B$ deux points du plan. Déterminer la longueur du segment $[AB]$
 \item $A(1;4)$ et $B(5;2)$
 \item $A(-2;-3)$ et $B(10;-1)$
 \item $A(10;20)$ et $B(12;20)$
-\item $A(x_A;y_A)$ et $B(x_B;y_B)$
-\end{enumerate}}
+\end{enumerate}
+Quel est le lien entre la norme d'un vecteur et la longueur d'un segment $[AB]$?
+}
 \newcommand{\contenuc}{\compo{\contenucbase}{\contenucbase}}
 
 
@@ -88,7 +93,7 @@ Essayez de faire apparaitre un triangle sur un schéma.
 
 \newcommand{\contenudbase}{
 \titre{Un lecteur éclairé?}
-Dans la pièce ci-contre, un lampadaire est placé en $L$ et un fauteuil en $F$. Le lampadaire donne un éclairage satisfaisant pour la lecture dans un rayon de $3,5$ mètres. L'éclairage est-il suffisant si on lit un livre dans un fauteuil placé en $F$?
+Dans la pièce ci-dessous, un lampadaire est placé en $L$ et un fauteuil en $F$. Le lampadaire donne un éclairage satisfaisant pour la lecture dans un rayon de $3,5$ mètres. L'éclairage est-il suffisant si on lit un livre dans un fauteuil placé en $F$?
 
 \begin{center}
 \begin{resizetikz}{0.7\linewidth}
@@ -98,10 +103,10 @@ Dans la pièce ci-contre, un lampadaire est placé en $L$ et un fauteuil en $F$.
 \draw[very thick] (0,0) rectangle (10,6);
 \draw[shift={(0,-0.3)},<->] (0,0) -- (10,0) node[below,pos=0.5]{10m};
 \draw[shift={(-0.3,0)},<->,overlay] (0,0) -- (0,6) node[left,pos=0.5]{6m};
-\draw[<->] (0,1) -- (F) node[above,pos=0.5] {7m};
-\draw[<->] (7,0) -- (F) node[right,pos=0.5] {1m};
-\draw[<->] (9,6) -- (L) node[left,pos=0.5] {2m};
-\draw[<->] (10,4) -- (L) node[below,pos=0.5] {1m};
+\draw[semithick,<->] (0,1) -- (F.center) node[above,pos=0.5] {7m};
+\draw[semithick,<->] (7,0) -- (F.center) node[right,pos=0.5] {1m};
+\draw[semithick,<->] (9,6) -- (L.center) node[left,pos=0.5] {2m};
+\draw[semithick,<->] (10,4) -- (L.center) node[below,pos=0.5] {1m};
 \end{tikzpicture}
 \end{resizetikz}
 \end{center}
@@ -116,12 +121,12 @@ Dans la pièce ci-contre, un lampadaire est placé en $L$ et un fauteuil en $F$.
 %
 \newpage
 %
-\contenub \vfill \contenub \vfill \contenub
+\contenub \vfill \contenub% \vfill \contenub
 %
 \newpage
 %
-\contenuc \vfill \contenuc \vfill \contenuc \vfill \contenuc %\vfill \contenua
-\end{document}%
+\contenuc \vfill \contenuc \vfill \contenuc% \vfill \contenuc %\vfill \contenua
+%\end{document}%
 \newpage
 %
 %\contenuaind \vfill\contenuaind \vfill \contenuaind \vfill \contenubcind \vfill \contenubcind \vfill \contenubcind

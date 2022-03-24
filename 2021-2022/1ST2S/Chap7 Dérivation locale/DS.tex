@@ -1,0 +1,203 @@
+\documentclass[a4paper,12pt,french] {article}
+
+\usepackage[sujet]{../../../Style}
+
+\fancyhead[L]{16/03/2021}
+\fancyhead[C]{\textbf{DS6 : Suites arithmétiques et géométriques}}
+\fancyhead[R]{\premiere ST2S 2}
+
+\renewcommand{\baselinestretch}{1.35}
+
+%\renewcommand{\points}[2][]{}
+
+\begin{document}
+
+\rem{L'usage de la calculatrice est autorisé. La propreté et l'orthographe seront prises en compte. Tout le devoir peut être fait sur le sujet.}
+
+Nom: \hfill Prénom: \hfill \
+
+\begin{exercice}
+Depuis sa création au 1\textsuperscript{er} janvier 2019, une start-up a vu son chiffre d'affaires augmenter de $5\%$ par mois sachant que ce chiffre d'affaires était de 32 000\euro{} pour le mois de janvier 2019. On fait l'hypothèse que cette évolution va se poursuivre dans les mois à venir.
+
+Pour tout entier naturel non nul $n$, on note $C_n$ le chiffre d'affaires en euros du $n$-ième mois après la création de la start-up. On a ainsi $C_0=32000$.
+
+\begin{enumerate}
+\item Justifier qu'augmenter une valeur de $5 \%$ revient à la multiplier par $1,05$.
+
+\points 5
+
+\item Calculer $C_1$, et interpréter cette valeur dans le contexte de l'exercice.
+
+\points 5
+
+\item Quelle est la nature de $C$? On précisera la raison et le premier terme.
+
+\points 4
+
+\item Déterminer $C_{n+1}$ en fonction de $C_n$.
+
+\points 4
+
+\item Compléter le tableau suivant. \textit{(On justifiera les calculs pour au moins un terme et on arrondira à l'unité)}:
+
+\points 5
+
+\begin{center} %tikzmark pour réutiliser des points sur la page dans d'autres tikzpictures, c'est assez instable donc à revoir...
+\begin{tabularx}{0.9\linewidth}{|*{6}{Y|}} \hline
+$n$ & 1 & 2 & 3 & 4 & 5 \\ \hline
+$C_n$ & \tikzmark{C1} & \tikzmark{C2} & \tikzmark{C3} & \tikzmark{C4} & \tikzmark{C5} \\ \hline
+\end{tabularx}
+\end{center}
+
+\begin{tikzpicture}[remember picture,overlay]
+\foreach \i/\j in {1/2,2/3,3/4,4/5} {
+\draw[->] ($(pic cs:C\i)+(0.4,-0.23)$) to[bend right=80] ($(pic cs:C\j)+(-0.4,-0.23)$);
+\node at ($0.5*(pic cs:C\i)+0.5*(pic cs:C\j)+(0,-1.3)$) {\makebox[2cm]{\dotfill}};};
+\end{tikzpicture}
+
+\vspace{7mm}
+
+\item Au bout de combien de temps le chiffre d'affaires de cette start-up dépassera-t-il 100 000\euro{} par mois? \textit{(On utilisera la calculatrice)}
+
+\points 4
+
+\end{enumerate}
+\end{exercice}
+
+\begin{exercice} \
+
+\compo[0.65]
+{
+\strut On a représenté les premiers termes de plusieurs suites sur les repères ci-contre.
+\begin{enumerate}
+\item Parmi ces suites, lesquelles paraissent arithmétiques? On précisera le premier terme et la raison.
+
+\points 5
+
+\item Quelle suite semble être une suite géométrique de raison entre 0 et 1? Justifier.
+
+\points 5
+\end{enumerate}
+}
+{
+\begin{center}
+\begin{tikzpicture}[scale=\echellepgf]
+\begin{axis}[
+styleglobal,
+%hauteurproptick,
+width=0.9*\echellepgfinv*\linewidth,
+xmin=0, xmax= 5,
+ymin=-2.5, ymax=6.5,
+xlabel={$n$},
+ylabel={$u_n$},
+minor x tick num=1,
+minor y tick num=1,
+xtick distance=1,
+ytick distance=1,
+label style= {font=\normalsize},
+grid style={densely dashed,line width=0.5pt},
+legend pos=south east,
+mark size=3pt
+]
+\addplot[samples=11,domain=(0:10),only marks,semithick,fill=blue] {0.5*x-1};
+\addplot[samples=7,domain=(0:6),only marks,mark=square*,semithick,fill=red]{0.25*1.5^x};
+\addplot[samples=11,domain=(0:10),only marks,mark=triangle*,semithick,fill=green]{4*0.65^x};
+\addplot[samples=11,domain=(0:10),only marks,mark=diamond*,semithick,fill=DarkOrange] {0.15*(-1.2)^x+5};
+\legend{$u$\\$v$\\$w$\\$x$\\}
+\end{axis}
+\end{tikzpicture}
+\end{center}
+}
+
+\end{exercice}
+
+\begin{exercice}
+Compléter le tableau suivant, en cochant la case adaptée à chaque situation:
+
+\begin{center}
+\begin{tabularx}{1\linewidth}{|X|c|c|} \hline
+\centering Description & Arithmétique & Géométrique \\ \hline
+On part de 2 et on ajoute 1 à chaque étape & & \\ \hline
+Tous les jours, le nombre de nénuphars sur un lac double. & & \\ \hline
+$0,2 \%$ de l'eau d'une piscine s'évapore chaque jour lors de l'été. & & \\ \hline
+Le quota de pêche du cabillaud diminue chaque année de 30 tonnes. & & \\ \hline
+
+\end{tabularx}
+\end{center}
+\end{exercice}
+
+\begin{exercice}
+Le 1\textsuperscript{er} janvier 2020, Olivier dispose d'un capital de 2000 euros qu'il désire faire fructifier en le plaçant sur un livret.
+
+Sa banque lui propose deux formules de placements.
+
+\begin{itemize}[label=\bullet]
+\item Formule A: placement à intérêts annuels simples à hauteur de 80\euro{}, ce qui signifie qu'à chaque 1\textsuperscript{er} Janvier, le capital de l'année précédente augmente de 80\euro{}.
+\item Formule B: placement à intérêts annuels composés de $3\%$, ce qui signifie qu'à chaque 1\textsuperscript{er} janvier, le capital de l'année précédente augmente de $3\%$.
+\end{itemize}
+
+\begin{enumerate}
+\item Dans cette question Olivier choisit la \textbf{formule A}.
+\begin{enumerate} 
+\item Quel sera le capital acquis par Olivier au 1\textsuperscript{er} janvier 2021 ? au 1\textsuperscript{er} janvier 2022 ?
+
+\points 5
+
+\item On  modélise  le  capital  acquis  par  Olivier  au  1er  Janvier  de l'année 2020 + $n$ à l'aide d'une suite $A$. Préciser la nature, le premier terme et la raison de cette suite.
+
+\points 5
+
+\end{enumerate} 
+\item Dans cette question Olivier choisit la \textbf{formule B}.
+\begin{enumerate}
+\item On modélise le capital acquis par Olivier au 1\textsuperscript{er} janvier de l'année 2020 + $n$ à l'aide d'une suite $B$. Déterminer la nature de $B$, son premier terme et sa raison.
+
+\points 5
+
+\item Quel sera le capital acquis par Olivier au 1er Janvier 2024 ?
+
+\points 5
+
+\end{enumerate}
+\item Sans faire de calculs, quelle formule serait la plus souhaitable à long terme?
+
+\points 5
+
+\end{enumerate}
+\end{exercice}
+
+\begin{exercice} \
+
+\compo[0.57]
+{
+\strut Un zoologiste a relevé les populations de renards et de lapins dans une réserve naturelle au fil des mois. Il a reporté ses premiers résultats dans le tableau ci-contre.
+
+En supposant que ces population continuent à évoluer de cette façon, estimer la population de chaque espèce en Mai. Justifier.
+}
+{
+\begin{tabularx}{\linewidth}{|c|Y|Y|}  \hline	% Suite géo arrondie trop dur?
+Mois & Pop. renards & Pop. lapins \\ \hline
+Janvier & $620$ & $1500$ \\ \hline
+Février & $1160$ & $2100$ \\ \hline
+Mars & $1700$ & $2940$ \\ \hline
+Avril & $2240$ & $4116$ \\ \hline
+\end{tabularx}
+}
+
+\
+
+\points {12}
+\end{exercice}
+
+\end{document}
+
+
+% Supprimé
+
+
+\begin{exercice}
+Exo T1CMATH04843 math2t-133a0-1007
+Un jardinier vient de planter 100 cyprès en ligne droite, à 4 mètres d'intervalle, pour protéger son terrain de vents violents. Au pied de chaque cyprès, il souhaite déposer, à l'aide d'une brouette, un sac de paillis. Les sacs sont entreposés dans une remise située à 15 mètres du premier arbre. Le jardinier ne peut transporter qu'un sac à chaque trajet.
+
+A finir
+\end{exercice}
