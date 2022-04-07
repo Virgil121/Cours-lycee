@@ -93,7 +93,7 @@ Essayez de faire apparaitre un triangle sur un schéma.
 
 \newcommand{\contenudbase}{
 \titre{Un lecteur éclairé?}
-Dans la pièce ci-dessous, un lampadaire est placé en $L$ et un fauteuil en $F$. Le lampadaire donne un éclairage satisfaisant pour la lecture dans un rayon de $3,5$ mètres. L'éclairage est-il suffisant si on lit un livre dans un fauteuil placé en $F$?
+Dans la pièce rectangulaire de dix mètres par six représentée ci-dessous, un lampadaire est placé en $L$ et un fauteuil en $F$. Le lampadaire donne un éclairage satisfaisant pour la lecture dans un rayon de $3,5$ mètres. L'éclairage est-il suffisant si on lit un livre dans un fauteuil placé en $F$?
 
 \begin{center}
 \begin{resizetikz}{0.7\linewidth}
@@ -101,8 +101,8 @@ Dans la pièce ci-dessous, un lampadaire est placé en $L$ et un fauteuil en $F$
 \node[stylepoint,fill=blue,label=above right:$F$] (F) at (7,1) {};
 \node[stylepoint,fill=blue,label=below left:$L$] (L) at (9,4) {};
 \draw[very thick] (0,0) rectangle (10,6);
-\draw[shift={(0,-0.3)},<->] (0,0) -- (10,0) node[below,pos=0.5]{10m};
-\draw[shift={(-0.3,0)},<->,overlay] (0,0) -- (0,6) node[left,pos=0.5]{6m};
+%\draw[shift={(0,-0.3)},<->] (0,0) -- (10,0) node[below,pos=0.5]{10m};
+%\draw[shift={(-0.3,0)},<->,overlay] (0,0) -- (0,6) node[left,pos=0.5]{6m};
 \draw[semithick,<->] (0,1) -- (F.center) node[above,pos=0.5] {7m};
 \draw[semithick,<->] (7,0) -- (F.center) node[right,pos=0.5] {1m};
 \draw[semithick,<->] (9,6) -- (L.center) node[left,pos=0.5] {2m};

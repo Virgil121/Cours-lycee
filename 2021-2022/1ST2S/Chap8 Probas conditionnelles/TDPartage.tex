@@ -1,18 +1,28 @@
 \documentclass[a4paper,12pt,french]{article}
 
-\usepackage[TD]{../../../Style}
+\usepackage{lipsum}
+\usepackage[a4paper,margin=15mm,marginparwidth=15mm,marginparsep=0mm]{geometry} %Papier, marges
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}	% Langue
+\usepackage{amsfonts,amssymb,amsmath}	% Symboles maths... (indispensable)
+\usepackage{stmaryrd} 					% pour \llbracket
+%\usepackage{fourier-otf}				% Police d'écriture
+\usepackage[explicit]{titlesec}
+\usepackage{setspace}
+\usepackage{dsfont}
+\usepackage{tabularx,tabulary}			% Tableaux avec taille définie
+\usepackage{diagbox}
+\newcommand{\Pro}{\mathbb P}
+\newcolumntype{Y}{>{\centering\arraybackslash}X}
+\newenvironment{exercice}{\section*{Exercice}}{}
 
-%\renewenvironment{center}{\par \centering }{ \par}
-%\renewenvironment{multicols*}[1]{}{}
-\setstretch{1.2}
-\renewcommand{\arraystretch}{1.8}
 % Début du document
 %%%%%%%%%%%%%%%%%%%
 \begin{document}
 
-\titre{Conditionnement}
+{\centering\Huge Conditionnement}
 
-\begin{multicols*}{2}
 \begin{exercice}
 Le tableau suivant donne la répartition des employés d'une entreprise en fonction du sexe et du statut. On choisit au hasard un employé.
 
@@ -67,7 +77,7 @@ On considère au hasard l'un des 240 clients.
 
 \noindent On appelle S l'évènement: \og La personne évite le sucre \fg et G l'évènement \og La personne évite les graisses \fg .
 \begin{enumerate}
-\item Calculer $\Pro(S)$, $\Pro(G)$, $\Pro (S \cap G)$.
+\item Calculer $\Pro(s)$, $\Pro(G)$, $\Pro S \cap G)$.
 \item Déterminer la probabilité que la personne évite le sucre ou évite les graisses.
 \item On appelle N l'évènement \og La personne ne se préoccupe ni du sucre ni des graisses \fg .
 \begin{enumerate}
@@ -125,17 +135,15 @@ Chaque client a acheté au plus nue scie sauteuse et une meuleuse.
 \begin{enumerate}
 \item Compléter le tableau croisé d'effectifs suivant:
 
-\begin{scriptsize}
 \begin{center}
     \begin{tabularx}{\linewidth}{|Y|Y|Y|c|}
     \cline{2-4} \multicolumn{1}{c|}{}
          &Nombre de clients ayant acheté une meuleuse&Nombre de clients n'ayant pas acheté de meuleuse&Total  \\ \hline
          Nombre de clients ayant acheté une scie sauteuse &&&  \\ \hline 
          Nombre de clients n'ayant pas acheté de scie sauteuse&&& \\ \hline 
-         Total&&&\normalsize{300} \\ \hline
+         Total&&&300 \\ \hline
     \end{tabularx}
 \end{center}
-\end{scriptsize}
 
 \item Quel est le pourcentage de clients ayant acheté une meuleuse?
 \item L'affirmation suivante est-elle vraie? \og Au moins 2 \% des clients ont acheté les deux outils \fg Justifier.
@@ -323,17 +331,15 @@ Voici quelques informations sur l'expérimentation:
 
 \item Compléter le tableau croisé d'effectifs ci-dessous:
 
-\begin{scriptsize}
 \begin{center}
     \begin{tabularx}{\linewidth}{|Y|Y|Y|Y|}
     \cline{2-4} \multicolumn{1}{c|}{}
          &Souris malades&Souris saines&Total  \\ \hline
          Souris vaccinées &&&  \\ \hline 
          Souris non vaccinées&&& \\ \hline 
-         Total&&&\normalsize{175} \\ \hline
+         Total&&&175 \\ \hline
     \end{tabularx}
 \end{center}
-\end{scriptsize}
 
 \item Calculer la fréquence des souris ayant développé la maladie.
 \item Calculer la fréquence des souris vaccinées parmi les souris malades.
@@ -349,7 +355,5 @@ Voici quelques informations sur l'expérimentation:
 \end{enumerate}
 \end{enumerate}
 \end{exercice}
-
-\end{multicols*}
 
 \end{document}

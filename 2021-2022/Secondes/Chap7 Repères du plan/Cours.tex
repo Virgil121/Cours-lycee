@@ -1,6 +1,66 @@
 \documentclass[a4paper,12pt,french]{article}
 
 \usepackage[cours]{../../../Style}
+%
+%\tcbset{
+%	styleboitedeux/.style={
+%		% Cadre
+%		%% Pour cacher les bords
+%			frame hidden,
+%			boxrule=0pt,
+%			boxsep=0pt,
+%		enhanced, % Rajoute des possibilités, à laisser par défaut
+%		sharp corners,	% Pas d'arrondis aux coins
+%		breakable,	% Boites cassables (sauts de page possibles)
+%		attach boxed title to top left, % Placement titre
+%		boxed title style={ % Style titre (texte blanc par défaut)
+%			boxrule=0pt,	% Pas de bordures
+%			sharp corners,	% Coins non arrondis
+%			boxsep=3pt,		% Bordures additionnelles
+%			%height=20pt,	% Hauteur boite titre
+%			%valign=center,	% Centrer verticalement titre
+%		},
+%		fonttitle=\bfseries,	% Titre en gras
+%		% Marges intérieures
+%		top=10pt,
+%		right=10pt,
+%		bottom=10pt,
+%		left=10pt,
+%		%
+%	},
+%}
+%
+%\newcommand{\redeftcbUn}[6][10]{
+%\renewtcolorbox{#2}[1][]{
+%	styleboitedeux,
+%	colback=#2,
+%	colbacktitle=#2-titre,
+%	borderline west={1pt}{0pt}{#2-titre},
+%	attach boxed title to top left={yshift=-21.6pt}, % décalage vers le bas du titre
+%	title=\MakeUppercase{\rule[-3pt]{0pt}{14.3pt}#3},
+%	before upper={\vspace{21.8pt} \colorlet{bg}{#2} \definecolor{bfcolor}{Hsb}{#4,0.75,0.15}},
+%	after upper={\colorlet{bg}{white} \colorlet{bfcolor}{black}},
+%	%before upper={\tcolorboxsubtitle{#1}{##1}},
+%}
+%}
+%
+%\newcommand{\redeftcb}[6][10]{ % Pour définir tous les types de thm en une ligne: voir options
+%\redeftcbUn[#1]{#2}{#3}{#4}{#5}{#6}
+%\redeftcbUn[#1]{#2s}{#3s}{#4}{#5}{#6}
+%}
+%
+%	\redeftcb{defin}{Définition}{211}{0.8}{0.75}
+%	\redeftcb{thm}{Théorème}{0}{0.8}{0.75}
+%	\redeftcb{prop}{Proposition}{15}{0.8}{0.75}
+%	\redeftcb[8]{ex}{Exemple}{120}{0.8}{0.58}
+%	\redeftcb[8]{cex}{Contre-exemple}{120}{0.8}{0.58}
+%	\redeftcb{rmq}{Remarque}{211}{0.8}{0.75}
+%	\redeftcb{caspart}{Cas particulier}{211}{0.8}{0.75}
+%	\redeftcb{cor}{Corollaire}{211}{0.8}{0.75}
+%	\redeftcb{app}{Application}{211}{0.8}{0.75}
+%	\redeftcb{propr}{Propriété}{211}{0.8}{0.75}
+%	\redeftcb{methode}{Méthode}{211}{0.8}{0.75}
+%	\redeftcb{exercice}{Exercice}{210}{0.6}{0.7}
 
 % Début du document
 %%%%%%%%%%%%%%%%%%%
@@ -266,7 +326,7 @@ Soient $A(1;7)$, $B (6;-5)$ et $I$ le milieu de $[AB]$. Alors on a $I\left( \fra
 \end{ex}
 
 \rem{Exo 9,(14,15)}
-\progres
+
 \subsection{Normes et distances}
 
 \begin{fait}
@@ -298,17 +358,18 @@ On peut alors montrer l'appartenance d'un point à un cercle, ou déterminer la 
 
 \begin{ex}
 Soit $\mathcal C$ le cercle de centre $A(3;5)$ de rayon 3, et le point $M(5;7)$. On a:
-$$\begin{aligned}[t] \left\Vert \vv{AM} \right\Vert &= \sqrt{(5-3)^2+(7-5)^2}\\
+$$\begin{aligned}[t] AM &= \sqrt{(5-3)^2+(7-5)^2}\\
 &=\sqrt{2^2+2^2}\\
 &=\sqrt{4+4}\\
 &=\sqrt 8 \simeq 2,83\end{aligned}$$
-Comme $\left\Vert \vv{AM} \right\Vert \neq 3$, $M$ n'appartient pas au cercle $\mathcal C$.
+Comme $AM \neq 3$, $M$ n'appartient pas au cercle $\mathcal C$.
 \end{ex}
 
 \rem{Exos 10,11,12,(13)}
 
-\section{Colinéarité}
+\progres
 
+\section{Colinéarité}
 \subsection{Définitions et caractérisations}
 
 \begin{defin}

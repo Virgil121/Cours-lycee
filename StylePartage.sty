@@ -492,10 +492,6 @@ stylepointextremites/.style={
 	
 	\newcommand{\rem}[2][]{\begin{remq} \begin{tabulary}{0.5\linewidth}{>{$\blacktriangleright$ \ }L} #2 \end{tabulary} \end{remq}}
 	\NewDocumentEnvironment{rems}{ob}{\rem{#2}}{\par}
-	
-	%Les tcolorbox avec titre font un saut automatique mais pas les thm, si on passe souvent de l'un à l'autre on utilise saut qui s'adapte
-	\newcommand{\saut}{}
-
 
 \else % Style +- à l'ancienne
 
@@ -585,10 +581,6 @@ stylepointextremites/.style={
 	\newtheorem{enonce\thecompteurenonce}[defin]{#1}
 	\begin{enonce\thecompteurenonce}}
 	{\end{enonce\thecompteurenonce} \refstepcounter{compteurenonce}}
-	
-	\newcommand{\saut}{\
-	
-	}
 	
 	\newcommand{\rem}[2][black] {\begin{center}\color{#1}\textit{#2}\end{center}}
 	\NewDocumentEnvironment{rems}{ob}{\rem{#2}}{\par}

@@ -50,7 +50,7 @@
 
 \usepackage{pgfplots}					% Graphes de fonctions
 \usepackage{tkz-tab}					% Tableaux de variations/signe
-\usepackage{tkz-base}					% Pour certains repères
+\usepackage{tkz-base}					% Pour la géométrie repérée
 
 \usepackage[french,linesnumbered,vlined]{algorithm2e} % Algorithmes
 
@@ -110,12 +110,12 @@
 \newlength{\composep}
 \setlength{\composep}{10pt}
 
-\newcommand{\fixcompo}{\noindent\vphantom{\rule{0pt}{\baselinestretch\tailletexte}}} %Pour corriger les bugs d'espacement entre le titre ou la suite, je n'ai pas encore réussi à automatiser ça... - Utiliser strut à la place
+%\newcommand{\fixcompo}{\noindent\vphantom{\rule{0pt}{\baselinestretch\tailletexte}}} %Pour corriger les bugs d'espacement entre le titre ou la suite, je n'ai pas encore réussi à automatiser ça... - Utiliser strut à la place
 
-\newif\ifincompohaut
-\incompohautfalse
+\newif\ifnotincompohaut
+\notincompohauttrue
 
-\newcommand{\compobase}[5]{\ifthenelse{\equal{#2}{t}}{\incompohauttrue}{}%
+\newcommand{\compobase}[5]{\ifthenelse{\equal{#2}{t}}{\notincompohautfalse}{}%
 \setlength{\colG}{#3\linewidth}\setlength{\colD}{\linewidth}%
 \addtolength{\colD}{-\colG}\addtolength{\colD}{-#1}%
 \addtolength{\colG}{-#1}%
@@ -123,7 +123,7 @@
 \begin{minipage}[#2]{\colG}\vspace{0pt}%
 #4\end{minipage}\hfill%	%vspace=hack pour des problèmes d'alignement qui aparaissent avec compohaut
 \begin{minipage}[#2]{\colD}\vspace{0pt}%
-#5\end{minipage}\incompohautfalse\par}
+#5\end{minipage}\notincompohauttrue\par}
 
 
 \newcommand{\compo}[3][0.5]{\compobase{\composep}{c}{#1}{#2}{#3}}
@@ -216,18 +216,18 @@
 %pointsfixcompo a supprimer, le strut marche plutôt bien. espace vertical trop faible peut-être... Marche pas bien en compohaut, faire fonction distrinction de cas?
 \newcommand{\points}[2][\pointstretch]{\setstretch{#1}%
 \foreach \n in{1,...,#2}%
-{\noindent\hspace{-\enumitemindent}\ifincompohaut\else\strut\fi\dotfill
+{\noindent\hspace{-\enumitemindent}\ifnotincompohaut\strut\fi\dotfill
 
 }
 }
 
-\newcommand{\pointsfixcompo}[2][\pointstretch]{\setstretch{#1}% Pour ajouter un espacement si necessaire, dans ou après un compo.
-\fixcompo%
-\foreach \n in{1,...,#2}%
-{\noindent\hspace{-\enumitemindent}\ifthenelse{\equal{\n}{#2}}{\vphantom{\rule[-\baselinestretch\tailletexte]{0pt}{\baselinestretch\tailletexte}}}{}\dotfill
-
-}
-}
+%\newcommand{\pointsfixcompo}[2][\pointstretch]{\setstretch{#1}% Pour ajouter un espacement si necessaire, dans ou après un compo.
+%\fixcompo%
+%\foreach \n in{1,...,#2}%
+%{\noindent\hspace{-\enumitemindent}\ifthenelse{\equal{\n}{#2}}{\vphantom{\rule[-\baselinestretch\tailletexte]{0pt}{\baselinestretch\tailletexte}}}{}\dotfill
+%
+%}
+%}
 
 % Entete pour interros ( quand il en faut plusieurs en une page, imitation fancyhdr )
 
@@ -382,7 +382,7 @@
   \pgfmathparse{#1/\wd\measure@tikzpicture}%
   \edef\tikzscale{\pgfmathresult}%
   \BODY
-  \edef\tikzscale{1}%
+  \def\tikzscale{1}%
 }
 
 % Repères (Oij)
@@ -447,19 +447,21 @@
 \colorlet{bfcolor}{black}
 \newcommand{\colorfadebg}{15}
 \tcbset{
-	frame hidden,
-	boxrule=0pt,
-	boxsep=0pt,
-	enlarge bottom by=0pt,
-	enhanced jigsaw,
-	boxed title style={sharp corners,boxrule=0pt,coltitle={white},titlerule=0pt},
-	fonttitle=\bfseries\boldmath,
-	top=10pt,
-	right=10pt,
-	bottom=10pt,
-	left=10pt,
-	sharp corners,
-	breakable,
+	styleboite/.style={
+		frame hidden,
+		boxrule=0pt,
+		boxsep=0pt,
+		enlarge bottom by=0pt,
+		enhanced jigsaw,
+		%boxed title style={sharp corners,boxrule=0pt,coltitle={white},titlerule=0pt},
+		fonttitle=\bfseries\boldmath,
+		top=10pt,
+		right=10pt,
+		bottom=10pt,
+		left=10pt,
+		sharp corners,
+		breakable,
+	},
 	styleraster/.style={			% Pour aligner des tcbox sur une ligne
 		raster every box/.append style={breakable=false},			% Ne marche pas sans ça
 		raster columns=2,			% Nombre de tcbox par ligne
@@ -468,20 +470,49 @@
 	},
 }
 
+% Ancienne version
+%\newcommand{\deftcbUn}[6][10]{
+%\definecolor{#2-titre}{Hsb}{#4,#5,#6}
+%\colorlet{#2}{#2-titre!#1}
+%\newtcolorbox{#2}[1][]{	
+%	styleboite,
+%	colback=#2,
+%	borderline west={1pt}{0pt}{#2-titre},
+%	title={\hspace{-10pt}\colorbox{#2-titre}{\hspace{7pt}\rule[-3pt]{0pt}{14.3pt}\MakeUppercase{#3}\ifstrempty{##1}{}{ (##1)}\hspace{7pt}}},
+%	colbacktitle=#2,
+%	before upper={\colorlet{bg}{#2} \definecolor{bfcolor}{Hsb}{#4,0.75,0.15}},
+%	after upper={\colorlet{bg}{white} \colorlet{bfcolor}{black}},
+%	%before upper={\tcolorboxsubtitle{#1}{##1}},
+%}
+%}
+
 \newcommand{\deftcbUn}[6][10]{
 \definecolor{#2-titre}{Hsb}{#4,#5,#6}
 \colorlet{#2}{#2-titre!#1}
 \newtcolorbox{#2}[1][]{	
+	styleboite,
+	% Couleurs
 	colback=#2,
+	colbacktitle=#2-titre,	
 	borderline west={1pt}{0pt}{#2-titre},
-	title={\hspace{-10pt}\colorbox{#2-titre}{\hspace{7pt}\rule[-3pt]{0pt}{14.3pt}\MakeUppercase{#3}\ifstrempty{##1}{}{ (##1)}\hspace{7pt}}},
-	colbacktitle=#2,
+	% Titre
+	title={\strut\MakeUppercase{#3}\ifstrempty{##1}{}{ (##1)}},
+	boxed title style={ % Style titre (texte blanc par défaut)
+			boxrule=0pt,	% Pas de bordures
+			sharp corners,	% Coins non arrondis
+			boxsep=0pt,		% Bordures additionnelles
+			height=20pt,	% Hauteur boite titre
+			left=10pt,
+			right=10pt,			
+			bottom=1.5pt,
+			valign=bottom,
+	},
+	attach boxed title to top left={yshift*=-\tcboxedtitleheight}, % Décalage texte
+	% Redéfinitions couleurs pour commandes externes
 	before upper={\colorlet{bg}{#2} \definecolor{bfcolor}{Hsb}{#4,0.75,0.15}},
 	after upper={\colorlet{bg}{white} \colorlet{bfcolor}{black}},
-	%before upper={\tcolorboxsubtitle{#1}{##1}},
 }
 }
-
 % Test pour le titre:
 %\tcbox[size=fbox,left=7pt,right=7pt,colback=defin-titre,height=1cm,valign=center]{\color{white}\MakeUppercase{\bfseries\boldmath Définition Propriété Vocabulaire}}
 % Voir raisebox!
@@ -494,6 +525,7 @@
 \definecolor{remq-titre}{Hsb}{50,0.8,0.8}
 \colorlet{remq}{remq-titre!10}
 \newtcolorbox{remq}{
+	styleboite,
 	colback=remq,
 	colframe=remq-titre,
 	hbox,
@@ -537,6 +569,7 @@
 \definecolor{fait-titre}{Hsb}{0,0,0.6} % Quand un résultat n'est pas vraiment catégorisé: intro d'une partie...
 \colorlet{fait}{fait-titre!10}
 \newtcolorbox{fait}[1][fait]{ % Option = couleur à prendre ( mettre nom de thm )
+	styleboite,
     top=5pt,
     bottom=5pt,
 	colback={#1},
@@ -692,21 +725,21 @@
 \ifoptioncours
 	
 	% Formats titres, sections
-	\renewcommand{\thesection}{\Roman{section} - }
-	\renewcommand{\thesubsection}{\arabic{subsection}. }
-	\renewcommand{\thesubsubsection}{\alph{subsubsection}) }
-
+	
 	\newcommand{\sectionstyle}{\normalfont\Large\bfseries\color{section}}
-	\titleformat{\section}{\sectionstyle}{\thesection #1}{0pt}{}[{\color{gray}\hrule}]
-	\titleformat{name=\section, numberless}{\sectionstyle}{#1}{0pt}{}[{\color{gray}\hrule}]
+	\titleformat{\section}{\sectionstyle}{\Roman{section} - }{0pt}{#1}[{\color{gray}\hrule}]
+	\titleformat{name=\section, numberless}{\sectionstyle}{}{0pt}{#1}[{\color{gray}\hrule}]
 
 	\newcommand{\subsectionstyle}{\normalfont\large\bfseries\color{subsection}}
-	\titleformat{\subsection}{\subsectionstyle}{\hspace{0.1\linewidth}\thesubsection #1}{0pt}{}
-	\titleformat{name=\subsection, numberless}{\subsectionstyle}{\hspace{0.1\linewidth}#1}{0pt}{}
+	\titleformat{\subsection}{\subsectionstyle}{\hspace{0.1\linewidth}\arabic{subsection}. }{0pt}{#1}
+	\titleformat{name=\subsection, numberless}{\subsectionstyle}{\hspace{0.1\linewidth}}{0pt}{#1}
 	
 	\newcommand{\subsubsectionstyle}{\normalfont\large\bfseries\color{subsubsection}}
-	\titleformat{\subsubsection}{\subsubsectionstyle}{\hspace{0.2\linewidth}\thesubsubsection #1}{0pt}{}
-	\titleformat{name=\subsubsection, numberless}{\subsubsectionstyle}{\hspace{0.2\linewidth}#1}{0pt}{}
+	\titleformat{\subsubsection}{\subsubsectionstyle}{\hspace{0.2\linewidth}\alph{subsubsection}) }{0pt}{#1}
+	\titleformat{name=\subsubsection, numberless}{\subsubsectionstyle}{\hspace{0.2\linewidth}}{0pt}{#1}
+	
+%\PassOptionsToPackage{nobottomtitles*}{titlesec}
+%\renewcommand{\bottomtitlespace}{100pt}	
 	
 	\def\@maketitle{\centering  \let \footnote \thanks {\fontfamily{cmr}\fontseries{bx}\selectfont\huge\scshape\color{titre} \@title \par}%
 	\textcolor{darkgray}{\hrule}%
@@ -762,21 +795,17 @@
 
 	% Style des sections
 
-	\renewcommand{\thesection}{\Roman{section} - }
-	\renewcommand{\thesubsection}{\arabic{subsection}) }
-	\renewcommand{\thesubsubsection}{\alph{subsubsection}) }
+	\newcommand{\sectionstyle}{\normalfont\Large\bfseries\color{section}}
+	\titleformat{\section}{\sectionstyle}{\hspace{0.08\linewidth}\Roman{section} - }{0pt}{#1}[{\color{gray}\hrule}]
+	\titleformat{name=\section, numberless}{\sectionstyle}{\hspace{0.08\linewidth}}{0pt}{#1}[{\color{gray}\hrule}]
 
-	\newcommand{\sectionstyle}{\normalfont\Large\bfseries}
-	\titleformat{\section}{\sectionstyle}{\hspace{0.1\linewidth}\thesection #1}{0pt}{}[]
-	\titleformat{name=\section, numberless}{\sectionstyle}{\hspace{0.1\linewidth}#1}{0pt}{}
-
-	\newcommand{\subsectionstyle}{\normalfont\large\bfseries}
-	\titleformat{\subsection}{\subsectionstyle}{\hspace{0.13\linewidth}\thesubsection #1}{0pt}{}
-	\titleformat{name=\subsection, numberless}{\subsectionstyle}{\hspace{0.13\linewidth}#1}{0pt}{}
+	\newcommand{\subsectionstyle}{\normalfont\large\bfseries\color{subsection}}
+	\titleformat{\subsection}{\subsectionstyle}{\hspace{0.12\linewidth}\arabic{subsection}. }{0pt}{#1}
+	\titleformat{name=\subsection, numberless}{\subsectionstyle}{\hspace{0.12\linewidth}}{0pt}{#1}
 	
-	\newcommand{\subsubsectionstyle}{\normalfont\large\bfseries}
-	\titleformat{\subsubsection}{\subsubsectionstyle}{\hspace{0.16\linewidth}\thesubsubsection #1}{0pt}{}
-	\titleformat{name=\subsubsection, numberless}{\subsubsectionstyle}{\hspace{0.16\linewidth}#1}{0pt}{}
+	\newcommand{\subsubsectionstyle}{\normalfont\large\bfseries\color{subsubsection}}
+	\titleformat{\subsubsection}{\subsubsectionstyle}{\hspace{0.16\linewidth}\alph{subsubsection}) }{0pt}{#1}
+	\titleformat{name=\subsubsection, numberless}{\subsubsectionstyle}{\hspace{0.16\linewidth}}{0pt}{#1}
 
 %	\titlespacing*{\section}{0mm}{0mm}{1mm}
 %	\titlespacing*{\subsection}{10mm}{0mm}{3mm}
@@ -812,7 +841,6 @@
 	\colorlet{couleurrem}{DarkGreen}
 	
 	\newcommand{\rembase}[1] {\begin{center}\textit{#1}\end{center}}
-	\newcommand{\remmbase}[1] {\rem{#1}} % A supprimer quand je serai sûr que ca n'est plus utilisé
 	
 	\newcommand{\rem}[2][]{\rembase{#2}} % Pour pouvoir utiliser l'option eleve sur les remarques plus tard. Option If pour compatibilité ...	
 	
@@ -986,7 +1014,7 @@
 
 \ifoptionNB
 	
-	\tcbset{opacityback=0.3,opacitybacktitle=0.3}
+	\tcbset{opacityback=0.3}
 	\definecolor{couleurExo}{Hsb}{0,0,0.25}
 	\def\tkzTabDefaultBackgroundColor{bg!30}
 	%\newcommand{\NB}{ NB}
@@ -1002,6 +1030,7 @@
 \definecolor{#2-titre}{Hsb}{#4,#5,#6}
 \colorlet{#2}{#2-titre!#1}
 \newtcolorbox{#2}[1][]{
+	styleboite,
 	colback=#2,
 	title={},
 	colbacktitle=#2,
@@ -1045,6 +1074,7 @@
 	\definecolor{#2-titre}{Hsb}{#4,#5,#6}
 	\colorlet{#2}{#2-titre!#1}
 	\newtcolorbox{#2}[1][]{
+		styleboite,
 		colback=#2,
 		title={},
 		colbacktitle=#2,

@@ -1,0 +1,161 @@
+\documentclass[a4paper,12pt,french] {article}
+
+\usepackage[sujet]{../../../Style}
+
+\fancyhead[L]{Pour le 26/04/2022}
+\fancyhead[C]{\textbf{Devoir en temps libre}}
+\fancyhead[R]{\seconde 12}
+
+\setlist[itemize]{align=parleft,left=20pt..35pt}
+
+\renewcommand{\baselinestretch}{1.3}
+
+% Passage en A3
+%\geometry{a3paper,landscape,bottom=7mm,twocolumn}
+%\setlength{\headwidth}{39cm} %42cm-2*margin pour fancyhdr
+
+\begin{document}
+
+\rem{Ce devoir peut être fait par groupes d'au plus trois personnes.}
+
+\begin{exercice}
+Dresser le tableau de signes de la fonction $h:x \mapsto \frac{x-5}{2x+9}$:
+\end{exercice}
+
+\begin{exercice} \
+
+\compo
+{
+\begin{enumerate}
+\item Soit $f$ une fonction définie sur $[-5;7]$, décroissante sur $[-5;-1]$ et croissante sur $[1;7]$. Comparer $f(-4)$ et $f(-1.5)$.
+
+\item Dresser le tableau de variations de la fonction $g$ représentée ci-contre.
+
+\item Quel est le minimum de $g$ sur l'intervalle $[-3;7]$? Sur l'intervalle $[3;6]$?
+\end{enumerate}
+}
+{
+\begin{center}
+\begin{tikzpicture}[scale=\echellepgf]
+\begin{axis}[
+styleglobal,
+width=0.9*\echellepgfinv*\linewidth,
+xmin=-3.5, xmax=7.5,
+ymin=-2.5, ymax=4.5,
+xtick distance=1,
+ytick distance=1,
+minor x tick num=1,
+minor y tick num=1,
+]
+\addplot[styleplot,tension=0.3] plot coordinates{(-3,2.5) (-1,1.5) (1,-2) (3,1) (5,0.5) (6,2) (7,3)} node[pos=0.9,below right] {$\mathscr C_g$} \pointsextremites;
+\end{axis}
+\end{tikzpicture}
+\end{center}
+}
+
+\end{exercice}
+
+\begin{exercice}
+En France, l'accès aux boîtes de nuit est réservée aux majeurs.
+\begin{itemize}
+\item Dans \textit{Le Macumba}, il faut avoir strictement moins de 29 ans pour entrer.
+\item Dans \textit{La Playa}, il faut avoir au plus 43 ans.
+\item Dans \textit{Le Millenium}, il faut avoir plus de 33 ans.
+\end{itemize}
+\textit{On répondra sous forme de phrase \underline{et} d'intervalle.}
+
+\begin{enumerate}
+\item Dans quel intervalle d'âge doit se situer une personne qui veut pouvoir rentrer dans \textit{Le Millenium} et \textit{La Playa}?
+
+\item Dans quel ensemble doit se situer l'âge d'une personne qui veut pouvoir entrer dans l'une des boites de nuits parmi \textit{Le Macumba} et \textit{Le Millenium}?
+\end{enumerate}
+\end{exercice}
+
+\begin{exercice} \
+\begin{enumerate}
+\item Représenter dans un repère les droites $d_1$ et $d_2$ d'équations respectives $y=3x-2$ et $y=-\frac 5 6 x +0,5$.
+\item Quelles sont les coordonnées exactes de leur point d'intersection?
+\end{enumerate}
+\end{exercice}
+
+\begin{exercice} \
+
+\compo[0.6]
+{
+Gérald souhaite revendre sa maison comportant deux étages. Son ami Jérôme, aviateur de renom, a survolé cette zone puis représenté la maison dans un repère orthonormé $\Oij$, en prenant un mètre pour unité. On obtient un rectangle $ABCD$.
+
+En sachant que le prix du m$^2$ est de 2800 \euro{}, combien Gérald peut-il espérer obtenir à la revente?
+}
+{
+\begin{centrer}
+	\begin{resizetikz}{\linewidth}
+    \begin{tikzpicture}
+    \repereOij[xmin=-1,xmax=14,ymin=-4,ymax=8]
+    \coordinate[label=left:$A$] (A) at (2,2) {};
+    \coordinate[label=below:$B$] (B) at (4,-2) {};
+    \coordinate[label=right:$C$] (C) at ($(B)+(8,4)$) {};
+    \coordinate[label=above:$D$] (D) at ($(A)+(8,4)$) {};
+    \draw[line width=1pt,fill=white,fill opacity=0.3] (A) -- (B) -- (C) -- (D) -- (A) -- cycle; %join=round?
+	%\coordinate (toit1) at ($0.4*(A)+0.4*(B)+0.1*(D)+0.1*(C)$);
+	%\coordinate (toit2) at ($0.4*(C)+0.4*(D)+0.1*(A)+0.1*(B)$);  
+    %\draw[line width=1pt,opacity=0.5,dotted] (A) -- (toit1) -- (B) (C) -- (toit2) -- (D) (toit1) -- (toit2); 
+    \end{tikzpicture}
+    \end{resizetikz}
+\end{centrer}
+}
+\end{exercice}
+
+\begin{exercice}
+En faisant ses courses, Claire est tombée sur deux offres différentes pour un paquet de biscuits. La première est une réduction de $20\%$, alors que la seconde propose, sans surcoût, un paquet contenant $20 \%$ de biscuits en plus. Quel choix devrait faire Claire?
+
+\textit{On pourra fixer le coût d'un paquet et le nombre de biscuits par paquet, puis calculer le coût par biscuit pour chaque offre.}
+\end{exercice}
+
+\end{document}
+
+\begin{exercice} \
+%%%%% A la base le graphique était vertical, enlever les deux options pour avoir l'original ( il faudra refaire les labels )
+\compo[0.38]
+{
+En utilisant le repère ci-contre:
+\begin{enumerate}
+\item Tracer deux représentants du vecteur $\vecc {AB}$, l'un d'origine $D$, l'autre d'extrémité $C$.
+\item Placer $M$, l'image de $C$ par la translation de vecteur $\vecc {DB}$.
+\item Placer $N$, l'image de $C$ par la translation de vecteur $\vecc {DC}$.
+\end{enumerate}
+}
+{
+\begin{center}
+\vspace{-5mm}
+\begin{tikzpicture}[scale=0.48]
+\node[draw=none] (liminf) at (0,0) {};
+\node[draw=none] (limsup) at (20,15) {};
+\draw[step=1,gray,thin] ($(liminf)+(-0.01,-0.01)$) grid ($(limsup)+(0.01,0.01)$);
+%\clip (liminf) rectangle (limsup);
+
+%\path [draw=black, line width=2pt] (0,0) -- (-1,-2) -- (0,-4);
+%\draw[draw=black, fill = black, fill opacity = 0.3, line width=2pt, even odd rule] 
+%        (-4,-8) rectangle (4,-4) (-3,-6.5) rectangle (-1,-5.5) (1,-6.5) rectangle (3,-5.5);
+\node[color=black,circle,minimum size=1pt,fill,inner sep=2pt,fill opacity=1,label={180:\textbf{\large A}}] (A) at (2,12) {};
+\node[color=black,circle,minimum size=1pt,fill,inner sep=2pt,fill opacity=1,label={180:\textbf{\large B}}] (B) at (9,4) {};
+\node[color=black,circle,minimum size=1pt,fill,inner sep=2pt,fill opacity=1,label={-2:\textbf{\large C}}] (C) at (7,8) {};
+\node[color=black,circle,minimum size=1pt,fill,inner sep=2pt,fill opacity=1,label={2:\textbf{\large D}}] (D) at (3,3) {};
+\draw[line width=1pt,->,>=latex] (16,3) -- ++(2,3) node[pos=0.5,above left] {$\vec u$};
+%\node[color=black,circle,minimum size=1pt,fill,inner sep=2pt,fill opacity=1,label={90:\textbf{\large E}}] (E) at (4,-4) {};
+%\draw[line width=1pt, shorten <= -10cm, shorten >= -10cm] (A) -- (B);
+\end{tikzpicture}
+\end{center}
+}
+\begin{enumerate}
+\setcounter{enumi}{3}
+\item Comparer les trois caractéristiques des vecteurs $\vec u$ et $\vecc {BD}$.
+
+\points 3
+\item Quelle est la nature du quadrilatère $BCNM$? Justifier en utilisant des vecteurs:
+
+\points 3
+\end{enumerate}
+
+\end{exercice}
+
+\end{document}

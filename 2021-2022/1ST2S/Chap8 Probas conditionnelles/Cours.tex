@@ -9,7 +9,9 @@
 %\setlength{\parskip}{1ex}
 %\newcommand{\@minipagerestore}{\setlength{\parskip}{1ex}}
 
-\newcommand{\card}[1]{\ensuremath{\textrm{Card}\left(#1\right)}}
+\newcommand{\card}{\textrm{Card}}
+
+
 % Début du document
 %%%%%%%%%%%%%%%%%%%
 \begin{document}
@@ -35,30 +37,32 @@
 \end{itemize}
 \end{programme}
 
-\section{Quelques rappels de vocabulaire ensembliste}
+\section{Rappels de vocabulaire ensembliste}
 
 \begin{defins}
 On se donne $E$ un ensemble et $A$,$B$ deux sous-ensembles de $E$.
 \begin{itemize}
-\item \textbf{L'intersection} de $A$ et $B$ notée $A\cap B$ désigne les éléments de $E$ appartenant à la fois à $A$ et à $B$.
-\item \textbf{L'union} de $A$ et $B$ notée $A\cup B$ désigne  les éléments de $E$ appartenant à $A$ ou à $B$ ou aux deux.
-\item \textbf{Le complémentaire} de $A$, noté $\overline A$ désigne les éléments de $E$ qui n'appartiennent pas à $A$.
+\item \textbf{L'intersection} de $A$ et $B$ notée $A\cap B$ (A inter B) désigne l'ensemble des éléments de $E$ appartenant à la fois à $A$ et à $B$.
+\item \textbf{L'union} de $A$ et $B$ notée $A\cup B$ (A union B) désigne l'ensemble des éléments de $E$ appartenant à $A$ ou à $B$ ou aux deux.
+\item \textbf{Le complémentaire} de $A$, noté $\overline A$ (A barre) désigne l'ensemble des éléments de $E$ qui n'appartiennent pas à $A$.
 \end{itemize}
 \end{defins}
 
 \begin{ex}
 Considérons une population de chiens. On note $E$ l'ensemble de tout les chiens, $A$ le sous-ensemble de $E$ constitué des chiens au poil blanc, $B$ le sous-ensemble de E constitué des chiens au poil beige.
 \begin{itemize}
-    \item $A\cap B$ désigne les chiens au poil blanc et beige
-    \item $A\cup B$ désigne les chiens au poil blanc, beige ou les deux à la fois.
-    \item $\overline A$ désigne les chiens au poil autre que beige.
+    \item $A\cap B$ désigne l'ensemble des chiens au poil blanc et beige
+    \item $A\cup B$ désigne l'ensemble des chiens au poil blanc, beige ou les deux à la fois.
+    \item $\overline A$ désigne l'ensemble des chiens au poil autre que blanc.
 \end{itemize}
 \end{ex}
+
+\progres
 
 \section{Fréquences conditionnelles et tableaux croisés}
 
 \begin{ex}
-Au sein d'une classe de 1ST2S de 35 élèves, il y a 23 filles. De plus, 7 garçons ont choisi l'allemand contre seulement 3 filles. On peut alors dresser le tableau suivant:
+Au sein d'une classe de 1ST2S de 35 élèves, il y a 23 filles. Les élèves ont le choix entre l'allemand ou l'espagnol. On sait que 7 garçons ont choisi l'allemand contre seulement 3 filles. On peut alors dresser le tableau suivant:
 \begin{center}\renewcommand{\arraystretch}{1.2}
     \begin{tabular}{|c|c|c|c|}
     	\cline{2-4} \multicolumn{1}{c|}{}
@@ -70,7 +74,7 @@ Au sein d'une classe de 1ST2S de 35 élèves, il y a 23 filles. De plus, 7 garç
 \end{center}
 On note $F$ l'ensemble des filles, $G$ l'ensemble des garçons et $A$ l'ensemble des élèves ayant choisi l'allemand.
 \begin{itemize}
-    \item Le nombre d'éléments de $F \cap A$ (c'est-à-dire le nombre des filles ayant choisi l'allemand) est 3.
+    \item Le nombre d'éléments de $F \cap A$ (c'est-à-dire le nombre de filles ayant choisi l'allemand) est 3.
     \item Le nombre d'éléments de $G\cap \overline{A}$ (c'est à dire le nombre de garçons qui n'ont pas choisi l'allemand, donc qui ont choisi l'espagnol) est 16.
      \item La fréquence des filles dans cette classe est $\frac {23} {35} \simeq 0,66 = 66 \%$. On parle de \textbf{fréquence marginale}.
     \item La fréquence des garçons ayant choisi l'allemand dans cette classe est $\frac 7 {35} = 0,2 = 20\%$.
@@ -82,15 +86,18 @@ On note $F$ l'ensemble des filles, $G$ l'ensemble des garçons et $A$ l'ensemble
 \begin{prop}
 On se donne $E$ un ensemble et $A$,$B$ deux sous-ensembles de $E$.
 \begin{itemize}
-\item La fréquence marginale de $A$ dans $E$ vaut $\dfrac{\text{nombre d'éléments de } A}{\text{nombre d'éléments de } E}=\dfrac{\card A}{\card E}$.
-\item La fréquence conditionnelle de $A$ dans $B$ vaut $\dfrac{\card{A \cap B}}{\card B}$.
+\item La fréquence marginale de $A$ dans $E$ vaut $\dfrac{\text{nombre d'éléments de } A}{\text{nombre d'éléments de } E}=\dfrac{\card(A)}{\card(E)}$.
+\item La fréquence conditionnelle de $A$ dans $B$ vaut $\dfrac{\card (A \cap B)}{\card(B)}$.
 \end{itemize}
 \end{prop}
+
+\rem{Cas favorables / Cas totaux }
 
 \rem{Exos 16 p174, 24 p176\\
 	 Exos 17,18 p175, 26 p176\\
 	 Exos 35,36 p181\\
-	 Sujet D p184}
+	 Sujet D p184\\
+	 Exos p179}
 
 \section{Rappels de probabilités}
 
@@ -120,28 +127,37 @@ $$\Pro(A \cup B) = \Pro(A)+\Pro(B)-\Pro(A \cap B)$$
 
 \section{Probabilités conditionnelles}
 
-\rem[eleve]{De la même manière qu'avec les fréquences conditionnelles, il est possible de définir des probabilités conditionnelles.}
+\rem[eleve]{De la même manière qu'avec les fréquences conditionnelles, on peut définir des probabilités conditionnelles.}
 
 \begin{defin}
-Soient $A$ et $B$ deux événements tels que $\Pro(A)\neq 0$. On note $\Pro_A(B)$ la probabilité de $B$ en sachant que $A$ est réalisé, aussi appelée probabilité de $B$ sachant $A$. On a de plus $\mathbb{P}_{A}(B)=\dfrac{\mathbb{P}(A\cap B)}{\mathbb{P}(A)}$.
+Soient $A$ et $B$ deux événements tels que $\Pro(A)\neq 0$. On note $\Pro_A(B)$ la probabilité de $B$ en sachant que $A$ est réalisé, aussi appelée probabilité de $B$ sachant $A$. On a de plus $\Pro_A(B)=\dfrac{\Pro (A\cap B)}{\Pro (A)}$.
 \end{defin}
 
-\rem[eleve]{On utilisera aussi des tableaux pour trouver les probabilités conditionnelles.}
+\begin{rmq}
+Dans une situation \textbf{d'équiprobabilité}, on a $\Pro_A(B)=\dfrac{\card(A\cap B)}{\card(A)}$.
+\end{rmq}
+
+\rem{Cas favorables / Cas totaux}
+
+\rem[eleve]{On utilisera aussi des tableaux pour trouver des probabilités conditionnelles.}
 
 \begin{ex}
-On a interrogé $1500$ élèves d'un lycée sur la nature de leurs loisirs et on a obtenu les résultats suivants:
+On a interrogé $1500$ élèves d'un lycée sur la nature de leurs loisirs. On considère alors les évènements C: \og L'élève pratique une activité culturelle \fg et S: \og L'élève pratique une activité sportive \fg . On a obtenu les résultats suivants:
 \begin{center}\renewcommand{\arraystretch}{1.2}
-    \begin{tabular}{|c|c|c|}
-    \cline{2-3} \multicolumn{1}{c|}{}
-         &Activité sportive $(S)$ & Pas d'activité sportive ($\overline{S}$)  \\ \hline
-         Activité culturelle $(C)$ & $402$ & $591$  \\ \hline 
-         Pas d'activité culturelle ($\overline{C}$) & $315$ & $192$ \\ \hline 
-    \end{tabular}
+    \begin{tabularx}{\linewidth}{|c|c|c|Y|}
+    \cline{2-4} \multicolumn{1}{c|}{}
+         &Activité sportive $(S)$ & Pas d'activité sportive ($\overline{S}$) & Total  \\ \hline
+         Activité culturelle $(C)$ & $402$ & $591$ & 993  \\ \hline 
+         Pas d'activité culturelle ($\overline{C}$) & $315$ & $192$ & 507  \\ \hline
+         Total & 717 & 783 & 1500 \\ \hline
+    \end{tabularx}
 \end{center}
 On choisit un élève au hasard dans le lycée.
 \begin{enumerate}
-    \item Déterminer la probabilité qu'un élève face du sport sachant qu'il pratique une activité culturelle ie $\mathbb{P}_{C}(S)$.
-    \item Déterminer la probabilité $\mathbb{P}_{\overline{S}}(C).$
+    \item La probabilité qu'un élève pratique une activité culturelle est $\Pro(C)=\frac {993}{1500}=0,662=66,2 \%$.
+    \item La probabilité qu'un élève pratique les deux types d'activité est $\Pro(C \cap S)=\frac {402}{1500}=0,268=26,8 \%$.
+    \item La probabilité qu'un élève fasse du sport en sachant qu'il pratique une activité culturelle est $\Pro_C(S)=\frac{\card (C\cap S)}{\card (C)}=\frac{402}{993}=0,405=40,5 \%$.
+    \item La probabilité qu'un élève pratique une activité culturelle en sachant qu'il ne fait pas de sport est $\Pro_{\overline S}(C)=\frac{\card(\overline S \cap C)}{\card(\overline S)}=\frac{591}{783}=0,755=75,5 \%$.
 \end{enumerate}
 \end{ex}
 
@@ -151,7 +167,11 @@ On choisit un élève au hasard dans le lycée.
 	 Sujets B,C p184\\
 	 Exos 39,40,40 p186}
 
-%\end{document}
+\end{document}
+
+
+
+
 
 \section{Union et intersection}
 \subsection{Cadre général}
@@ -349,7 +369,7 @@ La somme des fréquences conditionnelles sur une même ligne vaut 1.
 
 \section{ Probabilités conditionnelles}
 
-Soient $A$ et $B$ deux événements tels que $\mathbb{P}(A)\neq 0.$ De la même manière qu'avec les fréquences conditionnelles il est possible de définir des probabilités conditionnelles.
+Soient $A$ et $B$ deux événements tels que $\mathbb{P}(A)\neq 0.$ De la même manière qu'avec les fréquences conditionnelles, on peut définir des probabilités conditionnelles.
 
 \begin{defin}
 On note $\Pro_A(B)$ la probabilité de $B$ en sachant que $B$ est réalisé, aussi appelée probabilité de $B$ sachant $A$. On a de plus $\mathbb{P}_{A}(B)=\dfrac{\mathbb{P}(A\cap B)}{\mathbb{P}(A)}$.
