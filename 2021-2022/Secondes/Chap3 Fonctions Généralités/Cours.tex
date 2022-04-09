@@ -79,12 +79,12 @@ $f(x)$ & & & & & & & & &\rule[-7pt]{0pt}{30pt} \\ \hline
 \end{center}
 
 \begin{center}
-\begin{tikzpicture}[scale=\echellepgf]
+\begin{tikzpicture}
 \begin{axis}[
 axis x line=bottom,
 axis y line = left,
 axis lines=middle,
-width=0.9*\echellepgfinv*\linewidth,
+width=0.9*\linewidth,
 height=\pgfkeysvalueof{/pgfplots/width}*((\pgfkeysvalueof{/pgfplots/ymax})+((-1)*(\pgfkeysvalueof{/pgfplots/ymin})))/((\pgfkeysvalueof{/pgfplots/xmax})+((-1)*(\pgfkeysvalueof{/pgfplots/xmin})))+0.05pt,
 scale only axis,
 xmin=-3.5, xmax=3.5,
@@ -321,10 +321,10 @@ Dresser le tableau de variations d'une fonction $f$, c'est indiquer sur quels in
 
 \compo[0.45]{
 \begin{center}
-\begin{tikzpicture}[scale=\echellepgf]
+\begin{tikzpicture}
 \begin{axis}[
 styleglobal,
-width=1*\echellepgfinv*\linewidth,
+width=1*\linewidth,
 xmin=-3, xmax=6,
 ymin=-1, ymax=5,
 ytick distance=2,
@@ -479,10 +479,10 @@ Soit $f$ une fonction définie sur un intervalle $I$ centré en $0$ ( $I=[-a;a]$
 \end{itemize}
 \end{proprs}
 \begin{centrer}
-\begin{tikzpicture}[scale=\echellepgf]
+\begin{tikzpicture}
 \begin{axis}[
 styleglobal,
-width=0.9*\echellepgfinv*\linewidth,
+width=0.9*\linewidth,
 xmin=-6, xmax=6,
 ymin=-1.5, ymax=3,
 ]

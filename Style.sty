@@ -13,7 +13,7 @@
 \usepackage{amsfonts,amssymb,amsmath}	% Symboles maths... (indispensable)
 \usepackage{stmaryrd} 					% pour \llbracket
 %\usepackage{fourier-otf}				% Police d'écriture
-\usepackage[explicit]{titlesec}
+\usepackage{titlesec}
 \usepackage{setspace}
 \usepackage{dsfont}
 \usepackage{tabularx,tabulary}			% Tableaux avec taille définie
@@ -105,17 +105,10 @@
 
 \newlength{\colG}\newlength{\colD}
 
-\newlength{\tailletexte}
-\setlength{\tailletexte}{\f@size pt}
 \newlength{\composep}
 \setlength{\composep}{10pt}
 
-%\newcommand{\fixcompo}{\noindent\vphantom{\rule{0pt}{\baselinestretch\tailletexte}}} %Pour corriger les bugs d'espacement entre le titre ou la suite, je n'ai pas encore réussi à automatiser ça... - Utiliser strut à la place
-
-\newif\ifnotincompohaut
-\notincompohauttrue
-
-\newcommand{\compobase}[5]{\ifthenelse{\equal{#2}{t}}{\notincompohautfalse}{}%
+\newcommand{\compobase}[5]{%
 \setlength{\colG}{#3\linewidth}\setlength{\colD}{\linewidth}%
 \addtolength{\colD}{-\colG}\addtolength{\colD}{-#1}%
 \addtolength{\colG}{-#1}%
@@ -123,7 +116,7 @@
 \begin{minipage}[#2]{\colG}\vspace{0pt}%
 #4\end{minipage}\hfill%	%vspace=hack pour des problèmes d'alignement qui aparaissent avec compohaut
 \begin{minipage}[#2]{\colD}\vspace{0pt}%
-#5\end{minipage}\notincompohauttrue\par}
+#5\end{minipage}\par}
 
 
 \newcommand{\compo}[3][0.5]{\compobase{\composep}{c}{#1}{#2}{#3}}
@@ -156,45 +149,6 @@
 \newcommand{\compoligne}[3][0.5]{\compolignebase{\composep}{c}{#1}{#2}{#3}}
 \newcommand{\compolignehaut}[3][0.5]{\compolignebase{\composep}{t}{#1}{#2}{#3}}
 
-% Compo test: tabularx plus stable (espaces avant/après)
-
-%\renewcommand{\compo}[3][0.5]{%
-%\renewcommand\tabularxcolumn[1]{m{##1}}%
-%\setlength{\colG}{#1\linewidth}%
-%\par\noindent%
-%\begin{tabularx}{\linewidth}{m{\colG}X}%
-%\vspace{0pt}#2%
-%&
-%\vspace{0pt}#3%
-%\end{tabularx}}
-%
-%\renewcommand{\compohaut}[3][0.5]{%
-%\renewcommand\tabularxcolumn[1]{p{##1}}%
-%\setlength{\colG}{#1\linewidth}%
-%\par\noindent%
-%\begin{tabularx}{\linewidth}{p{\colG}X}%
-%\renewcommand\tabularxcolumn[1]{m{##1}}%
-%\vspace{0pt}#2%
-%&
-%\renewcommand\tabularxcolumn[1]{m{##1}}%
-%\vspace{0pt}#3%
-%\end{tabularx}}
-
-% Compohaut: deuxième version
-
-% Avantage: plus simple
-% Désavantages:
-%	Problème avec environnements center ou centrer, trop d'espacement en bas de tableau à cause de la ligne supplémentaire
-%	"Hack" avec l'espacement gauche/droite
-%	Versions non équilibrées nécessitant plus de calculs...
-%\newlength{\tabcompoligne}
-%\renewcommand{\compoligne}[3][0.5]{%
-%\setlength{\tabcompoligne}{\linewidth}%
-%\addtolength{\tabcompoligne}{12pt}%
-%\noindent\hspace{-6pt}\begin{tabularx}{\tabcompoligne}{X|X}%
-%#2&#3%
-%\end{tabularx}\par}
-
 % Environnement centrer sans passage à la ligne
 
 \newenvironment{centrer}{\par \centering }{ \par}
@@ -202,32 +156,18 @@
 % Commandes sujets
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% Lignes de points pour réponses, à modifier:
-% Si uniquement des points dans un compo, utiliser pointsfixcompo
-% Si points après un compo, utiliser \fixcompo\points pour éviter l'espacement après
-% Renommer pointsfixincompo // pointsfixaprescompo ?
-% \strut marche bien en fait
-% SI compohaut, le strut casse un peu l'espacement. Condition pour voir si on est dans cet environnement pour annuler le strut
+% Lignes de points pour réponses
 
 \newlength{\enumitemindent} %Pour que les points soient sur toute la page. A voir en compo, le résultat semble ok car la minipage subit la marge
 \setlength{\enumitemindent}{0pt}
 \newcommand{\pointstretch}{1.5}
 \setlist{before={\addtolength{\enumitemindent}{\leftmargin}},after={\addtolength{\enumitemindent}{-\leftmargin}},font=\bfseries}% Mise à jour de la marge, addtolength ou setlength... (reculer d'une indentation ou de toutes) + mode bf (obligé de tout faire en même temps)
-%pointsfixcompo a supprimer, le strut marche plutôt bien. espace vertical trop faible peut-être... Marche pas bien en compohaut, faire fonction distrinction de cas?
 \newcommand{\points}[2][\pointstretch]{\setstretch{#1}%
 \foreach \n in{1,...,#2}%
-{\noindent\hspace{-\enumitemindent}\ifnotincompohaut\strut\fi\dotfill
+{\noindent\hspace{-\enumitemindent}\strut\dotfill
 
 }
 }
-
-%\newcommand{\pointsfixcompo}[2][\pointstretch]{\setstretch{#1}% Pour ajouter un espacement si necessaire, dans ou après un compo.
-%\fixcompo%
-%\foreach \n in{1,...,#2}%
-%{\noindent\hspace{-\enumitemindent}\ifthenelse{\equal{\n}{#2}}{\vphantom{\rule[-\baselinestretch\tailletexte]{0pt}{\baselinestretch\tailletexte}}}{}\dotfill
-%
-%}
-%}
 
 % Entete pour interros ( quand il en faut plusieurs en une page, imitation fancyhdr )
 
@@ -251,18 +191,17 @@
 % Initialisation pgfplots, tikz et styles
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\newcommand{\echellepgf} {4/5}
-\newcommand{\echellepgfinv} {5/4}
-
 \pgfplotsset{ % Pas besoin de "styleglobal" en fait ... Important: ne pas faire xscale mais x post scale pour conserver la taille des ticks
 	compat=1.18,
 	styleglobal/.style={
 		%
-		% Taille
+		% Taille et réglages globaux
 		%
 		height=\pgfkeysvalueof{/pgfplots/width}*(((\pgfkeysvalueof{/pgfplots/ymax})+((-1)*(\pgfkeysvalueof{/pgfplots/ymin})))/((\pgfkeysvalueof{/pgfplots/xmax})+((-1)*(\pgfkeysvalueof{/pgfplots/xmin}))))+0.1pt, %Hauteur auto en fonction des coordonnées et de l'échelle
 		scale only axis,							 %Pour bien tomber sur la grille
+		axis equal,
 		enlargelimits={0.001},
+		font=\footnotesize,
 		%		
 		% Axes
 		%
@@ -270,61 +209,47 @@
 		axis y line = left,
 		axis lines=middle,							% Axes dans le repère et pas au bord
 		axis line style={-{Stealth}},				% Plus grosse flèche
-		tick label style = {font=\footnotesize},
 		xlabel={$x$},
 		ylabel={$y$},
-		label style= {font=\scriptsize},
-		axis equal,
+		label style= {font=\tiny},
 		%
 		% Grille et graduations
 		%
 		minor x tick num=1,							 %Sous graduations
 		minor y tick num=1,
+		tick label style = {font=\scriptsize},
+		ticklabel shift=-2pt,
 		%xtick distance=1, 							%Graduations(finalement enlevé pour que de base ce soit automatique)
 		%ytick distance=1,
 		grid=both,
-		grid style={densely dashed,line width=0.4pt,draw=black!30},
-		minor grid style={line width=0.25pt,draw=black!20},
+		grid style={dash pattern=on 2.4pt off 1.6pt,line width=0.32pt,draw=black!30}, % Correspond à densely dashed un peu plus dense
+		minor grid style={line width=0.2pt,draw=black!20},
 		legend pos=north east,
 		%
-		% Evite des erreurs liées à des valeurs trop grandes (fonction inverse, exp...)
+		% Evite des erreurs liées à des valeurs trop grandes (fonction inverse, exp...) Pas trouvé mieux pour l'instant...
 		%
 		domain=(\pgfkeysvalueof{/pgfplots/xmin}:\pgfkeysvalueof{/pgfplots/xmax}),	%Domaine de définition des fonctions à tracer
 		execute at begin axis={
 			\pgfmathsetmacro\yminetendu{\pgfkeysvalueof{/pgfplots/ymin}-1*(\pgfkeysvalueof{/pgfplots/ymax}-\pgfkeysvalueof{/pgfplots/ymin})}
-			\pgfmathsetmacro\ymaxetendu{\pgfkeysvalueof{/pgfplots/ymax}+1*(\pgfkeysvalueof{/pgfplots/ymax}-\pgfkeysvalueof{/pgfplots/ymin})}}, % Limites en ordonnées, calculs préalables
+			\pgfmathsetmacro\ymaxetendu{\pgfkeysvalueof{/pgfplots/ymax}+1*(\pgfkeysvalueof{/pgfplots/ymax}-\pgfkeysvalueof{/pgfplots/ymin})}}, % Limites en ordonnées, calculs préalables. On va plus loin pour éviter que la courbe ne se coupe trop tôt.
 		%
 		%x=1pt,y=1pt, %Evite aussi les erreurs... Fonctionnement assez bizarre: la mise à l'échelle se fait après donc tous les calculs se font avec une base d'un pt par unité, ce qui évite d'atteindre des dimensions trop grandes
-		mark size=\echellepgfinv*2pt,	% Taille marques indépendant de l'échelle (quand on trace des suites)
 	},
 	styleplot/.style={
 		samples=101,
 		smooth,
-		line width=1.3pt,
+		line width=1pt,
 		mark=none,
-		restrict y to domain={\yminetendu:\ymaxetendu}, %Limitation ordonnées
+		restrict y to domain={\yminetendu:\ymaxetendu}, %Limitation ordonnées pour éviter les erreurs
 	},
 	labelgros/.style={
 		label style= {font=\large},
 		tick label style = {font=\large}
 	},
 	hauteurproptick/.style={
-		height=\pgfkeysvalueof{/pgfplots/width}*((\pgfkeysvalueof{/pgfplots/xtick distance}/\pgfkeysvalueof{/pgfplots/ytick distance})*((\pgfkeysvalueof{/pgfplots/ymax})+((-1)*(\pgfkeysvalueof{/pgfplots/ymin})))/((\pgfkeysvalueof{/pgfplots/xmax})+((-1)*(\pgfkeysvalueof{/pgfplots/xmin})))), % Repère non normé
+		height=\pgfkeysvalueof{/pgfplots/width}*((\pgfkeysvalueof{/pgfplots/xtick distance}/\pgfkeysvalueof{/pgfplots/ytick distance})*((\pgfkeysvalueof{/pgfplots/ymax})+((-1)*(\pgfkeysvalueof{/pgfplots/ymin})))/((\pgfkeysvalueof{/pgfplots/xmax})+((-1)*(\pgfkeysvalueof{/pgfplots/xmin}))))+0.1pt, % Repère non normé. Nécessite de régler xtick distance et ytick distance
 		axis equal=false,
 		enlargelimits=0.001,
-	},
-	repere/.style={	% Pour les repères sans fonctions: juste la grille principale et les axes. A charger après styleglobal
-		xticklabels={},
-		yticklabels={},
-		minor x tick num=0,
-		minor y tick num=0,
-		xtick distance=1,
-		ytick distance=1,
-		tick style={thick,opacity=1,black},
-		major tick length=4pt,
-		axis line style={-},
-		xlabel={},
-		ylabel={},
 	},
 }
 
@@ -347,9 +272,9 @@
 	},
 	stylepointextremites/.style={
 		circle,
-		minimum size=1pt,
+		minimum size=0.8pt,
 		fill,
-		inner sep=1pt,
+		inner sep=0.8pt,
 		fill opacity=1
 	},
 	stylegrille/.style={
@@ -425,12 +350,7 @@
 % ultra thick=1.4pt
 
 %\raggedcolumns
-%\setlength{\columnsep}{1cm}
 %\setlength{\columnseprule}{0.2pt}
-%\everymath{\displaystyle}
-
-%\setlist[itemize]{align=parleft,left=5pt..15pt}
-%\setlist[enumerate]{align=parleft,left=5pt..20pt}
 
 
 % Boites cours tcolorbox
@@ -461,6 +381,10 @@
 		left=10pt,
 		sharp corners,
 		breakable,
+		% Je n'ai pas encore totalement compris comment ça marche... Ca change la manière dont l'espace avant/après est fait, et visiblement les sections sont mieux réparties(pas de section en bas de page)
+		%beforeafter skip balanced=0pt,
+		%nobeforeafter,		
+		%after skip=0.5\baselineskip plus 2pt,
 	},
 	styleraster/.style={			% Pour aligner des tcbox sur une ligne
 		raster every box/.append style={breakable=false},			% Ne marche pas sans ça
@@ -469,22 +393,6 @@
 		raster column skip=10pt		% Ecartement horizontal
 	},
 }
-
-% Ancienne version
-%\newcommand{\deftcbUn}[6][10]{
-%\definecolor{#2-titre}{Hsb}{#4,#5,#6}
-%\colorlet{#2}{#2-titre!#1}
-%\newtcolorbox{#2}[1][]{	
-%	styleboite,
-%	colback=#2,
-%	borderline west={1pt}{0pt}{#2-titre},
-%	title={\hspace{-10pt}\colorbox{#2-titre}{\hspace{7pt}\rule[-3pt]{0pt}{14.3pt}\MakeUppercase{#3}\ifstrempty{##1}{}{ (##1)}\hspace{7pt}}},
-%	colbacktitle=#2,
-%	before upper={\colorlet{bg}{#2} \definecolor{bfcolor}{Hsb}{#4,0.75,0.15}},
-%	after upper={\colorlet{bg}{white} \colorlet{bfcolor}{black}},
-%	%before upper={\tcolorboxsubtitle{#1}{##1}},
-%}
-%}
 
 \newcommand{\deftcbUn}[6][10]{
 \definecolor{#2-titre}{Hsb}{#4,#5,#6}
@@ -513,9 +421,6 @@
 	after upper={\colorlet{bg}{white} \colorlet{bfcolor}{black}},
 }
 }
-% Test pour le titre:
-%\tcbox[size=fbox,left=7pt,right=7pt,colback=defin-titre,height=1cm,valign=center]{\color{white}\MakeUppercase{\bfseries\boldmath Définition Propriété Vocabulaire}}
-% Voir raisebox!
 
 \newcommand{\deftcb}[6][10]{ % Pour définir tous les types de thm en une ligne: voir options
 \deftcbUn[#1]{#2}{#3}{#4}{#5}{#6}
@@ -535,36 +440,9 @@
 	top=7pt,
 	bottom=7pt,
 	borderline west={2pt}{-2pt}{remq-titre},
-	%title={\hspace{-10pt}\colorbox{rmq-perso-titre}{\rule[-3pt]{0pt}{14pt} \hspace{5pt}\MakeUppercase{#3}\ifstrempty{##1}{}{ (##1) }\hspace{10pt}}},
-	%colbacktitle=#2,
 	before upper={\colorlet{bg}{remq} \definecolor{bfcolor}{Hsb}{50,0.75,0.15}},
 	after upper={\colorlet{bg}{white} \colorlet{bfcolor}{black}},
-	%before upper={\tcolorboxsubtitle{#1}{##1}},
 }
-
-%\definecolor{programme-titre}{Hsb}{0,0.8,0.75}
-%\colorlet{programme}{programme-titre!10}
-%\newtcolorbox{tcolor-programme}{
-%	colback=programme,
-%	borderline west={1pt}{0pt}{programme-titre},
-%	title={\hspace{-10pt}\colorbox{programme-titre}{\rule[-3pt]{0pt}{14pt} \hspace{5pt}\MakeUppercase{Programme}\hspace{10pt}}},
-%	colbacktitle=programme,
-%	before upper={\colorlet{bg}{programme} \definecolor{bfcolor}{Hsb}{0,0.75,0.15}},
-%	after upper={\colorlet{bg}{white} \colorlet{bfcolor}{black}},
-%	%before upper={\tcolorboxsubtitle{#1}{##1}},
-%}
-%
-%\definecolor{deroule-titre}{Hsb}{0,0.8,0.75}
-%\colorlet{deroule}{deroule-titre!10}
-%\newtcolorbox{tcolor-deroule}{
-%	colback=deroule,
-%	borderline west={1pt}{0pt}{deroule-titre},
-%	title={\hspace{-10pt}\colorbox{deroule-titre}{\rule[-3pt]{0pt}{14pt} \hspace{5pt}\MakeUppercase{Déroulé}\hspace{10pt}}},
-%	colbacktitle=deroule,
-%	before upper={\colorlet{bg}{deroule} \definecolor{bfcolor}{Hsb}{0,0.75,0.15}},
-%	after upper={\colorlet{bg}{white} \colorlet{bfcolor}{black}},
-%	%before upper={\tcolorboxsubtitle{#1}{##1}},
-%}
 
 \definecolor{fait-titre}{Hsb}{0,0,0.6} % Quand un résultat n'est pas vraiment catégorisé: intro d'une partie...
 \colorlet{fait}{fait-titre!10}
@@ -658,26 +536,23 @@
 \end{algorithm}
 }
 
-%%% Option progres
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-% Le but est d'ignorer tout ce qui vient après la commande dans le fichier cours pour pouvoir avoir des cours partiels. La commande prend son sens avec l'option eleve.
-\newcommand{\progres}{}
-
 % Options
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% C'est un peu bordélique ici:
-%Si on a l'option cours, tous les thm apparaissent dans des tcolorbox. Sinon on utilise ntheorem
+%
+%Si on a l'option cours, tous les thm apparaissent dans des tcolorbox. Sinon on utilise ntheorem (TD et sujets)
 %Si on a l'option élève, on doit désactiver la commande rem sauf si option eleve dans la remarque( remarques perso dans le cours ), on a besoin de tester si elle est présente pour faire un si-sinon
+% Option minted pour éviter de créer plein de dossiers inutilement
+% Option NB pour rendre le fond des boites plus clair (pour l'impression)
 
 %
 %	Si cours alors boites tcolorbox
+%		Si eleve alors désactiver les rmq perso sauf cas particuliers
 %	Sinon
-%	Définir styles ntheorem classiques
-%		Si option TD alors style exo mixte et marges modifiées
-%		Si sujet alors pareil sans style exo mixte
-%	Si eleve alors désactiver les rmq perso sauf cas particuliers
+%	Définir styles ntheorem classiques pour TD/Sujets
+%		Selon TD ou sujet changer les marges et l'entête
+%	Si minted alors charger le package
+%	Si NB alors réduire opacité des fonds tcolorbox
 %
 
 \newif\ifoptioncours
@@ -692,9 +567,6 @@
 \newif\ifoptionsujet
 \optionsujetfalse
 
-\newif\ifoptionsujetOuTD
-\optionsujetOuTDfalse
-
 \newif\ifoptionNB
 \optionNBfalse
 
@@ -705,9 +577,9 @@
 
 \DeclareOption{eleve}{\optionelevetrue}
 
-\DeclareOption{TD}{\optionTDtrue\optionsujetOuTDtrue}
+\DeclareOption{TD}{\optionTDtrue}
 
-\DeclareOption{sujet}{\optionsujettrue\optionsujetOuTDtrue}
+\DeclareOption{sujet}{\optionsujettrue}
 
 \DeclareOption{NB}{\optionNBtrue}
 
@@ -727,16 +599,16 @@
 	% Formats titres, sections
 	
 	\newcommand{\sectionstyle}{\normalfont\Large\bfseries\color{section}}
-	\titleformat{\section}{\sectionstyle}{\Roman{section} - }{0pt}{#1}[{\color{gray}\hrule}]
-	\titleformat{name=\section, numberless}{\sectionstyle}{}{0pt}{#1}[{\color{gray}\hrule}]
+	\titleformat{\section}{\sectionstyle}{\Roman{section} - }{0pt}{}[{\color{gray}\hrule}]
+	\titleformat{name=\section, numberless}{\sectionstyle}{}{0pt}{}[{\color{gray}\hrule}]
 
 	\newcommand{\subsectionstyle}{\normalfont\large\bfseries\color{subsection}}
-	\titleformat{\subsection}{\subsectionstyle}{\hspace{0.1\linewidth}\arabic{subsection}. }{0pt}{#1}
-	\titleformat{name=\subsection, numberless}{\subsectionstyle}{\hspace{0.1\linewidth}}{0pt}{#1}
+	\titleformat{\subsection}{\subsectionstyle}{\hspace{0.1\linewidth}\arabic{subsection}. }{0pt}{}
+	\titleformat{name=\subsection, numberless}{\subsectionstyle}{\hspace{0.1\linewidth}}{0pt}{}
 	
 	\newcommand{\subsubsectionstyle}{\normalfont\large\bfseries\color{subsubsection}}
-	\titleformat{\subsubsection}{\subsubsectionstyle}{\hspace{0.2\linewidth}\alph{subsubsection}) }{0pt}{#1}
-	\titleformat{name=\subsubsection, numberless}{\subsubsectionstyle}{\hspace{0.2\linewidth}}{0pt}{#1}
+	\titleformat{\subsubsection}{\subsubsectionstyle}{\hspace{0.2\linewidth}\alph{subsubsection}) }{0pt}{}
+	\titleformat{name=\subsubsection, numberless}{\subsubsectionstyle}{\hspace{0.2\linewidth}}{0pt}{}
 	
 %\PassOptionsToPackage{nobottomtitles*}{titlesec}
 %\renewcommand{\bottomtitlespace}{100pt}	
@@ -775,13 +647,13 @@
 	\deftcbUn{tcolor-programme}{Programme}{0}{0.8}{0.75}	
 	\deftcbUn{tcolor-deroule}{Déroulé}{0}{0.8}{0.75}
 	
-	\NewDocumentEnvironment{programme}{b}{\vspace{-2em}\begin{tcolor-programme}\saut\setstretch{0.75}{\footnotesize{\begin{itemize}[align=left,leftmargin=8pt,labelwidth=10pt,itemindent=10pt]#1\end{itemize}}}\end{tcolor-programme}}{\par}
-	\NewDocumentEnvironment{deroule}{b}{\begin{tcolor-deroule}\saut\setstretch{0.75}{\footnotesize{\begin{itemize}[align=left,leftmargin=8pt,labelwidth=10pt,itemindent=10pt]#1\end{itemize}}}\end{tcolor-deroule}}{\par}
-	
-	%Les tcolorbox avec titre font un saut automatique mais pas les thm donc saut fait le lien
-	\newcommand{\saut}{}
+	\NewDocumentEnvironment{programme}{b}{\vspace{-2em}\begin{tcolor-programme}\setstretch{0.75}{\footnotesize{\begin{itemize}[align=left,leftmargin=8pt,labelwidth=10pt,itemindent=10pt]#1\end{itemize}}}\end{tcolor-programme}}{\par}
+	\NewDocumentEnvironment{deroule}{b}{\begin{tcolor-deroule}\setstretch{0.75}{\footnotesize{\begin{itemize}[align=left,leftmargin=8pt,labelwidth=10pt,itemindent=10pt]#1\end{itemize}}}\end{tcolor-deroule}}{\par}
 	
 	\renewcommand{\textbf}[1]{{\color{bfcolor}\TextOrMath{{\bfseries #1}}{\mathbf{#1}}}}
+	
+	% Le but est d'ignorer tout ce qui vient après la commande dans le fichier cours pour pouvoir avoir des cours partiels. La commande prend son sens avec l'option eleve.
+	\newcommand{\progres}{}
 	
 	% Remarques perso	
 	
@@ -790,43 +662,58 @@
 	
 	\newcommand{\rem}[2][]{\rembase{#2}}
 	\NewDocumentEnvironment{rems}{ob}{\begin{remsbase}#2\end{remsbase}}{\par}
+	
+	\ifoptioneleve
+	
+		\RenewDocumentEnvironment{programme}{b}{}{\par}
+		\RenewDocumentEnvironment{deroule}{b}{}{\par}
+	
+		\RenewDocumentEnvironment{rems}{ob}{\ifthenelse{\equal{#1}{eleve}}{\begin{remsbase}#2\end{remsbase}}}{\par}
+	
+		\renewcommand{\rem}[2][]{\ifthenelse{\equal{#1}{eleve}}{\rembase{#2}}{}}
+		
+		% Commande progres pour arrêter la compilation (uniquement pour les élèves)	
+		
+		\renewcommand{\progres}{\end{document}}
+	
+	\fi
 			
-\else % Style +- à l'ancienne
+\else % Style +- à l'ancienne pour les TD et sujets
 
 	% Style des sections
 
 	\newcommand{\sectionstyle}{\normalfont\Large\bfseries\color{section}}
-	\titleformat{\section}{\sectionstyle}{\hspace{0.08\linewidth}\Roman{section} - }{0pt}{#1}[{\color{gray}\hrule}]
-	\titleformat{name=\section, numberless}{\sectionstyle}{\hspace{0.08\linewidth}}{0pt}{#1}[{\color{gray}\hrule}]
+	\titleformat{\section}{\sectionstyle}{\hspace{0.08\linewidth}\Roman{section} - }{0pt}{}[{\color{gray}\hrule}]
+	\titleformat{name=\section, numberless}{\sectionstyle}{\hspace{0.08\linewidth}}{0pt}{}[{\color{gray}\hrule}]
 
 	\newcommand{\subsectionstyle}{\normalfont\large\bfseries\color{subsection}}
-	\titleformat{\subsection}{\subsectionstyle}{\hspace{0.12\linewidth}\arabic{subsection}. }{0pt}{#1}
-	\titleformat{name=\subsection, numberless}{\subsectionstyle}{\hspace{0.12\linewidth}}{0pt}{#1}
+	\titleformat{\subsection}{\subsectionstyle}{\hspace{0.12\linewidth}\arabic{subsection}. }{0pt}{}
+	\titleformat{name=\subsection, numberless}{\subsectionstyle}{\hspace{0.12\linewidth}}{0pt}{}
 	
 	\newcommand{\subsubsectionstyle}{\normalfont\large\bfseries\color{subsubsection}}
-	\titleformat{\subsubsection}{\subsubsectionstyle}{\hspace{0.16\linewidth}\alph{subsubsection}) }{0pt}{#1}
-	\titleformat{name=\subsubsection, numberless}{\subsubsectionstyle}{\hspace{0.16\linewidth}}{0pt}{#1}
+	\titleformat{\subsubsection}{\subsubsectionstyle}{\hspace{0.16\linewidth}\alph{subsubsection}) }{0pt}{}
+	\titleformat{name=\subsubsection, numberless}{\subsubsectionstyle}{\hspace{0.16\linewidth}}{0pt}{}
 
-%	\titlespacing*{\section}{0mm}{0mm}{1mm}
-%	\titlespacing*{\subsection}{10mm}{0mm}{3mm}
-%	\titlespacing*{\subsubsection}{20mm}{0mm}{3mm}
-
-%	\newcommand{\titre}[1]{\begin{center}{\fontfamily{cmr}\fontseries{bx}\selectfont \huge\color{titre!70!black}{#1}}\par\vspace{-5pt}\textcolor{darkgray}{\hrule}%
-%	\vspace{2pt}%
-%	\textcolor{darkgray}{\hrule height 2pt depth 0pt \relax}%
-%	\end{center}
-%	}
 	\newcommand{\titre}[1]{\begin{center}{\fontfamily{cmr}\fontseries{bx}\selectfont\color{titre}\huge{#1}}
 	\end{center}
 	}
 	\def\@maketitle{\centering  \let \footnote \thanks {\huge \@title \par}\par\vskip 2em}
-	\NewDocumentEnvironment{programme}{b}{\section*{Programme}\setstretch{0.75}{\footnotesize{\begin{itemize}#1\end{itemize}}}}{\par}
-	\NewDocumentEnvironment{deroule}{b}{\section*{Déroulé}\setstretch{0.75}{\footnotesize{\begin{itemize}#1\end{itemize}}}}{\par}
-	
-	\renewenvironment{fait}[1][]{}{}
 	
 	\everymath{\displaystyle}
-	% Style général
+	
+	% Remarques
+	
+	\newcommand{\rem}[1]{\begin{center}\textit{#1}\end{center}}
+	\NewDocumentEnvironment{rems}{b}{\rem{#1}}{\par}
+
+	% Listes
+	
+	\setlist[itemize]{align=parleft,left=5pt..15pt}
+	\setlist[enumerate]{align=left,left=-3pt..15pt,leftmargin=0pt,itemindent=15pt}
+	\setlist[enumerate,1]{align=left,left=5pt..20pt,itemindent=*}
+	\setlist[enumerate,2]{align=left,left=5pt..20pt,itemindent=*}	
+
+	% Style général théorèmes
 	
 	\theorembodyfont{\normalfont}
 	\theoremframepostskip{0mm}
@@ -834,16 +721,72 @@
 	\theoreminframepostskip{0mm}
 	\theoreminframepreskip{0mm}
 	\theoremnumbering{arabic}
+
+	% Style exos				
 	
-	% Remarques (avec compatibilité)
-	% A refaire entièrement: problème avec options définies avant d'où les ifthenelse à foison
+	\definecolor{couleurExo}{Hsb}{211,0.8,0.65}
+	\newtheoremstyle{stylexo}	%Base plain
+	{\item[\theorem@headerfont\hskip\labelsep\colorbox{couleurExo}{\color{white}\theorem@headerfont ##1\ ##2\theorem@separator}]}%
+	{\item[\theorem@headerfont\hskip \labelsep\IfBeginWith{##3}{*}{\colorbox{couleurExo}{\color{white}\theorem@headerfont ##1\ ##2##3\theorem@separator}}{\colorbox{couleurExo}{\color{white}\theorem@headerfont ##1\ ##2{\ \itshape -\ {\footnotesize ##3}}\theorem@separator}}]}
 	
-	\colorlet{couleurrem}{DarkGreen}
+	\theoremstyle{stylexo}
+	\theoremseparator{.}
+	\theorempreskip{\topsep}
+	\theorempostskip{\topsep}
+	\newtheorem{exercice}{Exercice}
 	
-	\newcommand{\rembase}[1] {\begin{center}\textit{#1}\end{center}}
+	\newtheoremstyle{stylecorrection}	%Base plain
+	{\item[\theorem@headerfont\hskip\labelsep\colorbox{couleurExo}{\color{white}\theorem@headerfont ##1\theorem@separator}]}%
+	{\item[\theorem@headerfont\hskip \labelsep\colorbox{couleurExo}{\color{white}\theorem@headerfont ##1\IfBeginWith{##3}{*}{##3}{\ (##3)}\theorem@separator}]}
 	
-	\newcommand{\rem}[2][]{\rembase{#2}} % Pour pouvoir utiliser l'option eleve sur les remarques plus tard. Option If pour compatibilité ...	
+	\theoremstyle{stylecorrection}
+	\theoremseparator{.}
+	\theorempreskip{\topsep}
+	\theorempostskip{\topsep}
+	\newtheorem{correction}{Correction}
 	
+	\definecolor{couleurDefinTD}{Hsb}{15,0.8,0.65}
+	\newtheoremstyle{styledefintd}	%Base plain
+	{\item[\theorem@headerfont\hskip\labelsep\colorbox{couleurDefinTD}{\color{white}\theorem@headerfont ##1\theorem@separator}]}%
+	{\item[\theorem@headerfont\hskip \labelsep\colorbox{couleurDefinTD}{\color{white}\theorem@headerfont ##1\ (##3) \theorem@separator}]}
+		
+	\theoremstyle{styledefintd}
+	
+	% Style théorèmes
+	
+	\theoremseparator{ :\par}
+	
+	\newtheorem{defin}{Définition}
+	\newtheorem{defins}{Définitions}
+	\newtheorem{thm}[defin]{Théorème}
+	\newtheorem{thms}[defin]{Théorèmes}
+	\newtheorem{prop}[defin]{Proposition}
+	\newtheorem{lemme}[defin]{Lemme}
+	\newtheorem{ex}[defin]{Exemple}
+	\newtheorem{exs}[defin]{Exemples}
+	\newtheorem{cex}[defin]{Contre-exemple}
+	\newtheorem{rmq}[defin]{Remarque}
+	\newtheorem{rmqs}[defin]{Remarques}
+	\newtheorem{cor}[defin]{Corollaire}
+	\newtheorem{propr}[defin]{Propriété}
+	\newtheorem{proprs}[defin]{Propriétés}
+	\newtheorem{app}[defin]{Application}
+	\newtheorem{defprop}[defin]{Def-prop}
+	\newtheorem{algo}[defin]{Algorithme}
+	\newtheorem{rappel}[defin]{Rappel}
+	\newtheorem{methode}[defin]{Méthode}
+	\newtheorem{caspart}[defin]{Cas particulier}
+	\newtheorem{casparts}[defin]{Cas particuliers}
+	\newframedtheorem{thmframed}[defin]{Théorème}
+	\newframedtheorem{exframed}[defin]{Exemple}
+	
+	\newenvironment{enonce}[1]{
+	\newtheorem{enonce\thecompteurenonce}[defin]{#1}
+	\begin{enonce\thecompteurenonce}}
+	{\end{enonce\thecompteurenonce} \refstepcounter{compteurenonce}}
+	
+	% Réglages selon TD ou sujet
+
 	\ifoptionTD
 	
 		\geometry{margin=10mm, bottom=17mm}
@@ -883,119 +826,8 @@
 		} 
 
 	
-	\fi	
+	\fi		
 	
-	\ifoptionsujetOuTD		
-		
-		\colorlet{couleurrem}{black}
-		
-		%Listes
-		
-		\setlist[itemize]{align=parleft,left=5pt..15pt}
-		\setlist[enumerate]{align=left,left=-3pt..15pt,leftmargin=0pt,itemindent=15pt}
-		\setlist[enumerate,1]{align=left,left=5pt..20pt,itemindent=*}
-		\setlist[enumerate,2]{align=left,left=5pt..20pt,itemindent=*}	
-	
-		% Style exos				
-		
-		\definecolor{couleurExo}{Hsb}{211,0.8,0.65}
-		\newtheoremstyle{stylexo}	%Base plain
-		{\item[\theorem@headerfont\hskip\labelsep\colorbox{couleurExo}{\color{white}\theorem@headerfont ##1\ ##2\theorem@separator}]}%
-		{\item[\theorem@headerfont\hskip \labelsep\colorbox{couleurExo}{\color{white}\theorem@headerfont ##1\ ##2\IfBeginWith{##3}{*}{##3}{\ (##3)}\theorem@separator}]}
-		
-		\theoremstyle{stylexo}
-		\theoremseparator{.}
-		\theorempreskip{\topsep}
-		\theorempostskip{\topsep}
-		\newtheorem{exercice}{Exercice}
-		
-		\newtheoremstyle{stylecorrection}	%Base plain
-		{\item[\theorem@headerfont\hskip\labelsep\colorbox{couleurExo}{\color{white}\theorem@headerfont ##1\theorem@separator}]}%
-		{\item[\theorem@headerfont\hskip \labelsep\colorbox{couleurExo}{\color{white}\theorem@headerfont ##1\IfBeginWith{##3}{*}{##3}{\ (##3)}\theorem@separator}]}
-		
-		\theoremstyle{stylecorrection}
-		\theoremseparator{.}
-		\theorempreskip{\topsep}
-		\theorempostskip{\topsep}
-		\newtheorem{correction}{Correction}
-		
-		\definecolor{couleurDefinTD}{Hsb}{15,0.8,0.65}
-		\newtheoremstyle{styledefintd}	%Base plain
-		{\item[\theorem@headerfont\hskip\labelsep\colorbox{couleurDefinTD}{\color{white}\theorem@headerfont ##1\theorem@separator}]}%
-		{\item[\theorem@headerfont\hskip \labelsep\colorbox{couleurDefinTD}{\color{white}\theorem@headerfont ##1\ (##3) \theorem@separator}]}
-		
-	\theoremstyle{styledefintd}
-		
-	\else
-	
-		\theoremstyle{plain}
-		\theoremseparator{.}
-		\theorempreskip{\topsep}
-		\theorempostskip{\topsep}
-		\newtheorem{exercice}{Exercice}
-		
-		\theoremstyle{nonumberplain}
-	
-	\fi
-	
-	% Style théorèmes
-	
-	\theorembodyfont{\normalfont}
-	%\theorempostskip{2mm}
-	%\theorempreskip{2mm}
-	\theoremseparator{ :\par}
-	%\theoremsymbol{\rule{1.5mm}{1.5mm}}
-	
-	\newtheorem{defin}{Définition}
-	\newtheorem{defins}{Définitions}
-	\newtheorem{thm}[defin]{Théorème}
-	\newtheorem{thms}[defin]{Théorèmes}
-	\newtheorem{prop}[defin]{Proposition}
-	\newtheorem{lemme}[defin]{Lemme}
-	\newtheorem{ex}[defin]{Exemple}
-	\newtheorem{exs}[defin]{Exemples}
-	\newtheorem{cex}[defin]{Contre-exemple}
-	\newtheorem{rmq}[defin]{Remarque}
-	\newtheorem{rmqs}[defin]{Remarques}
-	\newtheorem{cor}[defin]{Corollaire}
-	\newtheorem{propr}[defin]{Propriété}
-	\newtheorem{proprs}[defin]{Propriétés}
-	\newtheorem{app}[defin]{Application}
-	\newtheorem{defprop}[defin]{Def-prop}
-	\newtheorem{algo}[defin]{Algorithme}
-	\newtheorem{rappel}[defin]{Rappel}
-	\newtheorem{methode}[defin]{Méthode}
-	\newtheorem{caspart}[defin]{Cas particulier}
-	\newtheorem{casparts}[defin]{Cas particuliers}
-	\newframedtheorem{thmframed}[defin]{Théorème}
-	\newframedtheorem{exframed}[defin]{Exemple}
-	
-	\newenvironment{enonce}[1]{
-	\newtheorem{enonce\thecompteurenonce}[defin]{#1}
-	\begin{enonce\thecompteurenonce}}
-	{\end{enonce\thecompteurenonce} \refstepcounter{compteurenonce}}
-	
-	\newcommand{\saut}{\
-	
-	}
-	
-	\NewDocumentEnvironment{rems}{ob}{\rem{#2}}{\par}
-	
-\fi
-
-\ifoptioneleve
-	
-	\RenewDocumentEnvironment{programme}{b}{}{\par}
-	\RenewDocumentEnvironment{deroule}{b}{}{\par}
-
-	\RenewDocumentEnvironment{rems}{ob}{\ifthenelse{\equal{#1}{eleve}}{\begin{remsbase}#2\end{remsbase}}}{\par}
-
-	\renewcommand{\rem}[2][]{\ifthenelse{\equal{#1}{eleve}}{\rembase{#2}}{}}
-	
-	% Commande progres pour arrêter la compilation (uniquement pour les élèves)	
-	
-	\renewcommand{\progres}{\end{document}}
-
 \fi
 
 \ifoptionminted
@@ -1017,75 +849,5 @@
 	\tcbset{opacityback=0.3}
 	\definecolor{couleurExo}{Hsb}{0,0,0.25}
 	\def\tkzTabDefaultBackgroundColor{bg!30}
-	%\newcommand{\NB}{ NB}
+
 \fi
-
-%%% Test
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\begin{comment}
-\newcounter{compteurexostcb}
-
-\newcommand{\deftcbUnExoTest}[6][10]{
-\definecolor{#2-titre}{Hsb}{#4,#5,#6}
-\colorlet{#2}{#2-titre!#1}
-\newtcolorbox{#2}[1][]{
-	styleboite,
-	colback=#2,
-	title={},
-	colbacktitle=#2,
-	top=0pt,
-	breakable,
-	bottom=4pt,
-	left=4pt,
-	right=4pt,
-	enlarge bottom by=0pt,
-	%borderline west={1pt}{0pt}{#2-titre},
-	before upper={\stepcounter{compteurexostcb}\colorlet{bg}{#2} \definecolor{bfcolor}{Hsb}{#4,0.75,0.15} \hspace{-4pt}\tcbox[arc=0pt,boxrule=0pt,outer arc=0pt,enlarge bottom by=0pt,enhanced jigsaw,tcbox raise base,after={},before={},top=0pt,bottom=1pt,right=0mm,left=5pt,colback=#2-titre]{\color{white}\bfseries\MakeUppercase{#3}\ifstrempty{##1}{}{ (##1)} \thecompteurexostcb :}\ },
-	after upper={\colorlet{bg}{white} \colorlet{bfcolor}{black}},
-	%before upper={\tcolorboxsubtitle{#1}{##1}},
-}
-}
-
-\deftcbUn{exotcbbase}{Exercice \thecompteurexostcb}{30}{0.8}{0.75} % Ne pas utiliser, compteur pas incrémenté ( utiliser exercice)
-
-%\newenvironment{exercice}[1][]{\stepcounter{compteurexostcb}\begin{exotcbbase}[#1]}{\end{exotcbbase}}
-
-\DeclareOption{coursInline}{
-	\renewcommand{\baselinestretch}{1.1}
-	\tcbset{
-		rounded corners=southwest,
-		arc=5pt,
-		auto outer arc,
-		styletitre/.style={
-			sharp corners,
-			boxrule=0pt,
-			%boxsep=0pt,
-			enlarge bottom by=2pt,
-			enhanced jigsaw,
-			on line,
-			top=0pt,
-			bottom=0pt,
-			right=0mm,
-			left=3pt,
-		},
-	}
-	\renewcommand{\deftcbUn}[6][10]{
-	\definecolor{#2-titre}{Hsb}{#4,#5,#6}
-	\colorlet{#2}{#2-titre!#1}
-	\newtcolorbox{#2}[1][]{
-		styleboite,
-		colback=#2,
-		title={},
-		colbacktitle=#2,
-		top=0pt,
-		bottom=5pt,
-		enlarge bottom by=0pt,
-		%borderline west={1pt}{0pt}{#2-titre},
-		before upper={\colorlet{bg}{#2}\definecolor{bfcolor}{Hsb}{#4,0.75,0.15}\hspace{-10pt}\tcbox[styletitre,colback=#2-titre]{\rule[-3pt]{0pt}{14.3pt}{\color{white}\bfseries\MakeUppercase{#3}\ifstrempty{##1}{}{ (##1)} :}}\ },
-		after upper={\colorlet{bg}{white} \colorlet{bfcolor}{black}},
-	}
-	}
-}
-
-\end{comment}

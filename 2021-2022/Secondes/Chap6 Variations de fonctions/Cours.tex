@@ -38,10 +38,10 @@ Pour $x,y \in I$, si $x \leq y$ alors $f(x) \leq f(y)$.
 
 Graphiquement, la courbe de $f$ "monte": \nearrow
 \begin{center}
-\begin{tikzpicture}[scale=\echellepgf]
+\begin{tikzpicture}
 \begin{axis}[
 styleglobal,
-width=0.9*\echellepgfinv*\linewidth,
+width=0.9*\linewidth,
 xmin=-0.5, xmax=2,
 ymin=-0.5, ymax=2,
 xtick distance=0.5,
@@ -67,10 +67,10 @@ Pour $x,y \in I$, si $x \leq y$ alors $f(x) \geq f(y)$
 
 Graphiquement,la courbe de $f$ "descend": \searrow
 \begin{center}
-\begin{tikzpicture}[scale=\echellepgf]
+\begin{tikzpicture}
 \begin{axis}[
 styleglobal,
-width=0.9*\echellepgfinv*\linewidth,
+width=0.9*\linewidth,
 xmin=-0.5, xmax=2,
 ymin=-0.5, ymax=2,
 xtick distance=0.5,
@@ -102,10 +102,10 @@ On se donne la fonction $f$, définie sur $\left[1;7\right]$ et représentée ci
 {
 %\vspace{-0.5em}
 \begin{center}
-\begin{tikzpicture}[scale=\echellepgf]
+\begin{tikzpicture}
 \begin{axis}[
 styleglobal,
-width=1*\echellepgfinv*\linewidth,
+width=1*\linewidth,
 xmin=-0.5, xmax=7.5,
 ymin=-0.5, ymax=3.5,
 ytick distance=1,
@@ -142,10 +142,10 @@ Dresser le tableau de variations de $f$, c'est indiquer sur quels intervalles la
 \compo[0.4]{
 %\vspace{-0.5em}
 \begin{center}
-\begin{tikzpicture}[scale=\echellepgf]
+\begin{tikzpicture}
 \begin{axis}[
 styleglobal,
-width=1*\echellepgfinv*\linewidth,
+width=1*\linewidth,
 xmin=-3, xmax=6,
 ymin=-1.5, ymax=4.5,
 ytick distance=1,
@@ -203,10 +203,10 @@ Son minimum sur $[-2;0]$ est $1,5$, atteint en $-2$.
 {
 \begin{center}
 \vspace{-2em}
-\begin{tikzpicture}[scale=\echellepgf]
+\begin{tikzpicture}
 \begin{axis}[
 styleglobal,
-width=0.9*\echellepgfinv*\linewidth,
+width=0.9*\linewidth,
 xmin=-3, xmax=6,
 ymin=-1.5, ymax=4.5,
 ytick distance=1,
@@ -216,8 +216,8 @@ xtick distance=1
 \addplot[styleplot,tension=0.45] plot coordinates {(-2,1.5) (-1,4) (1,0) (2,-1) (4,0) (5,2)} node [pos=0.9,above left] {$\mathscr C_g$} \pointsextremites;
 \node[stylepoint,fill=DarkGreen] at (-1,4) {};
 \node[stylepoint,fill=DarkGreen] at (2,-1) {};
-\addplot[styleplot,dashed,color=DarkGreen] plot {4} node[pos=0.8,above,color=DarkGreen!50!black] {\textbf{maximum}};
-\addplot[styleplot,dashed,color=DarkGreen] plot {-1} node[pos=0.8,below,color=DarkGreen!50!black] {\textbf{minimum}};
+\addplot[styleplot,dashed,color=DarkGreen] plot {4} node[pos=0.8,above=-2pt,color=DarkGreen!50!black] {\textbf{maximum}};
+\addplot[styleplot,dashed,color=DarkGreen] plot {-1} node[pos=0.8,below=-2pt,color=DarkGreen!50!black] {\textbf{minimum}};
 \end{axis}
 \end{tikzpicture}
 \end{center}
