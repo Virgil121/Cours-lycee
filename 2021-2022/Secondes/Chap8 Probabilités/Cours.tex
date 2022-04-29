@@ -13,24 +13,19 @@
 %%%%%%%%%%%%%%%%%%%
 \begin{document}
 
-\title{Conditionnement}
+\title{Probabilités}
 \maketitle
 
 \begin{programme}
-\item Croisement de deux variables catégorielles
-\begin{itemize}
-\item Tableau croisé d'effectifs
-\item Fréquence conditionnelle, fréquence marginale
+\item Ensemble des issues. Evenements. Réunion, intersection, complémentaire.
+\item Loi (distribution) de probabilités. Probabilité d'un évènement: somme des probabilités des issues.
+\item Relation $\Pro(A \cup B)+\Pro(A \cap B)=\Pro(A)+\Pro(B)$.
+\item Dénombrement à l'aide de tableaux et d'arbres.
 \item Capacités
 \begin{itemize}
-\item Calculer des fréquences conditionnelles et des fréquences marginales
-\item Compléter un tableau croisé par des raisonnements sur les effectifs ou en utilisant des fréquences conditionnelles
-\end{itemize}
-\end{itemize}
-\item Probabilités conditionnelles
-\begin{itemize}
-\item Notation $\Pro_A(B)$
-\item Capacité: Calculer des probabilités conditionnelles lorsque les évènements sont présentés sous forme de tableau croisé d'effectifs
+\item Utiliser des modèles théoriques de référence (dé, pièce, tirage au sort) en comprenant que les probabilités sont définies à priori.
+\item Construire un modèle à partir de fréquences observées, en distinguant nettement modèle et réalité.
+\item Calculer des probabilités dans des cas simples: expérience aléatoire à deux ou trois épreuves.
 \end{itemize}
 \end{programme}
 
@@ -54,47 +49,7 @@ Considérons une population de chiens. On note $E$ l'ensemble de tout les chiens
 \end{itemize}
 \end{ex}
 
-\section{Fréquences conditionnelles et tableaux croisés}
-
-\begin{ex}
-Au sein d'une classe de 1ST2S de 35 élèves, il y a 23 filles. Les élèves ont le choix entre l'allemand ou l'espagnol. On sait que 7 garçons ont choisi l'allemand contre seulement 3 filles. On peut alors dresser le tableau suivant:
-\begin{center}\renewcommand{\arraystretch}{1.2}
-    \begin{tabular}{|c|c|c|c|}
-    	\cline{2-4} \multicolumn{1}{c|}{}
-         & Espagnol & Allemand & Total  \\ \hline 
-         Filles & 20 & 3& 23\\ \hline
-         Garçons & 5 & 7 & 12\\ \hline
-         Total & 25 & 10 & 35\\ \hline 
-    \end{tabular}
-\end{center}
-On note $F$ l'ensemble des filles, $G$ l'ensemble des garçons et $A$ l'ensemble des élèves ayant choisi l'allemand.
-\begin{itemize}
-    \item Le nombre d'éléments de $F \cap A$ (c'est-à-dire le nombre de filles ayant choisi l'allemand) est 3.
-    \item Le nombre d'éléments de $G\cap \overline{A}$ (c'est à dire le nombre de garçons qui n'ont pas choisi l'allemand, donc qui ont choisi l'espagnol) est 16.
-     \item La fréquence des filles dans cette classe est $\frac {23} {35} \simeq 0,66 = 66 \%$. On parle de \textbf{fréquence marginale}.
-    \item La fréquence des garçons ayant choisi l'allemand dans cette classe est $\frac 7 {35} = 0,2 = 20\%$.
-    \item La fréquence des filles \underline{parmi les élèves ayant choisi l'espagnol} est $\frac {20} {25} = 0,8 = 80 \%$. On parle de \textbf{fréquence conditionnelle}.
-    \item La fréquence des garçons ayant choisi l'espagnol \underline{parmi les garçons} est $\frac 5 {12} \simeq 0,42 = 42\%$.
-\end{itemize}
-\end{ex}
-
-\begin{prop}
-On se donne $E$ un ensemble et $A$,$B$ deux sous-ensembles de $E$.
-\begin{itemize}
-\item La fréquence marginale de $A$ dans $E$ vaut $\dfrac{\text{nombre d'éléments de } A}{\text{nombre d'éléments de } E}=\dfrac{\card(A)}{\card(E)}$.
-\item La fréquence conditionnelle de $A$ dans $B$ vaut $\dfrac{\card (A \cap B)}{\card(B)}$.
-\end{itemize}
-\end{prop}
-
-\rem{Cas favorables / Cas totaux }
-
-\rem{Exos 16 p174, 24 p176\\
-	 Exos 17,18 p175, 26 p176\\
-	 Exos 35,36 p181\\
-	 Sujet D p184\\
-	 Exos p179}
-
-\section{Rappels de probabilités}
+\section{Cadre théorique des probabilités}
 
 \begin{defins}
 \begin{itemize}

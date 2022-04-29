@@ -78,6 +78,7 @@
 \newcommand{\fonct}[3]{#1: #2 \longmapsto #3}
 
 \newcommand{\abs}[1]{\left\vert #1 \right\vert}
+\newcommand{\card}{\textrm{Card}}
 
 \let\vec\vv		% Redéfinitions pour utiliser le package esvect dans tous les cas
 \let\vecc\vv
@@ -173,11 +174,11 @@
 
 \newcommand{\entete}[3]{
 \begin{centrer}
-\par\smallskip\noindent\parbox[t]{.149\textwidth}{\raggedright #1}%
-\parbox[t]{.7\textwidth}{\centering #2}%
-\parbox[t]{.149\textwidth}{\raggedleft #3}%
+\par\smallskip\noindent\parbox[t]{.149\linewidth}{\raggedright #1}%
+\parbox[t]{.7\linewidth}{\centering #2}%
+\parbox[t]{.149\linewidth}{\raggedleft #3}%
 
-\rule[3.3mm]{\textwidth}{0.4pt}
+\rule[3.3mm]{\linewidth}{0.4pt}
 \end{centrer}
 }
 
@@ -279,8 +280,8 @@
 	},
 	stylegrille/.style={
 		step=1,
-		densely dashed,
-		line width=0.4pt,
+		dash pattern=on 2.4pt off 1.6pt,
+		line width=0.32pt,
 		draw=black!30
 	},
 	stylevecteur/.style={
@@ -722,7 +723,7 @@
 	\theoreminframepreskip{0mm}
 	\theoremnumbering{arabic}
 
-	% Style exos				
+	% Style exos, on pourra ajouter \strut à la fin pour enumerate/itemize			
 	
 	\definecolor{couleurExo}{Hsb}{211,0.8,0.65}
 	\newtheoremstyle{stylexo}	%Base plain
@@ -851,3 +852,13 @@
 	\def\tkzTabDefaultBackgroundColor{bg!30}
 
 \fi
+
+% Test ornements
+
+%\usepackage{pgfornament}
+%
+%\AtEndEnvironment{document}{
+%
+%\vfill
+%\centering \pgfornament[color=titre]{84}
+%\vfill\vfill\vfill}

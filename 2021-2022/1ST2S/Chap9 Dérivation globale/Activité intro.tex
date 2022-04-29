@@ -1,0 +1,106 @@
+\documentclass[twocolumn,landscape,12pt,a4paper,french] {article}
+
+\pagestyle{empty}
+
+\usepackage[TD]{../../../Style}
+
+\renewcommand{\baselinestretch}{1.25}
+\renewcommand{\arraystretch}{1.2}
+\setlength{\columnsep}{2cm}
+
+\begin{document}
+
+\titre{Des dérivées, encore et encore...}
+
+\compo
+{
+\begin{center}
+\begin{tikzpicture}
+\begin{axis}[
+styleglobal,
+width=0.9*\linewidth,
+xmin=-3, xmax=3,
+ymin=-2, ymax=7,
+xtick distance=1,
+ytick distance=1,
+minor x tick num=0,
+minor y tick num=0,
+]
+\addplot[styleplot] {x^2} node[pos=0.8,right] {$\mathscr C_f$};
+\pgfplotsinvokeforeach {-1,0,1} {%
+	\node[stylepoint,fill=blue] at (#1,#1*#1) {};
+	\addplot[styleplot,ultra thick,densely dashed,color=DarkBlue] {2*#1*(x-#1)+#1*#1};}
+\end{axis}
+\end{tikzpicture}
+\end{center}
+}
+{
+\begin{center}
+\begin{tikzpicture}
+\begin{axis}[
+styleglobal,
+width=0.9*\linewidth,
+xmin=-3, xmax=3,
+ymin=-2, ymax=7,
+xtick distance=1,
+ytick distance=1,
+minor x tick num=0,
+minor y tick num=0,
+]
+\addplot[styleplot] {x^2} node[pos=0.8,right] {$\mathscr C_f$};
+\pgfplotsinvokeforeach {-2,2} {%
+	\node[stylepoint,fill=blue] at (#1,#1*#1) {};
+	\addplot[styleplot,ultra thick,densely dashed,color=DarkBlue] {2*#1*(x-#1)+#1*#1};}
+\end{axis}
+\end{tikzpicture}
+\end{center}
+}
+
+On a représenté deux fois la fonction $f:x \mapsto x^2$ ci-dessus et plusieurs tangentes. Compléter le tableau suivant:
+
+\begin{center}
+\begin{tabularx}{\linewidth}{|*6{Y|}} \hline
+$x$  & $-2$ & $-1$  & $0$ & $1$ & $2$ \\ \hline
+$f'(x)$ & & & & & \\ \hline
+\end{tabularx}
+\end{center}
+
+Etablir une conjecture concernant la valeur de $f'(100)$, de $f'(-1000)$ puis de $f'(x)$ pour $x \in \R$.
+
+\newpage
+
+\titre{Des dérivées, encore et encore...}
+
+\begin{center}
+\begin{tikzpicture}
+\begin{axis}[
+styleglobal,
+width=0.9*\linewidth,
+xmin=-3, xmax=3,
+ymin=-1.5, ymax=5,
+xtick distance=1,
+ytick distance=1,
+minor x tick num=1,
+minor y tick num=3,
+]
+\addplot[styleplot] {x^2} node[pos=0.8,right] {$\mathscr C_f$};
+\pgfplotsinvokeforeach {-2,-0.5,0,0.5,2} {%
+	\node[stylepoint,fill=blue] at (#1,#1*#1) {};
+	\addplot[styleplot,ultra thick,densely dashed,color=DarkBlue] {2*#1*(x-#1)+#1*#1};}
+\end{axis}
+\end{tikzpicture}
+\end{center}
+
+
+On a représenté deux fois la fonction $f:x \mapsto x^2$ ci-dessus et plusieurs tangentes. Compléter le tableau suivant:
+
+\begin{center}
+\begin{tabularx}{\linewidth}{|*6{Y|}} \hline
+$x$ & $-2$ & $-0,5$ & $0$ & $0,5$ & $2$ \\ \hline
+$f'(x)$ & & & & & \\ \hline
+\end{tabularx}
+\end{center}
+
+Etablir une conjecture concernant la valeur de $f'(100)$, de $f'(-1000)$ puis de $f'(x)$ pour $x \in \R$.
+
+\end{document}

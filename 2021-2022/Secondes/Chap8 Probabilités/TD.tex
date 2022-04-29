@@ -1,0 +1,355 @@
+\documentclass[a4paper,12pt,french]{article}
+
+\usepackage[TD]{../../../Style}
+
+%\renewenvironment{center}{\par \centering }{ \par}
+%\renewenvironment{multicols*}[1]{}{}
+\setstretch{1.2}
+\renewcommand{\arraystretch}{1.8}
+% Début du document
+%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+\titre{Conditionnement}
+
+\begin{multicols*}{2}
+\begin{exercice}
+Le tableau suivant donne la répartition des employés d'une entreprise en fonction du sexe et du statut. On choisit au hasard un employé.
+
+\begin{center}
+    \begin{tabularx}{\linewidth}{|c|Y|Y|Y|}
+    \cline{2-4} \multicolumn{1}{c|}{}
+         &Femmes&Hommes&Total  \\ \hline
+         Cadres&20&15&35  \\ \hline 
+         Non cadres&85&80&165 \\ \hline 
+         Total&105&95&200 \\ \hline
+    \end{tabularx}
+\end{center}
+
+Choisir la ou les bonnes réponses:
+\begin{enumerate}
+\item La probabilité que cet employé soit une femme est:
+
+$0,1 \hfill 0,0525 \hfill 0,425 \hfill \text{environ } 0,19$
+
+\item La personne choisie est un homme. La probabilité que ce soit un cadre est environ:
+
+$0,16 \hfill 0,08 \hfill 0,43 \hfill 0,37$
+
+\item La personne choisie est un cadre. La probabilité que ce soit un homme est:
+
+$0,16 \hfill 0,16 \hfill 0,43 \hfill 0,19$
+
+\end{enumerate}
+\end{exercice}
+
+\begin{exercice}
+Une expérience aléatoire conduit à l'observation de trois évènement A,B et C. On sait que:
+
+\noindent$\Pro(A)=0,15 \hfill \Pro(B)=0,3 \hfill \Pro(C)=0,4$
+\noindent$\strut \hfill \Pro(A \cup B)=0,42 \hfill \Pro(A \cap C)=0,05 \hfill$
+
+\noindent On sait aussi que B et C sont incompatibles.
+
+\noindent Calculer la probabilité des évènements suivants:
+
+\noindent$\overline A \hfill A \cup C \hfill A \cap B \hfill B \cup C$
+\end{exercice}
+
+\begin{exercice}
+240 clients d'un centre de remise en forme ont répondu à un questionnaire sur leurs habitudes alimentaires:
+\begin{itemize}
+\item 198 déclarent éviter le sucre;
+\item 174 déclarent éviter les graisses;
+\item 156 déclarent éviter à la fois le sucre et les graisses.
+\end{itemize}
+On considère au hasard l'un des 240 clients.
+
+\noindent On appelle S l'évènement: \og La personne évite le sucre \fg et G l'évènement \og La personne évite les graisses \fg .
+\begin{enumerate}
+\item Calculer $\Pro(S)$, $\Pro(G)$, $\Pro (S \cap G)$.
+\item Déterminer la probabilité que la personne évite le sucre ou évite les graisses.
+\item On appelle N l'évènement \og La personne ne se préoccupe ni du sucre ni des graisses \fg .
+\begin{enumerate}
+\item Quel est l'évènement contraire de N?
+\item En déduire $\Pro(N)$.
+\end{enumerate}
+\end{enumerate}
+\end{exercice}
+
+\begin{exercice}
+180 personnes ont été interrogées sur leur lieu d'habitation (centre-ville, banlieue, campagne) et sur leur type d'habitation (appartement, maison).
+
+Voici ce que l'enquête a révélé:
+
+\begin{itemize}
+\item 20\% des personnes habitent en centre-ville. Parmi elles, 13 habitent dans une maison.
+\item 88 personnes habitent dans un appartement en banlieue
+\item 5\% des personnes habitent à la campagne dans une maison
+\item 10 personnes habitent à la campagne
+\end{itemize}
+\begin{enumerate}
+\item Compléter le tableau suivant:
+
+\begin{center}
+    \begin{tabularx}{\linewidth}{|c|Y|Y|Y|} \hline
+         \backslashbox{Lieu}{Type}&Appartement&Maison&Total  \\ \hline
+         Centre-ville&&13&  \\ \hline 
+         Banlieue&88&& \\ \hline 
+         Campagne&&&10 \\ \hline
+         Total&&& \\ \hline
+    \end{tabularx}
+\end{center}
+
+\item On choisit au hasard et de façon équitable une personne parmi celles qui ont été interrogées. \textit{On donnera les probabilités sous forme décimale, arrondies au centième.}
+\begin{enumerate}
+\item Quelle est la probabilité que la personne habite à la campagne?
+\item Quelle est la probabilité que la personne habite dans une maison en banlieue?
+\item Quelle est la probabilité que la personne habite dans une maison qui ne soit pas en centre-ville?
+\end{enumerate}
+\item On choisit à présent au hasard une personne parmi celles qui habitent dans un appartement. Quelle est la probabilité que cette personne habite en centre-ville?
+\end{enumerate}
+\end{exercice}
+
+\begin{exercice}
+Lors d'une opération de promotions exceptionnelles d'un grand magasin de bricolage, on s'intéresse aux ventes dez deux articles particuliers du rayon \og Outillage motorisé \fg: Une meuleuse et une scie .
+
+Pendant cette période de promotions, une enquête réalisée sur 300 clients de ce magasin montre que:
+\begin{itemize}
+\item 63 clients ont acheté une meuleuse
+\item 80 clients ont acheté une scie sauteuse
+\item 5\% des clients ayant acheté une scie sauteuse ont aussi acheté une meuleuse.
+\end{itemize}
+Chaque client a acheté au plus nue scie sauteuse et une meuleuse.
+
+\begin{enumerate}
+\item Compléter le tableau croisé d'effectifs suivant:
+
+\begin{scriptsize}
+\begin{center}
+    \begin{tabularx}{\linewidth}{|Y|Y|Y|c|}
+    \cline{2-4} \multicolumn{1}{c|}{}
+         &Nombre de clients ayant acheté une meuleuse&Nombre de clients n'ayant pas acheté de meuleuse&Total  \\ \hline
+         Nombre de clients ayant acheté une scie sauteuse &&&  \\ \hline 
+         Nombre de clients n'ayant pas acheté de scie sauteuse&&& \\ \hline 
+         Total&&&\normalsize{300} \\ \hline
+    \end{tabularx}
+\end{center}
+\end{scriptsize}
+
+\item Quel est le pourcentage de clients ayant acheté une meuleuse?
+\item L'affirmation suivante est-elle vraie? \og Au moins 2 \% des clients ont acheté les deux outils \fg Justifier.
+\item On choisit au hasard un client de l'enquête.
+
+On se donne les évènements suivants:
+\begin{itemize}
+\item M: \og le client a acheté une meuleuse \fg ;
+\item S: \og Le client a acheté une scie sauteuse \fg .
+\end{itemize}
+\begin{enumerate}
+\item Calculer $\Pro_M(S)$. On arrondira à $10^{-3}$ près.
+\item Calculer $\Pro(\overline S \cap M)$. On arrondira à $10^{-3}$ près.
+\end{enumerate}
+\end{enumerate}
+\end{exercice}
+
+\begin{exercice}
+Un fabricant d'ampoules possède deux machines A et B.
+
+La machine A fournit 65\% de la production et la machine B fournit le reste. Certains ampoules présentent un défaut de fabrication:
+\begin{itemize}
+\item À la sortie de la machine A, 8\% des ampoules présentent un défaut.
+\item À la sortie de la machine B, 4\% des ampoules présentent un défaut.
+\end{itemize}
+La production quotidienne du fabricant est de 15000 ampoules par jour.
+\begin{enumerate}
+\item Combien d'ampoules proviennent de chacune des machines ?
+\item Compléter le tableau croisé des effectifs suivant:
+
+\begin{center}
+    \begin{tabularx}{\linewidth}{|c|Y|Y|Y|} \hline
+         \backslashbox{\scriptsize{Défaut}}{\scriptsize{Machine}}&A&B&Total  \\ \hline
+         Avec défaut&780&&  \\ \hline 
+         Sans défaut&&& \\ \hline 
+         Campagne&&&15 000 \\ \hline
+         Total&&& \\ \hline
+    \end{tabularx}
+\end{center}
+
+\item Calculer la fréquence en pourcentage des ampoules ayant un défaut.
+\item On choisit au hasard une ampoule dans la production quotidienne.
+
+On définit les événements suivants:
+\begin{itemize}
+\item A: \og l'ampoule provient de la machine A \fg ;
+\item D: \og l'ampoule présente un défaut \fg .
+\end{itemize}
+\begin{enumerate}
+\item Déterminer $\Pro(A \cap D)$.
+\item Calculer $\Pro_D(A)$.
+\item Calculer la probabilité que l'ampoule choisie provienne de la machine B sachant qu'elle est sans défaut.
+\end{enumerate}
+\end{enumerate}
+\end{exercice}
+
+\begin{exercice}
+Une entreprise décide de construire une structure supplémentaire pour améliorer le bien-être de ses 800 salariés. Elle hésite entre deux possibilités: Installer une médiathèque ou aménager une salle de sport.
+
+L'entreprise mène une enquête auprès de l'ensemble des 800 salariés afin de connaitre leur préférence. Les résultats sont les suivants:
+
+\begin{itemize}
+\item $60\%$ des salariés de 40 ans ou plus sont intéressés par la création d'une médiathèque.
+\item 70 \% des salariés de moins de 40 ans sont intéressés par la construction d'une salle de sport.
+\end{itemize}
+
+Par ailleurs, 55\% des salariés de cette entreprise ont 40 ans ou plus.
+
+\begin{enumerate}
+\item A partir de ces données, compléter le tableau d'effectifs suivant:
+
+\begin{center}
+    \begin{tabularx}{\linewidth}{|c|Y|Y|Y|}
+         \cline{2-4} \multicolumn{1}{c|}{}
+         &Moins de 40 ans&40 ans ou plus&Total  \\ \hline
+         Médiathèque&&&  \\ \hline 
+         Salle de sport&&& \\ \hline 
+         Campagne&&&800 \\ \hline
+         Total&&& \\ \hline
+    \end{tabularx}
+\end{center}
+
+\item Quelle est la proportion, en pourcentage, de salariés qui ont moins de 40 ans et qui ont choisi la médiathèque?
+\item On choisit au hasard l'un des salariés de l'entreprise. On note:
+\begin{itemize}
+\item Q l'évènement: \og Le salarié a 40 ans ou plus \fg
+\item S l'évènement: \og Le salarié préfère la construction d'une salle de sport \fg
+\item M l'évènement: \og Le salarié préfère la création d'une médiathèque \fg
+\end{itemize}
+
+\begin{enumerate}
+\item Montrer que la probabilité de l'évènement S est $\Pro(S)=0,535$.
+\item Quel choix semble le plus pertinent pour le comité d'entreprise?
+\item Sachant que le salarié a 40 ans ou plus, quelle est la probabilité qu'il préfère la construction d'une salle de sport?
+\end{enumerate}
+\end{enumerate}
+\end{exercice}
+
+\begin{exercice}
+Dans un lycée, les 350 élèves de Première se répartissent suivant leur taille comme indiquée sur le tableau ci-dessous:
+
+\begin{center}
+    \begin{tabularx}{\linewidth}{|c|Y|Y|Y|}
+    \cline{2-4} \multicolumn{1}{c|}{}
+         &Filles&Garçons&Total  \\ \hline
+         Moins de 1,8m&&121&291  \\ \hline 
+         Plus de 1,8m&&& \\ \hline 
+         Total&193&& \\ \hline
+    \end{tabularx}
+\end{center}
+
+\begin{enumerate}
+\item Compléter le tableau ci-dessus.
+
+On choisit un élève de première au hasard et on l'interroge sur sa taille. On note:
+\begin{itemize}
+\item F l'évènement \og L'élève est une fille \fg ;
+\item T l'évènement \og L'élève mesure plus de 1,8m \fg .
+\end{itemize}
+
+\item Donner la probabilité des évènements F et T.
+
+\item Déterminer la probabilité de l'évènement \og L'élève est une fille qui mesure plus de 1,8m \fg .
+\item Que représente dans le contexte la probabilité conditionnelle $\Pro_F(T)$? En donner la valeur.
+\item Calculer la probabilité que l'élève interrogé soit une fille sachant qu'il mesure moins de 1,8m.
+\end{enumerate}
+\end{exercice}
+
+\begin{exercice}
+Une entreprise de pièces automobiles emploie deux catégories de salariés: Des cadres et des ouvriers.
+
+Cette entreprise compte 1000 salariés dont 40\% sont des femmes. Les autres salariés sont des hommes.
+
+On sait aussi que:
+\begin{itemize}
+\item Parmi les femmes, 15 \% sont des cadres.
+\item 525 hommes sont des ouvriers.
+\end{itemize}
+
+\begin{enumerate}
+\item Compléter le tableau d'effectifs qui traduit la situation:
+
+\begin{center}
+    \begin{tabularx}{\linewidth}{|c|Y|Y|Y|}
+    \cline{2-4} \multicolumn{1}{c|}{}
+         &Hommes&Femmes&Total  \\ \hline
+         Cadres &&&  \\ \hline 
+         Ouvriers&525&& \\ \hline 
+         Total&&400&1000 \\ \hline
+    \end{tabularx}
+\end{center}
+
+\item Justine affirme: \og La proportion de cadres parmi les hommes est plus élevée que la proportion de cadres parmi les femmes. \fg
+
+A-t-elle raison? Justifier.
+
+\item On choisit au hasard un salarié de l'entreprise. On admet que chaque salarié a la même probabilité d'être choisi.
+
+On considère les évènements suivants:
+\begin{itemize}
+\item F: \og Le salarié est une femme \fg ;
+\item C: \og Le salarié est un cadre \fg .
+\end{itemize}
+
+\begin{enumerate}
+\item Définir par une phrase l'évènement F $\cap$ C.
+\item Calculer la probabilité de cet évènement.
+\item Calculer $\Pro_F(\overline C)$. Interpréter ce résultat dans le contexte de l'énoncé.
+\end{enumerate}
+\end{enumerate}
+\end{exercice}
+
+\begin{exercice}
+Un laboratoire veut tester, sur des souris, l'efficacité d'un vaccin. Toutes les souris ont été contaminées par le virus d'une maladie. Certaines souris ont été vaccinées, d'autres ne l'ont pas été. Certaines souris ont développé la maladie, d'autres non.
+
+Voici quelques informations sur l'expérimentation:
+
+\begin{itemize}
+\item 175 souris ont été testées
+\item 90 souris ont été vaccinées
+\item 80 souris ont développé la maladie, et parmi elles, 26 avaient été vaccinées.
+\end{itemize}
+
+\begin{enumerate}
+
+\item Compléter le tableau croisé d'effectifs ci-dessous:
+
+\begin{scriptsize}
+\begin{center}
+    \begin{tabularx}{\linewidth}{|Y|Y|Y|Y|}
+    \cline{2-4} \multicolumn{1}{c|}{}
+         &Souris malades&Souris saines&Total  \\ \hline
+         Souris vaccinées &&&  \\ \hline 
+         Souris non vaccinées&&& \\ \hline 
+         Total&&&\normalsize{175} \\ \hline
+    \end{tabularx}
+\end{center}
+\end{scriptsize}
+
+\item Calculer la fréquence des souris ayant développé la maladie.
+\item Calculer la fréquence des souris vaccinées parmi les souris malades.
+\item On sélectionne au hasard une souris. On considère les évènement suivants:
+\begin{itemize}
+\item V: \og La souris sélectionnée a été vaccinées \fg ;
+\item M: \og La souris sélectionnée est malade \fg .
+\end{itemize}
+
+\begin{enumerate}
+\item Calculer la probabilité que la souris sélectionnée soit malade et non vaccinée.
+\item Calculer $\Pro_V(M)$ et $\Pro_{\overline V}(M)$. Que peut-on en déduire?
+\end{enumerate}
+\end{enumerate}
+\end{exercice}
+
+\end{multicols*}
+
+\end{document}

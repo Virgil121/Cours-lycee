@@ -112,13 +112,13 @@ Tout point $M$ du plan est repéré par un unique couple de coordonnées $(x;y)$
 % Cadre
 \coordinate (liminf) at (-2,-2);
 \coordinate (limsup) at (8,5);
-\draw[thin,draw=black!30,densely dashed] (liminf) rectangle (limsup);
+\draw[stylegrille] (liminf) rectangle (limsup);
 \clip (liminf)+(-0.01,-0.01) rectangle (limsup)+(0.01,0.01);
 
 % Sous-image, changement de coordonnées
 \begin{scope}[setupRepereTransformation={(2,20),(1,80)}]
 % Initialisation des axes, de la grille
-\draw[step=1,thin,draw=black!30,densely dashed] ($5*(liminf)+(-5,-5)$)+(-0.01,-0.01) grid ($5*(limsup)+(5,5)$)+(0.01,0.01);
+\draw[stylegrille] ($5*(liminf)+(-5,-5)$)+(-0.01,-0.01) grid ($5*(limsup)+(5,5)$)+(0.01,0.01);
 \tkzInit[xmin=5*(-2),xmax=5*10,ymin=5*(-2),ymax=5*5]
 \tkzDrawX[label={},tickup=3pt,tickdn=3pt,thin]
 \tkzDrawY[label={},ticklt=1.5pt,tickrt=1.5pt,thin]
@@ -144,7 +144,7 @@ Tout point $M$ du plan est repéré par un unique couple de coordonnées $(x;y)$
 % Sous-image, changement de coordonnées
 \begin{scope}[setupRepereTransformation={(2,0),(1,90)}]
 % Initialisation des axes, de la grille
-\draw[step=1,thin,draw=black!30,densely dashed] ($5*(liminf)+(-5,-5)$)+(-0.01,-0.01) grid ($5*(limsup)+(5,5)$)+(0.01,0.01);
+\draw[stylegrille] ($5*(liminf)+(-5,-5)$)+(-0.01,-0.01) grid ($5*(limsup)+(5,5)$)+(0.01,0.01);
 \tkzInit[xmin=5*(-2),xmax=5*10,ymin=5*(-2),ymax=5*5]
 \tkzDrawX[label={},tickup=3pt,tickdn=3pt,thin]
 \tkzDrawY[label={},ticklt=1.5pt,tickrt=1.5pt,thin]
@@ -164,10 +164,10 @@ Tout point $M$ du plan est repéré par un unique couple de coordonnées $(x;y)$
 \begin{tikzpicture}
 \coordinate (liminf) at (-5,-2);
 \coordinate (limsup) at (5,5);
-\draw[thin,draw=black!30,densely dashed] (liminf) rectangle (limsup);
+\draw[stylegrille] (liminf) rectangle (limsup);
 \clip (liminf)+(-0.01,-0.01) rectangle (limsup)+(0.01,0.01);
 \begin{scope}[setupRepereTransformation={(1.5,-5),(1.5,70)}]
-\draw[step=1,thin,draw=black!30,densely dashed]($5*(-2,-2)$)+(-5.01,-5.01) grid ($5*(8,5)$)+(5.01,5.01);
+\draw[stylegrille]($5*(-2,-2)$)+(-5.01,-5.01) grid ($5*(8,5)$)+(5.01,5.01);
 \tkzInit[xmin=5*(-2),xmax=5*10,ymin=5*(-2),ymax=5*5]
 \tkzDrawX[label={},tickup=3pt,tickdn=3pt,thin]
 \tkzDrawY[label={},ticklt=2pt,tickrt=2pt,thin]
@@ -380,11 +380,19 @@ Deux vecteurs sont colinéaire si et seulement si leurs coordonnées sont propor
 \end{rmq}
 
 \begin{exs}
-\begin{itemize}
-\item On se donne $\vec u \dbinom 2 5$ et $\vec v \dbinom 4 {10}$. On remarque que $\vec v = 2 \vec u$. Alors $\vec u$ et $\vec v$ sont colinéaires.
+On se donne $\vec u \dbinom 2 5$ et $\vec v \dbinom 4 {10}$. On remarque que $\vec v = 2 \vec u$. Alors $\vec u$ et $\vec v$ sont colinéaires.
 
-\item On prend maintenant $\vv a \dbinom 4 {11}$ et $\vv b \dbinom {-7} {-20}$. On a $11 \times (-7) = -77$ et $4 \times (-20) = -80$. Comme $-77 \neq -80$, les coordonnées de $\vv a$ et $\vv b$ ne sont pas proportionnelles donc $\vv a$ et $\vv b$ ne sont pas colinéaires.
-\end{itemize}
+\begin{center}
+\begin{tabularx}{0.95\linewidth}{|c|c|Y|} \hline
+	Coordonnées de $\vv u$ & Coordonnées de $\vv v$ & $\vv u$ et $\vv v$ sont-ils colinéaires? \\ \hline
+	$\dbinom 2 5$ & $\dbinom 4 {10}$ & $\vv v = 2 \vv u$ donc oui \\ \hline
+	$\dbinom 1 1$ & $\dbinom 7 7$ & $\vv v = 7 \vv u$ donc oui \\ \hline
+	$\dbinom 2 5$ & $\dbinom {-6} {-15}$ & $\vv v = -3 \vv u$ donc oui \\ \hline
+	$\dbinom 4 {11}$ & $\dbinom {-7} {-20}$ & $\left.\begin{aligned} 4 \times (-20) = -80 \\ -7 \times 11 = -77 \end{aligned}\right\}$ et $-80 \neq -77$ donc non \\ \hline
+\end{tabularx}
+\end{center}
+
+%\item On prend maintenant $\vv a \dbinom 4 {11}$ et $\vv b \dbinom {-7} {-20}$. On a $11 \times (-7) = -77$ et $4 \times (-20) = -80$. Comme $-77 \neq -80$, les coordonnées de $\vv a$ et $\vv b$ ne sont pas proportionnelles donc $\vv a$ et $\vv b$ ne sont pas colinéaires.
 \end{exs}
 
 \subsection{Déterminant de deux vecteurs}
@@ -394,8 +402,8 @@ Soient $\vec u \dbinom {x} {y}$ et $\vec v \dbinom {x'} {y'}$ deux vecteurs du p
 \end{defin}
 
 \begin{ex}
-Soient $\vec u \dbinom {-15}{40}$ et $\vec v \dbinom {9}{-24}$.
-On a $\begin{aligned}[t] \det (\vec u ; \vec v) &= -15 \times (-24) -9 \times 40\\&= 360 - 360\\&=0\end{aligned}$
+Soient $\vec u \dbinom {4}{11}$ et $\vec v \dbinom {-7}{-20}$.
+On a $\begin{aligned}[t] \det (\vec u ; \vec v) &= 4 \times (-20) - (-7) \times 11\\&= -80 +77 \\&=-3\end{aligned}$
 \end{ex}
 
 \rem{Exo 16}
@@ -405,7 +413,12 @@ Deux vecteurs sont colinéaires si et seulement si leur déterminant est nul.
 \end{prop}
 
 \begin{ex}
-Les vecteurs $\vec u$ et $\vec v$ de l'exemple précédent sont donc colinéaires. (On a en fait $\vec u = -\frac 5 3 \vec v$).
+Les vecteurs $\vv u$ et $\vv v$ de l'exemple précédent ne sont donc pas colinéaires.
+
+Soient $\vec a \dbinom {-15}{40}$ et $\vec b \dbinom {9}{-24}$.
+On a $\begin{aligned}[t] \det (\vec a ; \vec b) &= -15 \times (-24) -9 \times 40\\&= 360 - 360\\&=0\end{aligned}$
+
+Les vecteurs $\vec a$ et $\vec b$ sont donc colinéaires. (On a en fait $\vec u = -\frac 5 3 \vec v$).
 \end{ex}
 
 \rem{Exos 17,18}
