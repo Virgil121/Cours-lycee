@@ -1,0 +1,129 @@
+\documentclass[a4paper,12pt,french]{article}
+
+\usepackage[cours,NB]{../../../Style}
+
+%\selectcolormodel{cmyk}
+
+%\usepackage{wrapfig}
+%\makeatletter
+%\setlength{\parskip}{1ex}
+%\newcommand{\@minipagerestore}{\setlength{\parskip}{1ex}}
+
+\setstretch{1.15}
+\pagestyle{empty}
+\geometry{margin=8mm}
+\renewcommand{\baselinestretch}{1.2}
+% Début du document
+%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+\begin{ex}
+\compo
+{%\setstretch{1.2}
+Soit $f:x \mapsto x$. C'est une fonction affine avec $a=1$ et $b=0$.
+
+\
+
+Sa représentation graphique est une droite $d$. De plus, toutes les tangentes à la courbe de $f$ sont cette même droite $d$.
+
+\
+
+Alors quelque soit $x \in \R, f'(x)=a=1$. $f'$ est donc la fonction constante valant toujours 1.
+}
+{
+\begin{center}
+\begin{tikzpicture}
+\begin{axis}[
+styleglobal,
+width=0.9*\linewidth,
+xmin=-4, xmax=5,
+ymin=-1, ymax=4,
+xtick distance=1,
+ytick distance=1,
+minor x tick num=1,
+minor y tick num=1,
+]
+\addplot[styleplot] {x} node[pos=0.76,below right] {$\mathscr C_f$};
+\addplot[styleplot,DarkRed] {1} node[pos=0.76,below] {$\mathscr C_{f'}$};
+
+\end{axis}
+\end{tikzpicture}
+\end{center}
+}
+\end{ex}
+
+\vfill
+
+\begin{ex}
+\compo
+{%\setstretch{1.2}
+Soit $f:x \mapsto x$. C'est une fonction affine avec $a=1$ et $b=0$.
+
+\
+
+Sa représentation graphique est une droite $d$. De plus, toutes les tangentes à la courbe de $f$ sont cette même droite $d$.
+
+\
+
+Alors quelque soit $x \in \R, f'(x)=a=1$. $f'$ est donc la fonction constante valant toujours 1.
+}
+{
+\begin{center}
+\begin{tikzpicture}
+\begin{axis}[
+styleglobal,
+width=0.9*\linewidth,
+xmin=-4, xmax=5,
+ymin=-1, ymax=4,
+xtick distance=1,
+ytick distance=1,
+minor x tick num=1,
+minor y tick num=1,
+]
+\addplot[styleplot] {x} node[pos=0.76,below right] {$\mathscr C_f$};
+\addplot[styleplot,DarkRed] {1} node[pos=0.76,below] {$\mathscr C_{f'}$};
+
+\end{axis}
+\end{tikzpicture}
+\end{center}
+}
+\end{ex}
+
+\vfill
+
+\begin{ex}
+\compo
+{%\setstretch{1.2}
+Soit $f:x \mapsto x$. C'est une fonction affine avec $a=1$ et $b=0$.
+
+\
+
+Sa représentation graphique est une droite $d$. De plus, toutes les tangentes à la courbe de $f$ sont cette même droite $d$.
+
+\
+
+Alors quelque soit $x \in \R, f'(x)=a=1$. $f'$ est donc la fonction constante valant toujours 1.
+}
+{
+\begin{center}
+\begin{tikzpicture}
+\begin{axis}[
+styleglobal,
+width=0.9*\linewidth,
+xmin=-4, xmax=5,
+ymin=-1, ymax=4,
+xtick distance=1,
+ytick distance=1,
+minor x tick num=1,
+minor y tick num=1,
+]
+\addplot[styleplot] {x} node[pos=0.76,below right] {$\mathscr C_f$};
+\addplot[styleplot,DarkRed] {1} node[pos=0.76,below] {$\mathscr C_{f'}$};
+
+\end{axis}
+\end{tikzpicture}
+\end{center}
+}
+\end{ex}
+
+\end{document}

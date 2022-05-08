@@ -29,7 +29,41 @@
 \end{itemize}
 \end{programme}
 
-\section{Rappels de vocabulaire ensembliste}
+\section{Univers et évènements}
+
+\subsection{Définitions de base}
+
+\begin{defin}
+On appelle expérience aléatoire une expérience dont on ne peut pas prévoir le résultat. Les issues possibles d'une expérience aléatoire, aussi appelées éventualités, constituent un ensemble appelé \textbf{l'univers}.
+
+Si l'on répète un très grand nombre de fois la même expérience indépendamment, alors la fréquence d'une issue va s'approcher de sa probabilité.
+\end{defin}
+
+\begin{ex}
+Si l'on lance un dé, alors les résultats possibles (les issues) constituent l'univers $\Omega=\{1;2;3;4;5;6\}$.
+\end{ex}
+
+\begin{defin}
+Un évènement A est un ensemble d'issues, autrement dit un sous-ensemble de $\Omega$. 
+\end{defin}
+
+\begin{ex}
+Dans l'univers précédent, on peut considérer l'ensemble $P$: \og Le résultat est pair \fg. On a donc $P=\{2;4;6\}$.
+\end{ex}
+
+\begin{casparts}
+\begin{itemize}
+\item On appelle \textbf{évènement élémentaire} tout évènement ne contenant qu'un seul élément de $\Omega$ (On les appelle des singletons).
+\item L'ensemble vide, noté $\varnothing$, est \textbf{l'évènement impossible}: Il ne se réalise jamais.
+\item L'ensemble $\Omega$ est \textbf{l'évènement certain}: Il est toujours réalisé.
+\end{itemize}
+\end{casparts}
+
+\begin{ex}
+Dans l'univers précédent, $\{1\}$ et $\{3\}$ sont des éléments élémentaires.
+\end{ex}
+
+\subsection{Opérations sur les évènements}
 
 \begin{defins}
 On se donne $E$ un ensemble et $A$,$B$ deux sous-ensembles de $E$.
@@ -41,29 +75,67 @@ On se donne $E$ un ensemble et $A$,$B$ deux sous-ensembles de $E$.
 \end{defins}
 
 \begin{ex}
-Considérons une population de chiens. On note $E$ l'ensemble de tout les chiens, $A$ le sous-ensemble de $E$ constitué des chiens au poil blanc, $B$ le sous-ensemble de E constitué des chiens au poil beige.
+Dans une animalerie, on sélectionne au hasard un chien. L'univers $\Omega$ est l'ensemble de tout les chiens dans cette animalerie. On se donne de plus les évènements $A$: \og Le chien sélectionné a le poil blanc \fg et $B$: \og Le chien sélectionné a le poil beige \fg. On peut donc définir les évènements suivants:
 \begin{itemize}
-    \item $A\cap B$ désigne l'ensemble des chiens au poil blanc et beige
-    \item $A\cup B$ désigne l'ensemble des chiens au poil blanc, beige ou les deux à la fois.
-    \item $\overline A$ désigne l'ensemble des chiens au poil autre que blanc.
+    \item $A\cap B$: \og Le chien sélectionné a le poil blanc et beige \fg;
+    \item $A\cup B$: \og Le chien sélectionné a le poil blanc, beige ou les deux à la fois \fg.
+    \item $\overline A$: \og Le chien sélectionné n'a pas le poil blanc \fg.
 \end{itemize}
 \end{ex}
 
-\section{Cadre théorique des probabilités}
+\section{Probabilités sur un univers fini}
 
-\begin{defins}
-\begin{itemize}
-\item On appelle expérience aléatoire une expérience dont on ne peut pas prévoir le résultat. Les issues possibles d'une expérience aléatoire, aussi appelées éventualités, constituent un ensemble appelé \textbf{l'univers}.
-\item On appelle l'univers, noté $\Omega$ (oméga), l'ensemble de toutes les issues possibles de cette expérience.
-\item Un évènement A est un ensemble d'issues, autrement dit une partie de $\Omega$. On appelle évènement élémentaire tout évènement ne contenant qu'un seul élément de $\Omega$ (On les appelle des singletons).
-\item L'ensemble vide, noté $\varnothing$, est \textbf{l'évènement impossible}: Il ne se réalise jamais.
-\item L'ensemble $\Omega$ est \textbf{l'évènement certain}: Il est toujours réalisé.
-\item On dit qu'on est en situation d'équiprobabilité lorsque toutes les issues ont la même probabilité.
-\item On dit que deux événements A et B sont incompatibles lorsqu'ils ne peuvent se produire en même temps, c'est-à-dire lorsque $\Pro(A \cap B)=0$.
-\item Pour tout évènement A d'une expérience aléatoire d'univers $\Omega$, on a:
-$$0 \leq \Pro(A) \leq 1 \hspace{2cm} \Pro(\varnothing)=0 \hspace{2cm} \Pro(\Omega)=1 \hspace{1.5cm}$$
-\end{itemize}
-\end{defins}
+\subsection{Généralités}
+
+\begin{defin}
+Donner la \textbf{loi de probabilité} d'une expérience aléatoire signifie donner la probabilité de chaque issue.
+\end{defin}
+
+\begin{props}
+Pour obtenir la probabilité d'un évènement, on fait la somme des probabilités de chaque issue le constituant.
+
+Pour tout évènement A d'une expérience aléatoire d'univers $\Omega$, on a:
+$$0 \leq \Pro(A) \leq 1 \hspace{2cm} \Pro(\varnothing)=0 \hspace{2cm} \Pro(\Omega)=1$$
+\end{props}
+
+\begin{ex}
+On lance un dé truqué. La probabilité de tomber sur chaque face est décrite dans le tableau ci-dessous:
+
+\begin{center}
+\begin{tabularx}{0.7\linewidth}{|c|*6{Y|}} \hline
+Numéro & 1 & 2 & 3 & 4 & 5 & 6 \\ \hline
+Probabilité associée & $0,15$ & $0,1$ & $0,2$ & $0,25$ & $0,25$ & $0,05$ \\ \hline
+\end{tabularx}
+\end{center}
+
+On considère l'évènement A: \og On tombe sur un nombre inférieur à 3 \fg. Alors $\Pro(A)=0,15+0,1+0,2=0,35$.
+\end{ex}
+
+\subsection{Cas équiprobable}
+
+\begin{defin}
+On dit qu'on est en situation d'équiprobabilité lorsque toutes les issues d'une expérience ont la même probabilité.
+\end{defin}
+
+\begin{prop}
+Dans ce cas, chaque issue a pour probabilité $\frac 1 {\textrm{nombre d'éléments de }\Omega}$.
+
+La probabilité d'un évènement A est alors: $$\Pro(A)=\frac{\textrm{nombre d'éléments de A}}{\textrm{nombre d'éléments de }\Omega} = \frac{\textrm{nombre de cas favorables}}{\textrm{nombre de cas possibles}}$$
+\end{prop}
+
+\begin{ex}
+On lance un dé équilibré. 3 des 6 faces d'un dé contiennent un nombre pair donc la probabilité de tomber sur l'un d'eux vaut $\frac 3 6 = \frac 1 2 = 0,5$.
+\end{ex}
+
+\subsection{Quelques formules de calcul}
+
+\begin{defin}
+On dit que deux événements A et B sont incompatibles lorsqu'ils ne peuvent se produire en même temps, c'est-à-dire lorsque $\Pro(A \cap B)=0$.
+\end{defin}
+
+\begin{ex}
+Soient A:\og On tombe sur un nombre pair\fg et B: \og On tombe sur "3" \fg. On a alors $\Pro(A \cap B) = \Pro( \varnothing ) = 0$. Il suit que A et B sont incompatibles.
+\end{ex}
 
 \begin{proprs}
 \begin{itemize}
@@ -74,50 +146,6 @@ $$\Pro(A \cup B) = \Pro(A)+\Pro(B)-\Pro(A \cap B)$$
 \end{proprs}
 
 \rem{Schéma à faire}
-
-\progres
-
-\section{Probabilités conditionnelles}
-
-\rem[eleve]{De la même manière qu'avec les fréquences conditionnelles, on peut définir des probabilités conditionnelles.}
-
-\begin{defin}
-Soient $A$ et $B$ deux événements tels que $\Pro(A)\neq 0$. On note $\Pro_A(B)$ la probabilité de $B$ en sachant que $A$ est réalisé, aussi appelée probabilité de $B$ sachant $A$. On a de plus $\Pro_A(B)=\dfrac{\Pro (A\cap B)}{\Pro (A)}$.
-\end{defin}
-
-\begin{rmq}
-Dans une situation \textbf{d'équiprobabilité}, on a $\Pro_A(B)=\dfrac{\card(A\cap B)}{\card(A)}$.
-\end{rmq}
-
-\rem{Cas favorables / Cas totaux}
-
-\rem[eleve]{On utilisera aussi des tableaux pour trouver des probabilités conditionnelles.}
-
-\begin{ex}
-On a interrogé $1500$ élèves d'un lycée sur la nature de leurs loisirs. On considère alors les évènements C: \og L'élève pratique une activité culturelle \fg et S: \og L'élève pratique une activité sportive \fg . On a obtenu les résultats suivants:
-\begin{center}\renewcommand{\arraystretch}{1.2}
-    \begin{tabularx}{\linewidth}{|c|c|c|Y|}
-    \cline{2-4} \multicolumn{1}{c|}{}
-         &Activité sportive $(S)$ & Pas d'activité sportive ($\overline{S}$) & Total  \\ \hline
-         Activité culturelle $(C)$ & $402$ & $591$ & 993  \\ \hline 
-         Pas d'activité culturelle ($\overline{C}$) & $315$ & $192$ & 507  \\ \hline
-         Total & 717 & 783 & 1500 \\ \hline
-    \end{tabularx}
-\end{center}
-On choisit un élève au hasard dans le lycée.
-\begin{enumerate}
-    \item La probabilité qu'un élève pratique une activité culturelle est $\Pro(C)=\frac {993}{1500}=0,662=66,2 \%$.
-    \item La probabilité qu'un élève pratique les deux types d'activité est $\Pro(C \cap S)=\frac {402}{1500}=0,268=26,8 \%$.
-    \item La probabilité qu'un élève fasse du sport en sachant qu'il pratique une activité culturelle est $\Pro_C(S)=\frac{\card (C\cap S)}{\card (C)}=\frac{402}{993}=0,405=40,5 \%$.
-    \item La probabilité qu'un élève pratique une activité culturelle en sachant qu'il ne fait pas de sport est $\Pro_{\overline S}(C)=\frac{\card(\overline S \cap C)}{\card(\overline S)}=\frac{591}{783}=0,755=75,5 \%$.
-\end{enumerate}
-\end{ex}
-
-\rem{Exos 22,23 p175, 31 p177\\
-	 Exos 37,38 p181\\
-	 Exos 32,33 p178\\
-	 Sujets B,C p184\\
-	 Exos 39,40,40 p186}
 
 \end{document}
 

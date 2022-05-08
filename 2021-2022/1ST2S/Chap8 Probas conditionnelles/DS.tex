@@ -1,0 +1,168 @@
+\documentclass[a4paper,12pt,french]{article}
+
+\usepackage[sujet]{../../../Style}
+
+\fancyhead[L]{18/05/2022}
+\fancyhead[C]{\textbf{DS8: Conditionnement}}
+\fancyhead[R]{\premiere ST2S 2}
+
+\renewcommand{\arraystretch}{1.8}
+% Début du document
+%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+\rem{L'usage de la calculatrice est autorisé. La propreté et l'orthographe seront prises en compte. La dernière page est à rendre avec la copie.}
+
+\setstretch{1.2}
+
+\begin{exercice}
+Une cheffe d'entreprise décide de construire une structure supplémentaire pour améliorer le bien-être de ses 800 salariés. Elle hésite entre deux possibilités: Installer une médiathèque ou aménager une salle de sport.
+
+Une enquête a été menée auprès de l'ensemble des 800 salariés afin de connaitre leur préférence. Les résultats sont consignés dans le tableau suivant:
+
+\begin{center}
+    \begin{tabularx}{\linewidth}{|c|Y|Y|Y|}
+         \cline{2-4} \multicolumn{1}{c|}{}
+         &Moins de 40 ans&40 ans ou plus&Total  \\ \hline
+         Médiathèque&216&132&348  \\ \hline 
+         Salle de sport&144&308&452 \\ \hline 
+         Total&360&440&800 \\ \hline
+    \end{tabularx}
+\end{center}
+
+\begin{enumerate}
+\item Quelle est la proportion, en pourcentage, de salariés qui ont moins de 40 ans et qui ont choisi la médiathèque?
+\item Calculer la fréquence marginale de salariés préférant la construction d'une salle de sport dans l'entreprise.
+\item Quel choix semble le plus pertinent pour le comité d'entreprise?
+\item Calculer la fréquence conditionnelle des salariés préférant la construction d'une salle de sport parmi ceux de 40 ans ou plus.
+\end{enumerate}
+\end{exercice}
+
+\begin{exercice}
+Dans un lycée, les 350 élèves de Première se répartissent suivant leur taille comme indiquée sur le tableau ci-dessous:
+
+\begin{enumerate}
+\item Compléter le tableau donné en annexe.
+
+On choisit un élève de première au hasard et on l'interroge sur sa taille. On note:
+\begin{itemize}
+\item F l'évènement \og L'élève est une fille \fg ;
+\item T l'évènement \og L'élève mesure plus de 1,8m \fg .
+\end{itemize}
+
+\item Donner la probabilité des évènements F et T.
+
+\item Déterminer la probabilité de l'évènement \og L'élève est une fille qui mesure plus de 1,8m \fg .
+\item Que représente dans le contexte la probabilité conditionnelle $\Pro_F(T)$? En donner la valeur.
+\item Calculer la probabilité que l'élève interrogé soit une fille sachant qu'il mesure moins de 1,8m.
+\end{enumerate}
+\end{exercice}
+
+\begin{exercice}
+Une entreprise de pièces automobiles emploie deux catégories de salariés: Des cadres et des ouvriers.
+
+Cette entreprise compte 1000 salariés dont 40\% sont des femmes. Les autres salariés sont des hommes.
+
+On sait aussi que:
+\begin{itemize}
+\item Parmi les femmes, 15 \% sont des cadres.
+\item 525 hommes sont des ouvriers.
+\end{itemize}
+
+\begin{enumerate}
+\item Compléter le tableau d'effectifs donné en annexe.
+\item Justine affirme: \og La proportion de cadres parmi les hommes est plus élevée que la proportion de cadres parmi les femmes. \fg
+
+A-t-elle raison? Justifier.
+
+\item On choisit au hasard un salarié de l'entreprise. On admet que chaque salarié a la même probabilité d'être choisi.
+
+On considère les évènements suivants:
+\begin{itemize}
+\item F: \og Le salarié est une femme \fg ;
+\item C: \og Le salarié est un cadre \fg .
+\end{itemize}
+
+\begin{enumerate}
+\item Définir par une phrase l'évènement F $\cap$ C.
+\item Calculer la probabilité de cet évènement.
+\item Calculer $\Pro_F(\overline C)$. Interpréter ce résultat dans le contexte de l'énoncé.
+\end{enumerate}
+\end{enumerate}
+\end{exercice}
+
+\begin{exercice}
+Un laboratoire veut tester, sur des souris, l'efficacité d'un vaccin. Toutes les souris ont été contaminées par le virus d'une maladie. Certaines souris ont été vaccinées, d'autres ne l'ont pas été. Certaines souris ont développé la maladie, d'autres non.
+
+Voici quelques informations sur l'expérimentation:
+
+\begin{itemize}
+\item 175 souris ont été testées
+\item 90 souris ont été vaccinées
+\item 80 souris ont développé la maladie, et parmi elles, 26 avaient été vaccinées.
+\end{itemize}
+
+\begin{enumerate}
+
+\item Compléter le tableau croisé d'effectifs donné en annexe.
+\item Calculer la fréquence des souris ayant développé la maladie.
+\item Calculer la fréquence des souris vaccinées parmi les souris malades.
+\item On sélectionne au hasard une souris. On considère les évènement suivants:
+\begin{itemize}
+\item V: \og La souris sélectionnée a été vaccinées \fg ;
+\item M: \og La souris sélectionnée est malade \fg .
+\end{itemize}
+
+\begin{enumerate}
+\item Calculer la probabilité que la souris sélectionnée soit malade et non vaccinée.
+\item Calculer $\Pro_V(M)$ et $\Pro_{\overline V}(M)$. Que peut-on en déduire?
+\end{enumerate}
+\end{enumerate}
+\end{exercice}
+
+\newpage
+
+\rem{Cette page est à rendre avec la copie.}
+
+Nom: \hfill Prénom: \hfill \
+
+\vfill
+
+\begin{center}
+    \begin{tabularx}{\linewidth}{|c|Y|Y|Y|}
+    \cline{2-4} \multicolumn{1}{c|}{}
+         &Filles&Garçons&Total  \\ \hline
+         Moins de 1,8m&&121&291  \\ \hline 
+         Plus de 1,8m&&& \\ \hline 
+         Total&193&& \\ \hline
+    \end{tabularx}
+\end{center}
+
+\vfill
+
+\begin{center}
+    \begin{tabularx}{\linewidth}{|c|Y|Y|Y|}
+    \cline{2-4} \multicolumn{1}{c|}{}
+         &Hommes&Femmes&Total  \\ \hline
+         Cadres &&&  \\ \hline 
+         Ouvriers&525&& \\ \hline 
+         Total&&400&1000 \\ \hline
+    \end{tabularx}
+\end{center}
+
+\vfill
+
+\begin{center}
+    \begin{tabularx}{\linewidth}{|Y|Y|Y|Y|}
+    \cline{2-4} \multicolumn{1}{c|}{}
+         &Souris malades&Souris saines&Total  \\ \hline
+         Souris vaccinées &&&  \\ \hline 
+         Souris non vaccinées&&& \\ \hline 
+         Total&&&175 \\ \hline
+    \end{tabularx}
+\end{center}
+
+\vfill
+
+\end{document}
+

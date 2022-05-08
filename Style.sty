@@ -223,8 +223,8 @@
 		%xtick distance=1, 							%Graduations(finalement enlevé pour que de base ce soit automatique)
 		%ytick distance=1,
 		grid=both,
-		grid style={dash pattern=on 2.4pt off 1.6pt,line width=0.32pt,draw=black!30}, % Correspond à densely dashed un peu plus dense
-		minor grid style={line width=0.2pt,draw=black!20},
+		grid style={dash pattern=on 2.4pt off 1.6pt,line width=0.4pt,draw=black!30}, % Correspond à densely dashed un peu plus dense
+		minor grid style={line width=0.25pt,draw=black!20},
 		legend pos=north east,
 		%
 		% Evite des erreurs liées à des valeurs trop grandes (fonction inverse, exp...) Pas trouvé mieux pour l'instant...
@@ -281,7 +281,7 @@
 	stylegrille/.style={
 		step=1,
 		dash pattern=on 2.4pt off 1.6pt,
-		line width=0.32pt,
+		line width=0.4pt, %0.32 ne passe pas à l'impression
 		draw=black!30
 	},
 	stylevecteur/.style={
@@ -432,6 +432,7 @@
 \colorlet{remq}{remq-titre!10}
 \newtcolorbox{remq}{
 	styleboite,
+	breakable=false,
 	colback=remq,
 	colframe=remq-titre,
 	hbox,

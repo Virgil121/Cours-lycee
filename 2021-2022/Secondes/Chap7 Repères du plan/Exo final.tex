@@ -1,0 +1,34 @@
+\documentclass[a4paper,12pt,french] {article}
+
+\usepackage[TD]{../../../Style}
+
+\begin{document}
+
+\begin{center}
+\begin{resizetikz}{\linewidth}
+\begin{tikzpicture}
+
+\coordinate[label=135:A] (A) at (0,0);
+\coordinate[label=90:B] (B) at (1,0);
+\coordinate[label=90:C] (C) at (2,0);
+\coordinate[label=135:D] (D) at (3,0);
+\coordinate[label=180:E] (E) at (0,-1);
+\coordinate[label=135:F] (F) at (1,-1);
+\coordinate[label=135:G] (G) at (2,-1);
+\coordinate[label=-45:H] (H) at (3,-1);
+\coordinate[label=-135:I] (I) at (0,-2);
+\coordinate[label=-90:J] (J) at (1,-2);
+\coordinate[label=-45:K] (K) at (2,-2);
+\draw (A) -- (D) (H) -- (E) (I) -- (K) (A) -- (I) (B) -- (J) (C) -- (K) (D) -- (H);
+\coordinate[label=90:L] (L) at ($0.5*(B)+0.5*(C)$);
+\coordinate[label=135:M] (M) at ($0.5*(E)+0.5*(I)$);
+\coordinate[label=90:N] (N) at ($0.5*(C)+0.5*(H)$);
+\draw[very thick,red,shorten <=-1cm,shorten >=-1cm] (M) -- (L);
+\draw[very thick,red,shorten <=-1cm,shorten >=-1cm] (J) -- (D);
+\draw[red, densely dashed] (C) -- (H);
+
+\end{tikzpicture}
+\end{resizetikz}
+\end{center}
+
+\end{document}
