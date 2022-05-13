@@ -1,6 +1,6 @@
 \documentclass[a4paper,12pt,french]{article}
 
-\usepackage[cours]{../../../Style}
+\usepackage[cours]{../../Style}
 
 %\selectcolormodel{cmyk}
 
@@ -72,6 +72,57 @@ On se donne $E$ un ensemble et $A$,$B$ deux sous-ensembles de $E$.
 \item \textbf{L'union} de $A$ et $B$ notée $A\cup B$ (A union B) désigne l'ensemble des éléments de $E$ appartenant à $A$ ou à $B$ ou aux deux.
 \item \textbf{Le complémentaire} de $A$, noté $\overline A$ (A barre) désigne l'ensemble des éléments de $E$ qui n'appartiennent pas à $A$.
 \end{itemize}
+
+\begin{center}
+\begin{tabular}{ccc}
+\begin{tikzpicture}
+
+\draw[fill=white,fill opacity=0.8] (-3,-2) rectangle (3,2);
+\draw[fill=DarkOrange,fill opacity=0.5] (1,0) circle (1.5);
+\draw[fill=DodgerBlue!50!DeepSkyBlue,fill opacity=0.5] (-1,0) circle (1.5);
+\draw (1,0) circle (1.5);
+\node[circle,draw=none,fill=white,fill opacity=0.3,text opacity=1,inner sep=2pt] (A) at (1.3,0) {\textbf A};
+\node[circle,draw=none,fill=white,fill opacity=0.3,text opacity=1,inner sep=2pt] (B) at (-1.3,0) {\textbf B};
+
+\begin{scope}
+\clip (1,0) circle (1.5);
+\draw[fill=black,pattern=north east lines,draw=none,opacity=0.5] (-1,0) circle (1.5);
+\end{scope}
+
+%\node (inter) at (0,-1.7) {$A \cap B$};
+%\draw (inter) -- (0,-0.5);
+
+\end{tikzpicture}
+&
+\begin{tikzpicture}
+
+
+\draw[fill=white,fill opacity=0.8] (-3,-2) rectangle (3,2);
+\draw[fill=DarkOrange,fill opacity=0.5] (1,0) circle (1.5);
+\draw[fill=DodgerBlue!50!DeepSkyBlue,fill opacity=0.5] (-1,0) circle (1.5);
+\draw (1,0) circle (1.5);
+
+\draw[fill=black,pattern=north east lines,draw=none,opacity=0.5] (-1,0) circle (1.5) (1,0) circle (1.5);
+
+\node[circle,draw=none,fill=white,fill opacity=0.3,text opacity=1,inner sep=2pt] (A) at (1.3,0) {\textbf A};
+\node[circle,draw=none,fill=white,fill opacity=0.3,text opacity=1,inner sep=2pt] (B) at (-1.3,0) {\textbf B};
+
+\end{tikzpicture}
+&
+\begin{tikzpicture}
+
+
+\draw[fill=white,fill opacity=0.8] (-2,-2) rectangle (2,2);
+\draw[fill=DarkOrange,fill opacity=0.5] (0,0) circle (1.5);
+
+\draw[fill=black,pattern=north east lines,draw=none,opacity=0.5,even odd rule] (-2,-2) rectangle (2,2) (0,0) circle (1.5);
+
+\node[circle,draw=none,fill=white,fill opacity=0.3,text opacity=1,inner sep=2pt] (A) at (0,0) {\textbf A};
+
+\end{tikzpicture} \\
+$A \cap B$ & $A \cup B$ & $\overline A$
+\end{tabular}
+\end{center}
 \end{defins}
 
 \begin{ex}
@@ -113,29 +164,29 @@ On considère l'évènement A: \og On tombe sur un nombre inférieur à 3 \fg. A
 
 \subsection{Cas équiprobable}
 
+\begin{ex}
+On lance un dé équilibré. Soit A l'évènement \og On tombe sur un nombre pair \fg. 3 des 6 faces d'un dé contiennent un nombre pair donc $\Pro(A) = \frac 3 6 = \frac 1 2 = 0,5$.
+\end{ex}
+
 \begin{defin}
 On dit qu'on est en situation d'équiprobabilité lorsque toutes les issues d'une expérience ont la même probabilité.
 \end{defin}
 
 \begin{prop}
-Dans ce cas, chaque issue a pour probabilité $\frac 1 {\textrm{nombre d'éléments de }\Omega}$.
+Dans ce cas, chaque issue a pour probabilité $\frac 1 {\textrm{nombre total d'isues}}$.
 
 La probabilité d'un évènement A est alors: $$\Pro(A)=\frac{\textrm{nombre d'éléments de A}}{\textrm{nombre d'éléments de }\Omega} = \frac{\textrm{nombre de cas favorables}}{\textrm{nombre de cas possibles}}$$
 \end{prop}
 
-\begin{ex}
-On lance un dé équilibré. 3 des 6 faces d'un dé contiennent un nombre pair donc la probabilité de tomber sur l'un d'eux vaut $\frac 3 6 = \frac 1 2 = 0,5$.
-\end{ex}
-
 \subsection{Quelques formules de calcul}
 
-\begin{defin}
-On dit que deux événements A et B sont incompatibles lorsqu'ils ne peuvent se produire en même temps, c'est-à-dire lorsque $\Pro(A \cap B)=0$.
-\end{defin}
-
 \begin{ex}
-Soient A:\og On tombe sur un nombre pair\fg et B: \og On tombe sur "3" \fg. On a alors $\Pro(A \cap B) = \Pro( \varnothing ) = 0$. Il suit que A et B sont incompatibles.
+Soient A:\og On tombe sur un nombre pair\fg et B: \og On tombe sur 3 \fg. On a alors $A \cap B = \varnothing$, donc $\Pro(A \cap B) = \Pro( \varnothing ) = 0$. Ces évènements ne peuvent pas se produire en même temps.
 \end{ex}
+
+\begin{defin}
+Comme $\Pro(A \cap B)=0$, ces deux événements sont dits incompatibles.
+\end{defin}
 
 \begin{proprs}
 \begin{itemize}
@@ -146,240 +197,5 @@ $$\Pro(A \cup B) = \Pro(A)+\Pro(B)-\Pro(A \cap B)$$
 \end{proprs}
 
 \rem{Schéma à faire}
-
-\end{document}
-
-
-
-
-
-\section{Union et intersection}
-\subsection{Cadre général}
-
-\begin{fait}
-On se donne $E$ un ensemble et $A$,$B$ deux sous-ensemble de $E$.
-\end{fait}
-
-\begin{defin}
-\textbf{L'intersection} de $A$ et $B$ notée $A\cap B$ désigne les éléments de $E$ appartenant à la fois à $A$ \textbf{et} à $B$.
-\end{defin}
-
-\begin{defin}
-\textbf{L'union} de $A$ et $B$ notée $A\cup B$ désigne les éléments de $E$ appartenant à $A$ ou à $B$ ou aux deux.
-\end{defin}
-
-\begin{ex}
-Considérons une population de chevaux. On note $E$ l'ensemble de tout les chevaux. $A$ le sous-ensemble de $E$ constitué des chevaux noirs, $B$ le sous-ensemble de E constitué des chevaux blancs.
-\begin{enumerate}
-    \item $A\cap B$ désigne les chevaux noirs et blancs.
-    \item $A\cup B$ désigne les chevaux noirs ou bien blancs ou bien noirs et blancs.
-\end{enumerate}
-\end{ex}
-
-\subsection{Cas des sous-population}
-
-\begin{fait}
-$E$ désigne maintenant une population et $A,B$ des sous-population de $E$.
-\end{fait}
-
-\begin{thm}
-Soient $f(A),f(B),f(A\cap B)$ les fréquences respectives de $A,B$ et $A\cap B$ dans $E$. alors la fréquence de $A\cup B$ est donnée par: 
-$$f(A\cup B)=f(A)+f(B)-f(A\cap B)$$
-\end{thm}
-
-\begin{ex}
-Dans un club de sport, $22,5\%$ des adhérents font de l'escalade, $17\%$ font de la natation et $5,8\%$ pratiquent les deux sports.\\ Notons $A$="l'ensemble des adhérents pratiquant de l'escalade", $B$="l'ensemble des gens pratiquant la natation" alors:
-\begin{enumerate}
-    \item L'intersection de $A$ et $B$ (c'est-à-dire les gens pratiquant les deux sports) à une fréquence de $f(A\cap B)=5,8\%$.
-    \item L'union de $A$ et $B$ à une fréquence
-    \begin{align*}
-        f(A\cup B)=f(A)+f(B)-f(A\cap B)=\frac{22,5}{100}+\frac{17}{100}-\frac{5,8}{100}=33,7\%
-    \end{align*}
-\end{enumerate}
-\end{ex}
-
-\section{Tableaux croisés}
-
-\subsection{Cas général}
-
-
-Lorsqu'on étudie différents caractères d'une population on va souvent utiliser les notions d'intersections et d'unions.
- 
-De plus, il est souvent commode de représenter cela par des tableaux qu'on appelle \textbf{tableaux croisés}.
-
-Considérons l'exemple suivant:
-\begin{ex}
-Au sein d'une classe de 1STMG, on s'intéresse aux élèves ayant pris ou non l'option comptabilité. On regarde également le choix de cette option suivant le sexe de l'élève. On schématise cela par le tableau suivant:
-\begin{center}
-    \begin{tabular}{|c|c|c|c|}
-    \cline{2-4} \multicolumn{1}{c|}{}
-         & Option compta & Pas option compta & Total  \\ \hline 
-         Filles & 8 & 7& 15\\ \hline
-         Garçons & 11 & 9 & 20\\ \hline
-         Total & 19 & 16 & 35\\ \hline 
-    \end{tabular}
-\end{center}
-Notons $F$ l'ensemble des filles, $G$ l'ensemble des garçons, $C$ l'ensemble des étudiants ayant pris l'option comptabilité et $\overline{C}$ ceux ne l'ayant pas prise. 
-\begin{itemize}
-    \item Le nombre d'éléments de $F\cap C$ c'est-à-dire le nombre des filles ayant pris l'option compta est 8.
-    \item Le nombre d'éléments de $G\cap \overline{C}$ c'est à dire le nombre de garçons qui n'ont pas pris l'option est 16.
-\end{itemize}
-\end{ex}
-
-\begin{defin}
-Les colonnes et lignes nommées "total" sont appelées les \textbf{marges} du tableau.
-\end{defin}
-
-\section{Fréquence marginale}
-
-\begin{defin}
-Lorsqu'on divise chaque case du tableau croisé par l'effectif total on obtient un tableau de fréquence. Les colonnes et lignes total sont appelées \textbf{fréquences marginales.}
-\end{defin}
-
-Reprenons notre exemple précédent:
-\begin{ex}
-Nous avions une classe avec un effectif total de 35élèves.\\
-\begin{center}
-    \begin{tabular}{|c|c|c|c|c}
-    \hline 
-         & Option compta & Pas option compta & total  \\
-         \hline 
-         & & &\\
-         Filles & $\frac{8}{35}$ & $\frac{7}{35}$& $\frac{15}{35}$\\ 
-         & & &\\
-         \hline 
-         & & &\\
-         Garçons & $\frac{11}{35}$ & $\frac{9}{35}$ & $\frac{20}{35}$\\
-         & & &\\
-         \hline
-         & & & \\
-         Total & $\frac{19}{35}$ & $\frac{16}{35}$ & $\frac{35}{35}=1$\\
-         & & & \\
-         \hline 
-    \end{tabular}
-\end{center}
-\begin{enumerate}
-    \item La fréquence des filles ayant pris l'option comptabilité est $f(F\cap C)=\frac{8}{35}$. 
-    \item La fréquence des garçons n'ayant pas pris l'option est $f(G\cap \overline{C})=\frac{16}{35}$
-    \item Les fréquences marginales des colonnes sont $\frac{19}{35},\frac{16}{35}$.
-    \item Les fréquences marginales des lignes sont $\frac{15}{35},\frac{20}{35}$.
-\end{enumerate}
-\end{ex}
-
-\begin{prop}
-La somme des fréquences marginales des colonnes vaut 1.\\
-La somme des fréquences marginales des lignes vaut 1.
-\end{prop}
-
-\section{Fréquence conditionnelle}
-
-\subsection{Par ligne:}
-
-\begin{defin}
-Lorsqu'on divise les cases du tableau croisé par l'effectif total de la \textbf{ligne} correspondante, on parle de fréquence conditionnelle.
-\end{defin}
-
-En effet, l'ensemble de référence pour les calculs n'est plus la population totale mais la sous population.
-
-\begin{ex}
-\begin{center}
-    \begin{tabular}{|c|c|c|c|c}
-    \hline 
-         & Option compta & Pas option compta & total  \\
-         \hline 
-         & & &\\
-         Filles & $\frac{8}{15}$ & $\frac{7}{15}$& $\frac{15}{15}=1$\\ 
-         & & &\\
-         \hline 
-         & & &\\
-         Garçons & $\frac{11}{20}$ & $\frac{9}{20}$ & $\frac{20}{20}=1$\\
-         & & & \\
-         \hline 
-    \end{tabular}
-\end{center}
-\begin{enumerate}
-    \item Parmi les filles, la fréquence des filles ayant qui ont pris l'option compta est $\frac{8}{15}$ on note $f_{F}(C)$.
-    \item Parmi les garçons, la fréquence des garçons n'ayant pas pris l'option compta est $f_{G}(\overline{C})=\frac{9}{20}$.
-\end{enumerate}
-\end{ex}
-
-\begin{prop}
-On étudie une propriété $C$ sur deux populations $F$ et $G$ alors les fréquences conditionnelles vérifient:
-\begin{align*}
-    f_{F}(C)=\dfrac{f(F\cap C)}{f(F)}\quad f_{G}(C)=\dfrac{f(G \cap C)}{f(G)} 
-\end{align*}
-\end{prop}
-
-\subsection{Par colonne}
-
-\begin{defin}
-De la même manière lorsqu'on divise les cases du tableau croisé par l'effectif total de la \textbf{colonne} correspondante, on parle de fréquence conditionnelle.
-\end{defin}
-
-Reprenons le même exemple mais en conditionnant par rapport aux colonnes:
-\begin{ex}
-\begin{center}
-    \begin{tabular}{|c|c|c|}
-    \hline 
-         & Option compta & Pas option compta \\
-         \hline 
-         & & \\
-         Filles & $\frac{8}{19}$ & $\frac{7}{16}$\\ 
-         & & \\
-         \hline 
-         & & \\
-         Garçons & $\frac{11}{19}$ & $\frac{9}{16}$\\
-         & &  \\
-         \hline 
-         & & \\
-         Total & $\frac{19}{19}=1$ & $\frac{16}{16}=1$ \\
-         & & \\
-         \hline 
-    \end{tabular}
-\end{center}
-\begin{enumerate}
-    \item Parmi ceux qui ont pris l'option comptabilité, il y a $\frac{8}{19}$ de filles ainsi on a que $f_{C}(F)=\frac{8}{19}$.
-    \item Parmi ceux qui n'ont pas pris l'option comptabilité il y a $\frac{9}{16}$ de garçons donc $f_{\overline{C}}(G)=\frac{9}{16}$.
-\end{enumerate}
-\end{ex}
-
-\begin{prop}
-La somme des fréquences conditionnelles sur une même ligne vaut 1. 
-\end{prop}
-
-\section{ Probabilités conditionnelles}
-
-Soient $A$ et $B$ deux événements tels que $\mathbb{P}(A)\neq 0.$ De la même manière qu'avec les fréquences conditionnelles, on peut définir des probabilités conditionnelles.
-
-\begin{defin}
-On note $\Pro_A(B)$ la probabilité de $B$ en sachant que $B$ est réalisé, aussi appelée probabilité de $B$ sachant $A$. On a de plus $\mathbb{P}_{A}(B)=\dfrac{\mathbb{P}(A\cap B)}{\mathbb{P}(A)}$.
-\end{defin}
-
-De même que pour les fréquences on utilisera des tableaux pour trouver les probabilités conditionnelles.
-\begin{ex}
-On a interrogé $1500$ élèves d'un lycée sur la nature de leurs loisirs et on a obtenu les résultats suivants:
-\begin{center}
-    \begin{tabular}{|c|c|c|}
-    \hline
-         & & \\
-         &Activité sportive $(S)$ & Pas d'activité sportive $(\overline{S})$  \\
-         & & \\
-\hline 
-        & &\\
-         Activité culturelle $(C)$ & $402$ & $591$  \\
-         & & \\
-\hline 
- & & \\
-         Pas d'activité culturelle $\overline{C})$ & $315$ & $192$ \\
-         & & \\
-         \hline 
-    \end{tabular}
-\end{center}
-On choisit un élève au hasard dans le lycée.
-\begin{enumerate}
-    \item Déterminer la probabilité qu'un élève face du sport sachant qu'il pratique une activité culturelle ie $\mathbb{P}_{C}(S)$.
-    \item Déterminer la probabilité $\mathbb{P}_{\overline{S}}(C).$
-\end{enumerate}
-\end{ex}
 
 \end{document}

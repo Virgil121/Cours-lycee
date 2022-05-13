@@ -1,6 +1,6 @@
 \documentclass[a4paper,12pt,french]{article}
 
-\usepackage[cours]{../../../Style}
+\usepackage[cours]{../../Style}
 
 %\usepackage[theorems]{tcolorbox}
 
@@ -168,40 +168,9 @@ Soit $f:x \mapsto ax+b$ une fonction affine avec $a \neq 0$. Alors $f(x)=0$ si e
 \begin{centrer}
 Si $a>0$:
 
-\begin{tikzpicture}[scale=0.875]
-% Styles 
-\tikzstyle{cadre}=[thin]
-\tikzstyle{fleche}=[->,>=latex,thin]
-\tikzstyle{nondefini}=[lightgray]
-% Dimensions Modifiables
-\def\Lrg{1.2}
-\def\HtX{1.2}
-\def\HtY{0.5}
-% Dimensions Calculées
-\def\lignex{-0.5*\HtX}
-\def\lignef{-1.5*\HtX}
-\def\separateur{-0.5*\Lrg}
-% Largeur du tableau
-\def\gauche{-1.5*\Lrg}
-\def\droite{4.5*\Lrg}
-% Hauteur du tableau
-\def\haut{0.5*\HtX}
-\def\bas{-2.5*\HtX-2*\HtY}
-% Ligne de l'abscisse : x
-\node at (-1*\Lrg,0) {$x$};
-\node at (0*\Lrg,0) {$- \infty$};
-\node at (1.9*\Lrg,0) {$- \frac b a$};
-\node at (4*\Lrg,0) {$+ \infty$};
-% Ligne de la dérivée : f'(x)
-\node at (-1*\Lrg,-1*\HtX) {$f(x)$};
-\node at (1*\Lrg,-1*\HtX) {$-$};
-\node at (3*\Lrg,-1*\HtX) {$+$};
-\draw[cadre] (2*\Lrg,-0.5*\HtX) -- (2*\Lrg,-1.5*\HtX) node[pos=0.5,line width=0.6pt,draw=black,circle,minimum size=7pt,fill=bg,inner sep=2pt,yscale=1.25] {};
-% Ligne de la fonction : f(x)
-% Encadrement
-\draw[cadre] (\separateur,\haut) -- (\separateur, \lignef);
-\draw[cadre] (\gauche,\haut) rectangle  (\droite, \lignef);
-\draw[cadre] (\gauche,\lignex) -- (\droite,\lignex);
+\begin{tikzpicture}
+\tkzTabInit[lgt=1.4,espcl=2]{$x$ /1,$f(x)$/1}{$- \infty$, $\frac {-b} a$, $+ \infty$}
+\tkzTabLine{,-,z,+,}
 \end{tikzpicture}
 \end{centrer}
 }
@@ -209,40 +178,9 @@ Si $a>0$:
 \begin{centrer}
 Si $a<0$:
 
-\begin{tikzpicture}[scale=0.875]
-% Styles 
-\tikzstyle{cadre}=[thin]
-\tikzstyle{fleche}=[->,>=latex,thin]
-\tikzstyle{nondefini}=[lightgray]
-% Dimensions Modifiables
-\def\Lrg{1.2}
-\def\HtX{1.2}
-\def\HtY{0.5}
-% Dimensions Calculées
-\def\lignex{-0.5*\HtX}
-\def\lignef{-1.5*\HtX}
-\def\separateur{-0.5*\Lrg}
-% Largeur du tableau
-\def\gauche{-1.5*\Lrg}
-\def\droite{4.5*\Lrg}
-% Hauteur du tableau
-\def\haut{0.5*\HtX}
-\def\bas{-2.5*\HtX-2*\HtY}
-% Ligne de l'abscisse : x
-\node at (-1*\Lrg,0) {$x$};
-\node at (0*\Lrg,0) {$- \infty$};
-\node at (1.9*\Lrg,0) {$- \frac b a$};
-\node at (4*\Lrg,0) {$+ \infty$};
-% Ligne de la dérivée : f'(x)
-\node at (-1*\Lrg,-1*\HtX) {$f(x)$};
-\node at (1*\Lrg,-1*\HtX) {$+$};
-\node at (3*\Lrg,-1*\HtX) {$-$};
-\draw[cadre] (2*\Lrg,-0.5*\HtX) -- (2*\Lrg,-1.5*\HtX) node[pos=0.5,line width=0.6pt,draw=black,circle,minimum size=7pt,fill=bg,inner sep=2pt,yscale=1.25] {};
-% Ligne de la fonction : f(x)
-% Encadrement
-\draw[cadre] (\separateur,\haut) -- (\separateur, \lignef);
-\draw[cadre] (\gauche,\haut) rectangle  (\droite, \lignef);
-\draw[cadre] (\gauche,\lignex) -- (\droite,\lignex);
+\begin{tikzpicture}[]
+\tkzTabInit[lgt=1.4,espcl=2]{$x$ /1,$f(x)$/1}{$- \infty$, $\frac {-b} a$, $+ \infty$}
+\tkzTabLine{,+,z,-,}
 \end{tikzpicture}
 \end{centrer}
 }

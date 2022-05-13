@@ -1,0 +1,637 @@
+% Pour plus tard:
+% Supprimer la rétrocompatibilité, ce sera plus lisible...
+% Utiliser des tcbox à la place des colorbox? marges plus personnalisables (style fbox pour avoir comme colorbox)
+
+% Liste des packages utilisés
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{lipsum}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}	% Langue
+\usepackage{amsfonts,amssymb,amsmath}	% Symboles maths... (indispensable)
+\usepackage{stmaryrd} 					% pour \llbracket
+%\usepackage{fourier-otf}				% Police d'écriture
+\usepackage{setspace}
+\usepackage{dsfont}
+\usepackage{tabularx,tabulary}			% Tableaux avec taille définie
+%\usepackage{slashbox}
+\usepackage{mathrsfs}
+\usepackage{graphicx}
+\usepackage[most]{tcolorbox}			% Boites évoluées
+\usepackage{framed}
+\usepackage{comment}
+\usepackage{ragged2e}
+\usepackage{microtype}					% Améliore le rendu final
+\usepackage{ifthen}						% Pour la définition de macros: conditions
+\usepackage{multicol}					% Pour scinder des documents en plusieurs colonnes. Alternative à l'option twocolumn
+\usepackage{enumitem}					% Enumérations évoluées
+\usepackage{cancel}
+\usepackage{diagbox}
+\usepackage{fancyhdr}					% Entêtes
+\usepackage{eurosym}					% Symbole euro
+\usepackage{icomma}						% Pour l'espacement des virgules en mode math
+\usepackage{xstring}
+\usepackage{etoolbox}					% Plein d'outils pour créer des macros
+\usepackage{xpatch}						% Pour modifier une macro déjà existante: chercher-remplacer
+\usepackage{xspace}						% Espaces intelligents (si point ou virgule, pas d'espace)
+\usepackage[d]{esvect} 					% Meilleurs vecteurs - Problèmess avec polices non otf
+\usepackage{lastpage}					% Trouve le numéro de la dernière page
+%\usepackage[pdfauthor={Virgil Delauney}]{hyperref}
+
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows.meta,calc,tikzmark}
+% decorations? decorations.pathmorphing,decorations.markings,shadows
+
+\usepackage{pgfplots}					% Graphes de fonctions
+\usepackage{tkz-tab}					% Tableaux de variations/signe
+\usepackage{tkz-base}					% Pour la géométrie repérée
+
+\usepackage[french,linesnumbered,vlined]{algorithm2e} % Algorithmes
+
+% Abréviations displaystyle 
+\newcommand{\Int} {\displaystyle \int}
+
+% Abréviations maths
+\newcommand{\C} {\mathbb{C}}
+\newcommand{\R} {\mathbb{R}}
+\newcommand{\Z} {\mathbb{Z}}
+\newcommand{\N} {\mathbb{N}}
+\newcommand{\K} {\mathbb K}
+\newcommand{\U} {\mathbb U}
+\newcommand{\D} {\mathbb D}
+\newcommand{\Q} {\mathbb Q}
+\newcommand{\Pro} {\mathbb P}
+\newcommand{\Esp} {\mathbb E}
+
+\newcommand{\fonction}[5]{\begin{array}[t]{ccccc}
+#1: & #2 & \longrightarrow & #3 \\
+    & #4 & \longmapsto & #5 \end{array}}
+\newcommand{\fonctionb}[4]{\begin{array}[t]{ccccc}
+#1 & \longrightarrow & #2 \\
+#3 & \longmapsto & #4 \end{array}}
+\newcommand{\fonct}[3]{#1: #2 \longmapsto #3}
+
+\newcommand{\abs}[1]{\left\vert #1 \right\vert}
+\newcommand{\card}{\textrm{Card}}
+
+\let\vec\vv		% Redéfinitions pour utiliser le package esvect dans tous les cas
+\let\vecc\vv
+
+\newcommand{\Oij}{\ensuremath{\left(\text{O};\vec{i};\vec{j}\right)}\xspace}
+%\newcommand{\vecc}[1] {\overrightarrow{#1}}
+
+% Gras dans titres en mode math
+
+\g@addto@macro\bfseries{\boldmath}
+\SetSymbolFont{stmry}{bold}{U}{stmry}{m}{n}
+
+% Commandes cours
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\author{}
+\date{}
+
+\newcommand{\seconde}{2\textsuperscript{nde}}
+\newcommand{\premiere}{1\textsuperscript{ère}}
+
+\newcommand{\fakeitem}{\textemdash \ }
+
+% Compo
+
+\newlength{\colG}\newlength{\colD}
+
+\newlength{\composep}
+\setlength{\composep}{10pt}
+
+\newcommand{\compobase}[5]{%
+\setlength{\colG}{#3\linewidth}\setlength{\colD}{\linewidth}%
+\addtolength{\colD}{-\colG}\addtolength{\colD}{-#1}%
+\addtolength{\colG}{-#1}%
+\par\noindent%
+\begin{minipage}[#2]{\colG}\vspace{0pt}%
+#4\end{minipage}\hfill%	%vspace=hack pour des problèmes d'alignement qui aparaissent avec compohaut
+\begin{minipage}[#2]{\colD}\vspace{0pt}%
+#5\end{minipage}\par}
+
+
+\newcommand{\compo}[3][0.5]{\compobase{\composep}{c}{#1}{#2}{#3}}
+\newcommand{\compohaut}[3][0.5]{\compobase{\composep}{t}{#1}{#2}{#3}}
+
+% Compo avec ligne séparatrice
+
+\newlength{\hauteurGauche} \newlength{\hauteurDroite} \newlength{\decalageLigne}
+\newsavebox{\partieGauche} \newsavebox{\partieDroite}
+
+\newcommand{\compolignebase}[5]{
+\setlength{\colG}{#3\linewidth}\setlength{\colD}{\linewidth}%
+\addtolength{\colD}{-\colG}\addtolength{\colD}{-#1}%
+\addtolength{\colG}{-#1}%
+\sbox{\partieGauche}{\begin{minipage}[#2]{\colG}\vspace{0pt}#4\end{minipage}}%
+\sbox{\partieDroite}{\begin{minipage}[#2]{\colD}\vspace{0pt}#5\end{minipage}}%
+\setlength{\hauteurGauche}{\ht\partieGauche} \setlength{\hauteurDroite}{\ht\partieDroite}%
+\addtolength{\hauteurGauche}{\dp\partieGauche} \addtolength{\hauteurGauche}{14pt}%
+\addtolength{\hauteurDroite}{\dp\partieDroite} \addtolength{\hauteurDroite}{14pt}%
+\par\noindent%
+\usebox{\partieGauche}%
+\setlength{\decalageLigne}{7pt}%
+\ifthenelse{\lengthtest{\hauteurGauche>\hauteurDroite}}%
+{\addtolength{\decalageLigne}{\dp\partieGauche} \hfill \rule[-\decalageLigne]{0.5pt}{\hauteurGauche} \hfill}%
+{\addtolength{\decalageLigne}{\dp\partieDroite} \hfill \rule[-\decalageLigne]{0.5pt}{\hauteurDroite} \hfill}%
+\usebox{\partieDroite}%
+\par
+}
+
+\newcommand{\compoligne}[3][0.5]{\compolignebase{\composep}{c}{#1}{#2}{#3}}
+\newcommand{\compolignehaut}[3][0.5]{\compolignebase{\composep}{t}{#1}{#2}{#3}}
+
+% Environnement centrer sans passage à la ligne
+
+\newenvironment{centrer}{\par \centering }{ \par}
+
+% Commandes sujets
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Lignes de points pour réponses
+
+\newlength{\enumitemindent} %Pour que les points soient sur toute la page. A voir en compo, le résultat semble ok car la minipage subit la marge
+\setlength{\enumitemindent}{0pt}
+\newcommand{\pointstretch}{1.5}
+\setlist{before={\addtolength{\enumitemindent}{\leftmargin}},after={\addtolength{\enumitemindent}{-\leftmargin}},font=\bfseries}% Mise à jour de la marge, addtolength ou setlength... (reculer d'une indentation ou de toutes) + mode bf (obligé de tout faire en même temps)
+\newcommand{\points}[2][\pointstretch]{\setstretch{#1}%
+\foreach \n in{1,...,#2}%
+{\noindent\hspace{-\enumitemindent}\strut\dotfill
+
+}
+}
+
+% Entete pour interros ( quand il en faut plusieurs en une page, imitation fancyhdr )
+
+\newcommand{\entete}[3]{
+\begin{centrer}
+\par\smallskip\noindent\parbox[t]{.149\textwidth}{\raggedright #1}%
+\parbox[t]{.7\textwidth}{\centering #2}%
+\parbox[t]{.149\textwidth}{\raggedleft #3}%
+
+\rule[3.3mm]{\textwidth}{0.4pt}
+\end{centrer}
+}
+
+% Centrer tabularx de base et ligne centrée Y
+
+\renewcommand\tabularxcolumn[1]{m{#1}}
+\newcommand{\tabularxgauche}{\renewcommand\tabularxcolumn[1]{p{##1}}}
+\newcommand{\tabularxcentrer}{\renewcommand\tabularxcolumn[1]{m{##1}}}
+\newcolumntype{Y}{>{\centering\arraybackslash}X}
+
+% Initialisation pgfplots, tikz et styles
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\pgfplotsset{ % Pas besoin de "styleglobal" en fait ... Important: ne pas faire xscale mais x post scale pour conserver la taille des ticks
+	compat=1.18,
+	styleglobal/.style={
+		%
+		% Taille et réglages globaux
+		%
+		height=\pgfkeysvalueof{/pgfplots/width}*(((\pgfkeysvalueof{/pgfplots/ymax})+((-1)*(\pgfkeysvalueof{/pgfplots/ymin})))/((\pgfkeysvalueof{/pgfplots/xmax})+((-1)*(\pgfkeysvalueof{/pgfplots/xmin}))))+0.1pt, %Hauteur auto en fonction des coordonnées et de l'échelle
+		scale only axis,							 %Pour bien tomber sur la grille
+		axis equal,
+		enlargelimits={0.001},
+		font=\footnotesize,
+		%		
+		% Axes
+		%
+		axis x line=bottom,
+		axis y line = left,
+		axis lines=middle,							% Axes dans le repère et pas au bord
+		axis line style={-{Stealth}},				% Plus grosse flèche
+		xlabel={$x$},
+		ylabel={$y$},
+		label style= {font=\tiny},
+		%
+		% Grille et graduations
+		%
+		minor x tick num=1,							 %Sous graduations
+		minor y tick num=1,
+		tick label style = {font=\scriptsize},
+		ticklabel shift=-2pt,
+		%xtick distance=1, 							%Graduations(finalement enlevé pour que de base ce soit automatique)
+		%ytick distance=1,
+		grid=both,
+		grid style={dash pattern=on 2.4pt off 1.6pt,line width=0.32pt,draw=black!30}, % Correspond à densely dashed un peu plus dense
+		minor grid style={line width=0.2pt,draw=black!20},
+		legend pos=north east,
+		%
+		% Evite des erreurs liées à des valeurs trop grandes (fonction inverse, exp...) Pas trouvé mieux pour l'instant...
+		%
+		domain=(\pgfkeysvalueof{/pgfplots/xmin}:\pgfkeysvalueof{/pgfplots/xmax}),	%Domaine de définition des fonctions à tracer
+		execute at begin axis={
+			\pgfmathsetmacro\yminetendu{\pgfkeysvalueof{/pgfplots/ymin}-1*(\pgfkeysvalueof{/pgfplots/ymax}-\pgfkeysvalueof{/pgfplots/ymin})}
+			\pgfmathsetmacro\ymaxetendu{\pgfkeysvalueof{/pgfplots/ymax}+1*(\pgfkeysvalueof{/pgfplots/ymax}-\pgfkeysvalueof{/pgfplots/ymin})}}, % Limites en ordonnées, calculs préalables. On va plus loin pour éviter que la courbe ne se coupe trop tôt.
+		%
+		%x=1pt,y=1pt, %Evite aussi les erreurs... Fonctionnement assez bizarre: la mise à l'échelle se fait après donc tous les calculs se font avec une base d'un pt par unité, ce qui évite d'atteindre des dimensions trop grandes
+	},
+	styleplot/.style={
+		samples=101,
+		smooth,
+		line width=1pt,
+		mark=none,
+		restrict y to domain={\yminetendu:\ymaxetendu}, %Limitation ordonnées pour éviter les erreurs
+	},
+	labelgros/.style={
+		label style= {font=\large},
+		tick label style = {font=\large}
+	},
+	hauteurproptick/.style={
+		height=\pgfkeysvalueof{/pgfplots/width}*((\pgfkeysvalueof{/pgfplots/xtick distance}/\pgfkeysvalueof{/pgfplots/ytick distance})*((\pgfkeysvalueof{/pgfplots/ymax})+((-1)*(\pgfkeysvalueof{/pgfplots/ymin})))/((\pgfkeysvalueof{/pgfplots/xmax})+((-1)*(\pgfkeysvalueof{/pgfplots/xmin}))))+0.1pt, % Repère non normé. Nécessite de régler xtick distance et ytick distance
+		axis equal=false,
+		enlargelimits=0.001,
+	},
+}
+
+\pgfkeys{/pgf/number format/use comma,/pgf/number format/.cd,1000 sep={\,}}
+
+\newcommand{\pointsextremites}{node[pos=0,stylepointextremites] {} node[pos=1,stylepointextremites] {}}
+
+\tikzset{
+	>=latex,
+	stylepoint/.style={
+		draw=black,			% couleur bord
+		color=black,
+		circle,
+		minimum size=1pt,	% ne sert à rien ici apparemment...
+		fill,
+		inner sep=1.8pt,	% taille intérieur
+		fill opacity=1,
+		semithick,			% epaisseur bord
+		%,line width=0.5pt	% épaisseur bord
+	},
+	stylepointextremites/.style={
+		circle,
+		minimum size=0.8pt,
+		fill,
+		inner sep=0.8pt,
+		fill opacity=1
+	},
+	stylegrille/.style={
+		step=1,
+		dash pattern=on 2.4pt off 1.6pt,
+		line width=0.32pt,
+		draw=black!30
+	},
+	stylevecteur/.style={
+		line width=1pt,
+		->,
+		>=latex,
+		cap=round
+	},
+	setupRepereTransformation/.style args={(#1,#2),(#3,#4)}{	% Pour les repères non orthonormés
+		cm={#1*cos(#2),#1*sin(#2),#3*cos(#2+#4),#3*sin(#2+#4),(0,0)},
+	},
+}
+
+% Pour agrandir des images tikz. Fait comme \resizebox mais sans agrandir le texte, l'épaisseur des traits...
+\edef\tikzscale{1}
+\tikzset{every picture/.append style={scale=\tikzscale}}%
+
+\newsavebox{\measure@tikzpicture}
+\NewEnviron{resizetikz}[1]{%
+  \def\tikz@width{#1}%
+  \def\tikzscale{1}\begin{lrbox}{\measure@tikzpicture}%
+  \BODY
+  \end{lrbox}%
+  \pgfmathparse{#1/\wd\measure@tikzpicture}%
+  \edef\tikzscale{\pgfmathresult}%
+  \BODY
+  \def\tikzscale{1}%
+}
+
+% Repères (Oij)
+
+\define@key{repere}{xmin}{\def\repere@xmin{#1}} % Définitions keys comme tikz
+\define@key{repere}{xmax}{\def\repere@xmax{#1}}
+\define@key{repere}{ymin}{\def\repere@ymin{#1}}
+\define@key{repere}{ymax}{\def\repere@ymax{#1}}
+%\savekeys{repere}{xmin,xmax,ymin,ymax}
+\presetkeys{repere}{xmin=-5,xmax=5,ymin=-5,ymax=5}{}
+
+% Les clés permettent d'avoir une syntaxe comme tikz: au lieu de faire \repereOij{xmin}{xmax}{ymin}{ymax}, on fait \repereOij[xmin=..xmax=..,ymin=..,ymax=..], dans le sens qu'on veut.
+
+%On pourra ajouter d'autres clés: origine=false, vecteursij=false pour supprimer les vecteurs i et j ou l'origine... On verra si c'est utile
+
+\newcommand{\repereOij}[1][]{
+\setkeys{repere}{#1}
+%Grille
+\draw[stylegrille] (\repere@xmin,\repere@ymin) grid (\repere@xmax,\repere@ymax);
+%Création des axes avec tkz-base
+\tkzInit[xmin=\repere@xmin,xmax=\repere@xmax,ymin=\repere@ymin,ymax=\repere@ymax]
+%On peut utiliser \tkzGrid pour la grille, mais la personnalisation est mal faite	
+\tkzSetUpAxis[ticka=3.5pt,tickb=3.5pt]	%Taille graduations
+\tkzDrawX[label={},right space=0pt,-]	%Axe X,pas de nombres,pas de flèche
+\tkzDrawY[label={},up space=0pt,-]	%Axe Y
+% Origine, vecteurs unité
+\coordinate[label={-135:{\scriptsize O}}] (O) at (0,0) {};	%Origine
+	\draw[stylevecteur,color=black!30!red] (0,0) -- (1,0) node[pos=0.5,below] {$\scriptstyle \vec i$};
+	\draw[stylevecteur,color=black!30!red] (0,0) -- (0,1) node[pos=0.5,left] {$\scriptstyle \vec j$};
+\clip (\repere@xmin,\repere@ymin) rectangle (\repere@xmax,\repere@ymax);
+}
+
+% Mémo tikz:
+% ultra thin=0.1pt
+% very thin=0.2pt
+% thin=0.4pt
+% semithick=0.6pt
+% thick=0.8pt
+% very thick=1.2pt
+% ultra thick=1.4pt
+
+%\raggedcolumns
+%\setlength{\columnseprule}{0.2pt}
+
+
+% Boites cours tcolorbox
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%Mise à jour dynamique de la couleur de fond
+%On pourra utiliser des couleurs comme red!10!bg ( 10% de rouge sur un fond de couleur bg )
+%Voir cours ensembles de nombres pour un exemple d'utilisation
+
+\colorlet{bg}{white}
+
+% Mise à jour dynamique de la couleur de textbf
+
+\colorlet{bfcolor}{black}
+\newcommand{\colorfadebg}{15}
+\tcbset{
+	styleboite/.style={
+		frame hidden,
+		boxrule=0pt,
+		boxsep=0pt,
+		enlarge bottom by=0pt,
+		enhanced jigsaw,
+		%boxed title style={sharp corners,boxrule=0pt,coltitle={white},titlerule=0pt},
+		fonttitle=\bfseries\boldmath,
+		top=10pt,
+		right=10pt,
+		bottom=10pt,
+		left=10pt,
+		sharp corners,
+		breakable,
+		% Je n'ai pas encore totalement compris comment ça marche... Ca change la manière dont l'espace avant/après est fait, et visiblement les sections sont mieux réparties(pas de section en bas de page)
+		%beforeafter skip balanced=0pt,
+		%nobeforeafter,		
+		%after skip=0.5\baselineskip plus 2pt,
+	},
+	styleraster/.style={			% Pour aligner des tcbox sur une ligne
+		raster every box/.append style={breakable=false},			% Ne marche pas sans ça
+		raster columns=2,			% Nombre de tcbox par ligne
+		raster equal height,		% Même hauteur
+		raster column skip=10pt		% Ecartement horizontal
+	},
+}
+
+\newcommand{\deftcbUn}[6][10]{
+\definecolor{#2-titre}{Hsb}{#4,#5,#6}
+\colorlet{#2}{#2-titre!#1}
+\newtcolorbox{#2}[1][]{	
+	styleboite,
+	% Couleurs
+	colback=#2,
+	colbacktitle=#2-titre,	
+	borderline west={1pt}{0pt}{#2-titre},
+	% Titre
+	title={\strut\MakeUppercase{#3}\ifstrempty{##1}{}{ (##1)}},
+	boxed title style={ % Style titre (texte blanc par défaut)
+			boxrule=0pt,	% Pas de bordures
+			sharp corners,	% Coins non arrondis
+			boxsep=0pt,		% Bordures additionnelles
+			height=20pt,	% Hauteur boite titre
+			left=10pt,
+			right=10pt,			
+			bottom=1.5pt,
+			valign=bottom,
+	},
+	attach boxed title to top left={yshift*=-\tcboxedtitleheight}, % Décalage texte
+	% Redéfinitions couleurs pour commandes externes
+	before upper={\colorlet{bg}{#2} \definecolor{bfcolor}{Hsb}{#4,0.75,0.15}},
+	after upper={\colorlet{bg}{white} \colorlet{bfcolor}{black}},
+}
+}
+
+\newcommand{\deftcb}[6][10]{ % Pour définir tous les types de thm en une ligne: voir options
+\deftcbUn[#1]{#2}{#3}{#4}{#5}{#6}
+\deftcbUn[#1]{#2s}{#3s}{#4}{#5}{#6}
+}
+
+\definecolor{remq-titre}{Hsb}{50,0.8,0.8}
+\colorlet{remq}{remq-titre!10}
+\newtcolorbox{remq}{
+	styleboite,
+	colback=remq,
+	colframe=remq-titre,
+	hbox,
+	flush right,
+	right=4pt,
+	left=4pt,
+	top=7pt,
+	bottom=7pt,
+	borderline west={2pt}{-2pt}{remq-titre},
+	before upper={\colorlet{bg}{remq} \definecolor{bfcolor}{Hsb}{50,0.75,0.15}},
+	after upper={\colorlet{bg}{white} \colorlet{bfcolor}{black}},
+}
+
+\definecolor{fait-titre}{Hsb}{0,0,0.6} % Quand un résultat n'est pas vraiment catégorisé: intro d'une partie...
+\colorlet{fait}{fait-titre!10}
+\newtcolorbox{fait}[1][fait]{ % Option = couleur à prendre ( mettre nom de thm )
+	styleboite,
+    top=5pt,
+    bottom=5pt,
+	colback={#1},
+	borderline west={1pt}{0pt}{#1-titre},
+}
+
+\newcounter{compteurenonce}   % Pour des noms d'énoncés rares, a voir selon option cours
+
+% Redéfinitions tableaux de signes
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Note: makeatletter / makeatother inutile dans un sty ou cls
+
+\def\tkzTabDefaultBackgroundColor{bg}
+
+% Changement style ligne pour zéros, prendre tout le bloc avec xpatch ne marche pas donc solution un peu moche mais fonctionnelle
+
+\xpatchcmd{\tkzTabLine}
+{
+\ifthenelse{\equal{\expandafter\stripspaces\expandafter{\x}}{z}}%
+}
+{
+\ifthenelse{\equal{\expandafter\stripspaces\expandafter{\x}}{z}}{\tikzset{t style/.append style = { style = solid }}}{}
+\ifthenelse{\equal{\expandafter\stripspaces\expandafter{\x}}{z}}
+}
+{}{}
+
+%\tikzset{t style/.style={style=densely dotted,draw=\tkzTabDefaultWritingColor}}
+
+\xpatchcmd{\tkzTabLine}
+{
+\node at (Z\thetkz@cnt@impair\thetkz@cnt@lg){$0$}; 
+} % search
+{
+\node[fill=black,line width=0.5pt,draw=black,circle,minimum size=7pt,inner sep=2pt,xscale=0.93,yscale=1.3] at (Z\thetkz@cnt@impair\thetkz@cnt@lg){};
+\node[fill=\tkzTabDefaultBackgroundColor,line width=0.5pt,draw=\tkzTabDefaultBackgroundColor,circle,minimum size=7pt,inner sep=2pt,xscale=0.7,yscale=1.18] at (Z\thetkz@cnt@impair\thetkz@cnt@lg){};
+\tikzset{t style/.style = {style      = \cmdTAB@TTS@tstyle,
+                           draw       = \cmdTAB@TTS@tcolor,
+                           line width = \cmdTAB@TTS@twidth}} % Bizaremment, ça remet à zéro tout seul le style donc ligne inutile ...
+}  % replace
+{}{}
+
+% Augmentation espacement pour double ligne
+
+\tikzset{double style/.append style = {double distance=1pt}}
+
+
+%%% Algorithmique
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% algoption nécessaire: Dans multicol il faut un H mais il est interdit en twocolumn ...
+
+\newcommand{\algoption}{H}
+\AtBeginEnvironment{multicols}{\renewcommand{\algoption}{H}}
+\AtBeginEnvironment{multicols*}{\renewcommand{\algoption}{H}}
+
+\setlength\columnsep{20pt}
+\newcounter{algonum}
+\SetKwInput{debutalgofix}{\rule[-7pt]{0pt}{5pt} \addtocounter{algonum}{1} \ \ \normalfont{\underline{Algorithme \thealgonum}}}
+\SetKwInput{debutalgofixetoile}{\rule[-7pt]{0pt}{5pt} \ \ \normalfont{\underline{Algorithme}}}
+\SetKwProg{algofonction}{Procédure}{:}{}
+\SetArgSty{normalfont}
+\renewcommand{\emph}[1]{#1}
+\newenvironment{algorithme}
+{
+\vspace{5pt}
+\begin{algorithm}[\algoption]
+	\debutalgofix
+	
+}
+{
+\end{algorithm}
+}
+
+\SetAlgoSkip{5pt}
+
+\newenvironment{algorithme*}
+{
+\vspace{5pt}
+\begin{algorithm}[\algoption]
+	\debutalgofixetoile
+	
+}
+{
+\end{algorithm}
+}
+
+% Options
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%
+%Si on a l'option cours, tous les thm apparaissent dans des tcolorbox. Sinon on utilise ntheorem (TD et sujets)
+%Si on a l'option élève, on doit désactiver la commande rem sauf si option eleve dans la remarque( remarques perso dans le cours ), on a besoin de tester si elle est présente pour faire un si-sinon
+% Option minted pour éviter de créer plein de dossiers inutilement
+% Option NB pour rendre le fond des boites plus clair (pour l'impression)
+
+%
+%	Si cours alors boites tcolorbox
+%		Si eleve alors désactiver les rmq perso sauf cas particuliers
+%	Sinon
+%	Définir styles ntheorem classiques pour TD/Sujets
+%		Selon TD ou sujet changer les marges et l'entête
+%	Si minted alors charger le package
+%	Si NB alors réduire opacité des fonds tcolorbox
+%
+
+\definecolor{titre}{HTML}{912c21}
+\definecolor{section}{HTML}{1c567d}
+\definecolor{subsection}{HTML}{2673a6}
+\definecolor{subsubsection}{HTML}{2f90d0}
+	
+%\newcounter\exo
+%\definecolor{question-titre}{Hsb}{120,0.8,0.58}
+%\colorlet{question}{question-titre!8}
+%\newtcolorbox{#2}[1][]{	
+%	styleboite,
+%	% Couleurs
+%	colback=question,
+%	colbacktitle=question-titre,	
+%	borderline west={1pt}{0pt}{question-titre},
+%	% Titre
+%	title={\strut\MakeUppercase{Question} \the\exo\stepcounter\exo},
+%	boxed title style={ % Style titre (texte blanc par défaut)
+%			boxrule=0pt,	% Pas de bordures
+%			sharp corners,	% Coins non arrondis
+%			boxsep=0pt,		% Bordures additionnelles
+%			height=20pt,	% Hauteur boite titre
+%			left=10pt,
+%			right=10pt,			
+%			bottom=1.5pt,
+%			valign=bottom,
+%	},
+%	attach boxed title to top left={yshift*=-\tcboxedtitleheight}, % Décalage texte
+%}	
+
+  
+  	% Si fourier-otf, retirer le changement de police+Huge+enlever bf
+
+	\newcommand{\titre}[1]{\title{#1} \maketitle}
+	
+	% Template: \deftcb{identifiant}{Nom}{Teinte}{Saturation}{Luminosité} ( Modèle HSB )
+%	\deftcb{defin}{Définition}{211}{0.8}{0.75}
+%	\deftcb{thm}{Théorème}{0}{0.8}{0.75}
+%	\deftcb{prop}{Proposition}{15}{0.8}{0.75}
+%	\deftcb[8]{ex}{Exemple}{120}{0.8}{0.58}
+%	\deftcb[8]{cex}{Contre-exemple}{120}{0.8}{0.58}
+%	\deftcb{rmq}{Remarque}{211}{0.8}{0.75}
+%	\deftcb{caspart}{Cas particulier}{211}{0.8}{0.75}
+%	\deftcb{cor}{Corollaire}{211}{0.8}{0.75}
+%	\deftcb{app}{Application}{211}{0.8}{0.75}
+%	\deftcb{propr}{Propriété}{211}{0.8}{0.75}
+%	\deftcb{methode}{Méthode}{211}{0.8}{0.75}
+%	\deftcb{exercice}{Exercice}{210}{0.6}{0.7}
+	
+
+	\newenvironment{enonce}[1]{
+	\deftcbUn{enonce\thecompteurenonce}{#1}{211}{0.8}{0.75}
+	\begin{enonce\thecompteurenonce}}
+	{\end{enonce\thecompteurenonce} \refstepcounter{compteurenonce}}
+	
+	\deftcbUn{tcolor-programme}{Programme}{0}{0.8}{0.75}	
+	\deftcbUn{tcolor-deroule}{Déroulé}{0}{0.8}{0.75}
+	
+	\NewDocumentEnvironment{programme}{b}{\vspace{-2em}\begin{tcolor-programme}\setstretch{0.75}{\footnotesize{\begin{itemize}[align=left,leftmargin=8pt,labelwidth=10pt,itemindent=10pt]#1\end{itemize}}}\end{tcolor-programme}}{\par}
+	\NewDocumentEnvironment{deroule}{b}{\begin{tcolor-deroule}\setstretch{0.75}{\footnotesize{\begin{itemize}[align=left,leftmargin=8pt,labelwidth=10pt,itemindent=10pt]#1\end{itemize}}}\end{tcolor-deroule}}{\par}
+	
+	\renewcommand{\textbf}[1]{{\color{bfcolor}\TextOrMath{{\bfseries #1}}{\mathbf{#1}}}}
+	
+	% Le but est d'ignorer tout ce qui vient après la commande dans le fichier cours pour pouvoir avoir des cours partiels. La commande prend son sens avec l'option eleve.
+	\newcommand{\progres}{}
+	
+	% Remarques perso	
+	
+	\newcommand{\rembase}[1]{\begin{remq} \begin{tabulary}{0.5\linewidth}{>{$\blacktriangleright$ \ }L} #1 \end{tabulary} \end{remq}}
+	\NewDocumentEnvironment{remsbase}{b}{\begin{remq} \begin{tabulary}{0.5\linewidth}{>{$\blacktriangleright$ \ }L} #1 \end{tabulary} \end{remq}}{\par}	
+	
+	\newcommand{\rem}[2][]{\rembase{#2}}
+	\NewDocumentEnvironment{rems}{ob}{\begin{remsbase}#2\end{remsbase}}{\par}
+	
+% Spécificités beamer
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcounter{question}
+\NewEnviron{question}{%
+	\stepcounter{question}%
+	\begin{frame}%
+		\frametitle{Question \thequestion}%
+		\BODY%
+	\end{frame}%
+}
