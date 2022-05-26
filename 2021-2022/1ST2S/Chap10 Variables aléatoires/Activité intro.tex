@@ -1,0 +1,74 @@
+\documentclass[12pt,a4paper,french] {article}
+
+\pagestyle{empty}
+
+\usepackage[TD]{../../Style}
+
+\renewcommand{\baselinestretch}{1.25}
+\renewcommand{\arraystretch}{1.2}
+\setlength{\columnsep}{2cm}
+
+\begin{document}
+
+\titre{Le jeu d'Albert}
+
+%Vidéo : https://youtu.be/poABWE2kNdo (Chat sceptique : La loi des grands nombres)
+
+Albert propose un jeu à ses amis: Chaque joueur lance deux dés équilibrés à quatre faces et additionne les résultats. Ensuite:
+\begin{itemize}
+    \item Si la somme est paire, le joueur remporte la valeurs des dés en euros.
+    \item Si la somme est impaire, le joueur perd 5 euros.
+\end{itemize}
+
+On veut déterminer si le jeu vaut la peine d'être joué.
+
+\begin{enumerate}
+\item \begin{enumerate}
+\item Remplir le tableau suivant avec les résultats de l'expérience:
+
+\begin{center} 
+\begin{tabularx}{0.9\linewidth}{|*5{Y|}} \hline
+    Somme & 1 & 2 & 3 & 4 \\ \hline 
+    1 & & & & \\ \hline 
+    2 & & & & \\ \hline 
+    3 & & & & \\ \hline
+    4 & & & & \\ \hline
+\end{tabularx}
+\end{center}
+
+\item On note $X$ la somme obtenue. Remplir le tableau suivant.
+\begin{center}
+    \begin{tabularx}{0.9\linewidth}{|>{\centering\arraybackslash}m{3cm}|*{7}{Y|}} \hline 
+       $X= \ldots $ &2&3&4&5&6&7&8 \\ \hline
+       Nombre de possibilités &&&&&&& \\ \hline
+       Probabilité que $X = \ldots$ &&&&&&&\\ \hline
+    \end{tabularx}
+\end{center}
+
+\item Quel est la probabilité de gagner des jetons au jeu d'Albert ?
+
+\end{enumerate}
+
+\item L'espérance mathématique d'une variable aléatoire se calcule en multipliant la valeur de chaque issue (Gains) par sa probabilité (Probabilité) et d'additionner les résultats. Elle correspond à la valeur moyenne prise par la variable aléatoire.
+
+\begin{enumerate}
+\item Remplir (encore) le tableau.
+
+\begin{center}
+    \begin{tabular}{|p{3cm}|p{0.5cm}|p{0.5cm}|p{0.5cm}|p{0.5cm}|p{0.5cm}|p{0.5cm}|p{0.5cm}|p{0.5cm}|p{0.5cm}|p{0.5cm}|p{0.5cm}|p{0.5cm}|p{0.5cm}|}
+    \hline 
+       Nombre obtenu &2&3&4&5&6&7&8&9&10&11&12 \\ 
+    \hline 
+       Probabilité$\times$gain &\rule{0pt}{20pt}  &&&&&&&&&&\\
+    \hline 
+    
+    \end{tabular}
+\end{center}
+
+\item Calculer l'espérance de cette expérience.
+
+\vspace{2cm}
+\item Répondre à la question initiale.
+\end{enumerate}
+\end{enumerate}
+\end{document}

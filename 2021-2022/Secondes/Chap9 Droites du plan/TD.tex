@@ -1,175 +1,205 @@
-\documentclass[,a4paper,12pt,french]{article}
+\documentclass[twocolumn,landscape,a4paper,12pt,french]{article}
 
 \usepackage[TD]{../../Style}
 
 \pagestyle{empty}
 
+\setlength{\columnsep}{2cm}
+
 % Début du document
 %%%%%%%%%%%%%%%%%%%
 \begin{document}
 
-\titre{Fonctions affines - Exercices}
+\titre{Droites du plan}
 
-\begin{multicols*}{2}
-\begin{exercice}
-Parmi les fonctions suivantes, lesquelles sont des fonctions affines? Identifier $a$ et $b$ dès que possible.
-
-\begin{centrer}
-$ f:x \mapsto 3x-2 \hfill g:x \mapsto x^2 \hfill h:x \mapsto 1$
-
-$\hfill i:x \mapsto \frac 1 x + 1 \hfill$
-\end{centrer}
-\end{exercice}
-
-\begin{exercice} \label{exorep} \ 
-
-Associer aux trois droites ci-dessous la fonction affine qui leur est associée parmi les suivantes:
-
-\begin{centrer}
-$f:x \mapsto 2x \ , \ g:x \mapsto -0.5x+2 \ , \ h:x \mapsto \frac x 5 +1$
-\end{centrer}
-
-\begin{centrer}
-\begin{tikzpicture}
-\begin{axis}[
-styleglobal,
-width=0.95*\linewidth,
-xmin=-3, xmax=9,
-ymin=-2, ymax=4,
-xtick distance=1,
-ytick distance=1,
-]
-\addplot[styleplot,domain=(-9:9)]{2*x};
-\addplot[color=red,styleplot,densely dashed,domain=(-9:9)]{-0.5*x+2};
-\addplot[color=blue,styleplot,densely dotted,domain=(-9:9)]{0.2*x+1};
-\end{axis}
-\end{tikzpicture}
-\end{centrer}
-
-\end{exercice}
-
-\begin{exercice}
-Représenter sur un même repère les droites d'équation $y=3x-1$ et $y=3-\frac 1 3 x$, puis déterminer graphiquement les coordonnées de leur point d'intersection.
-
-\begin{centrer}
-\begin{tikzpicture}
-\begin{axis}[
-styleglobal,
-width=0.95*\linewidth,
-xmin=-3, xmax=9,
-ymin=-2, ymax=4,
-xtick distance=1,
-ytick distance=1,
-]
-\end{axis}
-\end{tikzpicture}
-\end{centrer}
-\end{exercice}
-
-\begin{exercice}
-Représenter sur un même repère les droites suivantes:
-\begin{itemize}
-\item $d_1$ passant par $A(0;-1)$ et de coefficient directeur $1$
-\item $d_2$ passant par $B(-3;2)$ et de coefficient directeur $-2$
-\item $d_3$ passant par $C(-1;1)$ et de coefficient directeur $\frac 1 2$
-\end{itemize}
-\end{exercice}
-
-\begin{exercice}
-Trouver l'équation réduite de chaque droite:
-
-\begin{centrer}
-\begin{tikzpicture}
-\begin{axis}[
-styleglobal,
-width=0.95*\linewidth,
-xmin=-3, xmax=9,
-ymin=-2, ymax=4,
-xtick distance=1,
-ytick distance=1,
-%major grid style={line width=1pt},
-]
-\addplot[styleplot,domain=(-1:3)]{3*x-0.5} node[pos=0.55,right] {$d_1$};
-\addplot[color=red,styleplot,densely dashed,domain=(-9:9)]{0.25*x+2} node[pos=0.9,below] {$d_2$};
-\addplot[color=blue,styleplot,densely dotted,domain=(-9:9)]{-0.5*x+1} node[pos=0.8,above right] {$d_3$};
-\end{axis}
-\end{tikzpicture}
-\end{centrer}
-\end{exercice}
-
-\begin{exercice}
-Par lecture graphique, retrouver les équations des trois droites de l'exercice \ref{exorep}.
-\end{exercice}
-
-\begin{exercice}
-Déterminer l'équation réduite des droites suivantes:
-\begin{itemize}
-\item $d_1$ qui passe par $A_1(0;1)$ et $B_1(2;5)$
-\item $d_2$ qui passe par $A_2(-3;5)$ et $B_2(1;-7)$
-\item $d_3$ qui passe par $A_3(2;0.5)$ et $B_3(-1;-1)$
-\end{itemize}
-\end{exercice}
-
-\begin{exercice}
-Dresser le tableau de signes des fonctions affines suivantes:
-
-\begin{centrer}
-$f:x \mapsto 3x-2 \hfill g:x \mapsto 2-5x \hfill h:x \mapsto \frac 1 2 + 4x$
-
-$\hfill i:x \mapsto -(x-4)+3x-1 \hfill j:x \mapsto \frac x 4 - \frac 2 3 \hfill$
-\end{centrer}
-\end{exercice}
-
-\begin{exercice}
-Dresser le tableau de signes de \\ $f:x \mapsto (x-1)(2+x)$:
-
-\begin{center}
-\begin{tikzpicture}
-\tkzTabInit[lgt=1.2]{$x$ /1, $x-1$/1, $2+x$/1,$f(x)$/1}{,,}
-\end{tikzpicture}
-\end{center}
-\end{exercice}
-
-\begin{exercice}
-Dresser le tableau de signes des fonctions:
-\begin{itemize}
-\item $f:x \mapsto 3(2x-4)(3x+6)$
-\item $g:x \mapsto -2(3x-5)(4-8x)$
-\end{itemize}
-\end{exercice}
-
-\end{multicols*}
-
-\foreach{\i} in {0,1} {\vfill
-\setcounter{exercice}{0}
-\begin{exercice}
-Le tarif de stationnement en centre ville (payant de 8h à 18h) en centimes d'euros est donné à la minute par:
-\begin{itemize}
-\item 2 centimes par minute pendant la première heure
-\item 4 centimes par minute pour la deuxième et la troisième heure
-\item 1 centime par minute de la quatrième à la dixième heure.
-\end{itemize}
-On note $t$ le temps de stationnement en heures et $f(t)$ le tarif correspondant en euros.
+\begin{exercice} \
 \begin{enumerate}
-\item Montrer que:
-$$f(t)=\left\{ \begin{matrix}
-1,2t & \text{si} & 0 \leq t \leq 1 \\
-2,4t-1,2 & \text{si} & 1 \leq t \leq 3 \\
-0,6t+4,2 & \text{si} & 3 \leq t \leq 10 \end{matrix} \right.$$
-\item Représenter graphiquement $f$.
-\item Déterminer par le calcul de combien de temps de stationnement on dispose pour 5 \euro{}.
+    \item Soit $\mathscr{D}$ la droite passant par $A(1;-1)$, de vecteur directeur $\vv u \dbinom {-4}{-3}$.
+    
+    Déterminer une équation cartésienne de $\mathscr{D}$.
+    
+    \item Soit $\mathscr{D'}$ la droite d'équation $y=-2x+1$.
+    
+    Déterminer un vecteur directeur $\vv{v}$ de $\mathscr{D'}$. Était-ce prévisible?
+\end{enumerate}
+\end{exercice}
+
+\begin{exercice} \
+\begin{enumerate}
+    \item Soit $\mathscr{D}$ la droite passant par $A(4;2)$ et de vecteur directeur $\vv u \dbinom {1}{-3}$.
+    
+    Déterminer une équation cartésienne de $\mathscr{D}$.
+    
+    \item Soit $\mathscr{D'}$ la droite d'équation cartésienne $3x-1,5y+1=0$.
+    
+    Le vecteur $\vv v \dbinom {-4,5}{-9}$ est-il un vecteur directeur de $\mathscr{D'}$ ?
+\end{enumerate}
+\end{exercice}
+
+\compo[0.6]
+{
+\begin{exercice}
+Déterminer une équation cartésienne de la droite $(AB)$ avec:
+\begin{enumerate}
+\item $A(5;1)$ et $B(7;-2)$
+\item $A(-3;-2)$ et $B(1;1)$
 \end{enumerate}
 \end{exercice}
 
 \begin{exercice}
-Soit $m \in \R$ et $f:x \mapsto (m-2)x+2m$. Déterminer la ou les valeurs de $m$ dans chaque cas:
+Dans le repère ci-contre, tracer les droites $\mathscr D_1$ et $\mathscr D_2$ d'équations cartésiennes respectives:
 \begin{enumerate}
-\item $f$ est une fonction linéaire
-\item $f(3)=1$
-\item $f$ est négative uniquement sur $]3;+\infty[$
-\item $f$ est une fonction constante
-\item $f(-2)=4$
+\item $\mathscr D_1: x+3y+5=0$
+\item $\mathscr D_2: 5x+4y-2=0$
 \end{enumerate}
 \end{exercice}
 }
+{
+\begin{center}
+\begin{tikzpicture}
+\begin{axis}[
+styleglobal,
+width=0.9*\linewidth,
+xmin=-2, xmax=8,
+ymin=-6, ymax=6,
+xtick distance=1,
+ytick distance=1,
+minor x tick num=0,
+minor y tick num=0,
+]
+\end{axis}
+\end{tikzpicture}
+\end{center}
+}
+
+\begin{exercice}
+Résoudre dans $\R$ les systèmes suivants:
+
+$$
+S_1:
+\begin{cases}
+    -x-3y=7 \\
+    2x+y=4
+\end{cases}
+\qquad\qquad
+S_2:
+\begin{cases}
+    3x-5y=12 \\
+    4x+5y=-1
+\end{cases}
+$$
+
+$$
+S_3:
+\begin{cases}
+    2x+3y=6 \\
+    x-2y=10
+\end{cases}
+\qquad\qquad
+S_4:
+\begin{cases}
+    5x-2y=4 \\
+    4x+2y=15
+\end{cases}
+$$
+\end{exercice}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\setcounter{exercice}{0}
+\newpage
+\titre{Droites du plan}
+
+\begin{exercice} \
+\begin{enumerate}
+    \item Soit $\mathscr{D}$ la droite passant par $A(1;-1)$,de vecteur directeur $\vv u \dbinom {-4}{-3}$.
+    
+    Déterminer une équation cartésienne de $\mathscr{D}$.
+    
+    \item Soit $\mathscr{D'}$ la droite d'équation $y=-2x+1$.
+    
+    Déterminer un vecteur directeur $\vv{v}$ de $\mathscr{D'}$. Était-ce prévisible?
+\end{enumerate}
+\end{exercice}
+
+\begin{exercice} \
+\begin{enumerate}
+    \item Soit $\mathscr{D}$ la droite passant par $A(4;2)$ et de vecteur directeur $\vv u \dbinom {1}{-3}$.
+    
+    Déterminer une équation cartésienne de $\mathscr{D}$.
+    
+    \item Soit $\mathscr{D'}$ la droite d'équation cartésienne $3x-1,5y+1=0$.
+    
+    Le vecteur $\vv v \dbinom {-4,5}{-9}$ est-il un vecteur directeur de $\mathscr{D'}$ ?
+\end{enumerate}
+\end{exercice}
+
+\compo[0.6]
+{
+\begin{exercice}
+Déterminer une équation cartésienne de la droite $(AB)$ avec:
+\begin{enumerate}
+\item $A(5;1)$ et $B(7;-2)$
+\item $A(-3;-2)$ et $B(1;1)$
+\end{enumerate}
+\end{exercice}
+
+\begin{exercice}
+Dans le repère ci-contre, tracer les droites $\mathscr D_1$ et $\mathscr D_2$ d'équations cartésiennes respectives:
+\begin{enumerate}
+\item $\mathscr D_1: x+3y+5=0$
+\item $\mathscr D_2: 5x+4y-2=0$
+\end{enumerate}
+\end{exercice}
+}
+{
+\begin{center}
+\begin{tikzpicture}
+\begin{axis}[
+styleglobal,
+width=0.9*\linewidth,
+xmin=-2, xmax=8,
+ymin=-6, ymax=6,
+xtick distance=1,
+ytick distance=1,
+minor x tick num=0,
+minor y tick num=0,
+]
+\end{axis}
+\end{tikzpicture}
+\end{center}
+}
+
+\begin{exercice}
+Résoudre dans $\R$ les systèmes suivants:
+
+$$
+S_1:
+\begin{cases}
+    -x-3y=7 \\
+    2x+y=4
+\end{cases}
+\qquad\qquad
+S_2:
+\begin{cases}
+    3x-5y=12 \\
+    4x+5y=-1
+\end{cases}
+$$
+
+$$
+S_3:
+\begin{cases}
+    2x+3y=6 \\
+    x-2y=10
+\end{cases}
+\qquad\qquad
+S_4:
+\begin{cases}
+    5x-2y=4 \\
+    4x+2y=15
+\end{cases}
+$$
+\end{exercice}
+
 \end{document}

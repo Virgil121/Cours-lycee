@@ -1,33 +1,75 @@
-\documentclass[a4paper,french,12pt]{article} % Overleaf ne compile pas sans ça ...
-% Les deux lignes suivantes suffisent dans texmaker
+\documentclass[a4paper,french,12pt]{article}
 \usepackage{titling}
-\usepackage{anyfontsize}
 \usepackage{sectsty}
+%\usepackage[toctitles]{titlesec}
 \usepackage[eleve,cours]{../../Style}
-\usetikzlibrary{calc}
-\usepackage{anyfontsize}
 \usepackage[subpreambles=false]{standalone}
+\usepackage{anyfontsize}
+%\PassOptionsToPackage{toctitles}{titlesec}
+\usepackage{titletoc}
+\usepackage[linktoc=all,hypertexnames=false]{hyperref}
 
-\renewcommand{\progres}{}
 
-\newcommand{\entre}{\setcounter{section}{0}\newpage}
-\setcounter{tocdepth}{0}
+\renewcommand{\progres}{} % Commande progrès termine le document en version élève, on en veut pas ici
 
-\newcommand{\chap}[2][]{%
-\addcontentsline{toc}{chapter}{#1}
-\input{#2}
-\entre
+
+% CODE TRES MOCHE A REVOIR - toc
+%%%%%%%%%%%%%%%%%
+
+\setcounter{tocdepth}{1} % Voir chapitres et sections, pas plus loin
+\newcounter{chapitre}
+
+\makeatletter
+
+\renewcommand\tableofcontents{%
+	\titre{Table des matières} % Titre
+	\thispagestyle{empty} % Enlever numéro page
+    \@starttoc{toc}%
+    \setcounter{page}{0} % Remettre page à 0 ( commencera à 1 )
+    \preto\@maketitle{
+    	\refstepcounter{part}%
+    	\phantomsection%
+    	\addcontentsline{toc}{part}{\@title}} % Modifie commande titre après pour mettre une ref
+}
+\makeatother
+
+% Styles toc
+\def\stylepart{\fontfamily{cmr}\fontseries{bx}\selectfont\large\scshape\color{section}}
+
+\titlecontents{part}%
+{\ifthenelse{\equal{\value{chapitre}}{0}}{}{\vfill}\stylepart}%{\vspace{5mm}\normalfont\large\bfseries\color{section}}%
+{}%
+{Chapitre \stepcounter{chapitre}\Roman{chapitre}.\ }%
+%{\makebox[\longueurchap][l]{Chapitre \stepcounter{chapitre}\Roman{chapitre}.}}%
+{\dotfill \contentspage}%[{\color{gray}\hrule}] % Gros hack pour afficher le chapitre... % Tester \ref{page.\thecontentspage}
+
+\titlecontents{section}%
+{\normalfont\bfseries\color{subsection}}%
+{\hspace{0.1\linewidth}\thecontentslabel\ - }%
+{\hspace{0.08\linewidth}}%
+{\hfill \contentspage}%[{\color{gray}\hrule}]
+
+%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\chap}[1]{%
+%\addcontentsline{toc}{part}{#1}
+\input{#1}
+\setcounter{section}{0}\newpage
 }
 
 \begin{document}
 \thispagestyle{empty}
 \include{Cover}
-\setcounter{page}{1}
-\chap[Proportions, variations et pourcentages]{../Chap1 Proportions Variations/cours}
-\chap[Fonctions: Généralités]{../Chap2 Généralités fonctions/cours v2}
-\chap[Suites: Généralités]{../Chap3 Généralités Suites/cours}
-\chap[Fonctions affines]{../Chap4 Fonctions affines/cours}
-\chap[Fonctions polynômiales de degré 2]{../Chap5 Fonctions polynomiales de degré 2/cours v4}
-\chap[Suites arithmétiques et géométriques]{../Chap6 Suites arithmétiques géométriques/cours}
-\chap[Dérivation: Point de vue local]{../Chap7 Dérivation locale/cours}
+%
+\tableofcontents
+%
+\chap{../Chap1 Proportions Variations/cours}
+\chap{../Chap2 Généralités fonctions/cours v2}
+\chap{../Chap3 Généralités Suites/cours}
+\chap{../Chap4 Fonctions affines/cours}
+\chap{../Chap5 Fonctions polynomiales de degré 2/cours v4}
+\chap{../Chap6 Suites arithmétiques géométriques/cours}
+\chap{../Chap7 Dérivation locale/cours}
+\chap{../Chap8 Probas conditionnelles/cours}
+\chap{../Chap9 Dérivation globale/cours}
 \end{document}

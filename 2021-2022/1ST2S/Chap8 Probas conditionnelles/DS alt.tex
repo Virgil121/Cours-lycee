@@ -1,0 +1,243 @@
+\documentclass[a4paper,12pt,french]{article}
+
+\usepackage[sujet]{../../Style}
+
+\fancyhead[L]{18/05/2022}
+\fancyhead[C]{\textbf{DS8: Conditionnement et dérivation}}
+\fancyhead[R]{\premiere ST2S 2}
+
+\renewcommand{\arraystretch}{1.8}
+% Début du document
+%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+\rem{L'usage de la calculatrice est autorisé. La propreté et l'orthographe seront prises en compte.\\ \textbf{Des phrases de réponse sont exigées dans les exercices 1 et 2!}}
+
+\setstretch{1.2}
+
+\begin{exercice}
+Une cheffe d'entreprise souhaite augmenter son influence à l'international. Elle s'intéresse donc à ses employés parlant anglais.
+
+Une enquête a été menée auprès de l'ensemble des 300 salariés afin de connaitre leur niveau, selon leur statut. Les résultats sont consignés dans le tableau suivant:
+
+\begin{center}
+    \begin{tabularx}{\linewidth}{|c|Y|Y|Y|}
+         \cline{2-4} \multicolumn{1}{c|}{}
+         &Cadres&Employés&Total  \\ \hline
+         Parlent anglais&40&18&58  \\ \hline 
+         Ne parlent pas anglais&80&162&242 \\ \hline 
+         Total&120&180&300 \\ \hline
+    \end{tabularx}
+\end{center}
+
+\begin{enumerate}
+\item Quelle est la proportion, en pourcentage, de cadres parlant anglais?
+
+\points 4
+
+\item Calculer la fréquence marginale de salariés ne parlant pas anglais dans l'entreprise.
+
+\points 4
+
+\item Quel type de personnel est le plus à l'aise en anglais?
+
+\points 3
+
+\item Calculer la fréquence conditionnelle des employés parmi les personnes ne parlant pas anglais dans l'entreprise.
+
+\points 4
+
+\end{enumerate}
+\end{exercice}
+
+\newpage
+
+\begin{exercice}
+Une enquête a été menée auprès des 350 élèves de Première dans un lycée normand. Les résultats sont les suivants:
+\begin{itemize}
+\item Parmi les 291 élèves faisant moins de 1,8m, 121 sont des garçons.
+\item Il y a 193 filles en tout.
+\end{itemize}
+
+\begin{enumerate}
+
+\item Compléter le tableau croisé d'effectifs ci-dessous: \textit{On notera les calculs effectués sous le tableau}
+\begin{center}
+    \begin{tabularx}{\linewidth}{|c|Y|Y|Y|}
+    \cline{2-4} \multicolumn{1}{c|}{}
+         &Filles&Garçons&Total  \\ \hline
+         Moins de 1,8m&&121&291  \\ \hline 
+         Plus de 1,8m&&& \\ \hline 
+         Total&193&& \\ \hline
+    \end{tabularx}
+\end{center}
+
+\points 5
+
+On choisit un élève de Première au hasard et on l'interroge sur sa taille.
+
+\item Déterminer la probabilité de sélectionner une fille qui mesure plus de 1,8m.
+
+\points 3
+
+\item Calculer la probabilité que l'élève interrogé soit une fille sachant qu'il mesure moins de 1,8m.
+
+\points 3
+
+\item On considère les évènements suivants:
+\begin{itemize}
+\item F: \og L'élève est une fille \fg ;
+\item T: \og L'élève mesure plus de 1,8m \fg .
+\end{itemize}
+
+\begin{enumerate}
+\item Calculer $\Pro(T)$ et interpréter ce résultat dans le contexte de l'énoncé.
+
+\points 3
+
+\item Décrire par une phrase l'évènement $\overline F$.
+
+\points 3
+
+\item Calculer $\Pro(\overline F \cap T)$ et interpréter ce résultat dans le contexte de l'énoncé.
+
+\points 4
+
+\item Calculer $\Pro_F(T)$ et $\Pro_{\overline F}(T)$, puis interpréter ces résultats dans le contexte de l'énoncé.
+
+\points 7
+
+\end{enumerate}
+\end{enumerate}
+\end{exercice}
+
+\begin{exercice} \
+
+\compolignehaut[0.45]
+{
+\begin{enumerate}
+\item Compléter le tableau suivant, donnant les dérivées des fonctions usuelles:
+
+\begin{center}\renewcommand{\arraystretch}{1.5}
+\begin{tabularx}{5cm}{|Y|Y|} \hline
+$f(x)$ & $f'(x)$ \\ \hline
+$k \in \R$ &  \\ \hline
+$x$ &  \\ \hline
+$x^2$ & \\ \hline
+$x^3$ &  \\ \hline
+\end{tabularx}
+\end{center}
+\end{enumerate}
+}
+{
+\begin{enumerate}[start=2]
+\item Calculer la dérivée des fonctions suivantes:
+
+\begin{enumerate}
+\item $f:x \mapsto x^3-7$:
+
+\points 3
+
+\item $g:x \mapsto x^2+8x$:
+
+\points 3
+
+\item $h:x \mapsto 5x^3-2x^2+x$:
+
+\points 3
+\end{enumerate}
+\end{enumerate}
+}
+\end{exercice}
+\end{document}
+
+\begin{exercice}
+Dans un lycée, les 350 élèves de Première se répartissent suivant leur taille comme indiquée sur le tableau ci-dessous:
+
+\begin{enumerate}
+\item Compléter le tableau donné en annexe.
+
+On choisit un élève de première au hasard et on l'interroge sur sa taille. On note:
+\begin{itemize}
+\item F l'évènement \og L'élève est une fille \fg ;
+\item T l'évènement \og L'élève mesure plus de 1,8m \fg .
+\end{itemize}
+
+\item Donner la probabilité des évènements F et T.
+
+\item Déterminer la probabilité de l'évènement \og L'élève est une fille qui mesure plus de 1,8m \fg .
+\item Que représente dans le contexte la probabilité conditionnelle $\Pro_F(T)$? En donner la valeur.
+\item Calculer la probabilité que l'élève interrogé soit une fille sachant qu'il mesure moins de 1,8m.
+\end{enumerate}
+\end{exercice}
+
+\begin{exercice}
+Une entreprise de pièces automobiles emploie deux catégories de salariés: Des cadres et des ouvriers.
+
+Cette entreprise compte 1000 salariés dont 40\% sont des femmes. Les autres salariés sont des hommes.
+
+On sait aussi que:
+\begin{itemize}
+\item Parmi les femmes, 15 \% sont des cadres.
+\item 525 hommes sont des ouvriers.
+\end{itemize}
+
+\begin{enumerate}
+\item Compléter le tableau d'effectifs donné en annexe.
+\item Justine affirme: \og La proportion de cadres parmi les hommes est plus élevée que la proportion de cadres parmi les femmes. \fg
+
+A-t-elle raison? Justifier.
+
+\item On choisit au hasard un salarié de l'entreprise. On admet que chaque salarié a la même probabilité d'être choisi.
+
+On considère les évènements suivants:
+\begin{itemize}
+\item F: \og Le salarié est une femme \fg ;
+\item C: \og Le salarié est un cadre \fg .
+\end{itemize}
+
+\begin{enumerate}
+\item Définir par une phrase l'évènement F $\cap$ C.
+\item Calculer la probabilité de cet évènement.
+\item Calculer $\Pro_F(\overline C)$. Interpréter ce résultat dans le contexte de l'énoncé.
+\end{enumerate}
+\end{enumerate}
+\end{exercice}
+
+
+
+\newpage
+
+\rem{Cette page est à rendre avec la copie.}
+
+Nom: \hfill Prénom: \hfill \
+
+\vfill
+
+\begin{center}
+    \begin{tabularx}{\linewidth}{|c|Y|Y|Y|}
+    \cline{2-4} \multicolumn{1}{c|}{}
+         &Filles&Garçons&Total  \\ \hline
+         Moins de 1,8m&&121&291  \\ \hline 
+         Plus de 1,8m&&& \\ \hline 
+         Total&193&& \\ \hline
+    \end{tabularx}
+\end{center}
+
+\vfill
+
+\begin{center}
+    \begin{tabularx}{\linewidth}{|c|Y|Y|Y|}
+    \cline{2-4} \multicolumn{1}{c|}{}
+         &Hommes&Femmes&Total  \\ \hline
+         Cadres &&&  \\ \hline 
+         Ouvriers&525&& \\ \hline 
+         Total&&400&1000 \\ \hline
+    \end{tabularx}
+\end{center}
+
+\vfill
+
+
+\end{document}
+

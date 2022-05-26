@@ -3,7 +3,7 @@
 \usepackage[sujet]{../../Style}
 
 \fancyhead[L]{18/05/2022}
-\fancyhead[C]{\textbf{DS8: Conditionnement}}
+\fancyhead[C]{\textbf{DS8: Conditionnement et dérivation}}
 \fancyhead[R]{\premiere ST2S 2}
 
 \renewcommand{\arraystretch}{1.8}
@@ -11,7 +11,7 @@
 %%%%%%%%%%%%%%%%%%%
 \begin{document}
 
-\rem{L'usage de la calculatrice est autorisé. La propreté et l'orthographe seront prises en compte. La dernière page est à rendre avec la copie.}
+\rem{L'usage de la calculatrice est autorisé. La propreté et l'orthographe seront prises en compte.\\ \textbf{Des phrases de réponse sont exigées dans les exercices 1 et 2!}}
 
 \setstretch{1.2}
 
@@ -32,11 +32,128 @@ Une enquête a été menée auprès de l'ensemble des 800 salariés afin de conn
 
 \begin{enumerate}
 \item Quelle est la proportion, en pourcentage, de salariés qui ont moins de 40 ans et qui ont choisi la médiathèque?
+
+\points 4
+
 \item Calculer la fréquence marginale de salariés préférant la construction d'une salle de sport dans l'entreprise.
+
+\points 4
+
 \item Quel choix semble le plus pertinent pour le comité d'entreprise?
+
+\points 3
+
 \item Calculer la fréquence conditionnelle des salariés préférant la construction d'une salle de sport parmi ceux de 40 ans ou plus.
+
+\points 4
+
 \end{enumerate}
 \end{exercice}
+
+\newpage
+
+\begin{exercice}
+Un laboratoire veut tester, sur des souris, l'efficacité d'un vaccin. Toutes les souris ont été contaminées par le virus d'une maladie. Certaines souris ont été vaccinées, d'autres ne l'ont pas été. Certaines souris ont développé la maladie, d'autres non.
+
+Voici quelques informations sur l'expérimentation:
+
+\begin{itemize}
+\item 175 souris ont été testées;
+\item 90 souris ont été vaccinées;
+\item 80 souris ont développé la maladie, et parmi elles, 26 avaient été vaccinées.
+\end{itemize}
+
+\begin{enumerate}
+
+\item Compléter le tableau croisé d'effectifs ci-dessous: \textit{On notera les calculs effectués sous le tableau}
+
+\begin{center}
+    \begin{tabularx}{\linewidth}{|Y|Y|Y|Y|}
+    \cline{2-4} \multicolumn{1}{c|}{}
+         &Souris malades&Souris saines&Total  \\ \hline
+         Souris vaccinées &&&  \\ \hline 
+         Souris non vaccinées&&& \\ \hline 
+         Total&&&175 \\ \hline
+    \end{tabularx}
+\end{center}
+
+\points 5
+
+On sélectionne au hasard une souris.
+
+\item Calculer la probabilité de sélectionner une souris ayant développé la maladie.
+
+\points 3
+
+\item Calculer la probabilité de sélectionner une souris vaccinée en sachant qu'elle est malade.
+
+\points 3
+
+\item On considère les évènement suivants:
+\begin{itemize}
+\item V: \og La souris sélectionnée a été vaccinée \fg ;
+\item M: \og La souris sélectionnée est malade \fg .
+\end{itemize}
+\begin{enumerate}
+\item Calculer $\Pro(V)$ et interpréter ce résultat dans le contexte de l'énoncé.
+
+\points 3
+
+\item Donner une description de l'évènement $\overline V$:
+
+\points 2
+
+\item Calculer $\Pro(M \cap \overline V)$ et interpréter ce résultat dans le contexte de l'énoncé.
+
+\points 3
+
+\item Calculer $\Pro_V(M)$ et $\Pro_{\overline V}(M)$. Que peut-on en déduire?
+
+\points 6
+
+\end{enumerate}
+\end{enumerate}
+\end{exercice}
+
+\begin{exercice} \
+
+\compolignehaut[0.45]
+{
+\begin{enumerate}
+\item Compléter le tableau suivant, donnant les dérivées des fonctions usuelles:
+
+\begin{center}\renewcommand{\arraystretch}{1.5}
+\begin{tabularx}{5cm}{|Y|Y|} \hline
+$f(x)$ & $f'(x)$ \\ \hline
+$k \in \R$ &  \\ \hline
+$x$ &  \\ \hline
+$x^2$ & \\ \hline
+$x^3$ &  \\ \hline
+\end{tabularx}
+\end{center}
+\end{enumerate}
+}
+{
+\begin{enumerate}[start=2]
+\item Calculer la dérivée des fonctions suivantes:
+
+\begin{enumerate}
+\item $f:x \mapsto x^2+1$:
+
+\points 3
+
+\item $g:x \mapsto x^3+6x$:
+
+\points 3
+
+\item $h:x \mapsto 2x^3-x^2+5x$:
+
+\points 3
+\end{enumerate}
+\end{enumerate}
+}
+\end{exercice}
+\end{document}
 
 \begin{exercice}
 Dans un lycée, les 350 élèves de Première se répartissent suivant leur taille comme indiquée sur le tableau ci-dessous:
@@ -91,34 +208,7 @@ On considère les évènements suivants:
 \end{enumerate}
 \end{exercice}
 
-\begin{exercice}
-Un laboratoire veut tester, sur des souris, l'efficacité d'un vaccin. Toutes les souris ont été contaminées par le virus d'une maladie. Certaines souris ont été vaccinées, d'autres ne l'ont pas été. Certaines souris ont développé la maladie, d'autres non.
 
-Voici quelques informations sur l'expérimentation:
-
-\begin{itemize}
-\item 175 souris ont été testées
-\item 90 souris ont été vaccinées
-\item 80 souris ont développé la maladie, et parmi elles, 26 avaient été vaccinées.
-\end{itemize}
-
-\begin{enumerate}
-
-\item Compléter le tableau croisé d'effectifs donné en annexe.
-\item Calculer la fréquence des souris ayant développé la maladie.
-\item Calculer la fréquence des souris vaccinées parmi les souris malades.
-\item On sélectionne au hasard une souris. On considère les évènement suivants:
-\begin{itemize}
-\item V: \og La souris sélectionnée a été vaccinées \fg ;
-\item M: \og La souris sélectionnée est malade \fg .
-\end{itemize}
-
-\begin{enumerate}
-\item Calculer la probabilité que la souris sélectionnée soit malade et non vaccinée.
-\item Calculer $\Pro_V(M)$ et $\Pro_{\overline V}(M)$. Que peut-on en déduire?
-\end{enumerate}
-\end{enumerate}
-\end{exercice}
 
 \newpage
 
@@ -152,17 +242,6 @@ Nom: \hfill Prénom: \hfill \
 
 \vfill
 
-\begin{center}
-    \begin{tabularx}{\linewidth}{|Y|Y|Y|Y|}
-    \cline{2-4} \multicolumn{1}{c|}{}
-         &Souris malades&Souris saines&Total  \\ \hline
-         Souris vaccinées &&&  \\ \hline 
-         Souris non vaccinées&&& \\ \hline 
-         Total&&&175 \\ \hline
-    \end{tabularx}
-\end{center}
-
-\vfill
 
 \end{document}
 

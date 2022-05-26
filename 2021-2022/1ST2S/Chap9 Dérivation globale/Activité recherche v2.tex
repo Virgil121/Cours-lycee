@@ -1,0 +1,139 @@
+\documentclass[12pt,a4paper,french] {article}
+
+\pagestyle{empty}
+
+\usepackage[TD]{../../Style}
+
+\renewcommand{\baselinestretch}{1.15}
+\renewcommand{\arraystretch}{1.2}
+\setlength{\columnsep}{2cm}
+
+\newcommand{\contenu}{%
+\titre{Une histoire d'aires}
+
+\compo[0.6]
+{
+Le carré $ABCD$ a un côté de longueur 8cm. $M$ est un point du segment $[AB]$. On dessine comme ci-contre dans le carré $ABCD$:
+\begin{itemize}
+\item Un carré de côté $[AM]$;
+\item Un triangle rectangle isocèle en $B$.
+\end{itemize}
+
+On s'intéresse au motif constitué par le carré et le triangle.
+
+Est-il possible de faire en sorte que l'aire du motif soit la plus grande possible? La plus petite possible? Si oui dans quels cas?
+}
+{
+\begin{center}
+\begin{tikzpicture}[scale=0.7]
+
+\coordinate[label=-135:A] (A) at (0,0);
+\coordinate[label=-45:B] (B) at (8,0);
+\coordinate[label=45:C] (C) at (8,8);
+\coordinate[label=135:D] (D) at (0,8);
+
+\coordinate[label=-90:M] (M) at (5,0);
+
+\draw[thick] (A) -- (B) -- (C) -- (D) -- cycle;
+\draw[fill=DarkOrange,fill opacity=0.5,thick] (A) -- (0,5) -- (5,5) -- (M) -- (8,3) -- (B) -- cycle;
+
+\end{tikzpicture}
+\end{center}
+}
+}
+
+\newcommand{\inda}{%
+	\compo{
+	\titre{Indication}
+	
+	\centering Calculer l'aire du motif si:\\ $MB=2$cm, $MB=4$cm.
+	}
+	{
+	\titre{Indication}
+	
+	\centering Calculer l'aire du motif si:\\ $MB=2$cm, $MB=4$cm.
+	}
+}
+
+\newcommand{\indb}{%
+	\compo{
+	\titre{Indication}
+	
+	\centering On pose $MB=x$. Déterminer l'aire du carré puis du triangle en fonction de $x$.
+	}
+	{
+	\titre{Indication}
+	
+	\centering On pose $MB=x$. Déterminer l'aire du carré puis du triangle en fonction de $x$.
+	}
+}
+
+\newcommand{\indd}{%	% Indication avec ou sans x
+	\compo{
+	\titre{Indication}
+	
+	\centering Formule de l'aire d'un triangle quelconque: $$\frac{\text{base} \times \text{hauteur}} 2$$
+	
+	\centering Pour un triangle rectangle, c'est plus facile...
+	}
+	{
+	\titre{Indication}
+	
+	\centering Formule de l'aire d'un triangle quelconque: $$\frac{\text{base} \times \text{hauteur}} 2$$
+	
+	\centering Pour un triangle rectangle, c'est plus facile...
+	}
+}
+
+\newcommand{\inde}{%	% Indication avec ou sans x
+	\compo{
+	\titre{Indication}
+	
+	\centering La fonction obtenue n'est définie que sur $[0;8]$.	
+	
+	\centering Comment trouver son maximum et son minimum?
+	}
+	{
+	\titre{Indication}
+	
+	\centering La fonction obtenue n'est définie que sur $[0;8]$.	
+	
+	\centering Comment trouver son maximum et son minimum?
+	}
+}
+
+\newcommand{\contenub}{%
+\titre{Surface d'un stade}
+
+\noindent Un stade est constitué d'une pelouse centrale rectangulaire $ABCD$, complétée par deux demi-disques de diamètre $[AD]$ et $[BC]$. Ce terrain est entouré par une piste de course à pied de longueur égale à 400 m.
+
+\noindent Quelles doivent être les dimensions du rectangle ABCD si l'on veut que son aire soit maximale ?
+}
+
+\begin{document}
+
+\contenu \vfill \contenu \vfill \contenu
+
+\newpage
+
+\setlength{\composep}{1cm}
+
+\inda \foreach \i in {1,2,..,4} {\vfill \inda}
+
+\newpage
+
+\indb \foreach \i in {1,2,..,4} {\vfill \indb}
+
+\newpage
+
+\indd \foreach \i in {1,2,..,4} {\vfill \indd}
+
+\newpage
+
+\inde \foreach \i in {1,2,..,4} {\vfill \inde}
+
+\newpage
+
+\contenub \vfill \contenub \vfill \contenub \vfill \contenub \vfill \contenub \vfill \contenub
+
+\end{document}

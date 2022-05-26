@@ -1,0 +1,138 @@
+
+\documentclass[a4paper,12pt,french] {article}
+
+\usepackage[sujet]{../../Style}
+
+\fancyhead[L]{16/05/2022}
+\fancyhead[C]{\textbf{DS6 : Repères du plan et coordonnées}}
+\fancyhead[R]{\seconde 12}
+
+\begin{document}
+
+\rem{L'usage de la calculatrice est interdit. La propreté et l'orthographe seront prises en compte. Tout le devoir peut être fait sur le sujet.}
+
+Nom: \hfill Prénom: \hfill \
+
+\setstretch{1.3}
+
+\begin{exercice} \
+
+\noindent Factoriser $A=x^2+12x+36$ \hfill Développer $B=(2x+7)(x+1)$ \hfill Résoudre $5x-7=3$
+\vspace{5cm}
+
+\end{exercice}
+
+\vfill
+
+\begin{exercice}
+On donne dans un repère quelconque les points $A(0;2)$, $B(9;8)$ et $C(-6;-2)$.
+
+\begin{enumerate}
+\item Déterminer les coordonnées des vecteurs $\vv{AB}$ et $\vv{AC}$.
+
+\points 4
+
+\item On donne $\vv{BC} \dbinom {-15}{-10}$. Déterminer les coordonnées du vecteur $-3 \vv{BC}$.
+
+\points 4
+
+\item Les points $A$, $B$ et $C$ sont-ils alignés?
+
+\points 4
+\end{enumerate}
+\end{exercice}
+
+\begin{exercice} \
+
+\compo[0.7]
+{
+\strut En physique, un système est équilibré lorsque la \textbf{\underline{somme}} des forces qui s'exercent sur lui est nulle.
+\begin{enumerate}
+\item Donner les coordonnées des vecteurs $\vv{F_1}$, $\vv{F_2}$ et $\vv{F_3}$ \textit{(ceux-ci représentent les forces en question)}:
+
+\points 4
+
+\item Le système représenté par les trois forces ci-contre est-il équilibré?
+
+\points 4
+\end{enumerate}
+}
+{
+\begin{center}
+%\vspace{-2.3cm}
+\includegraphics[width=\linewidth, trim=0 0 0 -1cm]{Forces DS NB.png}
+\end{center}
+}
+\end{exercice}
+
+\begin{exercice} \
+
+\compo[0.73]
+{
+\strut On se donne ci-contre un repère orthonormé \Oij et les points $A(-2;3)$, $B(4;1)$ et $C(3;-2)$.
+\begin{enumerate}
+\item Placer le triangle $ABC$ dans le repère donné.
+\item Quelle est la nature du triangle $ABC$? On donne $AC=\sqrt{50}=5\sqrt 2$.
+\end{enumerate}
+}
+{
+\vspace{-11mm}
+\begin{resizetikz}{\linewidth}
+\begin{tikzpicture}
+\repereOij[xmin=-3,xmax=5,ymin=-3,ymax=4];
+\end{tikzpicture}
+\end{resizetikz}
+}
+
+\
+
+\points 8
+
+\begin{enumerate}[start=3]
+\item Soit $I$ le milieu du segment $[AC]$. Calculer ses coordonnées, puis placer ce point sur le repère.
+
+\points 4
+\end{enumerate}
+\end{exercice}
+
+\newpage
+
+\begin{exercice}
+On se donne un repère orthonormé et quatre points P, Q, R, S. On sait que:
+
+\hfill
+$P(-2;1)$ et $Q(6;2)$;
+\hfill
+$\vv{SR} \dbinom 8 1$;
+\hfill
+$\begin{cases} PS=\sqrt{65}=5\sqrt{13}\simeq 8,1 \\ QS=\sqrt{80}=4\sqrt 5\simeq 8,9 \end{cases}$
+\hfill\strut
+
+\noindent\strut Déterminer la nature \textbf{précise} du quadrilatère $PQRS$. \textit{Toute trace de recherche sera valorisée.}
+
+\begin{center}
+\begin{resizetikz}{0.8\linewidth}
+\begin{tikzpicture}
+\repereOij[xmin=-6,xmax=12,ymin=-7,ymax=3];
+%\node[stylepoint,fill=blue,label=-135:$S$] (S) at (2,-6) {};
+\end{tikzpicture}
+\end{resizetikz}
+\end{center}
+
+\points {19}
+
+\end{exercice}
+
+\end{document}
+
+\begin{exercice}
+Compléter le tableau suivant, en cochant la case adaptée.
+
+\begin{center}
+\begin{tabularx}{\linewidth}{|X|c|c|} \hline
+\centering Proposition & \makebox[2cm]{Vrai} & \makebox[2cm]{Faux} \\ \hline
+Soient $\vec u \tbinom 2 0$ et $ \vv v \tbinom {-5} 0$. Alors $\vv u$ et $\vv v$ sont colinéaires. & & \\ \hline
+Pour trouver la distance entre deux points $A(x_A;y_A)$ et $B(x_B;y_B)$, on calcule $\sqrt{(y_A-x_A)^2+(y_B-x_B)^2}$. & & \\ \hline
+\end{tabularx}
+\end{center}
+\end{exercice}

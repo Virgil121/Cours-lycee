@@ -1,13 +1,21 @@
 % Pour plus tard:
-% Supprimer la rétrocompatibilité, ce sera plus lisible...
 % Utiliser des tcbox à la place des colorbox? marges plus personnalisables (style fbox pour avoir comme colorbox)
+%\usepackage[math]{iwona} % Police sympa
+
+% Différences selon le moteur
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{iftex}
+\ifPDFTeX
+   \usepackage[utf8]{inputenc}
+\else
+   \usepackage{fontspec}
+\fi
 
 % Liste des packages utilisés
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\usepackage{lipsum}
 \usepackage[a4paper,margin=15mm,marginparwidth=15mm,marginparsep=0mm]{geometry} %Papier, marges
-\usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage[french]{babel}	% Langue
 \usepackage{amsfonts,amssymb,amsmath}	% Symboles maths... (indispensable)
@@ -43,6 +51,7 @@
 \usepackage[d]{esvect} 					% Meilleurs vecteurs - Problèmess avec polices non otf
 \usepackage{lastpage}					% Trouve le numéro de la dernière page
 %\usepackage[pdfauthor={Virgil Delauney}]{hyperref}
+\usepackage{lipsum}	% Pour les tests, pas utile en soi
 
 \usepackage{tikz}
 \usetikzlibrary{shapes,arrows.meta,calc,tikzmark}
@@ -84,7 +93,6 @@
 \let\vecc\vv
 
 \newcommand{\Oij}{\ensuremath{\left(\text{O};\vec{i};\vec{j}\right)}\xspace}
-%\newcommand{\vecc}[1] {\overrightarrow{#1}}
 
 % Gras dans titres en mode math
 
@@ -154,6 +162,13 @@
 
 \newenvironment{centrer}{\par \centering }{ \par}
 
+% Centrer tabularx de base et ligne centrée Y
+
+\renewcommand\tabularxcolumn[1]{m{#1}}
+\newcommand{\tabularxgauche}{\renewcommand\tabularxcolumn[1]{p{##1}}}
+\newcommand{\tabularxcentrer}{\renewcommand\tabularxcolumn[1]{m{##1}}}
+\newcolumntype{Y}{>{\centering\arraybackslash}X}
+
 % Commandes sujets
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -181,13 +196,6 @@
 \rule[3.3mm]{\linewidth}{0.4pt}
 \end{centrer}
 }
-
-% Centrer tabularx de base et ligne centrée Y
-
-\renewcommand\tabularxcolumn[1]{m{#1}}
-\newcommand{\tabularxgauche}{\renewcommand\tabularxcolumn[1]{p{##1}}}
-\newcommand{\tabularxcentrer}{\renewcommand\tabularxcolumn[1]{m{##1}}}
-\newcolumntype{Y}{>{\centering\arraybackslash}X}
 
 % Initialisation pgfplots, tikz et styles
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -254,7 +262,7 @@
 	},
 }
 
-\pgfkeys{/pgf/number format/use comma,/pgf/number format/.cd,1000 sep={\,}}
+\pgfkeys{/pgf/number format/use comma,/pgf/number format/.cd,1000 sep={\,}} % Format des nombres (1 000 et 1,2 plutôt que 1,000 et 1.2)
 
 \newcommand{\pointsextremites}{node[pos=0,stylepointextremites] {} node[pos=1,stylepointextremites] {}}
 
@@ -290,7 +298,7 @@
 		>=latex,
 		cap=round
 	},
-	setupRepereTransformation/.style args={(#1,#2),(#3,#4)}{	% Pour les repères non orthonormés
+	setupRepereTransformation/.style args={(#1,#2),(#3,#4)}{	% Pour les repères non orthonormés. format: (longueur,angle),(longueur,angle par rap au premier) [de base (1,0),(1,90)]
 		cm={#1*cos(#2),#1*sin(#2),#3*cos(#2+#4),#3*sin(#2+#4),(0,0)},
 	},
 }
@@ -387,7 +395,7 @@
 		%nobeforeafter,		
 		%after skip=0.5\baselineskip plus 2pt,
 	},
-	styleraster/.style={			% Pour aligner des tcbox sur une ligne
+	styleraster/.style={			% Pour aligner des tcbox sur une ligne, pas sûr de l'utiliser...
 		raster every box/.append style={breakable=false},			% Ne marche pas sans ça
 		raster columns=2,			% Nombre de tcbox par ligne
 		raster equal height,		% Même hauteur
@@ -405,16 +413,16 @@
 	colbacktitle=#2-titre,	
 	borderline west={1pt}{0pt}{#2-titre},
 	% Titre
-	title={\strut\MakeUppercase{#3}\ifstrempty{##1}{}{ (##1)}},
+	title={\rule[-0.3\baselineskip]{0pt}{1.17\baselineskip}\MakeUppercase{#3}\ifstrempty{##1}{}{ (##1)}}, % rule = strut un peu plus haute pour pouvoir centrer verticalement le texte
 	boxed title style={ % Style titre (texte blanc par défaut)
 			boxrule=0pt,	% Pas de bordures
 			sharp corners,	% Coins non arrondis
 			boxsep=0pt,		% Bordures additionnelles
-			height=20pt,	% Hauteur boite titre
+			height=1.4\baselineskip,	% Hauteur boite titre, 20pt initialement
 			left=10pt,
-			right=10pt,			
-			bottom=1.5pt,
-			valign=bottom,
+			right=10pt,		
+			%bottom=1.5pt,
+			valign=center,
 	},
 	attach boxed title to top left={yshift*=-\tcboxedtitleheight}, % Décalage texte
 	% Redéfinitions couleurs pour commandes externes
@@ -500,12 +508,7 @@
 %%% Algorithmique
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-
-% algoption nécessaire: Dans multicol il faut un H mais il est interdit en twocolumn ...
-
-\newcommand{\algoption}{H}
-\AtBeginEnvironment{multicols}{\renewcommand{\algoption}{H}}
-\AtBeginEnvironment{multicols*}{\renewcommand{\algoption}{H}}
+% A revoir: Algorithmes ne marchent pas en twocolumn ( il faut multicol à la place ) + code assez moche
 
 \setlength\columnsep{20pt}
 \newcounter{algonum}
@@ -513,11 +516,10 @@
 \SetKwInput{debutalgofixetoile}{\rule[-7pt]{0pt}{5pt} \ \ \normalfont{\underline{Algorithme}}}
 \SetKwProg{algofonction}{Procédure}{:}{}
 \SetArgSty{normalfont}
-\renewcommand{\emph}[1]{#1}
 \newenvironment{algorithme}
-{
+{\renewcommand{\emph}[1]{##1}
 \vspace{5pt}
-\begin{algorithm}[\algoption]
+\begin{algorithm}[H]
 	\debutalgofix
 	
 }
@@ -528,9 +530,9 @@
 \SetAlgoSkip{5pt}
 
 \newenvironment{algorithme*}
-{
+{\renewcommand{\emph}[1]{##1}
 \vspace{5pt}
-\begin{algorithm}[\algoption]
+\begin{algorithm}[H]
 	\debutalgofixetoile
 	
 }
@@ -710,6 +712,7 @@
 
 	% Listes
 	
+	\frenchsetup{ItemLabels=\textendash}
 	\setlist[itemize]{align=parleft,left=5pt..15pt}
 	\setlist[enumerate]{align=left,left=-3pt..15pt,leftmargin=0pt,itemindent=15pt}
 	\setlist[enumerate,1]{align=left,left=5pt..20pt,itemindent=*}
@@ -725,7 +728,7 @@
 	\theoremnumbering{arabic}
 
 	% Style exos, on pourra ajouter \strut à la fin pour enumerate/itemize			
-	
+		
 	\definecolor{couleurExo}{Hsb}{211,0.8,0.65}
 	\newtheoremstyle{stylexo}	%Base plain
 	{\item[\theorem@headerfont\hskip\labelsep\colorbox{couleurExo}{\color{white}\theorem@headerfont ##1\ ##2\theorem@separator}]}%
@@ -736,6 +739,7 @@
 	\theorempreskip{\topsep}
 	\theorempostskip{\topsep}
 	\newtheorem{exercice}{Exercice}
+	\newtheorem{probleme}{Problème}
 	
 	\newtheoremstyle{stylecorrection}	%Base plain
 	{\item[\theorem@headerfont\hskip\labelsep\colorbox{couleurExo}{\color{white}\theorem@headerfont ##1\theorem@separator}]}%

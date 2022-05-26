@@ -1,28 +1,74 @@
 \documentclass[a4paper,french,12pt]{article}
 \usepackage{titling}
 \usepackage{sectsty}
+%\usepackage[toctitles]{titlesec}
 \usepackage[eleve,cours]{../../Style}
 \usepackage[subpreambles=false]{standalone}
 \usepackage{anyfontsize}
+%\PassOptionsToPackage{toctitles}{titlesec}
+\usepackage{titletoc}
+\usepackage[linktoc=all,hypertexnames=false]{hyperref}
+
 
 \renewcommand{\progres}{} % Commande progrès termine le document en version élève, on en veut pas ici
-\setcounter{tocdepth}{0}
 
-\newcommand{\chap}[2][]{%
-\addcontentsline{toc}{chapter}{#1}
-\input{#2}
+
+% CODE TRES MOCHE A REVOIR - toc
+%%%%%%%%%%%%%%%%%
+
+\setcounter{tocdepth}{1} % Voir chapitres et sections, pas plus loin
+\newcounter{chapitre}
+
+\makeatletter
+
+\renewcommand\tableofcontents{%
+	\titre{Table des matières} % Titre
+	\thispagestyle{empty} % Enlever numéro page
+    \@starttoc{toc}%
+    \setcounter{page}{0} % Remettre page à 0 ( commencera à 1 )
+    \preto\@maketitle{
+    	\refstepcounter{part}%
+    	\phantomsection%
+    	\addcontentsline{toc}{part}{\@title}} % Modifie commande titre après pour mettre une ref
+}
+\makeatother
+
+% Styles toc
+\def\stylepart{\fontfamily{cmr}\fontseries{bx}\selectfont\large\scshape\color{section}}
+
+\titlecontents{part}%
+{\ifthenelse{\equal{\value{chapitre}}{0}}{}{\vfill}\stylepart}%{\vspace{5mm}\normalfont\large\bfseries\color{section}}%
+{}%
+{Chapitre \stepcounter{chapitre}\Roman{chapitre}.\ }%
+%{\makebox[\longueurchap][l]{Chapitre \stepcounter{chapitre}\Roman{chapitre}.}}%
+{\dotfill \contentspage}%[{\color{gray}\hrule}] % Gros hack pour afficher le chapitre... % Tester \ref{page.\thecontentspage}
+
+\titlecontents{section}%
+{\normalfont\bfseries\color{subsection}}%
+{\hspace{0.1\linewidth}\thecontentslabel\ - }%
+{\hspace{0.08\linewidth}}%
+{\hfill \contentspage}%[{\color{gray}\hrule}]
+
+%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\chap}[1]{%
+%\addcontentsline{toc}{part}{#1}
+\input{#1}
 \setcounter{section}{0}\newpage
 }
 
 \begin{document}
 \thispagestyle{empty}
 \include{Cover}
-\setcounter{page}{1}
-\chap[Réels, intervalles]{../Chap1 Réels Intervalles/cours}
-\chap[Vecteurs du plan: Première approche]{../Chap2 Vecteurs/cours}
-\chap[Fonctions: Généralités]{../Chap3 Fonctions Généralités/cours v3}
-\chap[Proportions, variations et pourcentages]{../Chap4 Proportions Variations/cours}
-\chap[Fonctions affines]{../Chap5 Fonctions affines/cours}
-\chap[Variations de fonctions]{../Chap6 Variations de fonctions/cours}
-\chap[Repères du plan et coordonnées]{../Chap7 Repères du plan/cours}
+%
+\tableofcontents
+%
+\chap{../Chap1 Réels Intervalles/cours}
+\chap{../Chap2 Vecteurs/cours}
+\chap{../Chap3 Fonctions Généralités/cours v3}
+\chap{../Chap4 Proportions Variations/cours}
+\chap{../Chap5 Fonctions affines/cours}
+\chap{../Chap6 Variations de fonctions/cours}
+\chap{../Chap7 Repères du plan/cours}
+\chap{../Chap8 Probabilités/cours}
 \end{document}

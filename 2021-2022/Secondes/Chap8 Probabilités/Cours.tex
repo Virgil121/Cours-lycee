@@ -77,33 +77,40 @@ On se donne $E$ un ensemble et $A$,$B$ deux sous-ensembles de $E$.
 \begin{tabular}{ccc}
 \begin{tikzpicture}
 
+% Bordure
 \draw[fill=white,fill opacity=0.8] (-3,-2) rectangle (3,2);
+
+% Disques
 \draw[fill=DarkOrange,fill opacity=0.5] (1,0) circle (1.5);
 \draw[fill=DodgerBlue!50!DeepSkyBlue,fill opacity=0.5] (-1,0) circle (1.5);
-\draw (1,0) circle (1.5);
+\draw (1,0) circle (1.5); % On retrace la bordure du premier disque par dessus car le fond du second l'a estompée
+
+% Légendes
 \node[circle,draw=none,fill=white,fill opacity=0.3,text opacity=1,inner sep=2pt] (A) at (1.3,0) {\textbf A};
 \node[circle,draw=none,fill=white,fill opacity=0.3,text opacity=1,inner sep=2pt] (B) at (-1.3,0) {\textbf B};
 
+% Intersection
 \begin{scope}
-\clip (1,0) circle (1.5);
-\draw[fill=black,pattern=north east lines,draw=none,opacity=0.5] (-1,0) circle (1.5);
-\end{scope}
-
-%\node (inter) at (0,-1.7) {$A \cap B$};
-%\draw (inter) -- (0,-0.5);
+\clip (1,0) circle (1.5); % On se restreint au disque de droite
+\draw[pattern=north east lines,draw=none,opacity=0.7] (-1,0) circle (1.5); % On hachure le disque de gauche
+\end{scope} % Environnement scope pour limiter la restriction (si on veut tracer d'autres trucs après, inutile ici)
 
 \end{tikzpicture}
 &
 \begin{tikzpicture}
 
-
+% Bordure
 \draw[fill=white,fill opacity=0.8] (-3,-2) rectangle (3,2);
+
+% Disques
 \draw[fill=DarkOrange,fill opacity=0.5] (1,0) circle (1.5);
 \draw[fill=DodgerBlue!50!DeepSkyBlue,fill opacity=0.5] (-1,0) circle (1.5);
 \draw (1,0) circle (1.5);
 
-\draw[fill=black,pattern=north east lines,draw=none,opacity=0.5] (-1,0) circle (1.5) (1,0) circle (1.5);
+% Union
+\draw[pattern=north east lines,draw=none,opacity=0.7] (-1,0) circle (1.5) (1,0) circle (1.5);
 
+% Légendes
 \node[circle,draw=none,fill=white,fill opacity=0.3,text opacity=1,inner sep=2pt] (A) at (1.3,0) {\textbf A};
 \node[circle,draw=none,fill=white,fill opacity=0.3,text opacity=1,inner sep=2pt] (B) at (-1.3,0) {\textbf B};
 
@@ -111,13 +118,17 @@ On se donne $E$ un ensemble et $A$,$B$ deux sous-ensembles de $E$.
 &
 \begin{tikzpicture}
 
-
+% Bordure
 \draw[fill=white,fill opacity=0.8] (-2,-2) rectangle (2,2);
+
+% Disque
 \draw[fill=DarkOrange,fill opacity=0.5] (0,0) circle (1.5);
 
-\draw[fill=black,pattern=north east lines,draw=none,opacity=0.5,even odd rule] (-2,-2) rectangle (2,2) (0,0) circle (1.5);
-
+% Légende
 \node[circle,draw=none,fill=white,fill opacity=0.3,text opacity=1,inner sep=2pt] (A) at (0,0) {\textbf A};
+
+% Complémentaire
+\draw[pattern=north east lines,draw=none,opacity=0.7,even odd rule] (-2,-2) rectangle (2,2) (0,0) circle (1.5);
 
 \end{tikzpicture} \\
 $A \cap B$ & $A \cup B$ & $\overline A$
@@ -173,12 +184,14 @@ On dit qu'on est en situation d'équiprobabilité lorsque toutes les issues d'un
 \end{defin}
 
 \begin{prop}
-Dans ce cas, chaque issue a pour probabilité $\frac 1 {\textrm{nombre total d'isues}}$.
+Dans ce cas, chaque issue a pour probabilité $\frac 1 {\textrm{nombre total d'issues}}$.
 
 La probabilité d'un évènement A est alors: $$\Pro(A)=\frac{\textrm{nombre d'éléments de A}}{\textrm{nombre d'éléments de }\Omega} = \frac{\textrm{nombre de cas favorables}}{\textrm{nombre de cas possibles}}$$
 \end{prop}
 
-\subsection{Quelques formules de calcul}
+\progres
+
+\subsection{Vocabulaire et formules}
 
 \begin{ex}
 Soient A:\og On tombe sur un nombre pair\fg et B: \og On tombe sur 3 \fg. On a alors $A \cap B = \varnothing$, donc $\Pro(A \cap B) = \Pro( \varnothing ) = 0$. Ces évènements ne peuvent pas se produire en même temps.
@@ -196,6 +209,76 @@ $$\Pro(A \cup B) = \Pro(A)+\Pro(B)-\Pro(A \cap B)$$
 \end{itemize}
 \end{proprs}
 
-\rem{Schéma à faire}
-
 \end{document}
+
+% Test avec schémas, joli mais pas sûr de l'utilité
+
+\begin{proprs}
+\begin{itemize}
+\item Soit $A$ un évènement. Alors $\Pro( \overline A ) = 1-\Pro(A)$.
+\item Soient A et B deux évènements d'une expérience aléatoire. Alors on a:
+$$\Pro(A \cup B) = \Pro\tikzmark{ProA}(A)+\Pro(\tikzmark{ProB}B)-\Pro(A\tikzmark{ProInter} \cap B)$$
+\end{itemize}
+\hspace{0.28\linewidth}
+\begin{tikzpicture}[remember picture,scale=0.5]
+
+\draw[overlay] (0,2) -- (pic cs:ProA);
+
+% Bordure
+\draw[fill=white,fill opacity=0.8] (-3,-2) rectangle (3,2);
+
+% Disques
+\draw[fill=DarkOrange,fill opacity=0.5] (1,0) circle (1.5);
+\draw[fill=DodgerBlue!50!DeepSkyBlue,fill opacity=0.5] (-1,0) circle (1.5);
+\draw (1,0) circle (1.5); % On retrace la bordure du premier disque par dessus car le fond du second l'a estompée
+\draw[pattern=north east lines,draw=none,opacity=0.7] (1,0) circle (1.5);
+
+% Légendes
+\node[circle,draw=none,fill=white,fill opacity=0.3,text opacity=1,inner sep=2pt] (A) at (1.3,0) {\textbf A};
+\node[circle,draw=none,fill=white,fill opacity=0.3,text opacity=1,inner sep=2pt] (B) at (-1.3,0) {\textbf B};
+
+\end{tikzpicture}
+\quad
+\begin{tikzpicture}[remember picture, scale=0.5]
+
+\draw[overlay] (0,2) -- (pic cs:ProB);
+
+% Bordure
+\draw[fill=white,fill opacity=0.8] (-3,-2) rectangle (3,2);
+
+% Disques
+\draw[fill=DarkOrange,fill opacity=0.5] (1,0) circle (1.5);
+\draw[fill=DodgerBlue!50!DeepSkyBlue,fill opacity=0.5] (-1,0) circle (1.5);
+\draw (1,0) circle (1.5); % On retrace la bordure du premier disque par dessus car le fond du second l'a estompée
+\draw[pattern=north east lines,draw=none,opacity=0.7] (-1,0) circle (1.5);
+
+% Légendes
+\node[circle,draw=none,fill=white,fill opacity=0.3,text opacity=1,inner sep=2pt] (A) at (1.3,0) {\textbf A};
+\node[circle,draw=none,fill=white,fill opacity=0.3,text opacity=1,inner sep=2pt] (B) at (-1.3,0) {\textbf B};
+
+\end{tikzpicture}
+\quad
+\begin{tikzpicture}[remember picture,scale=0.5]
+
+\draw[overlay] (0,2) -- (pic cs:ProInter);
+
+% Bordure
+\draw[fill=white,fill opacity=0.8] (-3,-2) rectangle (3,2);
+
+% Disques
+\draw[fill=DarkOrange,fill opacity=0.5] (1,0) circle (1.5);
+\draw[fill=DodgerBlue!50!DeepSkyBlue,fill opacity=0.5] (-1,0) circle (1.5);
+\draw (1,0) circle (1.5); % On retrace la bordure du premier disque par dessus car le fond du second l'a estompée
+
+% Légendes
+\node[circle,draw=none,fill=white,fill opacity=0.3,text opacity=1,inner sep=2pt] (A) at (1.3,0) {\textbf A};
+\node[circle,draw=none,fill=white,fill opacity=0.3,text opacity=1,inner sep=2pt] (B) at (-1.3,0) {\textbf B};
+
+% Intersection
+\begin{scope}
+\clip (1,0) circle (1.5); % On se restreint au disque de droite
+\draw[pattern=north east lines,draw=none,opacity=0.7] (-1,0) circle (1.5); % On hachure le disque de gauche
+\end{scope} % Environnement scope pour limiter la restriction (si on veut tracer d'autres trucs après, inutile ici)
+
+\end{tikzpicture}
+\end{proprs}

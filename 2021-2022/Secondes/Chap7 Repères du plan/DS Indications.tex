@@ -1,0 +1,47 @@
+\documentclass[a4paper,12pt,french]{article}
+
+\usepackage[TD]{../../Style}
+
+\setlength{\columnsep}{2cm}
+\setlength{\composep}{1cm}
+\geometry{margin=1cm}
+
+\pagestyle{empty}
+
+\newcommand{\indicabase}{
+\titre{Indication}
+\centering Un quadrilatère ABCD est un parallélogramme si et seulement si $\vv{AB} = \vv{DC}$.
+}
+
+\newcommand{\indica}{\compo{\indicabase}{\indicabase}}
+
+\newcommand{\indicbbase}{
+\includegraphics[width=\linewidth]{"DS parallélogrammes.png"}
+}
+
+\newcommand{\indicb}{\compo{\indicbbase}{\indicbbase}}
+
+\newcommand{\indiccbase}{
+\begin{center}
+\begin{resizetikz}{0.85\linewidth}
+\begin{tikzpicture}[rotate=90,transform shape]
+\repereOij[xmin=-6,xmax=12,ymin=-7,ymax=3];
+%\node[stylepoint,fill=blue,label=-135:$S$] (S) at (2,-6) {};
+\end{tikzpicture}
+\end{resizetikz}
+\end{center}}
+
+\newcommand{\indicc}{\compo{\indiccbase}{\indiccbase}}
+
+% Début du document
+%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+
+
+\indica \vfill \indica \vfill \indica \vfill\indica \vfill \indica \vfill \indica
+\newpage
+\ \vfill \indicb \vfill\vfill \indicb \vfill
+\newpage
+\indicc \vfill \indicc
+\end{document}

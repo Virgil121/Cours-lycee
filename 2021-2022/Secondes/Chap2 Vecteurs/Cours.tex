@@ -11,7 +11,7 @@
 \section{Translations}
 
 \begin{defin}
-Soient $A,B,M$ trois points quelconques du plan. L'image de $M$ par la translation de vecteur $\vecc {AB}$ est l'unique point $N$ tel que le quadrilatère $ABNM$ soit un parallélogramme.
+Soient $A,B,M$ trois points quelconques du plan. L'image de $M$ par la translation de vecteur $\vv {AB}$ est l'unique point $N$ tel que le quadrilatère $ABNM$ soit un parallélogramme.
 
 \begin{center}
 \begin{tikzpicture}[scale=0.7]
@@ -57,14 +57,14 @@ Lorsque deux vecteurs symbolisent le même déplacement, on dit qu'ils sont éga
 \end{defin}
 
 \begin{ex}
-La figure précédente nous donne alors $\vecc{AB} = \vecc {MN}$, $\vecc{BA} = \vecc{NM}$, $\vecc {AM} = \vecc {BN}$.
+La figure précédente nous donne alors $\vv{AB} = \vv {MN}$, $\vv{BA} = \vv{NM}$, $\vv {AM} = \vv {BN}$.
 \end{ex}
 
 \begin{propr}
 Les quatre propositions suivantes sont \textbf{équivalentes}:
 \begin{itemize}
-\item $\vecc {AB} = \vecc {MN}$
-\item $N$ est l'image de $M$ par la translation de vecteur $\vecc{AB}$
+\item $\vv {AB} = \vv {MN}$
+\item $N$ est l'image de $M$ par la translation de vecteur $\vv{AB}$
 \item $[AN]$ et $[BM]$ se coupent en leur milieu
 \item $ABNM$ est un parallélogramme
 \end{itemize}
@@ -72,8 +72,8 @@ Les quatre propositions suivantes sont \textbf{équivalentes}:
 
 \begin{casparts}
 \begin{itemize}
-\item Le vecteur nul, noté $\vecc 0$, est obtenu à partir de la translation qui transforme $A$ et $A$, $B$ en $B$ ... On a alors $\vecc 0 = \vecc {AA} = \vecc {BB} = \ldots$ Ce vecteur n'a ni direction, ni sens, et sa norme est nulle.
-\item L'opposé du vecteur $\vecc {AB}$ est le vecteur associé à la translation qui transforme $B$ en $A$. On le note $- \vecc {AB}$. Ainsi, $- \vecc {AB} = \vecc {BA}$. Il a la même direction et la même norme que $\vecc {AB}$ mais est de sens contraire.
+\item Le vecteur nul, noté $\vv 0$, est obtenu à partir de la translation qui transforme $A$ et $A$, $B$ en $B$ ... On a alors $\vv 0 = \vv {AA} = \vv {BB} = \ldots$ Ce vecteur n'a ni direction, ni sens, et sa norme est nulle.
+\item L'opposé du vecteur $\vv {AB}$ est le vecteur associé à la translation qui transforme $B$ en $A$. On le note $- \vv {AB}$. Ainsi, $- \vv {AB} = \vv {BA}$. Il a la même direction et la même norme que $\vv {AB}$ mais est de sens contraire.
 \end{itemize}
 \end{casparts}
 
@@ -86,7 +86,7 @@ Les quatre propositions suivantes sont \textbf{équivalentes}:
 \begin{fait}[defin]
 \begin{center}
 \begin{tikzpicture}
-\draw[stylegrille] (0,0) grid (13,9);
+\draw[stylegrille] (0,1) grid (14,8);
 \clip (0,0) rectangle (13,9);
 \node[stylepoint,fill=blue,label=below left:A] (A) at (2,2) {};
 \node[stylepoint,fill=blue,label=above:B] (B) at (3,7) {};
@@ -100,7 +100,7 @@ Les quatre propositions suivantes sont \textbf{équivalentes}:
 \end{fait}
 
 \begin{ex}
-$\vecc {AB} + \vecc {BA} = \vecc {AA} = \vecc 0$
+$\vv {AB} + \vv {BA} = \vv {AA} = \vv 0$
 \end{ex}
 
 \begin{rmq}
@@ -108,7 +108,7 @@ En général, la longueur de $\vec u + \vec v$ n'est pas égale à la somme de c
 \end{rmq}
 
 \begin{methode}
-Pour construire $\vecc {AB} + \vecc {AC}$, il suffit de construire le parallélogramme $ABDC$ et de prendre le vecteur $\vecc {AD}$.
+Pour construire $\vv {AB} + \vv {AC}$, il suffit de construire le parallélogramme $ABDC$ et de prendre le vecteur $\vv {AD}$.
 
 \begin{center}
 \begin{tikzpicture}[scale=0.8]
@@ -142,36 +142,14 @@ Soit $k$ un réel et $\vec u$ un vecteur. Le produit de $k$ par $\vec u$ est le 
 \end{defin}
 
 \begin{rmq}
-En particulier, $0 \times \vec u = \vecc 0$.
+En particulier, $0 \times \vec u = \vv 0$.
 \end{rmq}
 
 \begin{ex}
 \begin{center}
-\begin{tikzpicture}[scale=1]
-%\begin{axis}[
-%%axis x line=bottom,
-%%axis y line = left,
-%%axis lines=middle,
-%width=\linewidth,
-%height=0.625\linewidth,
-%xmin=-3, xmax=13,
-%ymin=-9, ymax=1,
-%%enlargelimits={abs=0.2},
-%xtick distance=1,
-%ytick distance=1,
-%grid=both,
-%xticklabels={},
-%yticklabels={},
-%grid style={black,line width=1pt, draw opacity=0.5},
-%ticks=none,
-%axis equal,
-%scale only axis,
-%legend pos=north east,
-%axis line style={draw=none},
-%scale=0.6
-%]
+\begin{tikzpicture}[scale=0.8]
 \draw[stylegrille] (-3,-9) grid (13,1);
-\clip (-3,-9) rectangle (13,1);
+\clip (-3,-9) rectangle (14,1);
 
 \draw[stylevecteur] (0,0) -- (4,0) node[pos=0,left] {\large $\vec u$};
 \draw[stylevecteur] (0,-2) -- (8,-2) node[pos=0,left] {\large $2 \vec u$};
@@ -179,14 +157,13 @@ En particulier, $0 \times \vec u = \vecc 0$.
 \draw[stylevecteur] (0,-6) -- (6,-6) node[pos=0,left] {\large $\frac 3 2 \vec u$};
 \draw[stylevecteur,<-] (0,-8) -- (12,-8) node[pos=0,left] {\large $-3\vec u$};
 
-%\end{axis}
 \end{tikzpicture}
 \end{center}
 
 \end{ex}
 
 \begin{app}
-$I$ est le milieu de $[AB]$ se traduit par $\vecc {AI} = \vecc {IB}$ ou $\vecc{AB} = 2\vecc{AI}$ ou $\vecc {AI} = \frac 1 2 \vecc{AB}$.
+$I$ est le milieu de $[AB]$ se traduit par $\vv {AI} = \vv {IB}$ ou $\vv{AB} = 2\vv{AI}$ ou $\vv {AI} = \frac 1 2 \vv{AB}$.
 
 \begin{center}
 \begin{tikzpicture}

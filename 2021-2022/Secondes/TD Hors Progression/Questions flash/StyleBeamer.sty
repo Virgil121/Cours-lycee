@@ -25,7 +25,7 @@
 \usepackage{microtype}					% Améliore le rendu final
 \usepackage{ifthen}						% Pour la définition de macros: conditions
 \usepackage{multicol}					% Pour scinder des documents en plusieurs colonnes. Alternative à l'option twocolumn
-\usepackage{enumitem}					% Enumérations évoluées
+%\usepackage{enumitem}					% Enumérations évoluées
 \usepackage{cancel}
 \usepackage{diagbox}
 \usepackage{fancyhdr}					% Entêtes
@@ -148,34 +148,6 @@
 % Environnement centrer sans passage à la ligne
 
 \newenvironment{centrer}{\par \centering }{ \par}
-
-% Commandes sujets
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-% Lignes de points pour réponses
-
-\newlength{\enumitemindent} %Pour que les points soient sur toute la page. A voir en compo, le résultat semble ok car la minipage subit la marge
-\setlength{\enumitemindent}{0pt}
-\newcommand{\pointstretch}{1.5}
-\setlist{before={\addtolength{\enumitemindent}{\leftmargin}},after={\addtolength{\enumitemindent}{-\leftmargin}},font=\bfseries}% Mise à jour de la marge, addtolength ou setlength... (reculer d'une indentation ou de toutes) + mode bf (obligé de tout faire en même temps)
-\newcommand{\points}[2][\pointstretch]{\setstretch{#1}%
-\foreach \n in{1,...,#2}%
-{\noindent\hspace{-\enumitemindent}\strut\dotfill
-
-}
-}
-
-% Entete pour interros ( quand il en faut plusieurs en une page, imitation fancyhdr )
-
-\newcommand{\entete}[3]{
-\begin{centrer}
-\par\smallskip\noindent\parbox[t]{.149\textwidth}{\raggedright #1}%
-\parbox[t]{.7\textwidth}{\centering #2}%
-\parbox[t]{.149\textwidth}{\raggedleft #3}%
-
-\rule[3.3mm]{\textwidth}{0.4pt}
-\end{centrer}
-}
 
 % Centrer tabularx de base et ligne centrée Y
 
