@@ -24,217 +24,342 @@
 \end{itemize}
 \end{programme}
 
-%\begin{FlushLeft}
+\section{Equation cartésienne de droite et vecteur directeur}
 
-\section{Equations cartésiennes et réduites}
+\begin{fait}
+On se place dans un repère \Oij du plan.
+\end{fait}
 
-\section{Vecteur directeur d'une droite}
-
-\section{Intersections et systèmes}
-
-
-
-\section{Equation cartésienne de droite et vecteur directeur.}
 \begin{defin}
-Soit $\mathscr{D}$ une droite, et $A$ et $B$ deux points de $\mathscr{D}$.\\
-On appelle \textbf{vecteur directeur} de $\mathscr{D}$ tout vecteurs $\vv{u}$ non nul colinéaire à $\vv{AB}$.\\
-\textit{\underline {Autrement dit}: le vecteur $\vv{u}$ donne la direction de la droite $\mathscr{D}$}
+
+\compo
+{
+Soit $\mathscr{D}$ une droite, et $A$ et $B$ deux points de $\mathscr{D}$.
+
+On appelle \textbf{vecteur directeur} de $\mathscr{D}$ tout vecteur $\vv u$ non nul colinéaire à $\vv{AB}$.
+
+Autrement dit, le vecteur $\vv u$ donne la direction de la droite $\mathscr D$.
+}
+{
+\begin{center}
+\begin{tikzpicture}
+\begin{axis}[
+styleglobal,
+width=0.9*\linewidth,
+xmin=-4, xmax=6,
+ymin=-2, ymax=4,
+xtick distance=1,
+ytick distance=1,
+font=\normalsize,
+minor x tick num=0,
+minor y tick num=0,
+]
+\addplot[styleplot,DarkRed] {0.5*x-1} node [pos=0.9,above] {$\mathscr D$};
+\node[stylepoint,fill=blue,label=-45:$A$] (A) at (0,-1) {};
+\node[stylepoint,fill=blue,label=-45:$B$] (B) at (4,1) {};
+\draw[stylevecteur] (-3,1) -- (1,3) node[pos=0.5,above] {$\vv u$};
+\draw[stylevecteur] (2,2) -- (4,3) node[pos=0.5,above] {$\vv v$};
+\end{axis}
+\end{tikzpicture}
+\end{center}
+}
 \end{defin}
 
-\begin{center}
-    
-\begin{tikzpicture}[scale=0.8]
-    \tkzInit[xmin=-3, xmax=6, ymin=-2,ymax=5]
-    \tkzDrawXY
-    \draw[lightgray,very thin] (-3,-2) grid (6,5);
-    \draw  (-2,-2) -- (6,2);
-     \draw [->,>=latex] (-2,2) -- (2,4);
-      \draw [->,>=latex] (2,2) -- (4,3);
-     \draw (2,0) node [above] {$\mathscr{D}$};
-     \draw (0,-1) node {$\bullet$};
-     \draw (0,-1) node [below] {$A$};
-     \draw (4,1) node {$\bullet$};
-     \draw (4,1) node [below]{$B$};
-     \draw (-0.5,3) node [above]{$\vv{u}$};
-     \draw (3,2.5) node [above]{$\vv{v}$};
-
-\end{tikzpicture}
-\end{center}
-
 \begin{rmq}
-Un vecteur directeur n'est pas unique: ici les vecteurs $\vv{u}$ et $\vv{v}$ sont des vecteurs directeurs de la droite $(AB)$.
+Un vecteur directeur n'est pas unique: Ici, $\vv{u}$ et $\vv{v}$ sont des vecteurs directeurs de la droite $(AB)$.
 \end{rmq}
 
-\begin{exercice}
-Soit \Oij un repère du plan.\\
-Donner \textbf{des} vecteurs directeurs des droites $\mathscr{D}{_1}$,$\mathscr{D}{_2}$,$\mathscr{D}{_3}$ et $\mathscr{D}{_4}$.
-\end{exercice}
+\begin{ex}
 
+\compo
+{
+Donner les coordonnées de \textbf{plusieurs} vecteurs directeurs des droites $\mathscr D_1$, $\mathscr D_2$, $\mathscr D_3$ et $\mathscr D_4$.
 
-\compo[0.7]{
+{\setstretch{2}
+\begin{itemize}
+\item $\mathscr D_1$:
+\item $\mathscr D_2$:
+\item $\mathscr D_3$:
+\item $\mathscr D_4$:
+\end{itemize}}
+}
+{
 \begin{center}
-\begin{tikzpicture}[scale=1]
-    \tkzInit[xmin=-3, xmax=6, ymin=-2,ymax=6]
-    \tkzDrawXY
-    \draw[lightgray,very thin] (-3,-2) grid (6,6);
-    \draw [domain=-1.5:2.5,samples=100] plot (\x,{2*\x+1});
-    \draw [domain=-3:5,samples=100] plot (\x,{-\x+3});
-    \draw [-] (-3,4) -- (6,4);
-    \draw [-] (4,-2) -- (4,6);
-    \draw (2,5) node[right]{$\mathscr{D}{_1}$};
-    \draw (3,0) node[above]{$\mathscr{D}{_3}$};
-    \draw (5.5,4) node[above]{$\mathscr{D}{_2}$};
-    \draw (4,2) node[right]{$\mathscr{D}{_4}$};
+\begin{tikzpicture}
+\begin{axis}[
+styleglobal,
+width=0.9*\linewidth,
+xmin=-3, xmax=6,
+ymin=-2, ymax=6,
+xtick distance=1,
+ytick distance=1,
+font=\normalsize,
+minor x tick num=0,
+minor y tick num=0,
+]
+\addplot[styleplot] {3-x} node [pos=0.85,above right] {$\mathscr D_1$};
+\addplot[styleplot,DarkRed] {4} node [pos=0.93,above] {$\mathscr D_2$};
+\addplot[styleplot,DarkBlue] {3*x+1} node [pos=0.3,above left] {$\mathscr D_3$};
+\draw[line width=1pt,DarkGreen] (4,-2) -- (4,6) node [pos=0.9,left] {$\mathscr D_4$};
+\end{axis}
 \end{tikzpicture}
 \end{center}
-}{\qrcode[height=2cm]{https://youtu.be/6VdSz-0QT4Y}}
-
+}
+\end{ex}
 
 \begin{prop}
 Une équation cartésienne de la droite passant par le point $A(x_A;y_A)$ et de vecteur directeur $\vv u \dbinom{-b}{a}$ est de la forme $ax+by+c=0$.
 \end{prop}
 
 \begin{fait}
-Un point $M(x;y)$ appartient à cette droite ssi $\vv{AM} \dbinom{x-x_A}{y-y_A}$ et $\vv u \dbinom {-b}{a}$ sont colinéaires.\\
-Il faut donc que $det(\vv{AM};\vv{u})=0$.\\
-Il vient, $$det(\vv{AM};\vv{u})=\begin{vmatrix} x-x_A & -b \\ y-y_A & a \end{vmatrix}=a(x-x_A)-(-b)(y-y_A)=0$$
+Un point $M(x;y)$ appartient à cette droite ssi $\vv{AM} \dbinom{x-x_A}{y-y_A}$ et $\vv u \dbinom {-b}{a}$ sont colinéaires.
+
+Il faut donc que $det(\vv{AM};\vv{u})=0$. Cela donne alors: $$det(\vv{AM};\vv{u})=a(x-x_A)-(-b)(y-y_A)=0$$
 
 En développant, l'équation peut s'écrire:
 
 $$ax+by+(-ax_A-by_A)=0$$
 
-On pose $c=-ax_A-by_A$
-
-d'où: $$\boxed{ax+by+c=0}$$
-
+En posant $c=-ax_A-by_A$, on trouve bien la forme voulue: $\boxed{ax+by+c=0}$.
 \end{fait}
-
-
 
 \begin{cor}
 Si les coordonnées $(x;y)$ d'un point $M$ vérifient l'équation $ax+by+c=0$, alors $M$ appartient à la droite dont un vecteur directeur est $\vv u \dbinom {-b}{a}$.
 \end{cor}
 
-\begin{exercice}
-On considère un repère \Oij du plan.
+\begin{exs}
+\begin{itemize}
+    \item Soit $\mathscr D_1$ la droite passant par le point $A(3;1)$ et de vecteur directeur $\vv u \dbinom{-1}{5}$.
+    
+	On sait alors qu'une équation cartésienne de $\mathscr D_1$ est $5x+y+c=0$ où $c$ reste à trouver.
+	
+	De plus, en remplaçant $x$ et $y$ par les coordonnées de $A$, on obtient:
+	$$\begin{aligned} 5 \times 3 + 1 + c & =0 \\ 16+c & =0 \\ c & =-16 \end{aligned}$$
+	
+	Une équation cartésienne de $\mathscr D_1$ est donc $5x+y-16=0$.
+    
+    \item Soit $\mathscr D_2$ passant par les points $B(5;3)$ et $C(1;-3)$.
+    
+    $\vv{BC} \dbinom {-4} {-6}$ est un vecteur directeur de $\mathscr D_2$. On obtient alors l'équation $-6x+4y+c=0$.
+    
+    Pour trouver $c$, on remplace $x$ et $y$ par les coordonnées de $A$ ou $B$. Avec $A$, cela donne:
+    $$\begin{aligned} -6 \times 5 +4 \times 3 +c & =0 \\ -30+12+c & =0 \\ c & =18 \end{aligned}$$
+    Une équation cartésienne de $\mathscr D_2$ est donc $-6x+4y+18=0$. A noter que l'on peut simplifier cette équation pour obtenir $-3x+2y+9=0$.
+\end{itemize}
+\end{exs}
+\section{Systèmes de deux équations à deux inconnues}
 
-\begin{enumerate}
-    \item Déterminer une équation cartésienne de la droite $\mathscr{D}$ passant par le point $A(3;1)$ et de vecteur directeur $\Coord{u}{-1}{5}$
-    \item Déterminer une équation cartésienne de la droite $\mathscr{D'}$ passant par les points $B(5;3)$ et $C(1;-3)$
-\end{enumerate}
-
-\end{exercice}
-
-\begin{framed}
-\vspace{3cm}
-\end{framed}
-
-\section{Systèmes de deux équations à deux inconnus}
-
+\begin{fait}
 Résoudre un système à deux inconnues , c'est trouver le ou les couples $(x;y)$ qui vérifie(nt) à la fois les deux équations.
+\end{fait}
 
-\begin{exercice}
-Montrer que le couple $(2;3)$ vérifie le système d'équations:
-
-\[
-\left \{
-\begin{array}{c c}
+\begin{ex}
+Le couple $(2;3)$ vérifie le système d'équations
+$
+\begin{cases}
     5x-2y=4 \\
     -x+y=1
-\end{array}
-\right.
-\]
+\end{cases}
+$
 
-\end{exercice}
-
-\begin{framed}
-\vspace{3cm}
-\end{framed}
+En effet, en remplaçant $x$ et $y$ par $2$ et $3$, on trouve
+$
+\begin{cases}
+5 \times 2 - 2 \times 3 = 10-6=4 \\
+-2 + 3 = 1
+\end{cases}
+$
+\end{ex}
 
 \subsection{Résolution graphique}
 
-On se ramène à deux équations de droites que l'on trace.\\
-L'unique solution du système est alors les coordonnées du point d'intersection des deux droites.
+\begin{fait}
+On se ramène à deux équations de droites que l'on trace.
 
-\begin{exercice}
-Tracer les droites du système puis trouver les coordonnées du point d'intersection.
-\[
-\left \{
-\begin{array}{c c}
+L'unique solution du système est alors les coordonnées du point d'intersection des deux droites.
+\end{fait}
+
+\begin{ex}
+\compo[0.6]
+{
+On reprend le système précédent:
+$$
+\begin{cases}
     5x-2y=4 \\
     -x+y=1
-\end{array}
-\right.
-\]
+\end{cases}
+$$
 
-
+Après avoir tracé les des deux droites
+$$\begin{aligned} &\mathscr D_1:5x-2y-4=0 \\ &\mathscr D_2:-x+y-1=0 \end{aligned}$$
+On constate que leur point d'intersection a pour coordonnées $(2;3)$, ce qui correspond à la solution testée dans l'exemple précédent.
+}
+{
 \begin{center}
-    
+\begin{tikzpicture}
+\begin{axis}[
+styleglobal,
+width=0.9*\linewidth,
+xmin=-1, xmax=6,
+ymin=-1, ymax=5,
+xtick distance=1,
+ytick distance=1,
+font=\normalsize,
+minor x tick num=0,
+minor y tick num=0,
+]
+\addplot[styleplot,DarkRed] {2.5*x-2} node [pos=0.9,above] {$\mathscr D_1$};
+\addplot[styleplot,DarkBlue] {x+1} node [pos=0.9,above] {$\mathscr D_2$};
 
- \begin{tikzpicture}[scale=0.8]
-    \tkzInit[xmin=-4, xmax=6, ymin=-2,ymax=6]
-    \tkzDrawXY
-    \draw[lightgray,very thin] (-4,-2) grid (6,6);
-    
+\node[stylepoint] at (2,3) {};
+\end{axis}
 \end{tikzpicture}
 \end{center}
+}
 
-
-
-\end{exercice}
+\end{ex}
 
 
 \subsection{Résolution algébrique}
 
-
-
-
 \subsubsection{Méthode par combinaison linéaire}
 
-\begin{exercice}
+\begin{fait}
+Le but est de faire des opérations entre les lignes pour faire disparaitre des inconnues.
+\end{fait}
 
-Résoudre dans $\R$ le système suivant:
+\begin{ex}
 
+Résolvons dans $\R$ le système suivant:
+$
+\begin{cases}
+    2x-3y=9 & (L_1) \\
+    2x+y=-1 & (L_2)
+\end{cases}
+$
 
-\[
-\left \{
-\begin{array}{c c}
+On voit que les deux lignes contiennent le terme $2x$. On peut donc l'annuler en soustrayant la première ligne à la seconde ligne:
+
+$$\renewcommand{\arraystretch}{2.5}
+\begin{array}{lclcl}
+\begin{cases}
     2x-3y=9 \\
     2x+y=-1
+\end{cases}
+&
+\xLeftrightarrow{L_2 \gets L_2-L_1}
+&
+\begin{cases}
+    2x-3y=9 \\
+    4y=-10
+\end{cases}
+&
+\xLeftrightarrow{\text{On résoud } L_2}
+&
+\begin{cases}
+    2x-3y=9 \\
+    y=-2,5
+\end{cases} \\
+&
+\xLeftrightarrow{\text{On remplace } y}
+&
+\begin{cases}
+    2x-7,5=9 \\
+    y=-2,5
+\end{cases}
+&
+\xLeftrightarrow{\text{On résoud } L_1}
+&
+\begin{cases}
+    2x=1,5 \\
+    y=-2,5
+\end{cases} \\
+&
+\iff
+&
+\begin{cases}
+    x=0,75 \\
+    y=-2,5
+\end{cases}
 \end{array}
-\right.
-\]
+$$
 
-
-\end{exercice}
-
-\begin{framed}
-\vspace{7cm}
-\end{framed}
-
+\end{ex}
 
 \subsubsection{Méthode par substitution}
 
-\begin{exercice}
+\begin{fait}
+Le but est d'exprimer une variable en fonction d'une autre pour pouvoir l'éliminer dans une autre ligne.
+\end{fait}
 
-Résoudre dans $\R$ le système suivant:
+\begin{ex}
 
+Résolvons dans $\R$ le système suivant:
+$
+\begin{cases}
+    6x-7y=1 & (L_1)\\
+    x-3y=2 & (L_2)
+\end{cases}
+$
 
-\[
-\left \{
-\begin{array}{c c}
+On va isoler $x$ dans la seconde ligne pour le \og réinjecter \fg dans la première.
+
+$$\renewcommand{\arraystretch}{2.5}
+\begin{array}{lclcl}
+\begin{cases}
     6x-7y=1 \\
-    x-3y=-2
+    x-3y=2
+\end{cases}
+&
+\xLeftrightarrow{\text{On isole } x}
+&
+\begin{cases}
+    6x-7y=1 \\
+    x=2+3y
+\end{cases}
+&
+\xLeftrightarrow{\text{On réinjecte}}
+&
+\begin{cases}
+    6(2+3y)-7y=1 \\
+    x=2+3y
+\end{cases} \\
+&
+\xLeftrightarrow{\text{On résoud } L_1}
+&
+\begin{cases}
+    12+18y-7y=1 \\
+    x=2+3y
+\end{cases}
+&
+\iff
+&
+\begin{cases}
+    11y=-11 \\
+    x=2+3y
+\end{cases} \\
+&
+\iff
+&
+\begin{cases}
+    y=-1 \\
+    x=-2+3y
+\end{cases}
+&
+\xLeftrightarrow{\text{On remplace } y}
+&
+\begin{cases}
+    y=-1 \\
+    x=-2-3=-5
+\end{cases}
 \end{array}
-\right.
-\]
-
-
-
-\end{exercice}
-
-\begin{framed}
-\vspace{7cm}
-\end{framed}
+$$
+\end{ex}
 
 \end{document}
+
+\section{Equations cartésiennes et réduites}
+
+\section{Vecteur directeur d'une droite}
+
+\section{Intersections et systèmes}

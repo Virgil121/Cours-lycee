@@ -1,26 +1,14 @@
 \documentclass[a4paper,12pt,french] {article}
 
-\usepackage{../../Style}
+\usepackage[sujet]{../../Style}
 
-\renewcommand\tabularxcolumn[1]{m{#1}}
-
-\geometry{bottom=23mm}
-
-\pagestyle{fancy}
-\setlength{\headheight}{10mm}
 \fancyhead[L]{15/11/2021}
 \fancyhead[C]{\textbf{DS2 : Vecteurs du plan}}
 \fancyhead[R]{\seconde 12}
-\fancyfoot[C]{Page \thepage}
 
 \renewcommand{\baselinestretch}{1.25}
 
-\setlist[itemize]{align=parleft,left=5pt..15pt}
-\setlist[enumerate]{align=parleft,left=5pt..20pt}
-
 \usetikzlibrary{decorations,decorations.markings,calc}
-
-\newcommand{\compofix}{\vspace{0.7\baselineskip}}
 
 \begin{document}
 
@@ -67,7 +55,7 @@ En utilisant le repère ci-contre:
 \node[color=black,circle,minimum size=1pt,fill,inner sep=2pt,fill opacity=1,label={180:\textbf{\large B}}] (B) at (6,7) {};
 \node[color=black,circle,minimum size=1pt,fill,inner sep=2pt,fill opacity=1,label={-2:\textbf{\large C}}] (C) at (7,-1) {};
 \node[color=black,circle,minimum size=1pt,fill,inner sep=2pt,fill opacity=1,label={2:\textbf{\large D}}] (D) at (2,1) {};
-\draw[line width=1pt,->,>=latex] (9,-8) -- ++(2,3) node[pos=0.5,above left] {$\vec u$};
+\draw[line width=1pt,->,>=latex] (9,-8) -- ++(2,3) node[pos=0.5,above left] {$\vv u$};
 %\node[color=black,circle,minimum size=1pt,fill,inner sep=2pt,fill opacity=1,label={90:\textbf{\large E}}] (E) at (4,-4) {};
 %\draw[line width=1pt, shorten <= -10cm, shorten >= -10cm] (A) -- (B);
 \end{tikzpicture}
@@ -75,7 +63,7 @@ En utilisant le repère ci-contre:
 }
 \begin{enumerate}
 \setcounter{enumi}{3}
-\item Comparer les trois caractéristiques des vecteurs $\vec u$ et $\vv {BD}$.
+\item Comparer les trois caractéristiques des vecteurs $\vv u$ et $\vv {BD}$.
 
 \points 3
 \item Quelle est la nature du quadrilatère $BCNM$? Justifier en utilisant des vecteurs:
@@ -84,6 +72,8 @@ En utilisant le repère ci-contre:
 \end{enumerate}
 
 \end{exercice}
+
+\newpage
 
 \begin{exercice}
 Pour des points quelconques du plan, compléter:
@@ -102,9 +92,9 @@ Pour des points quelconques du plan, compléter:
 \draw[step=1,gray,thin] (liminf)+(-0.01,-0.01) grid (limsup)+(0.01,0.01);
 \clip (liminf) rectangle (limsup);
 
-\draw[line width=1pt,->,>=latex] (-14,6) -- ++(4,-2) node[pos=0.5,above] {$\vec u$};
-\draw[line width=1pt,->,>=latex] (-7,4) -- ++(-3,3) node[pos=0.5,above right] {$\vec v$};
-\draw[line width=1pt,<-,>=latex] (-11,3) -- ++(-3,-9) node[pos=0.5,above left] {$\vec w$};
+\draw[line width=1pt,->,>=latex] (-14,6) -- ++(4,-2) node[pos=0.5,above] {$\vv u$};
+\draw[line width=1pt,->,>=latex] (-7,4) -- ++(-3,3) node[pos=0.5,above right] {$\vv v$};
+\draw[line width=1pt,<-,>=latex] (-11,3) -- ++(-3,-9) node[pos=0.5,above left] {$\vv w$};
 \node[color=black,circle,minimum size=1pt,fill,inner sep=2pt,fill opacity=1,label={200:\textbf{\large A}}] (A) at (-4,-2) {};
 \node[color=black,circle,minimum size=1pt,fill,inner sep=2pt,fill opacity=1,label={-20:\textbf{\large B}}] (B) at (4,4) {};
 \node[color=black,circle,minimum size=1pt,fill,inner sep=2pt,fill opacity=1,label={-135:\textbf{\large C}}] (C) at (15,-2) {};
@@ -112,9 +102,9 @@ Pour des points quelconques du plan, compléter:
 \end{center}
 
 \begin{enumerate}
-\item Placer le point M tel que $\vv{AM}=\vec u+2 \vec v$
-\item Placer le point N tel que $\vv{BN} = \vv{AB} - \vec w$
-\item Placer le point O tel que $\vv{CO} = \vec v+\frac 1 2 \vec u+\frac 2 3 \vec w$
+\item Placer le point M tel que $\vv{AM}=\vv u+2 \vv v$
+\item Placer le point N tel que $\vv{BN} = \vv{AB} - \vv w$
+\item Placer le point O tel que $\vv{CO} = \vv v+\frac 1 2 \vv u+\frac 2 3 \vv w$
 \item Placer le point I, milieu de $[AC]$.
 \item Compléter: $\vv {AI} = \makebox[1cm]{\dotfill} \vv{AC}$
 \end{enumerate}
@@ -139,10 +129,10 @@ Pour des points quelconques du plan, compléter:
 \end{exercice}
 
 \begin{exercice} \
-\compofix
+
 \compo[0.65]
 {
-\quad On considère le triangle $ABC$, et les points $D \in [AB], E \in [AC]$ tels que $(DE) \parallel (BC)$, comme sur le schéma ci-contre.
+\quad \strut On considère le triangle $ABC$, et les points $D \in [AB], E \in [AC]$ tels que $(DE) \parallel (BC)$, comme sur le schéma ci-contre.
 \begin{enumerate}
 \item Compléter: $\vv {AD} = \makebox[15mm]{\dotfill} \vv {AB}$, $\vv {AE} = \makebox[3cm]{\dotfill} $
 \item Compléter puis justifier: $\vv {DE} = \makebox[3cm]{\dotfill} $
@@ -150,7 +140,7 @@ Pour des points quelconques du plan, compléter:
 \points 3
 }
 {
-\begin{centrer}
+\begin{center}
 %\vspace{-5mm}
 \begin{tikzpicture}[scale=0.7]
 %\node[draw=none] (liminf) at (-10,-7.01) {};
@@ -181,7 +171,7 @@ Pour des points quelconques du plan, compléter:
 \draw[line width=1pt,decorate,decoration={markings, mark=at position .5  with {\node[transform shape] {$\shortmid$};}}] (D.center) -- (B.center);
 
 \end{tikzpicture}
-\end{centrer}
+\end{center}
 }
 \end{exercice}
 
@@ -206,13 +196,13 @@ Chasles.
 \end{itemize}
 
 \begin{exercice} \
-\compofix
+
 \compo[0.55]
 {
 Dans le repère ci-contre:
 \begin{enumerate}
-\item Tracer un vecteur $\vec v$ ayant la même longueur que $\vec u$, mais différent de $\vec u$.
-\item Que dire du vecteur $\vec w$ par rapport au vecteur $\vec u$ ?
+\item Tracer un vecteur $\vv v$ ayant la même longueur que $\vv u$, mais différent de $\vv u$.
+\item Que dire du vecteur $\vv w$ par rapport au vecteur $\vv u$ ?
 \end{enumerate}
 \points 2
 }
@@ -227,8 +217,8 @@ Dans le repère ci-contre:
 \path [draw=black, line width=2pt] (0,0) -- (-1,-2) -- (0,-4);
 %\node[draw=none] (A) at (1,1) {};
 %\node[draw=none] (B) at (3,7) {};
-\draw[line width=1pt,->,>=latex] (1,1) -- (4,7) node[pos=0.5,left] {$\vec u$};
-\draw[line width=1pt,->,>=latex] (14,6) -- (12,2) node[pos=0.5,right] {$\vec w$};
+\draw[line width=1pt,->,>=latex] (1,1) -- (4,7) node[pos=0.5,left] {$\vv u$};
+\draw[line width=1pt,->,>=latex] (14,6) -- (12,2) node[pos=0.5,right] {$\vv w$};
 \end{tikzpicture}
 \end{center}
 }
@@ -251,7 +241,7 @@ Dans le repère ci-contre:
 \node[color=black,circle,minimum size=1pt,fill,inner sep=2pt,fill opacity=1,label={45:\textbf{\large B}}] (B) at (6,7) {};
 \node[color=black,circle,minimum size=1pt,fill,inner sep=2pt,fill opacity=1,label={-45:\textbf{\large C}}] (C) at (7,-1) {};
 \node[color=black,circle,minimum size=1pt,fill,inner sep=2pt,fill opacity=1,label={190:\textbf{\large D}}] (D) at (2,1) {};
-\draw[line width=1pt,->,>=latex] (9,-8) -- ++(2,3) node[pos=0.5,above left] {$\vec u$};
+\draw[line width=1pt,->,>=latex] (9,-8) -- ++(2,3) node[pos=0.5,above left] {$\vv u$};
 %\node[color=black,circle,minimum size=1pt,fill,inner sep=2pt,fill opacity=1,label={90:\textbf{\large E}}] (E) at (4,-4) {};
 %\draw[line width=1pt, shorten <= -10cm, shorten >= -10cm] (A) -- (B);
 \end{tikzpicture}
@@ -260,7 +250,7 @@ Dans le repère ci-contre:
 {
 En utilisant le repère ci-contre:
 \begin{enumerate}
-\item Comparer trois caractéristiques des vecteurs $\vec u$ et $\vv {BD}$. \points 3
+\item Comparer trois caractéristiques des vecteurs $\vv u$ et $\vv {BD}$. \points 3
 \item Tracer deux représentants du vecteur $\vv {AB}$, l'un d'origine $D$, l'autre d'extrémité $C$.
 \item Placer $M$, l'image de $C$ par la translation de vecteur $\vv {DB}$.
 \item Placer $N$, l'image de $C$ par la translation de vecteur $\vv {DC}$.

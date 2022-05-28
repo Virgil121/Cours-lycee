@@ -48,10 +48,10 @@ xmax=9,
 ymin=-2,
 ymax=5
 ]
-\draw[stylevecteur] (-4,3) -- ++(5,-1) node[pos=0.5,above] {$\vec u$};
-\draw[stylevecteur] (4,4) -- ++(-2,-3) node[pos=0.5,above left] {$\vec v$};
-\draw[stylevecteur] (-3,-1) -- ++(11,2) node[pos=0.5,above] {$\vec w$};
-\draw[stylevecteur] (8,0) -- ++(-3,3) node[pos=0.5,above right] {$\vec \alpha$};
+\draw[stylevecteur] (-4,3) -- ++(5,-1) node[pos=0.5,above] {$\vv u$};
+\draw[stylevecteur] (4,4) -- ++(-2,-3) node[pos=0.5,above left] {$\vv v$};
+\draw[stylevecteur] (-3,-1) -- ++(11,2) node[pos=0.5,above] {$\vv w$};
+\draw[stylevecteur] (8,0) -- ++(-3,3) node[pos=0.5,above right] {$\vv \alpha$};
 \end{tikzpicture}
 \end{resizetikz}
 \end{centrer}
@@ -74,7 +74,7 @@ ymax=5
 
 \begin{enumerate}
 \item Sur le repère ci-dessous, placer les points $A(6;2)$, $B(3;-1)$ et $C(-2;4)$.
-\item En déduire les coordonnées des vecteurs $\vec{AB}$, $\vec{AC}$ et $\vec{BC}$.
+\item En déduire les coordonnées des vecteurs $\vv{AB}$, $\vv{AC}$ et $\vv{BC}$.
 \item Retrouver par le calcul les résultats précédents.
 \end{enumerate}
 \end{exercice}
@@ -97,7 +97,7 @@ On donne les points: $A(0;5)$, $B(-2;1)$ et $C(5;4)$.
 \end{exercice}
 
 \begin{exercice}
-Soient $A(-2;3)$ et $\vec u \binom 4 {-2}$. Calculer les coordonnées du point $B$ image de $A$ par la translation de vecteur $\vec u$.
+Soient $A(-2;3)$ et $\vv u \binom 4 {-2}$. Calculer les coordonnées du point $B$ image de $A$ par la translation de vecteur $\vv u$.
 \end{exercice}
 
 \begin{exercice}
@@ -321,13 +321,13 @@ Dans un repère orthonormé, on donne les points $A(11;-3)$, $B(8;-3+3 \sqrt 3)$
 \tkzDrawX[label={},tickup=4pt,tickdn=4pt]
 \tkzDrawY[label={},ticklt=4pt,tickrt=4pt]
 \node[label={-135:{O}}] (O) at (0,0) {};
-\draw[->,>=latex,line width=1pt,cap=round,color=black!30!red] (0,0) -- (1,0) node[pos=0.5,below] {$\vec i$};
-\draw[->,>=latex,line width=1pt,cap=round,color=black!30!red] (0,0) -- (0,1) node[pos=0.5,left] {$\vec j$};
+\draw[->,>=latex,line width=1pt,cap=round,color=black!30!red] (0,0) -- (1,0) node[pos=0.5,below] {$\vv i$};
+\draw[->,>=latex,line width=1pt,cap=round,color=black!30!red] (0,0) -- (0,1) node[pos=0.5,left] {$\vv j$};
 % \vv
-\draw[stylevecteur] (-4,3) -- ++(5,-1) node[pos=0.5,above] {$\vec u$};
-\draw[stylevecteur] (4,4) -- ++(-2,-3) node[pos=0.5,above left] {$\vec v$};
-\draw[stylevecteur] (-3,-1) -- ++(11,2) node[pos=0.5,above] {$\vec w$};
-\draw[stylevecteur] (8,0) -- ++(-3,3) node[pos=0.5,above right] {$\vec \alpha$};
+\draw[stylevecteur] (-4,3) -- ++(5,-1) node[pos=0.5,above] {$\vv u$};
+\draw[stylevecteur] (4,4) -- ++(-2,-3) node[pos=0.5,above left] {$\vv v$};
+\draw[stylevecteur] (-3,-1) -- ++(11,2) node[pos=0.5,above] {$\vv w$};
+\draw[stylevecteur] (8,0) -- ++(-3,3) node[pos=0.5,above right] {$\vv \alpha$};
 \end{tikzpicture}
 \end{resizetikz}
 
@@ -340,14 +340,14 @@ xmin=-5,xmax=9,
 ymin=-2,ymax=5,
 ]
 \node[label={-135:{O}}] (O) at (0,0) {};
-\draw[->,>=latex,line width=1pt,cap=round,color=black!30!red] (0,0) -- (1,0) node[pos=0.5,below] {$\vec i$};
-\draw[->,>=latex,line width=1pt,cap=round,color=black!30!red] (0,0) -- (0,1) node[pos=0.5,left] {$\vec j$};
+\draw[->,>=latex,line width=1pt,cap=round,color=black!30!red] (0,0) -- (1,0) node[pos=0.5,below] {$\vv i$};
+\draw[->,>=latex,line width=1pt,cap=round,color=black!30!red] (0,0) -- (0,1) node[pos=0.5,left] {$\vv j$};
 
 % \vv
-\draw[stylevecteur] (-4,3) -- ++(axis direction cs:5,-1) node[pos=0.5,above] {$\vec u$};
-\draw[stylevecteur] (4,4) -- ++(axis direction cs:-2,-3) node[pos=0.5,above left] {$\vec v$};
-\draw[stylevecteur] (-3,-1) -- ++(axis direction cs:11,2) node[pos=0.5,above] {$\vec w$};
-\draw[stylevecteur] (8,0) -- ++(axis direction cs:-3,3) node[pos=0.5,above right] {$\vec \alpha$};
+\draw[stylevecteur] (-4,3) -- ++(axis direction cs:5,-1) node[pos=0.5,above] {$\vv u$};
+\draw[stylevecteur] (4,4) -- ++(axis direction cs:-2,-3) node[pos=0.5,above left] {$\vv v$};
+\draw[stylevecteur] (-3,-1) -- ++(axis direction cs:11,2) node[pos=0.5,above] {$\vv w$};
+\draw[stylevecteur] (8,0) -- ++(axis direction cs:-3,3) node[pos=0.5,above right] {$\vv \alpha$};
 \end{axis}
 \end{tikzpicture}
 \begin{resizetikz}{0.9\linewidth} % Repère quelconque à la main
@@ -361,13 +361,13 @@ ymin=-2,ymax=5,
 \tkzDrawX[label={},tickup=4pt,tickdn=4pt]
 \tkzDrawY[label={},ticklt=4pt,tickrt=4pt]
 \node[label={-135:{O}}] (O) at (0,0) {};
-\draw[->,>=latex,line width=1pt,cap=round,color=black!30!red] (0,0) -- (1,0) node[pos=0.5,below] {$\vec i$};
-\draw[->,>=latex,line width=1pt,cap=round,color=black!30!red] (0,0) -- (0,1) node[pos=0.5,left] {$\vec j$};
+\draw[->,>=latex,line width=1pt,cap=round,color=black!30!red] (0,0) -- (1,0) node[pos=0.5,below] {$\vv i$};
+\draw[->,>=latex,line width=1pt,cap=round,color=black!30!red] (0,0) -- (0,1) node[pos=0.5,left] {$\vv j$};
 % \vv
-\draw[stylevecteur] (-4,3) -- ++(5,-1) node[pos=0.5,above] {$\vec u$};
-\draw[stylevecteur] (4,4) -- ++(-2,-3) node[pos=0.5,above left] {$\vec v$};
-\draw[stylevecteur] (-3,-1) -- ++(11,2) node[pos=0.5,above] {$\vec w$};
-\draw[stylevecteur] (8,0) -- ++(-3,3) node[pos=0.5,above right] {$\vec \alpha$};
+\draw[stylevecteur] (-4,3) -- ++(5,-1) node[pos=0.5,above] {$\vv u$};
+\draw[stylevecteur] (4,4) -- ++(-2,-3) node[pos=0.5,above left] {$\vv v$};
+\draw[stylevecteur] (-3,-1) -- ++(11,2) node[pos=0.5,above] {$\vv w$};
+\draw[stylevecteur] (8,0) -- ++(-3,3) node[pos=0.5,above right] {$\vv \alpha$};
 \end{tikzpicture}
 \end{resizetikz}
 \end{comment}

@@ -72,7 +72,7 @@
 
 \begin{programme}
 \item Base orthonormée. Coordonnées d'un vecteur. Expression de la norme d'un vecteur.
-\item Expression des coordonnées de $\vec{AB}$ en fonction de celles de $A$ et $B$.
+\item Expression des coordonnées de $\vv{AB}$ en fonction de celles de $A$ et $B$.
 \item Déterminant de deux vecteurs dans une base orthonormée, critère de colinéarité. Application à l'alignement, au parallélisme.
 \item Capacités:
 \begin{itemize}
@@ -88,7 +88,7 @@
 \section{Généralités sur les repères}
 
 \begin{defin}
-Soient $O,I,J$ trois points du plan non alignés. On pose $\vec i = \vec{OI}$ et $\vec j = \vec{OJ}$. Un repère du plan est un triplet \Oij. On dit alors que :
+Soient $O,I,J$ trois points du plan non alignés. On pose $\vv i = \vv{OI}$ et $\vv j = \vv{OJ}$. Un repère du plan est un triplet \Oij. On dit alors que :
 \begin{itemize}
 \item $O$ est l'origine du repère
 \item $(OI)$ est l'axe des abscisses
@@ -125,8 +125,8 @@ Tout point $M$ du plan est repéré par un unique couple de coordonnées $(x;y)$
 
 % Initialisation du repère
 \node[label={[anchor=60,label distance=-3pt]-120:{\scriptsize O}}] (O) at (0,0) {};
-\draw[stylevecteur,color=black!30!red] (0,0) -- (1,0) node[pos=0.5,below] {$\scriptstyle \vec i$};
-\draw[stylevecteur,color=black!30!red] (0,0) -- (0,1) node[pos=0.5,left] {$\scriptstyle \vec j$};
+\draw[stylevecteur,color=black!30!red] (0,0) -- (1,0) node[pos=0.5,below] {$\scriptstyle \vv i$};
+\draw[stylevecteur,color=black!30!red] (0,0) -- (0,1) node[pos=0.5,left] {$\scriptstyle \vv j$};
 
 %\vv
 \node[stylepoint,label=above right:{$M$},fill=blue,semithick] (M) at (1,3) {}; 
@@ -151,8 +151,8 @@ Tout point $M$ du plan est repéré par un unique couple de coordonnées $(x;y)$
 
 % Initialisation du repère
 \node[label={[label distance=-3pt]-135:{\scriptsize O}}] (O) at (0,0) {};
-\draw[stylevecteur,color=black!30!red] (0,0) -- (1,0) node[pos=0.5,below] {$\scriptstyle \vec i$};
-\draw[stylevecteur,color=black!30!red] (0,0) -- (0,1) node[pos=0.5,left] {$\scriptstyle \vec j$};
+\draw[stylevecteur,color=black!30!red] (0,0) -- (1,0) node[pos=0.5,below] {$\scriptstyle \vv i$};
+\draw[stylevecteur,color=black!30!red] (0,0) -- (0,1) node[pos=0.5,left] {$\scriptstyle \vv j$};
 
 %\vv
 \node[stylepoint,fill=blue,label={[anchor=145]-35:$M$}] (A) at (2,-1) {};
@@ -173,8 +173,8 @@ Tout point $M$ du plan est repéré par un unique couple de coordonnées $(x;y)$
 \tkzDrawY[label={},ticklt=2pt,tickrt=2pt,thin]
 
 \node[label={[anchor=30,label distance=-3pt]-135:{\scriptsize O}}] (O) at (0,0) {};
-\draw[stylevecteur,color=black!30!red] (0,0) -- (1,0) node[pos=0.5,below] {$\scriptstyle \vec i$};
-\draw[stylevecteur,color=black!30!red] (0,0) -- (0,1) node[pos=0.5,left] {$\scriptstyle \vec j$};
+\draw[stylevecteur,color=black!30!red] (0,0) -- (1,0) node[pos=0.5,below] {$\scriptstyle \vv i$};
+\draw[stylevecteur,color=black!30!red] (0,0) -- (0,1) node[pos=0.5,left] {$\scriptstyle \vv j$};
 \node[stylepoint,label=above right:{$M$},fill=blue,semithick] (M) at (-3,2) {}; 
 \end{scope}
 \end{tikzpicture}
@@ -192,7 +192,7 @@ $M(1;3)$&$M(2;-1)$&$M(-3;2)$
 On dit que le repère \Oij est orthonormé si:
 \begin{itemize}
 \item Ses axes sont perpendiculaires: $(OI) \perp (OJ)$
-\item Les vecteurs unité $\vec i$ et $\vec j$ ont pour longueur 1:  $\Vert \vec i \Vert = \Vert \vec j \Vert=1$
+\item Les vecteurs unité $\vv i$ et $\vv j$ ont pour longueur 1:  $\Vert \vv i \Vert = \Vert \vv j \Vert=1$
 \end{itemize}
 }
 {
@@ -215,7 +215,7 @@ On dit que le repère \Oij est orthonormé si:
 \begin{defin}
 \compo[0.75]
 {
-Soit $\vec u$ un vecteur du plan. On se donne le point $M(x;y)$ tel que $\vec{OM} = \vec u$. Les coordonnées de $\vec u$ sont celles de $M$, et l'on note $\vec u \dbinom x y$.
+Soit $\vv u$ un vecteur du plan. On se donne le point $M(x;y)$ tel que $\vv{OM} = \vv u$. Les coordonnées de $\vv u$ sont celles de $M$, et l'on note $\vv u \dbinom x y$.
 }
 {\vspace{-2em}
 \begin{center}
@@ -234,14 +234,14 @@ Soit $\vec u$ un vecteur du plan. On se donne le point $M(x;y)$ tel que $\vec{OM
 }
 \end{defin}
 
-\rem[eleve]{On écrit $\vec u \binom 3 2$ et pas $\vec u = \binom 3 2$ !}
+\rem[eleve]{On écrit $\vv u \binom 3 2$ et pas $\vv u = \binom 3 2$ !}
 
 \begin{ex}
 \compo[0.6]
 {
-On a représenté ci-contre deux vecteurs $\vec u$ et $\vec v$.
+On a représenté ci-contre deux vecteurs $\vv u$ et $\vv v$.
 
-On a $\vec u \dbinom 5 {-2}$, et $\vec v \dbinom {-2} {0}$.
+On a $\vv u \dbinom 5 {-2}$, et $\vv v \dbinom {-2} {0}$.
 }
 {\vspace{-1.5em}
 \begin{center}
@@ -249,8 +249,8 @@ On a $\vec u \dbinom 5 {-2}$, et $\vec v \dbinom {-2} {0}$.
 \begin{tikzpicture}
 \repereOij[xmin=-5,xmax=3,ymin=-1,ymax=4];
 
-\draw[stylevecteur] (-3,3) -- (2,1) node[pos=0.5,above] {$\vec u$};
-\draw[stylevecteur] (-2,1) -- (-4,1) node[pos=0.5,above] {$\vec v$};
+\draw[stylevecteur] (-3,3) -- (2,1) node[pos=0.5,above] {$\vv u$};
+\draw[stylevecteur] (-2,1) -- (-4,1) node[pos=0.5,above] {$\vv v$};
 \end{tikzpicture}
 \end{resizetikz}
 \end{center}
@@ -260,7 +260,7 @@ On a $\vec u \dbinom 5 {-2}$, et $\vec v \dbinom {-2} {0}$.
 \rem{Exo 1}
 
 \begin{prop}
-Soient $A(x_A;y_A)$ et $B(x_B;y_B)$ deux points du plan. Alors on a $\vec{AB} \dbinom {x_B-x_A} {y_B-y_A}$.
+Soient $A(x_A;y_A)$ et $B(x_B;y_B)$ deux points du plan. Alors on a $\vv{AB} \dbinom {x_B-x_A} {y_B-y_A}$.
 \end{prop}
 
 \begin{ex}
@@ -269,9 +269,9 @@ Soient $A(x_A;y_A)$ et $B(x_B;y_B)$ deux points du plan. Alors on a $\vec{AB} \d
 \setstretch{2.5}
 On se donne $A(1;2)$, $B(5;-1)$ et $C(6,3)$.
 
-Alors on a $\vec{AB} \dbinom {5-1}{-1-2}$ d'où $\vec{AB} \dbinom {4} {-3}$.
+Alors on a $\vv{AB} \dbinom {5-1}{-1-2}$ d'où $\vv{AB} \dbinom {4} {-3}$.
 
-De même, on a $\vec{BC} \dbinom {6-5}{3-(-1)}$ d'où $\vec{BC} \dbinom 1 4$.
+De même, on a $\vv{BC} \dbinom {6-5}{3-(-1)}$ d'où $\vv{BC} \dbinom 1 4$.
 }
 {\vspace{-1.5em}
 \begin{center}
@@ -293,18 +293,18 @@ De même, on a $\vec{BC} \dbinom {6-5}{3-(-1)}$ d'où $\vec{BC} \dbinom 1 4$.
 \rem{Exos 2,3,4 (par deux),(5),6}
 
 \begin{proprs}
-Soient $\vec u \dbinom {x_{\vec u}} {y_{\vec u}}$ et $\vec v \dbinom {x_{\vec v}} {y_{\vec v}}$ deux vecteurs du plan, et $\lambda \in \R$. Alors:
+Soient $\vv u \dbinom {x_{\vv u}} {y_{\vv u}}$ et $\vv v \dbinom {x_{\vv v}} {y_{\vv v}}$ deux vecteurs du plan, et $\lambda \in \R$. Alors:
 \begin{itemize}
-\item Les coordonnées de $\vec u + \vec v$ sont $\dbinom {x_{\vec u}+x_{\vec v}} {y_{\vec u}+y_{\vec v}}$.
-\item Les coordonnées de $\lambda \vec u$ sont $\dbinom {\lambda x_{\vec u}} {\lambda y_{\vec u}}$.
+\item Les coordonnées de $\vv u + \vv v$ sont $\dbinom {x_{\vv u}+x_{\vv v}} {y_{\vv u}+y_{\vv v}}$.
+\item Les coordonnées de $\lambda \vv u$ sont $\dbinom {\lambda x_{\vv u}} {\lambda y_{\vv u}}$.
 \end{itemize}
 \end{proprs}
 \begin{ex}
-Soient $\vec u \dbinom 1 3$ et $\vec v \dbinom 2 {-1}$. Alors on a:
+Soient $\vv u \dbinom 1 3$ et $\vv v \dbinom 2 {-1}$. Alors on a:
 \begin{itemize}
-\item $\left( \vec u + \vec v  \right) \dbinom {1+2} {3+(-1)}$ d'où $\left( \vec u + \vec v  \right) \dbinom 3 2$.
-\item $3\vec v \dbinom {3 \times 2} {3 \times (-1)}$ d'où $3\vec v \dbinom {6} {-3}$.
-\item $\left( 2 \vec u - 5\vec v \right) \dbinom {2 \times 1 -5 \times 2} {2 \times 3 -5 \times (-1)}$ d'où $\left( 2 \vec u - 5\vec v \right) \dbinom {-8}{11}$.
+\item $\left( \vv u + \vv v  \right) \dbinom {1+2} {3+(-1)}$ d'où $\left( \vv u + \vv v  \right) \dbinom 3 2$.
+\item $3\vv v \dbinom {3 \times 2} {3 \times (-1)}$ d'où $3\vv v \dbinom {6} {-3}$.
+\item $\left( 2 \vv u - 5\vv v \right) \dbinom {2 \times 1 -5 \times 2} {2 \times 3 -5 \times (-1)}$ d'où $\left( 2 \vv u - 5\vv v \right) \dbinom {-8}{11}$.
 \end{itemize}
 \end{ex}
 
@@ -335,8 +335,8 @@ Dans toute cette partie, on se place dans un repère orthonormé.
 \end{fait}
 
 \begin{prop}
-Soit $\vec u \dbinom x y$ un vecteur du plan. Alors la norme de $\vec u$ est donnée par:
-$$\Vert \vec u \Vert = \sqrt{x^2+y^2}$$
+Soit $\vv u \dbinom x y$ un vecteur du plan. Alors la norme de $\vv u$ est donnée par:
+$$\Vert \vv u \Vert = \sqrt{x^2+y^2}$$
 \end{prop}
 
 \begin{cor}
@@ -372,7 +372,7 @@ Comme $AM \neq 3$, $M$ n'appartient pas au cercle $\mathcal C$.
 \subsection{Définitions et caractérisations}
 
 \begin{defin}
-Deux vecteurs $\vec u$ et $\vec v$ sont dits colinéaires s'il existe $\lambda \in \R$ tel que $\vec u = \lambda \vec v$. Dans le cas où ils sont non nuls, cela revient à dire qu'ils ont la même direction.
+Deux vecteurs $\vv u$ et $\vv v$ sont dits colinéaires s'il existe $\lambda \in \R$ tel que $\vv u = \lambda \vv v$. Dans le cas où ils sont non nuls, cela revient à dire qu'ils ont la même direction.
 \end{defin}
 
 \begin{rmq}
@@ -380,7 +380,7 @@ Deux vecteurs sont colinéaire si et seulement si leurs coordonnées sont propor
 \end{rmq}
 
 \begin{exs}
-On se donne $\vec u \dbinom 2 5$ et $\vec v \dbinom 4 {10}$. On remarque que $\vec v = 2 \vec u$. Alors $\vec u$ et $\vec v$ sont colinéaires.
+On se donne $\vv u \dbinom 2 5$ et $\vv v \dbinom 4 {10}$. On remarque que $\vv v = 2 \vv u$. Alors $\vv u$ et $\vv v$ sont colinéaires.
 
 \begin{center}
 \begin{tabularx}{0.95\linewidth}{|c|c|Y|} \hline
@@ -398,12 +398,12 @@ On se donne $\vec u \dbinom 2 5$ et $\vec v \dbinom 4 {10}$. On remarque que $\v
 \subsection{Déterminant de deux vecteurs}
 
 \begin{defin}
-Soient $\vec u \dbinom {x} {y}$ et $\vec v \dbinom {x'} {y'}$ deux vecteurs du plan. On appelle déterminant de $\vec u$ et $\vec v$ le réel: $$\det(\vec u;\vec v)=xy'-x'y$$
+Soient $\vv u \dbinom {x} {y}$ et $\vv v \dbinom {x'} {y'}$ deux vecteurs du plan. On appelle déterminant de $\vv u$ et $\vv v$ le réel: $$\det(\vv u;\vv v)=xy'-x'y$$
 \end{defin}
 
 \begin{ex}
-Soient $\vec u \dbinom {4}{11}$ et $\vec v \dbinom {-7}{-20}$.
-On a $\begin{aligned}[t] \det (\vec u ; \vec v) &= 4 \times (-20) - (-7) \times 11\\&= -80 +77 \\&=-3\end{aligned}$
+Soient $\vv u \dbinom {4}{11}$ et $\vv v \dbinom {-7}{-20}$.
+On a $\begin{aligned}[t] \det (\vv u ; \vv v) &= 4 \times (-20) - (-7) \times 11\\&= -80 +77 \\&=-3\end{aligned}$
 \end{ex}
 
 \rem{Exo 16}
@@ -415,10 +415,10 @@ Deux vecteurs sont colinéaires si et seulement si leur déterminant est nul.
 \begin{ex}
 Les vecteurs $\vv u$ et $\vv v$ de l'exemple précédent ne sont donc pas colinéaires.
 
-Soient $\vec a \dbinom {-15}{40}$ et $\vec b \dbinom {9}{-24}$.
-On a $\begin{aligned}[t] \det (\vec a ; \vec b) &= -15 \times (-24) -9 \times 40\\&= 360 - 360\\&=0\end{aligned}$
+Soient $\vv a \dbinom {-15}{40}$ et $\vv b \dbinom {9}{-24}$.
+On a $\begin{aligned}[t] \det (\vv a ; \vv b) &= -15 \times (-24) -9 \times 40\\&= 360 - 360\\&=0\end{aligned}$
 
-Les vecteurs $\vec a$ et $\vec b$ sont donc colinéaires. (On a en fait $\vec u = -\frac 5 3 \vec v$).
+Les vecteurs $\vv a$ et $\vv b$ sont donc colinéaires. (On a en fait $\vv u = -\frac 5 3 \vv v$).
 \end{ex}
 
 \rem{Exos 17,18}
@@ -437,9 +437,9 @@ Les vecteurs $\vec a$ et $\vec b$ sont donc colinéaires. (On a en fait $\vec u 
 {\setstretch{2.5}
 On se donne les points $A(2;4)$, $B(11;10)$ et $C(-4;0)$.
 
-Alors on a $\vec{AB} \dbinom 9 6$ et $\vec{AC} \dbinom {-6}{-4}$.
+Alors on a $\vv{AB} \dbinom 9 6$ et $\vv{AC} \dbinom {-6}{-4}$.
 
-On a $\det (\vec{AB};\vec{AC})=9 \times (-4) - (-6) \times 6 = -36+36=0$.
+On a $\det (\vv{AB};\vv{AC})=9 \times (-4) - (-6) \times 6 = -36+36=0$.
 }
 {
 \begin{center}
@@ -457,7 +457,7 @@ On a $\det (\vec{AB};\vec{AC})=9 \times (-4) - (-6) \times 6 = -36+36=0$.
 \end{center}
 }
 
-On en déduit que les vecteurs $\vec{AB}$ et $\vec{AC}$ sont colinéaires, d'où $(AB) \parallel (AC)$, et les points $A$, $B$ et $C$ sont alignés.
+On en déduit que les vecteurs $\vv{AB}$ et $\vv{AC}$ sont colinéaires, d'où $(AB) \parallel (AC)$, et les points $A$, $B$ et $C$ sont alignés.
 \end{ex}
 
 \rem{Exos 19,20}
@@ -474,8 +474,8 @@ On en déduit que les vecteurs $\vec{AB}$ et $\vec{AC}$ sont colinéaires, d'où
 %x post scale=2
 %]
 %\node[label={[label distance=-3pt]-135:{\scriptsize O}}] (O) at (0,0) {};
-%\draw[stylevecteur,color=black!30!red] (0,0) -- (1,0) node[pos=0.5,below] {$\scriptstyle \vec i$};
-%\draw[stylevecteur,color=black!30!red] (0,0) -- (0,1) node[pos=0.5,left] {$\scriptstyle \vec j$};
+%\draw[stylevecteur,color=black!30!red] (0,0) -- (1,0) node[pos=0.5,below] {$\scriptstyle \vv i$};
+%\draw[stylevecteur,color=black!30!red] (0,0) -- (0,1) node[pos=0.5,left] {$\scriptstyle \vv j$};
 %
 %% \vv
 %\node[stylepoint,fill=blue,label={[anchor=145]-35:$M$}] (A) at (2,-1) {};
@@ -532,8 +532,8 @@ On en déduit que les vecteurs $\vec{AB}$ et $\vec{AC}$ sont colinéaires, d'où
 %\tkzDrawY[label={},ticklt=3pt,tickrt=3pt]
 %
 %\node[label={-135:{O}}] (O) at (0,0) {};
-%\draw[->,>=latex,thick] (0,0) -- (1,0) node[pos=0.5,below] {$\vec i$};
-%\draw[->,>=latex,thick] (0,0) -- (0,1) node[pos=0.5,left] {$\vec j$};
+%\draw[->,>=latex,thick] (0,0) -- (1,0) node[pos=0.5,below] {$\vv i$};
+%\draw[->,>=latex,thick] (0,0) -- (0,1) node[pos=0.5,left] {$\vv j$};
 %\node[stylepoint,label=-5:{$M$},fill=blue,semithick] (M) at (5,-1) {}; 
 %\end{scope}
 %\end{tikzpicture}
@@ -553,15 +553,15 @@ On en déduit que les vecteurs $\vec{AB}$ et $\vec{AC}$ sont colinéaires, d'où
 %\tkzDrawX[label={},tickup=3pt,tickdn=3pt]
 %\tkzDrawY[label={},ticklt=2pt,tickrt=2pt]
 %\node[label={-135:{O}}] (O) at (0,0) {};
-%\draw[->,>=latex,thick] (0,0) -- (1,0) node[pos=0.5,below] {$\vec i$};
-%\draw[->,>=latex,thick] (0,0) -- (0,1) node[pos=0.5,left] {$\vec j$};
+%\draw[->,>=latex,thick] (0,0) -- (1,0) node[pos=0.5,below] {$\vv i$};
+%\draw[->,>=latex,thick] (0,0) -- (0,1) node[pos=0.5,left] {$\vv j$};
 %
 %% \vv
 %\node[stylepoint,fill=blue,label={180:\textbf{\large A}}] (A) at (3,6) {};
 %\node[stylepoint,fill=blue,label={180:\textbf{\large B}}] (B) at (6,7) {};
 %\node[stylepoint,fill=blue,label={-2:\textbf{\large C}}] (C) at (7,-1) {};
 %\node[stylepoint,fill=blue,label={2:\textbf{\large D}}] (D) at (2,1) {};
-%\draw[line width=1pt,->,>=latex] (9,-8) -- ++(2,3) node[pos=0.5,above left] {$\vec u$};
+%\draw[line width=1pt,->,>=latex] (9,-8) -- ++(2,3) node[pos=0.5,above left] {$\vv u$};
 %%\node[color=black,circle,minimum size=1pt,fill,inner sep=2pt,fill opacity=1,label={90:\textbf{\large E}}] (E) at (4,-4) {};
 %%\draw[line width=1pt, shorten <= -10cm, shorten >= -10cm] (A) -- (B);
 %\end{tikzpicture}
@@ -573,8 +573,8 @@ On en déduit que les vecteurs $\vec{AB}$ et $\vec{AC}$ sont colinéaires, d'où
 %\begin{tikzpicture}[scale=\tikzscale]
 %\begin{axispenche}{setupRepere={(2,20),(1,80)}}{-2}{-2}{10}{5} %ticksize=1pt
 %\node[label={-135:{O}}] (O) at (0,0) {};
-%\draw[->,>=latex,thick] (0,0) -- (1,0) node[pos=0.5,below] {$\vec i$};
-%\draw[->,>=latex,thick] (0,0) -- (0,1) node[pos=0.5,left] {$\vec j$};
+%\draw[->,>=latex,thick] (0,0) -- (1,0) node[pos=0.5,below] {$\vv i$};
+%\draw[->,>=latex,thick] (0,0) -- (0,1) node[pos=0.5,left] {$\vv j$};
 %\end{axispenche}
 %\end{tikzpicture}
 %\end{scaletikzpicturetowidth}

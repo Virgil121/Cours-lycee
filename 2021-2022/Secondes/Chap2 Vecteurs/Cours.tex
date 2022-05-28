@@ -44,11 +44,11 @@ Lors de cette translation:
 \section{Généralités sur les vecteurs}
 
 \begin{defin}
-Un vecteur $\vec u$ peut être représenté avec une origine $A$ et une extrémité $B$. Il est caractérisé par:
+Un vecteur $\vv u$ peut être représenté avec une origine $A$ et une extrémité $B$. Il est caractérisé par:
 \begin{itemize}
 \item Sa direction ( celle de la droite $(AB)$ )
 \item Son sens ( de $A$ vers $B$ )
-\item Sa norme ( ou sa longueur ), notée $\Vert \vec u \Vert$. On a $\Vert \vec u \Vert = AB$.
+\item Sa norme ( ou sa longueur ), notée $\Vert \vv u \Vert$. On a $\Vert \vv u \Vert = AB$.
 \end{itemize}
 \end{defin}
 
@@ -90,11 +90,11 @@ Les quatre propositions suivantes sont \textbf{équivalentes}:
 \clip (0,0) rectangle (13,9);
 \node[stylepoint,fill=blue,label=below left:A] (A) at (2,2) {};
 \node[stylepoint,fill=blue,label=above:B] (B) at (3,7) {};
-\draw[stylevecteur] (A.center) -- (B.center) node[pos=0.5,left] {\large $\vec u$};
-\draw[stylevecteur] (9,6) -- (13,2) node[pos=0.5,above right] {\large $\vec v$};
+\draw[stylevecteur] (A.center) -- (B.center) node[pos=0.5,left] {\large $\vv u$};
+\draw[stylevecteur] (9,6) -- (13,2) node[pos=0.5,above right] {\large $\vv v$};
 \node[stylepoint,fill=blue,label=below right:C] (C) at (7,3) {};
-\draw[stylevecteur] (B.center) -- (C.center) node[pos=0.5,above right] {\large $\vec v$};
-\draw[stylevecteur,color=red] (A.center) -- (C.center) node[pos=0.5,below] {\large $\vec u + \vec v$};
+\draw[stylevecteur] (B.center) -- (C.center) node[pos=0.5,above right] {\large $\vv v$};
+\draw[stylevecteur,color=red] (A.center) -- (C.center) node[pos=0.5,below] {\large $\vv u + \vv v$};
 \end{tikzpicture}
 \end{center}
 \end{fait}
@@ -104,7 +104,7 @@ $\vv {AB} + \vv {BA} = \vv {AA} = \vv 0$
 \end{ex}
 
 \begin{rmq}
-En général, la longueur de $\vec u + \vec v$ n'est pas égale à la somme de celle de $\vec u$ et de $\vec v$: $\Vert \vec u + \vec v \Vert \neq \Vert \vec u \Vert + \Vert \vec v \Vert$
+En général, la longueur de $\vv u + \vv v$ n'est pas égale à la somme de celle de $\vv u$ et de $\vv v$: $\Vert \vv u + \vv v \Vert \neq \Vert \vv u \Vert + \Vert \vv v \Vert$
 \end{rmq}
 
 \begin{methode}
@@ -118,9 +118,9 @@ Pour construire $\vv {AB} + \vv {AC}$, il suffit de construire le parallélogram
 \node[stylepoint,fill=blue,label=right:D] (D) at (3,-5) {};
 \draw[thick, -] (C) +(-17:5.385) arc (-17:-27:5.385);
 \draw[thick, -] (B) +(-115:3.606) arc (-115:-132:3.606);
-\draw[stylevecteur] (A.center) -- (B.center) node[pos=0.5,above] {\large $\vec u$};
-\draw[stylevecteur] (A.center) -- (C.center) node[pos=0.5,above left] {\large $\vec v$};
-\draw[stylevecteur,color=red] (A.center) -- (D.center) node[pos=0.5,above right] {\large $\vec u + \vec v$};
+\draw[stylevecteur] (A.center) -- (B.center) node[pos=0.5,above] {\large $\vv u$};
+\draw[stylevecteur] (A.center) -- (C.center) node[pos=0.5,above left] {\large $\vv v$};
+\draw[stylevecteur,color=red] (A.center) -- (D.center) node[pos=0.5,above right] {\large $\vv u + \vv v$};
 \draw[dashed,thick,-] (B) -- (D);
 \draw[dashed,thick,-] (C) -- (D);
 
@@ -133,16 +133,16 @@ Pour construire $\vv {AB} + \vv {AC}$, il suffit de construire le parallélogram
 \section{Produit d'un vecteur par un nombre réel}
 
 \begin{defin}
-Soit $k$ un réel et $\vec u$ un vecteur. Le produit de $k$ par $\vec u$ est le vecteur noté $k \vec u$ tel que:
+Soit $k$ un réel et $\vv u$ un vecteur. Le produit de $k$ par $\vv u$ est le vecteur noté $k \vv u$ tel que:
 \begin{itemize}
-\item $\vec u$ et $k \vec u$ ont la même direction
-\item La longueur de $k \vec u$ est $\abs k \Vert \vec u \Vert$
-\item Si $k > 0$, $\vec u$ et $k \vec u$ ont le même sens. Sinon, ils ont des sens opposés.
+\item $\vv u$ et $k \vv u$ ont la même direction
+\item La longueur de $k \vv u$ est $\abs k \Vert \vv u \Vert$
+\item Si $k > 0$, $\vv u$ et $k \vv u$ ont le même sens. Sinon, ils ont des sens opposés.
 \end{itemize}
 \end{defin}
 
 \begin{rmq}
-En particulier, $0 \times \vec u = \vv 0$.
+En particulier, $0 \times \vv u = \vv 0$.
 \end{rmq}
 
 \begin{ex}
@@ -151,11 +151,11 @@ En particulier, $0 \times \vec u = \vv 0$.
 \draw[stylegrille] (-3,-9) grid (13,1);
 \clip (-3,-9) rectangle (14,1);
 
-\draw[stylevecteur] (0,0) -- (4,0) node[pos=0,left] {\large $\vec u$};
-\draw[stylevecteur] (0,-2) -- (8,-2) node[pos=0,left] {\large $2 \vec u$};
-\draw[stylevecteur,<-] (0,-4) -- (4,-4) node[pos=0,left] {\large $-\vec u$};
-\draw[stylevecteur] (0,-6) -- (6,-6) node[pos=0,left] {\large $\frac 3 2 \vec u$};
-\draw[stylevecteur,<-] (0,-8) -- (12,-8) node[pos=0,left] {\large $-3\vec u$};
+\draw[stylevecteur] (0,0) -- (4,0) node[pos=0,left] {\large $\vv u$};
+\draw[stylevecteur] (0,-2) -- (8,-2) node[pos=0,left] {\large $2 \vv u$};
+\draw[stylevecteur,<-] (0,-4) -- (4,-4) node[pos=0,left] {\large $-\vv u$};
+\draw[stylevecteur] (0,-6) -- (6,-6) node[pos=0,left] {\large $\frac 3 2 \vv u$};
+\draw[stylevecteur,<-] (0,-8) -- (12,-8) node[pos=0,left] {\large $-3\vv u$};
 
 \end{tikzpicture}
 \end{center}
@@ -167,8 +167,8 @@ $I$ est le milieu de $[AB]$ se traduit par $\vv {AI} = \vv {IB}$ ou $\vv{AB} = 2
 
 \begin{center}
 \begin{tikzpicture}
-\draw[stylevecteur,line width=2pt] (0,0) -- (8,1) node[pos=0.75,above] {\large $\vec u$} node[pos=0,stylepoint,fill=blue,label=left:A] {} node[pos=1,stylepoint,fill=blue,label=right:B] {};
-\draw[stylevecteur,color=red] (0,0) -- (4,0.5) node[pos=0.5,below] {\large { $0.5\vec u$} } node[pos=1,stylepoint,fill=red,label=above:I] {};
+\draw[stylevecteur,line width=2pt] (0,0) -- (8,1) node[pos=0.75,above] {\large $\vv u$} node[pos=0,stylepoint,fill=blue,label=left:A] {} node[pos=1,stylepoint,fill=blue,label=right:B] {};
+\draw[stylevecteur,color=red] (0,0) -- (4,0.5) node[pos=0.5,below] {\large { $0.5\vv u$} } node[pos=1,stylepoint,fill=red,label=above:I] {};
 \end{tikzpicture}
 \end{center}
 \end{app}

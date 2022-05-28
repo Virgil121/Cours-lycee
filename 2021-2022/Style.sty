@@ -19,6 +19,7 @@
 \usepackage[T1]{fontenc}
 \usepackage[french]{babel}	% Langue
 \usepackage{amsfonts,amssymb,amsmath}	% Symboles maths... (indispensable)
+\usepackage{mathtools}
 \usepackage{stmaryrd} 					% pour \llbracket
 %\usepackage{fourier-otf}				% Police d'écriture
 \usepackage{titlesec}
@@ -108,7 +109,7 @@
 \newcommand{\seconde}{2\textsuperscript{nde}}
 \newcommand{\premiere}{1\textsuperscript{ère}}
 
-\newcommand{\fakeitem}{\textemdash \ }
+\newcommand{\fakeitem}{\textendash \ }
 
 % Compo
 
@@ -713,7 +714,7 @@
 	% Listes
 	
 	\frenchsetup{ItemLabels=\textendash}
-	\setlist[itemize]{align=parleft,left=5pt..15pt}
+	\setlist[itemize]{align=parleft,left=5pt..10pt}
 	\setlist[enumerate]{align=left,left=-3pt..15pt,leftmargin=0pt,itemindent=15pt}
 	\setlist[enumerate,1]{align=left,left=5pt..20pt,itemindent=*}
 	\setlist[enumerate,2]{align=left,left=5pt..20pt,itemindent=*}	

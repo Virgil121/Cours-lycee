@@ -17,7 +17,7 @@
 %%%%%%%%%%%%%%%%%
 
 \setcounter{tocdepth}{1} % Voir chapitres et sections, pas plus loin
-\newcounter{chapitre}
+\newcounter{chapitre}\setcounter{chapitre}{-1} % Chapitre initialisé à -1, on le remet à 0 après le toc (comme ca on peut tester si on affiche le premier chapitre dans le toc)
 
 \makeatletter
 
@@ -29,31 +29,32 @@
     \preto\@maketitle{
     	\refstepcounter{part}%
     	\phantomsection%
-    	\addcontentsline{toc}{part}{\@title}} % Modifie commande titre après pour mettre une ref
+    	\addcontentsline{toc}{part}{Chapitre \Roman{chapitre}.\ \@title}} % Modifie commande titre après pour mettre une ref. Chapitre X dedans pour que l'hyperlien le prenne en compte
 }
 \makeatother
 
 % Styles toc
 \def\stylepart{\fontfamily{cmr}\fontseries{bx}\selectfont\large\scshape\color{section}}
 
-\titlecontents{part}%
-{\ifthenelse{\equal{\value{chapitre}}{0}}{}{\vfill}\stylepart}%{\vspace{5mm}\normalfont\large\bfseries\color{section}}%
+\titlecontents{part}[0pt]%
+{\ifthenelse{\equal{\value{chapitre}}{-1}}{\setcounter{chapitre}{0}}{\vfill}\stylepart}%{\vspace{5mm}\normalfont\large\bfseries\color{section}}%
 {}%
-{Chapitre \stepcounter{chapitre}\Roman{chapitre}.\ }%
+{}%{Chapitre \stepcounter{chapitre}\Roman{chapitre}.\ }%
 %{\makebox[\longueurchap][l]{Chapitre \stepcounter{chapitre}\Roman{chapitre}.}}%
 {\dotfill \contentspage}%[{\color{gray}\hrule}] % Gros hack pour afficher le chapitre... % Tester \ref{page.\thecontentspage}
 
-\titlecontents{section}%
+\titlecontents{section}[0.1\linewidth]%
 {\normalfont\bfseries\color{subsection}}%
-{\hspace{0.1\linewidth}\thecontentslabel\ - }%
-{\hspace{0.08\linewidth}}%
+{\thecontentslabel\ - }%
+{}%
 {\hfill \contentspage}%[{\color{gray}\hrule}]
 
 %%%%%%%%%%%%%%%%%%%%
 
 \newcommand{\chap}[1]{%
 %\addcontentsline{toc}{part}{#1}
-\input{#1}
+\stepcounter{chapitre}%
+\input{#1}%
 \setcounter{section}{0}\newpage
 }
 
@@ -71,4 +72,5 @@
 \chap{../Chap6 Variations de fonctions/cours}
 \chap{../Chap7 Repères du plan/cours}
 \chap{../Chap8 Probabilités/cours}
+\chap{../Chap9 Droites du plan/cours}
 \end{document}
