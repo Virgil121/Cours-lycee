@@ -66,6 +66,8 @@ Tout nombre décimal est aussi un nombre rationnel: $\D \subset \Q$.
 
 \subsection{Les nombres réels}
 
+\subsubsection{Définitions}
+
 \begin{defin}
 $\R$ désigne l'ensemble des nombres connus en classe de seconde, qu'on appelle nombres réels. De plus, un nombre réel qui n'est pas rationnel est dit irrationnel.
 $$ \sqrt 2, \pi, \sqrt { \sqrt { \pi } } \text{ sont irrationnels}$$
@@ -131,7 +133,8 @@ Tous ces ensembles sont inclus les uns dans les autres: $\N \subset \Z \subset \
 \end{tikzpicture}
 \end{center}
 \end{prop}
-\subsubsection*{Encadrement décimal des réels}
+
+\subsubsection{Encadrement décimal des réels}
 
 \begin{defin}
 Un encadrement décimal d'un nombre réel $x$ est une écriture $d_{1}\leq x \leq d_{2}$  avec $d_{1},d_{2}$ des nombres décimaux. La différence $d_{2}-d_{1}$ est l'amplitude de l'encadrement.
@@ -142,7 +145,11 @@ Par exemple, $1,4<\sqrt{2}<1,5$ est un encadrement décimal de $\sqrt{2}$ d'ampl
 \end{ex}
 
 \begin{defin}
-Soit $x\in \R$ tel que $d_{1}\leq x\leq d_{2}$ avec $d_{2}-d_{1}=10^{-n}$ où $n\in \N$.\\L'arrondi à $10^{-n}$ de x est celui de $d_{1}$ ou $d_{2}$ le plus proche de $x$.\\Dans le cas où $d_{1}$ et $d_{2}$ sont à égale distance de $x$, l'arrondi à $10^{-n}$ de $x$ est $d_{2}$.
+Soit $x\in \R$ tel que $d_{1}\leq x\leq d_{2}$ avec $d_{2}-d_{1}=10^{-n}$ où $n\in \N$.
+
+L'arrondi à $10^{-n}$ de $x$ est celui de $d_{1}$ ou $d_{2}$ le plus proche de $x$.
+
+Dans le cas où $d_{1}$ et $d_{2}$ sont à égale distance de $x$, l'arrondi à $10^{-n}$ de $x$ est $d_{2}$.
 \end{defin}
 
 \begin{ex}
@@ -157,10 +164,12 @@ Soit $x\in \R$ tel que $d_{1}\leq x\leq d_{2}$ avec $d_{2}-d_{1}=10^{-n}$ où $n
 Faire un  arrondi à $10^{-n}$ signifie $n$ chiffres après la virgule.
 \end{rmq}
 
-\section{Intervalles de $\R$}
+\section{Intervalles de \texorpdfstring{$\R$}{R}}
+
+\subsection{Généralités}
 
 \begin{defin}
-On veut écrire plus simplement " Tous les nombres réels compris entre 2 et 5, 5 exclus ". Pour celà, il y a trois manières possibles:
+On veut écrire plus simplement \og Tous les nombres réels compris entre 2 et 5, 5 exclus \fg. Pour cela, il y a trois manières possibles:
 \begin{itemize}
 \item Par un schéma: \begin{tikzpicture}[>=latex,baseline={([yshift=-.5ex]current bounding box.center)}]
     \draw[thick,->] (-0.5,0) --(6.5,0);
@@ -258,7 +267,7 @@ L'intervalle noté $\ldots$ & $\ldots$ désigne l'ensemble des réels $x$ tels q
 \end{itemize}
 \end{rmqs}
 
-\subsection*{Unions et intersections}
+\subsection{Unions et intersections}
 
 \begin{defin}
 Soient $I$ et $J$ deux intervalles de $\R$.
@@ -300,6 +309,8 @@ Pour $I=[-2;3[$ et $J=[-4;1]$, on a $I \cap J = [-2;1]$ et $I \cup J = ]-4;3[$.
 
 \section{Valeur absolue}
 
+\subsection{Généralités}
+
 \begin{defin}
 La valeur absolue d'un réel $x$ est $-x$ lorsque $x<0$ ou $x$ lorsque $x \geq 0$. On note: $$\vert x \vert = \left\{ \begin{aligned} -x \text{ si } x < 0 \\ x \text{ si } x \geq 0 \end{aligned} \right.$$
 \end{defin}
@@ -320,7 +331,7 @@ $$AB = \abs{b-a} = \abs{a-b}$$
 \end{itemize}
 \end{ex}
 
-\subsection*{Intervalles $[a-r;a+r]$}
+\subsection{Intervalles $[a-r;a+r]$}
 
 \begin{propr}
 Soient $a$ et $r$ deux réels, avec $r > 0$. Alors l'intervalle $[a-r;a+r]$ contient tous les réels $x$ qui vérifient $a-r \leq x \leq a+r$, autrement dit ceux à une distance inférieure à $r$ de $a$, soit $\abs {x-a} \leq r$.

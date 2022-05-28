@@ -1,4 +1,4 @@
-\documentclass[twocolumn,landscape,a4paper,12pt,french]{article}
+\documentclass[twocolumn,landscape,a4paper,11pt,french]{article}
 
 \usepackage[TD]{../../Style}
 
@@ -10,39 +10,39 @@
 %%%%%%%%%%%%%%%%%%%
 \begin{document}
 
+\newcommand{\contenu}{
 \titre{Droites du plan}
 
 \begin{exercice} \
 \begin{enumerate}
-    \item Soit $\mathscr{D}$ la droite passant par $A(1;-1)$, de vecteur directeur $\vv u \dbinom {-4}{-3}$.
+	\item Donner deux vecteurs directeurs de la droite $\mathscr D_1:5x-8y+13=0$.
+    \item Soit $\mathscr D_2$ la droite d'équation cartésienne $3x-1,5y+1=0$.
     
-    Déterminer une équation cartésienne de $\mathscr{D}$.
+    Le vecteur $\vv v \tbinom {-4,5}{-9}$ est-il un vecteur directeur de $\mathscr D_2$ ?
     
-    \item Soit $\mathscr{D'}$ la droite d'équation $y=-2x+1$.
+    \item Soit $\mathscr D_3$ la droite d'équation $y=-2x+1$.
     
-    Déterminer un vecteur directeur $\vv{v}$ de $\mathscr{D'}$. Était-ce prévisible?
+    Déterminer un vecteur directeur $\vv{v}$ de $\mathscr D_3$. Était-ce prévisible?
 \end{enumerate}
 \end{exercice}
 
-\begin{exercice} \
+\begin{exercice}
+Déterminer une équation cartésienne des droites suivantes:
 \begin{enumerate}
-    \item Soit $\mathscr{D}$ la droite passant par $A(4;2)$ et de vecteur directeur $\vv u \dbinom {1}{-3}$.
-    
-    Déterminer une équation cartésienne de $\mathscr{D}$.
-    
-    \item Soit $\mathscr{D'}$ la droite d'équation cartésienne $3x-1,5y+1=0$.
-    
-    Le vecteur $\vv v \dbinom {-4,5}{-9}$ est-il un vecteur directeur de $\mathscr{D'}$ ?
+	\item $\mathscr D_1$ passant par $A(1;-1)$ et dont un vecteur directeur est $\vv u \tbinom {-4}{-3}$.
+    \item $\mathscr D_2$ passant par $A(4;2)$ et dont un vecteur directeur est $\vv u \tbinom {1}{-3}$.
+    \item $\mathscr D_3$ passant par $A(-3;7)$ et dont un vecteur directeur est $\vv u \tbinom {-3}{7}$.
 \end{enumerate}
 \end{exercice}
 
-\compo[0.6]
+\compo[0.58]
 {
 \begin{exercice}
 Déterminer une équation cartésienne de la droite $(AB)$ avec:
 \begin{enumerate}
 \item $A(5;1)$ et $B(7;-2)$
 \item $A(-3;-2)$ et $B(1;1)$
+\item $A(-2;6)$ et $B(3;-2)$
 \end{enumerate}
 \end{exercice}
 
@@ -51,6 +51,7 @@ Dans le repère ci-contre, tracer les droites $\mathscr D_1$ et $\mathscr D_2$ d
 \begin{enumerate}
 \item $\mathscr D_1: x+3y+5=0$
 \item $\mathscr D_2: 5x+4y-2=0$
+\item $\mathscr D_3: 7x-42=0$
 \end{enumerate}
 \end{exercice}
 }
@@ -59,13 +60,14 @@ Dans le repère ci-contre, tracer les droites $\mathscr D_1$ et $\mathscr D_2$ d
 \begin{tikzpicture}
 \begin{axis}[
 styleglobal,
-width=0.9*\linewidth,
+width=0.95*\linewidth,
 xmin=-2, xmax=8,
 ymin=-6, ymax=6,
 xtick distance=1,
 ytick distance=1,
 minor x tick num=0,
 minor y tick num=0,
+font=\normalsize,
 ]
 \end{axis}
 \end{tikzpicture}
@@ -75,131 +77,55 @@ minor y tick num=0,
 \begin{exercice}
 Résoudre dans $\R$ les systèmes suivants:
 
-$$
+$$\renewcommand\arraystretch{2.5}
+\begin{array}{lll}
 S_1:
 \begin{cases}
-    -x-3y=7 \\
-    2x+y=4
+	2x+3y=4 \\
+	5x+3y=11
 \end{cases}
-\qquad\qquad
+&
 S_2:
 \begin{cases}
     3x-5y=12 \\
     4x+5y=-1
 \end{cases}
-$$
-
-$$
+&
 S_3:
+\begin{cases}
+    -x-3y=7 \\
+    2x+y=4
+\end{cases}
+\\
+S_4:
 \begin{cases}
     2x+3y=6 \\
     x-2y=10
 \end{cases}
-\qquad\qquad
-S_4:
+&
+S_5:
 \begin{cases}
     5x-2y=4 \\
     4x+2y=15
 \end{cases}
+&
+S_6:
+\begin{cases}
+    7x+3y=4 \\
+    4x+2y=2
+\end{cases}
+\end{array}
 $$
 \end{exercice}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exercice}
+Déterminer les coordonnées du point d'intersection des droites: $$\mathscr D_1: -6x+y+17=0 \qquad \text{et} \qquad \mathscr D_2:7x+2y-4=0$$
+\end{exercice}
 
-\setcounter{exercice}{0}
+\setcounter{exercice}{0}}
+
+\contenu
 \newpage
-\titre{Droites du plan}
-
-\begin{exercice} \
-\begin{enumerate}
-    \item Soit $\mathscr{D}$ la droite passant par $A(1;-1)$,de vecteur directeur $\vv u \dbinom {-4}{-3}$.
-    
-    Déterminer une équation cartésienne de $\mathscr{D}$.
-    
-    \item Soit $\mathscr{D'}$ la droite d'équation $y=-2x+1$.
-    
-    Déterminer un vecteur directeur $\vv{v}$ de $\mathscr{D'}$. Était-ce prévisible?
-\end{enumerate}
-\end{exercice}
-
-\begin{exercice} \
-\begin{enumerate}
-    \item Soit $\mathscr{D}$ la droite passant par $A(4;2)$ et de vecteur directeur $\vv u \dbinom {1}{-3}$.
-    
-    Déterminer une équation cartésienne de $\mathscr{D}$.
-    
-    \item Soit $\mathscr{D'}$ la droite d'équation cartésienne $3x-1,5y+1=0$.
-    
-    Le vecteur $\vv v \dbinom {-4,5}{-9}$ est-il un vecteur directeur de $\mathscr{D'}$ ?
-\end{enumerate}
-\end{exercice}
-
-\compo[0.6]
-{
-\begin{exercice}
-Déterminer une équation cartésienne de la droite $(AB)$ avec:
-\begin{enumerate}
-\item $A(5;1)$ et $B(7;-2)$
-\item $A(-3;-2)$ et $B(1;1)$
-\end{enumerate}
-\end{exercice}
-
-\begin{exercice}
-Dans le repère ci-contre, tracer les droites $\mathscr D_1$ et $\mathscr D_2$ d'équations cartésiennes respectives:
-\begin{enumerate}
-\item $\mathscr D_1: x+3y+5=0$
-\item $\mathscr D_2: 5x+4y-2=0$
-\end{enumerate}
-\end{exercice}
-}
-{
-\begin{center}
-\begin{tikzpicture}
-\begin{axis}[
-styleglobal,
-width=0.9*\linewidth,
-xmin=-2, xmax=8,
-ymin=-6, ymax=6,
-xtick distance=1,
-ytick distance=1,
-minor x tick num=0,
-minor y tick num=0,
-]
-\end{axis}
-\end{tikzpicture}
-\end{center}
-}
-
-\begin{exercice}
-Résoudre dans $\R$ les systèmes suivants:
-
-$$
-S_1:
-\begin{cases}
-    -x-3y=7 \\
-    2x+y=4
-\end{cases}
-\qquad\qquad
-S_2:
-\begin{cases}
-    3x-5y=12 \\
-    4x+5y=-1
-\end{cases}
-$$
-
-$$
-S_3:
-\begin{cases}
-    2x+3y=6 \\
-    x-2y=10
-\end{cases}
-\qquad\qquad
-S_4:
-\begin{cases}
-    5x-2y=4 \\
-    4x+2y=15
-\end{cases}
-$$
-\end{exercice}
+\contenu
 
 \end{document}

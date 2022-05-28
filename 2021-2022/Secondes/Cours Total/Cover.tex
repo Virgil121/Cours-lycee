@@ -125,26 +125,31 @@ inner sep=0pt,
 anchor=east,
 ] (maths) at ($(current page.east)+(-1,0)$)
 {
-{\fontsize{30}{36} \selectfont \bf LGT Jean Rostand}
+{\fontsize{30}{36} \selectfont \bfseries LGT Jean Rostand}
 };
 
 \node[ultra thick,gray,
 orange,
 inner sep=0pt,
 anchor=north east,
+align=center,
 ] (annee) at ($(maths.south east)+(0,-0.4)$)
 {
-{\fontsize{25}{30}\selectfont\bf 2\textsuperscript{nde} GT}
+{\fontsize{25}{30}\selectfont\bfseries 2\textsuperscript{nde} GT}
 };
 
 \draw[ultra thick,gray] ($(annee.north west)+(0,0.2)$) -- ($(annee.north east)+(0,0.2)$);
 
 % Title
-\node[align=center] at ($(current page.center)+(0,-7)$) 
+\node[align=center] (titre) at ($(current page.center)+(0,-7)$) 
 {
-{\fontsize{50}{60} \selectfont\scshape {Mathématiques}} \\[1cm]
-{\fontsize{16}{19.2} \selectfont \textcolor{orange}{ \bf {M. DELAUNEY}}}
+{\fontsize{55}{66} \selectfont\scshape\textcolor{black!90} {Mathématiques}} \\[10mm]
+{\fontsize{18}{21.6} \selectfont \textcolor{orange}{ \bfseries {M. DELAUNEY}}}% \\[10mm]
+%{\fontsize{14}{16.8} \selectfont \textcolor{black!75}{ \bfseries {2021 - 2022}}}
 };
+
+%\node[anchor=north west] at ($(titre.south west)+(1,0)$) {\fontsize{18}{21.6} \selectfont \textcolor{orange}{ \bfseries {M. DELAUNEY}}};
+%\node[anchor=north east] at ($(titre.south east)+(-1,0)$) {\fontsize{18}{21.6} \selectfont \textcolor{orange}{ \bfseries {2021 - 2022}}};
 \end{tikzpicture}
 
 %\textcolor{RoyalBlue}{\rule{20pt}{20pt}} \textcolor{MonBleuRoyal}{\rule{20pt}{20pt}}

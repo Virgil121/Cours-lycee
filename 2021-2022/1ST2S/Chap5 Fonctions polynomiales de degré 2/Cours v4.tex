@@ -64,9 +64,9 @@ xtick distance=1,
 ytick distance=1,
 domain=(-7:7),
 ]
-\addplot[styleplot]{x^2} node[pos=0.55,right] {$\mathscr C_f:\fbox{a>0}$};
-\addplot[styleplot,color=red,domain=(-6:-2)]{3*(x+4)^2-4} node[pos=0.82,left] {$\mathscr C_g:\fbox{a>0}$};
-\addplot[color=blue,styleplot]{2-0.25*(x-1)^2} node[pos=0.8,right] {$\mathscr C_h:\fbox{a<0}$};
+\addplot[styleplot]{x^2} node[pos=0.65,right] {$\mathscr C_f:\fbox{a>0}$};
+\addplot[styleplot,color=DarkRed,domain=(-6:-2)]{3*(x+4)^2-4} node[pos=0.82,left] {$\mathscr C_g:\fbox{a>0}$};
+\addplot[color=DarkBlue,styleplot]{2-0.25*(x-1)^2} node[pos=0.8,right] {$\mathscr C_h:\fbox{a<0}$};
 \end{axis}
 \end{tikzpicture}
 \end{centrer}
@@ -101,7 +101,7 @@ xtick distance=1,
 ytick distance=1,
 domain=(-6:6),
 ]
-\addplot[styleplot]{0.7-0.5*(x-1.3)^2} node[pos=0.53,right] {$\mathscr C_f$};
+\addplot[styleplot]{0.7-0.5*(x-1.3)^2} node[pos=0.6,above right] {$\mathscr C_f$};
 \node[stylepoint,fill=red] (S) at (1.3,0.7) {};
 \node (sommet) at (2.3,1.2) {Sommet};
 \draw[->,>=latex,thick] (sommet.west) to[bend right=10] (S);
@@ -146,7 +146,7 @@ Si $a<0$:
 
 \rem{Exo 2f}
 
-\section{Fonctions $x \mapsto ax^2+c$}
+\section{Fonctions \texorpdfstring{$x \mapsto ax^2+c$}{x -> ax²+c}}
 
 \rem{Faire tracer la représentation graphique d'une fonction de degré 2 à chacun ( calculatrice ou non ). En déterminer les coordonnées du sommet. Remarques?}
 
@@ -172,9 +172,9 @@ ytick distance=2,
 y post scale=0.5,
 domain=(-7:7),
 ]
-\addplot[styleplot]{x^2} node[pos=0.55,right] {$\mathscr C_f:\fbox{a>0}$};
-\addplot[styleplot,color=red,domain=(-2:2)]{3*(x)^2-3} node[pos=0.54,right] {$\mathscr C_g:\fbox{a>0}$};
-\addplot[color=blue,styleplot]{2-0.25*(x)^2} node[pos=0.7,right] {$\mathscr C_h:\fbox{a<0}$};
+\addplot[styleplot]{x^2} node[pos=0.65,right] {$\mathscr C_f:\fbox{a>0}$};
+\addplot[styleplot,color=DarkRed,domain=(-2:2)]{3*(x)^2-3} node[pos=0.54,right] {$\mathscr C_g:\fbox{a>0}$};
+\addplot[color=DarkBlue,styleplot]{2-0.25*(x)^2} node[pos=0.7,right] {$\mathscr C_h:\fbox{a<0}$};
 \end{axis}
 \end{tikzpicture}
 \end{centrer}
@@ -226,7 +226,7 @@ xtick distance=1,
 ytick distance=1,
 domain=(-6:6),
 ]
-\addplot[styleplot]{2*x^2+1} node[pos=0.525,right] {$\mathscr C_f$};
+\addplot[styleplot]{2*x^2+1} node[pos=0.53,right] {$\mathscr C_f$};
 \node[stylepoint,fill=blue,label={-60:A}] at (1,3) {};
 \end{axis}
 \end{tikzpicture}
@@ -236,7 +236,7 @@ domain=(-6:6),
 
 \rem{Exo 3f\\Exo 22p121(méthode 2)\\Préciser: Dans le livre on voit $ax^2+b$, à voir ...}
 
-\section{Fonctions $x \mapsto a(x-x_1)(x-x_2)$}
+\section{Fonctions \texorpdfstring{$x \mapsto a(x-x_1)(x-x_2)$}{x -> a(x-x1)(x-x2)}}
 \subsection{Généralités}
 
 \begin{prop}
@@ -268,7 +268,7 @@ xtick distance=1,
 ytick distance=1,
 domain=(-6:6),
 ]
-\addplot[styleplot]{0.5*(x-1)*(x-3)} node[pos=0.52,right] {$\mathscr C_f$};
+\addplot[styleplot]{0.5*(x-1)*(x-3)} node[pos=0.65,below right] {$\mathscr C_f$};
 \node[stylepoint,fill=red] (S) at (2,-0.5) {};
 \node (sommet) at (3,-0.7) {Sommet};
 \draw[->,>=latex,thick] (sommet.west) to[bend left=10] (S);
@@ -305,7 +305,7 @@ ytick distance=5,
 domain=(-6:6),
 y post scale=0.2,
 ]
-\addplot[styleplot]{-2*(x-2)*(x+4)} node[pos=0.52,right] {$\mathscr C_f$};
+\addplot[styleplot]{-2*(x-2)*(x+4)} node[pos=0.6,above right] {$\mathscr C_f$};
 \node[stylepoint,fill=blue] (x1) at (2,0) {};
 \node[stylepoint,fill=blue] (x2) at (-4,0) {};
 \end{axis}

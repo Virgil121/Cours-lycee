@@ -107,7 +107,7 @@ ytick distance=1,
 \pgfplotsinvokeforeach{-1.5,-1,...,2.5}{\node[stylepoint,fill=red] at (#1,#1*#1-#1) {};}
 \draw[color=blue,dashed,very thick] (2.2, 0) -- (2.2, 2.2^2-2.2) node [pos=0,below] {$x$};
 \draw[color=blue,dashed,very thick] (2.2, 2.2^2-2.2) -- (0, 2.2^2-2.2) node [pos=1,left] {$f(x)$};
-\node[stylepoint] at (2.2,2.2^2-2.2) {};
+\node[stylepoint,fill=blue] at (2.2,2.2^2-2.2) {};
 %\addplot +[mark=none,color=red,style=dashed,very thick] coordinates {(-1, 0) (-1, 2)};
 %\addplot +[mark=none,color=red,style=dashed,very thick] coordinates {(-1, 2) (0, 2)};
 %\node[label={0:{$(0,1)$}},rectangle,fill,inner sep=2pt] at (axis cs:0,1) {};

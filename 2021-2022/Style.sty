@@ -22,7 +22,7 @@
 \usepackage{mathtools}
 \usepackage{stmaryrd} 					% pour \llbracket
 %\usepackage{fourier-otf}				% Police d'écriture
-\usepackage{titlesec}
+\usepackage{titlesec}	% Style sections, + sauts de page auto pour éviter de les mettre en fin de page [nobottomtitles*]
 \usepackage{setspace}
 \usepackage{dsfont}
 \usepackage{tabularx,tabulary}			% Tableaux avec taille définie
@@ -51,6 +51,7 @@
 \usepackage{xspace}						% Espaces intelligents (si point ou virgule, pas d'espace)
 \usepackage[d]{esvect} 					% Meilleurs vecteurs - Problèmess avec polices non otf
 \usepackage{lastpage}					% Trouve le numéro de la dernière page
+\usepackage[pdfusetitle,pdfauthor={Virgil Delauney}]{hyperref}
 %\usepackage[pdfauthor={Virgil Delauney}]{hyperref}
 \usepackage{lipsum}	% Pour les tests, pas utile en soi
 
@@ -595,9 +596,9 @@
 \ProcessOptions
 
 \definecolor{titre}{HTML}{912c21}
-\definecolor{section}{HTML}{1c567d}
-\definecolor{subsection}{HTML}{2673a6}
-\definecolor{subsubsection}{HTML}{2f90d0}
+\definecolor{section}{HTML}{184868} %HSL: 204,63,25: +8 pour sub, +16 pour subsub (30 au début et +10 pour sub, +20 pour subsub)
+\definecolor{subsection}{HTML}{1f5f89}
+\definecolor{subsubsection}{HTML}{2776aa}
 
 \ifoptioncours
 	
