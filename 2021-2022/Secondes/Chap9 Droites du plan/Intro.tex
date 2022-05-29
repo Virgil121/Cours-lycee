@@ -1,215 +1,79 @@
-\documentclass[,a4paper,12pt,french]{article}
+\documentclass[,a4paper,12pt,french,twocolumn,landscape]{article}
 
 \usepackage[TD]{../../Style}
+
+\setlength{\columnsep}{2cm}
+
 \geometry{margin=1cm}
 
 \pagestyle{empty}
 
+\renewcommand{\arraystretch}{1.3}
 % Début du document
 %%%%%%%%%%%%%%%%%%%
 \begin{document}
 
 \newcommand{\contenua}{
-\compo[0.6]
-{
-On se donne le programme de calcul suivant:
+\titre{Droites et vecteurs}
 
-\begin{algorithm*}[H]
-Choisir un nombre \;
-Le multiplier par 2 \;
-Soustraire 3 \;
-Donner le résultat final \;
-\end{algorithm*}
-
-\begin{enumerate}
-\item Compléter le tableau de valeurs suivant:
+Associer les droites et les vecteurs tracés dans le repère ci-dessous. \textit{On peut faire plusieurs associations avec chaque droite ou vecteur.}
 
 \begin{center}
-\begin{tabularx}{\linewidth}{|c|*{5}{Y|}} \hline
-Valeur d'entrée & $-2$ & $-1$ & $0$ & $1$ & $2$ \\ \hline
-Résultat & \rule{0pt}{1cm} & & & & \\ \hline
-\end{tabularx}
-\end{center}
-
-\item Placer sur le repère ci-contre les points correspondant, avec en abscisse (axe $x$) les valeurs d'entrée et en ordonnée (axe $y$) les résultats. Relier les points.
-\end{enumerate}
-}
-{
 \begin{tikzpicture}
 \begin{axis}[
 styleglobal,
-width=\linewidth,
-xmin=-6, xmax= 6,
-ymin=-5, ymax=5,
+width=0.9*\linewidth,
+xmin=-7, xmax=9,
+ymin=-4, ymax=7,
 xtick distance=1,
 ytick distance=1,
+font=\normalsize,
 minor x tick num=0,
 minor y tick num=0,
 ]
-
+\addplot[styleplot] {2*x-3} node [pos=0.68,above left] {$\mathscr D_1$};
+\addplot[styleplot,DarkRed] {0.5*x-1} node [pos=0.8,above left] {$\mathscr D_2$};
+\addplot[styleplot,DarkBlue] {-4/3*x+6} node [pos=0.8,above right] {$\mathscr D_3$};
+\addplot[styleplot,DarkGreen] {4} node [pos=0.9,above] {$\mathscr D_4$};
+\draw[line width=1pt,RedOrange] (-4,-4) -- (-4,8) node [pos=0.8,left] {$\mathscr D_5$};
+%\addplot[styleplot,DarkOrchid] {1/3*x+5} node [pos=0.9,below right] {$\mathscr D_6$};
 \end{axis}
 \end{tikzpicture}
-}}
-
-\newcommand{\contenub}{
-\compo[0.6]
-{
-On définit la fonction $g:x \mapsto 2-x$.
-\begin{enumerate}
-\item Compléter le tableau de valeurs suivant:
-
-\begin{center}
-\begin{tabularx}{\linewidth}{|c|*{5}{Y|}} \hline
-$x$ & $-2$ & $-1$ & $0$ & $1$ & $2$ \\ \hline
-$g(x)$ & \rule{0pt}{1cm} & & & & \\ \hline
-\end{tabularx}
 \end{center}
 
-\item Tracer la représentation graphique de $g$ sur le repère ci-contre.
-\end{enumerate}
-}
-{
-\begin{tikzpicture}
-\begin{axis}[
-styleglobal,
-width=\linewidth,
-xmin=-6, xmax= 6,
-ymin=-5, ymax=5,
-xtick distance=1,
-ytick distance=1,
-minor x tick num=0,
-minor y tick num=0,
-]
-
-\end{axis}
-\end{tikzpicture}
-}}
-
-\newcommand{\contenuc}{
-\compo[0.6]
-{
-On définit la fonction $g:x \mapsto 1.5x-0.5$.
-\begin{enumerate}
-\item Compléter le tableau de valeurs suivant:
-
 \begin{center}
-\begin{tabularx}{\linewidth}{|c|*{5}{Y|}} \hline
-$x$ & $-2$ & $-1$ & $0$ & $1$ & $2$ \\ \hline
-$g(x)$ & \rule{0pt}{1cm} & & & & \\ \hline
-\end{tabularx}
+\begin{resizetikz}{0.9\linewidth}
+\begin{tikzpicture}
+\repereOij[xmin=-10,xmax=10,ymin=-3,ymax=6];
+
+\draw[stylevecteur] (1,1) -- ++(2,1) node[midway,above left] {$\vv a$};
+\draw[stylevecteur] (6,2) -- ++(2,1) node[midway,above left] {$\vv e$};
+\draw[stylevecteur] (7,1) -- ++(-4,-2) node[midway,above left] {$\vv k$};
+
+\draw[stylevecteur] (-9,1) -- ++(2,4) node[midway,above left] {$\vv v$};
+\draw[stylevecteur] (0,4) -- ++(-3,-6) node[midway,above left] {$\vv g$};
+
+\draw[stylevecteur] (3,-2) -- ++(6,2) node[midway,below right] {$\vv h$};
+
+\draw[stylevecteur] (-5,-2) -- ++(0,5) node[midway,left] {$\vv b$};
+\draw[stylevecteur] (4,4) -- ++(0,-1) node[midway,left] {$\vv d$};
+
+\draw[stylevecteur] (-6,5) -- ++(5,0) node[midway,below] {$\vv f$};
+\draw[stylevecteur] (7,5) -- ++(2.5,0) node[midway,above] {$\vv u$};
+\draw[stylevecteur] (-7,-2) -- ++(-1.4,0) node[midway,above] {$\vv c$};
+\end{tikzpicture}
+\end{resizetikz}
 \end{center}
 
-\item Tracer la représentation graphique de $g$ sur le repère ci-contre.
-\end{enumerate}
-}
-{
-\begin{tikzpicture}
-\begin{axis}[
-styleglobal,
-width=\linewidth,
-xmin=-6, xmax= 6,
-ymin=-5, ymax=5,
-xtick distance=1,
-ytick distance=1,
-minor x tick num=0,
-minor y tick num=0,
-]
-
-\end{axis}
-\end{tikzpicture}
-}}
-
-\newcommand{\contenud}{
-\compo[0.6]
-{
-On définit la fonction $g:x \mapsto -\frac 5 2 x + 0,4$.
-\begin{enumerate}
-\item Compléter le tableau de valeurs suivant:
-
 \begin{center}
-\begin{tabularx}{\linewidth}{|c|*{5}{Y|}} \hline
-$x$ & $-2$ & $-1$ & $0$ & $1$ & $2$ \\ \hline
-$g(x)$ & \rule{0pt}{1cm} & & & & \\ \hline
+\begin{tabularx}{\linewidth}{|Y|Y|Y|Y|Y|Y|} \hline
+Droite & $\mathscr D_1$ & $\mathscr D_2$ & $\mathscr D_3$ & $\mathscr D_4$ & $\mathscr D_5$ \\ \hline
+Vecteurs associés & & & & & \\ \hline
 \end{tabularx}
-\end{center}
+\end{center}}
 
-\item Tracer la représentation graphique de $g$ sur le repère ci-contre.
-\end{enumerate}
-}
-{
-\begin{tikzpicture}
-\begin{axis}[
-styleglobal,
-width=\linewidth,
-xmin=-6, xmax= 6,
-ymin=-5, ymax=5,
-xtick distance=1,
-ytick distance=1,
-minor x tick num=0,
-minor y tick num=0,
-]
 
-\end{axis}
-\end{tikzpicture}
-}}
 
-\contenua
+\contenua \newpage \contenua
 
-\vfill
-
-\contenua
-
-\vfill
-
-\contenua
-
-\newpage
-
-\contenub
-
-\vfill
-
-\contenub
-
-\vfill
-
-\contenub
-
-\vfill
-
-\contenub
-
-\newpage
-
-\contenuc
-
-\vfill
-
-\contenuc
-
-\vfill
-
-\contenuc
-
-\vfill
-
-\contenuc
-
-\newpage
-
-\contenud
-
-\vfill
-
-\contenud
-
-\vfill
-
-\contenud
-
-\vfill
-
-\contenud
-
-\newpage
 \end{document}

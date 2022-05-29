@@ -1,0 +1,159 @@
+\documentclass[a4paper,12pt,french]{article}
+
+\usepackage[sujet]{../../Style}
+
+\fancyhead[L]{06/2022}
+\fancyhead[C]{\textbf{DS: Rattrapage}}
+\fancyhead[R]{\premiere ST2S 2}
+
+\renewcommand{\arraystretch}{1.8}
+% Début du document
+%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+\rem{L'usage de la calculatrice est autorisé. La propreté et l'orthographe seront prises en compte.\\ \textbf{Des phrases de réponse sont exigées dans l'exercice 2!}}
+
+\newpage
+
+\begin{exercice}
+Une enquête a été menée dans un établissement de 1550 élèves afin de connaitre leur groupe sanguin. De plus, on sait que:
+\begin{itemize}
+\item Parmi les 800 garçons, 47 sont du groupe B.
+\item 970 élèves sont du groupe O dont 434 filles.
+\item 295 filles sont du groupe A.
+\end{itemize}
+
+\begin{enumerate}
+
+\item Compléter le tableau croisé d'effectifs ci-dessous:
+\begin{center}
+    \begin{tabularx}{\linewidth}{|c|Y|Y|Y|Y|}
+    \cline{2-5} \multicolumn{1}{c|}{}
+         &Groupe A&Groupe B&Groupe O&Total  \\ \hline
+         Garçons&&47&&800  \\ \hline 
+         Filles&295&&434& \\ \hline 
+         Total&&&970&1550 \\ \hline
+    \end{tabularx}
+\end{center}
+
+On choisit un élève au hasard et on l'interroge sur son groupe sanguin.
+
+\item Déterminer la probabilité de sélectionner une fille du groupe A.
+
+\points 3
+
+\item Calculer la probabilité que l'élève interrogé soit du groupe B en sachant que c'est une fille.
+
+\points 3
+
+\item On considère les évènements suivants:
+\begin{center}
+\hfill
+\textendash \ G: \og L'élève est un garçon \fg; \hfill
+\textendash \ O: \og L'élève est du groupe O \fg.
+\hfill \
+\end{center}
+
+\begin{enumerate}
+\item Calculer $\Pro(O)$ et interpréter ce résultat dans le contexte de l'énoncé.
+
+\points 3
+
+\item Calculer $\Pro_G(O)$ et $\Pro_{\overline G}(O)$, puis interpréter ces résultats dans le contexte de l'énoncé.
+
+\points 7
+
+\end{enumerate}
+\end{enumerate}
+\end{exercice}
+
+\begin{exercice} \ 
+On se donne la fonction $f$ représentée ci-dessous.
+\begin{enumerate}
+\item Déterminer:
+\begin{itemize}
+\item $f'(0)= \dotfill \quad f'(0,6)= \dotfill \quad f'(-2,5)=\dotfill$
+\item L'équation de la tangente $\mathcal T_1$: \dotfill
+\end{itemize}
+\item On sait que $f'(-2,5)=\frac{-5}{2}$. Tracer la tangente associée.
+\item Tracer approximativement la tangente de $\mathscr C_f$ en $C$.
+\end{enumerate}
+
+\begin{center}
+\begin{tikzpicture}
+\begin{axis}[
+styleglobal,
+width=0.6*\linewidth,
+xmin=-4, xmax=4,
+ymin=-3, ymax=4,
+xtick distance=1,
+ytick distance=1,
+minor x tick num=1,
+minor y tick num=1,
+declare function={f(\x)=0.5*\x^2+2*sin(deg(\x)*pi)/pi;}
+]
+\addplot[styleplot] {f(x)} node[pos=0.7,below right] {$\mathscr C_f$};
+%\addplot[styleplot,dotted,red] {x+2*cos(pi*deg(x))};
+
+% Je triche un peu sur les dérivées...
+
+%\node[stylepoint,fill=blue,label=above right:$ $] (A) at (0.6,{f(0.6)}) {};
+\addplot[styleplot,densely dashed,color=DarkBlue] {{0*(x-0.6)+f(0.6)}};
+
+%\node[stylepoint,fill=blue,label=above right:$ $] (A) at (0,{f(0)}) {};
+\addplot[styleplot,densely dotted,color=DarkBlue] {{2*(x-0)+f(0)}} node[pos=0.65,above left] {$\mathcal T_1$};;
+
+\node[stylepoint,fill=red,label=below right:$C$] (A) at (1.5,{f(1.5)}) {};
+%\addplot[styleplot,densely dashed,color=DarkRed] {{1.5*(x-1.5)+f(1.5)}} node[pos=0.9,below right] {$\mathcal T_2$};
+
+%\node[stylepoint,fill=red,label=above right:$ $] (A) at (-2.5,{f(-2.5)}) {};
+\addplot[styleplot,densely dotted,color=DarkRed] {{-2.5*(x+2.5)+f(-2.5)}};
+
+\addplot[styleplot,dashed,color=DarkRed] {{-3*(x+1)+f(-1)}};
+\end{axis}
+\end{tikzpicture}
+\end{center}
+\end{exercice}
+
+\begin{exercice} \
+
+\compolignehaut[0.45]
+{
+\begin{enumerate}
+\item Compléter le tableau suivant, donnant les dérivées des fonctions usuelles:
+
+\begin{center}\renewcommand{\arraystretch}{1.5}
+\begin{tabularx}{5cm}{|Y|Y|} \hline
+$f(x)$ & $f'(x)$ \\ \hline
+$k \in \R$ &  \\ \hline
+$x$ &  \\ \hline
+$x^2$ & \\ \hline
+$x^3$ &  \\ \hline
+\end{tabularx}
+\end{center}
+\end{enumerate}
+}
+{
+\begin{enumerate}[start=2]
+\item Calculer la dérivée des fonctions suivantes:
+
+\begin{enumerate}
+\item $f:x \mapsto x^3-7$:
+
+\points 3
+
+\item $g:x \mapsto x^2+8x$:
+
+\points 3
+
+\item $h:x \mapsto 5x^3-2x^2+x$:
+
+\points 3
+\end{enumerate}
+\end{enumerate}
+}
+\end{exercice}
+\end{document}
+
+\end{document}
+

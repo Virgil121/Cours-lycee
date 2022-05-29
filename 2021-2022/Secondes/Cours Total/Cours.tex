@@ -7,7 +7,7 @@
 \usepackage{anyfontsize}
 %\PassOptionsToPackage{toctitles}{titlesec}
 \usepackage{titletoc}
-\hypersetup{linktoc=all,hypertexnames=false,pdftitle={Mathématiques: Seconde GT 2021-2022}}
+\hypersetup{linktoc=all,hypertexnames=false,pdftitle={Mathématiques: 2GT 2021-2022}}
 
 
 \renewcommand{\progres}{} % Commande progrès termine le document en version élève, on en veut pas ici
@@ -15,6 +15,14 @@
 
 % CODE TRES MOCHE A REVOIR - toc
 %%%%%%%%%%%%%%%%%
+
+% Lien vers toc sur numéro page
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot[C]{\hyperlink{page.2}{\thepage}}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
 
 \setcounter{tocdepth}{1} % Voir chapitres et sections, pas plus loin
 \newcounter{chapitre}\setcounter{chapitre}{-1} % Chapitre initialisé à -1, on le remet à 0 après le toc (comme ca on peut tester si on affiche le premier chapitre dans le toc)
@@ -26,10 +34,23 @@
 	\thispagestyle{empty} % Enlever numéro page
     \@starttoc{toc}%
     \setcounter{page}{0} % Remettre page à 0 ( commencera à 1 )
-    \preto\@maketitle{
-    	\refstepcounter{part}%
-    	\phantomsection%
-    	\addcontentsline{toc}{part}{Chapitre \Roman{chapitre}.\ \@title}} % Modifie commande titre après pour mettre une ref. Chapitre X dedans pour que l'hyperlien le prenne en compte
+    % A chaque titre après le toc, on crée un marqueur et on ajoute le chapitre dans le toc
+	\xpatchcmd\@maketitle{\thanks}{\thanks% Patch de la commande nécessaire, si on met cela après \centering ... \thanks, on a un espace moche
+		\refstepcounter{part}%
+    	\tikz[overlay,remember picture]{\node at (current page.north) {\phantomsection};}% tikz pour mettre le lien tout en haut de la page
+    	\addcontentsline{toc}{part}{Chapitre \Roman{chapitre}.\ \@title}%Modifie commande titre après pour mettre une ref. Chapitre X dedans pour que l'hyperlien le prenne en compte
+    }{}{}
+%	\def\@maketitle{%
+%		\centering \let \footnote \thanks%
+%		\refstepcounter{part}%
+%    	\tikz[overlay,remember picture]{\node at (current page.north) {\phantomsection};}% tikz pour mettre le lien tout en haut de la page
+%    	\addcontentsline{toc}{part}{Chapitre \Roman{chapitre}.\ \@title}%Modifie commande titre après pour mettre une ref. Chapitre X dedans pour que l'hyperlien le prenne en compte		
+%		{\fontfamily{cmr}\fontseries{bx}\selectfont\huge\scshape\color{titre} \@title \par}%
+%		\textcolor{darkgray}{\hrule}%
+%		\vspace{2pt}%
+%		\textcolor{darkgray}{\hrule height 2pt depth 0pt \relax}%
+%  		\par
+%  		\vskip 2em}
 }
 \makeatother
 
