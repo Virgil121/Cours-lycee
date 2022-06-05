@@ -1,0 +1,293 @@
+\documentclass[a4paper,12pt,french]{article}
+
+\usepackage[cours,NB]{../../Style}
+
+\geometry{margin=7mm}
+
+% Début du document
+%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+\begin{defin}
+
+\compo[0.6]
+{
+Soit $\mathscr{D}$ une droite, et $A$ et $B$ deux points de $\mathscr{D}$.
+
+On appelle \textbf{vecteur directeur} de $\mathscr{D}$ tout vecteur $\vv u$ non nul colinéaire à $\vv{AB}$.
+
+Autrement dit, le vecteur $\vv u$ donne la direction de la droite $\mathscr D$.
+}
+{
+\vspace{-7mm}
+\begin{center}
+\begin{tikzpicture}
+\begin{axis}[
+styleglobal,
+width=0.9*\linewidth,
+xmin=-4, xmax=7,
+ymin=-2, ymax=4,
+xtick distance=1,
+ytick distance=1,
+font=\normalsize,
+minor x tick num=0,
+minor y tick num=0,
+]
+\addplot[styleplot,DarkRed] {0.5*x-1} node [pos=0.9,above] {$\mathscr D$};
+\node[stylepoint,fill=blue,label=-45:$A$] (A) at (0,-1) {};
+\node[stylepoint,fill=blue,label=-45:$B$] (B) at (4,1) {};
+%\draw[stylevecteur] (-3,1) -- (1,3) node[pos=0.5,above] {$\vv u$};
+%\draw[stylevecteur] (2,2) -- (4,3) node[pos=0.5,above] {$\vv v$};
+\end{axis}
+\end{tikzpicture}
+\end{center}
+}
+\end{defin}
+
+\begin{rmq}
+Un vecteur directeur n'est pas unique: Ici, $\vv{u}$ et $\vv{v}$ sont des vecteurs directeurs de la droite $(AB)$.
+\end{rmq}
+
+\begin{ex}
+
+\compo[0.6]
+{
+Donner les coordonnées de \textbf{plusieurs} vecteurs directeurs des droites $\mathscr D_1$, $\mathscr D_2$, $\mathscr D_3$ et $\mathscr D_4$.
+
+{\setstretch{1.7}
+\begin{itemize}
+\item $\mathscr D_1$:
+\item $\mathscr D_2$:
+\item $\mathscr D_3$:
+\item $\mathscr D_4$:
+\end{itemize}}
+}
+{
+\vspace{-7mm}
+\begin{center}
+\begin{tikzpicture}
+\begin{axis}[
+styleglobal,
+width=0.9*\linewidth,
+xmin=-3, xmax=6,
+ymin=-2, ymax=6,
+xtick distance=1,
+ytick distance=1,
+font=\normalsize,
+minor x tick num=0,
+minor y tick num=0,
+]
+\addplot[styleplot] {3-x} node [pos=0.85,above right] {$\mathscr D_1$};
+\addplot[styleplot,DarkRed] {4} node [pos=0.93,above] {$\mathscr D_2$};
+\addplot[styleplot,DarkBlue] {3*x+1} node [pos=0.3,above left] {$\mathscr D_3$};
+\draw[line width=1pt,DarkGreen] (4,-2) -- (4,6) node [pos=0.9,left] {$\mathscr D_4$};
+\end{axis}
+\end{tikzpicture}
+\end{center}
+}
+\end{ex}
+
+\vfill
+
+\begin{exs}
+\compo[0.66]
+{
+Soit $\mathscr D_1:2x-y+3=0$.
+
+\begin{itemize}
+\item Un vecteur directeur de $\mathscr D_1$ est:
+
+\item Si $x=0$, l'équation devient:
+
+\vspace{1.8cm}
+
+Alors $A(\ldots;\ldots) \in \mathscr D_1$.
+\end{itemize}
+
+On peut donc tracer la droite $\mathscr D_1$ dans le repère ci-contre. 
+
+\
+
+On remarque d'ailleurs que $2x-y+3=0 \iff y=2x+3$ (On appelle cette équation l'\textbf{équation réduite} de $\mathscr D_1$). La droite $\mathscr D_1$ peut donc être identifiée à la courbe d'une fonction affine.
+}
+{
+\vspace{-7mm}
+\begin{center}
+\begin{tikzpicture}
+\begin{axis}[
+styleglobal,
+width=0.9\linewidth,
+xmin=-3, xmax=4,
+ymin=-2, ymax=7,
+xtick distance=1,
+ytick distance=1,
+font=\normalsize,
+minor x tick num=0,
+minor y tick num=0,
+]
+%\addplot[styleplot,DarkBlue] {2*x+3} node [pos=0.3,above left] {$\mathscr D_1$};
+%\node[stylepoint,fill=blue,label=-45:$A$] (A) at (0,3) {};
+%\draw[stylevecteur] (A) -- (1,5) node[midway,below right] {$\vv u$};
+%\node[stylepoint,fill=blue,label=-45:$B$] at (1,5) {};
+%
+%\draw[line width=1pt,DarkRed] (3,-2) -- (3,11) node[pos=0.65,right] {$\mathscr D_2$};
+%\node[stylepoint,fill=red,label=-135:$B$] (B) at (3,1) {};
+%\draw[stylevecteur] (B) -- (3,4) node[midway,right] {$\vv v$};
+%\node[stylepoint,fill=red,label=0:$D$] at (3,4) {};
+\end{axis}
+\end{tikzpicture}
+\end{center}
+}
+
+\vspace{3mm}
+
+Soit $\mathscr D_2:3x-9=0$. Un vecteur directeur de $\mathscr D_2$ est:
+
+Ici, il n'y a pas de $y$ donc il suffit de résoudre l'équation:
+
+\vspace{2cm}
+
+Tout point dont les coordonnées sont de la forme \makebox[3cm]{\dotfill} avec $y \in \R$ convient donc. On prend par exemple $B(\ldots; \ldots)$.
+\end{exs}
+
+\newpage
+
+\begin{fait}
+On se ramène à deux équations de droites que l'on trace.
+
+L'unique solution du système est alors les coordonnées du point d'intersection des deux droites.
+\end{fait}
+
+\begin{ex}
+\compo[0.55]
+{ \setstretch{1.2}
+On reprend le système précédent:$\begin{cases}
+    5x-2y=4 \\
+    -x+y=1
+\end{cases}
+$
+
+On trace ensuite les deux droites:
+$$\begin{aligned} &\mathscr D_1:5x-2y-4=0 \\ &\mathscr D_2:-x+y-1=0 \end{aligned}$$
+On constate que leur point d'intersection a pour coordonnées \makebox[3cm]{\dotfill}, ce qui correspond à la solution testée dans l'exemple précédent.
+}
+{
+\begin{center}
+\begin{tikzpicture}
+\begin{axis}[
+styleglobal,
+width=0.9\linewidth,
+xmin=-3, xmax=5,
+ymin=-1, ymax=5,
+xtick distance=1,
+ytick distance=1,
+font=\normalsize,
+minor x tick num=0,
+minor y tick num=0,
+]
+%\addplot[styleplot,DarkRed] {2.5*x-2} node [pos=0.9,above] {$\mathscr D_1$};
+%\addplot[styleplot,DarkBlue] {x+1} node [pos=0.9,above] {$\mathscr D_2$};
+
+%\node[stylepoint,fill=blue] at (2,3) {};
+\end{axis}
+\end{tikzpicture}
+\end{center}
+}
+
+\end{ex}
+
+\vfill
+
+\begin{fait}
+On se ramène à deux équations de droites que l'on trace.
+
+L'unique solution du système est alors les coordonnées du point d'intersection des deux droites.
+\end{fait}
+
+\begin{ex}
+\compo[0.55]
+{ \setstretch{1.2}
+On reprend le système précédent:$\begin{cases}
+    5x-2y=4 \\
+    -x+y=1
+\end{cases}
+$
+
+On trace ensuite les deux droites:
+$$\begin{aligned} &\mathscr D_1:5x-2y-4=0 \\ &\mathscr D_2:-x+y-1=0 \end{aligned}$$
+On constate que leur point d'intersection a pour coordonnées \makebox[3cm]{\dotfill}, ce qui correspond à la solution testée dans l'exemple précédent.
+}
+{
+\begin{center}
+\begin{tikzpicture}
+\begin{axis}[
+styleglobal,
+width=0.9\linewidth,
+xmin=-3, xmax=5,
+ymin=-1, ymax=5,
+xtick distance=1,
+ytick distance=1,
+font=\normalsize,
+minor x tick num=0,
+minor y tick num=0,
+]
+%\addplot[styleplot,DarkRed] {2.5*x-2} node [pos=0.9,above] {$\mathscr D_1$};
+%\addplot[styleplot,DarkBlue] {x+1} node [pos=0.9,above] {$\mathscr D_2$};
+
+%\node[stylepoint,fill=blue] at (2,3) {};
+\end{axis}
+\end{tikzpicture}
+\end{center}
+}
+
+\end{ex}
+
+\vfill
+
+\begin{fait}
+On se ramène à deux équations de droites que l'on trace.
+
+L'unique solution du système est alors les coordonnées du point d'intersection des deux droites.
+\end{fait}
+
+\begin{ex}
+\compo[0.55]
+{ \setstretch{1.2}
+On reprend le système précédent:$\begin{cases}
+    5x-2y=4 \\
+    -x+y=1
+\end{cases}
+$
+
+On trace ensuite les deux droites:
+$$\begin{aligned} &\mathscr D_1:5x-2y-4=0 \\ &\mathscr D_2:-x+y-1=0 \end{aligned}$$
+On constate que leur point d'intersection a pour coordonnées \makebox[3cm]{\dotfill}, ce qui correspond à la solution testée dans l'exemple précédent.
+}
+{
+\begin{center}
+\begin{tikzpicture}
+\begin{axis}[
+styleglobal,
+width=0.9\linewidth,
+xmin=-3, xmax=5,
+ymin=-1, ymax=5,
+xtick distance=1,
+ytick distance=1,
+font=\normalsize,
+minor x tick num=0,
+minor y tick num=0,
+]
+%\addplot[styleplot,DarkRed] {2.5*x-2} node [pos=0.9,above] {$\mathscr D_1$};
+%\addplot[styleplot,DarkBlue] {x+1} node [pos=0.9,above] {$\mathscr D_2$};
+
+%\node[stylepoint,fill=blue] at (2,3) {};
+\end{axis}
+\end{tikzpicture}
+\end{center}
+}
+
+\end{ex}
+
+\newpage
+
+\end{document}

@@ -7,11 +7,13 @@
 %\usepackage{anyfontsize} % Va créer des erreurs de polices mais le package a un bug: la police math est un peu plus grande...
 %\PassOptionsToPackage{toctitles}{titlesec}
 \usepackage{titletoc}
-\hypersetup{linktoc=all,hypertexnames=false,pdftitle={Mathématiques: 2GT 2021-2022}}
+\hypersetup{linktoc=all,hypertexnames=false,pdftitle={Mathématiques: 1ST2S 2021-2022}}
 
 
 \renewcommand{\progres}{} % Commande progrès termine le document en version élève, on en veut pas ici
 
+\tcbset{opacityback=0}
+\def\tkzTabDefaultBackgroundColor{bg!0}
 
 % CODE TRES MOCHE A REVOIR - toc
 %%%%%%%%%%%%%%%%%
@@ -42,17 +44,6 @@
     	\addcontentsline{toc}{part}{Chapitre \Roman{chapitre}.\ \@title}%Modifie commande titre après pour mettre une ref. Chapitre X dedans pour que l'hyperlien le prenne en compte
     }{}{}
     \appto\maketitle{\thispagestyle{fancy}}
-%	\def\@maketitle{%
-%		\centering \let \footnote \thanks%
-%		\refstepcounter{part}%
-%    	\tikz[overlay,remember picture]{\node at (current page.north) {\phantomsection};}% tikz pour mettre le lien tout en haut de la page
-%    	\addcontentsline{toc}{part}{Chapitre \Roman{chapitre}.\ \@title}%Modifie commande titre après pour mettre une ref. Chapitre X dedans pour que l'hyperlien le prenne en compte		
-%		{\fontfamily{cmr}\fontseries{bx}\selectfont\huge\scshape\color{titre} \@title \par}%
-%		\textcolor{darkgray}{\hrule}%
-%		\vspace{2pt}%
-%		\textcolor{darkgray}{\hrule height 2pt depth 0pt \relax}%
-%  		\par
-%  		\vskip 2em}
 }
 \makeatother
 
@@ -87,13 +78,14 @@
 %
 \tableofcontents
 %
-\chap{../Chap1 Réels Intervalles/cours}
-\chap{../Chap2 Vecteurs/cours}
-\chap{../Chap3 Fonctions Généralités/cours v3}
-\chap{../Chap4 Proportions Variations/cours}
-\chap{../Chap5 Fonctions affines/cours}
-\chap{../Chap6 Variations de fonctions/cours}
-\chap{../Chap7 Repères du plan/cours}
-\chap{../Chap8 Probabilités/cours}
-\chap{../Chap9 Droites du plan/cours}
+\chap{../Chap1 Proportions Variations/cours}
+\chap{../Chap2 Généralités fonctions/cours v2}
+\chap{../Chap3 Généralités Suites/cours}
+\chap{../Chap4 Fonctions affines/cours}
+\chap{../Chap5 Fonctions polynomiales de degré 2/cours v4}
+\chap{../Chap6 Suites arithmétiques géométriques/cours}
+\chap{../Chap7 Dérivation locale/cours}
+\chap{../Chap8 Probas conditionnelles/cours}
+\chap{../Chap9 Dérivation globale/cours}
+\chap{../Chap10 Variables aléatoires/cours}
 \end{document}

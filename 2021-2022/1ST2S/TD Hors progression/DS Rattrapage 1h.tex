@@ -26,7 +26,7 @@ Lors de son embauche dans une société pour un contrat à durée indéterminée
 \begin{enumerate}
 \item Calculer le salaire mensuel net d'Harry le deuxième mois de son contrat ainsi que celui le troisième mois de son contrat.
 
-\points 5
+\points 4
 
 \item On note $u_n$ le montant, exprimé en euros, du salaire mensuel net d'Harry au bout de $n$ mois, où $n$ est un entier naturel. Justifier que $u$ est une suite arithmétique dont on précisera le premier terme et la raison.
 
@@ -42,11 +42,11 @@ Lors de son embauche dans une société pour un contrat à durée indéterminée
 
 \item Quelle est la nature de $v$? On précisera le premier terme et la raison de cette suite.
 
-\points 5
+\points 4
 
 \item Déterminer $v_{n+1}$ en fonction de $v_n$.
 
-\points 5
+\points 3
 \end{enumerate}
 
 \item Quelle proposition serait la plus souhaitable à long terme? \textit{On pourra s'aider de la calculatrice}
@@ -75,11 +75,11 @@ On choisit un élève au hasard et on l'interroge sur son groupe sanguin.
 
 \item Déterminer la probabilité de sélectionner une fille du groupe A.
 
-\points 5
+\points 4
 
 \item Calculer la probabilité que l'élève interrogé soit du groupe B en sachant que c'est une fille.
 
-\points 5
+\points 4
 
 \item On considère les évènements suivants:
 \begin{center}
@@ -92,64 +92,14 @@ On choisit un élève au hasard et on l'interroge sur son groupe sanguin.
 \begin{enumerate}
 \item Calculer $\Pro(O)$ et interpréter ce résultat dans le contexte de l'énoncé.
 
-\points 5
+\points 4
 
 \item Calculer $\Pro_G(O)$ et $\Pro_{\overline G}(O)$, puis interpréter ces résultats dans le contexte de l'énoncé.
 
-\points {10}
+\points 8
 
 \end{enumerate}
 \end{enumerate}
-\end{exercice}
-
-\newpage
-
-\begin{exercice} \ 
-On se donne la fonction $f$ représentée ci-dessous.
-\begin{enumerate}
-\item Déterminer:
-\begin{itemize}
-\item $f'(0)= \dotfill \quad f'(-2,5)=\dotfill$
-\item L'équation de la tangente $\mathcal T_1$: \dotfill
-\end{itemize}
-\item On sait que $f'(1)=-1$. Tracer la tangente associée.
-\item Tracer approximativement la tangente de $\mathscr C_f$ en $C$.
-\end{enumerate}
-
-\begin{center}
-\begin{tikzpicture}
-\begin{axis}[
-styleglobal,
-width=0.6*\linewidth,
-xmin=-4, xmax=4,
-ymin=-3, ymax=4,
-xtick distance=1,
-ytick distance=1,
-minor x tick num=1,
-minor y tick num=1,
-declare function={f(\x)=0.5*\x^2+2*sin(deg(\x)*pi)/pi;}
-]
-\addplot[styleplot] {f(x)} node[pos=0.7,below right] {$\mathscr C_f$};
-%\addplot[styleplot,dotted,red] {x+2*cos(pi*deg(x))};
-
-% Je triche un peu sur les dérivées...
-
-%\node[stylepoint,fill=blue,label=above right:$ $] (A) at (0.6,{f(0.6)}) {};
-\addplot[styleplot,densely dashed,color=DarkBlue] {{0*(x-0.6)+f(0.6)}};
-
-%\node[stylepoint,fill=blue,label=above right:$ $] (A) at (0,{f(0)}) {};
-\addplot[styleplot,densely dotted,color=DarkBlue] {{2*(x-0)+f(0)}} node[pos=0.65,above left] {$\mathcal T_1$};;
-
-\node[stylepoint,fill=red,label=below right:$C$] (A) at (1.5,{f(1.5)}) {};
-%\addplot[styleplot,densely dashed,color=DarkRed] {{1.5*(x-1.5)+f(1.5)}} node[pos=0.9,below right] {$\mathcal T_2$};
-
-%\node[stylepoint,fill=red,label=above right:$ $] (A) at (-2.5,{f(-2.5)}) {};
-\addplot[styleplot,densely dotted,color=DarkRed] {{-2.5*(x+2.5)+f(-2.5)}};
-
-\addplot[styleplot,dashed,color=DarkRed] {{-3*(x+1)+f(-1)}};
-\end{axis}
-\end{tikzpicture}
-\end{center}
 \end{exercice}
 
 \begin{exercice} \

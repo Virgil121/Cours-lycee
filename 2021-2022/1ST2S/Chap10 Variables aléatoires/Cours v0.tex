@@ -2,7 +2,7 @@
 
 \usepackage[cours]{../../Style}
 
-\renewcommand{\arraystretch}{1.3}
+\renewcommand{\arraystretch}{1.2}
 %\selectcolormodel{cmyk}
 
 %\usepackage{wrapfig}
@@ -44,7 +44,7 @@ On lance une pièce équilibrée. Si on tombe sur pile, on gagne 2\euro, sinon o
 
 \begin{rmqs}
 \begin{itemize}
-\item Une variable aléatoire réelle est en fait une fonction $X:\Omega \rightarrow \R$.
+\item Une variable aléatoire réelle est en fait une fonction $X:\Omega \rightarrow \R$: Dans l'exemple précédent, l'univers est $\Omega=\{ \text{\og pile \fg} ; \text{\og face \fg} \}$. On a alors $X( \text{\og pile \fg} ) =2$ et $X( \text{\og face \fg} ) = -1$.
 
 \item En pratique, une variable aléatoire permet de raccourcir les notations: L'évènement \og On gagne 2\euro{} après le lancer \fg devient $X=2$.
 \end{itemize}
@@ -70,8 +70,7 @@ On reprend l'exemple ci-dessus, mais $X$ représente cette fois les gains après
 
 \begin{itemize}
 \item $\Pro(X=1)=\frac 2 4 = 0,5$ (2 cas favorables sur 4);
-\item $\Pro(X=-2)=\frac 1 4 = 0,25$;
-\item $\Pro(X=4)=\frac 1 4 = 0,25$
+\item $\Pro(X=4)=\Pro(X=-2)=\frac 1 4 = 0,25$;
 \end{itemize}
 
 On peut alors donner la \textbf{loi de probabilité} de $X$, c'est-à-dire donner la probabilité de chaque issue:
@@ -91,7 +90,7 @@ On peut aussi déterminer d'autres probabilités:
 }
 {
 \begin{center}
-\begin{tikzpicture}[x=1.3cm] % Même effet que xscale=1.8 mais l'option sloped marche
+\begin{tikzpicture}[x=1.4cm] % Même effet que xscale=1.8 mais l'option sloped marche
 
 \node (O) at (0,0) {};
 \node (P) at (1,1.5) {P};
@@ -106,9 +105,9 @@ On peut aussi déterminer d'autres probabilités:
 \node[right of=FP,anchor=west,node distance=0.5cm] {FP: $X=1$};
 \node[right of=FF,anchor=west,node distance=0.5cm] {FF: $X=-2$};
 
-\node[font=\footnotesize\bfseries,above of=P,node distance=1.3cm] (lancer1) {1\up{er} lancer};
-\node[font=\footnotesize\bfseries,above of=PP,node distance=1.3cm] (lancer2) {2\up{nd} lancer};
-\node[font=\footnotesize\bfseries,above of=res,node distance=0.8cm] {issues};
+\node[font=\footnotesize\bfseries,above of=P,node distance=1.5cm] (lancer1) {1\up{ère} lancer};
+\node[font=\footnotesize\bfseries,above of=PP,node distance=1.5cm] (lancer2) {2\up{ème} lancer};
+\node[font=\footnotesize\bfseries,above of=res,node distance=1cm] {issues};
 
 %\draw[->] (lancer1) -- (P);
 %\draw[->] (lancer2) -- (PP);
@@ -122,16 +121,12 @@ On peut aussi déterminer d'autres probabilités:
 \rem{Exos \textbf{41},\textbf{43},\textbf{44} p203 \\
 	Exos 75 \rightarrow 78 p209}
 
-\progres
-
 \section{Espérance d'une variable aléatoire}
 
 \begin{defin}
 \compo
 {
 On se donne une variable aléatoire $X$ dont la loi est représentée ci-contre.
-
-L'espérance de $X$, notée $\Esp(X)$, est le réel $$\Esp(X):=p_1 x_1 + p_2 x_2 + \ldots + p_N x_N$$
 }
 {
 \begin{center}
@@ -141,11 +136,13 @@ $\Pro(X=x)$ & $p_1$ & $p_2$ & \ldots & $p_N$ \\ \hline
 \end{tabularx}
 \end{center}
 }
-\end{defin}
 
-\begin{rmq}
+\
+
+L'espérance de $X$, notée $\Esp(X)$, est le réel $\Esp(X):=p_1 x_1 + p_2 x_2 + \ldots + p_N x_N$.
+
 Celle-ci représente la moyenne des valeurs de $X$ lorsque l'on répète l'expérience aléatoire un très grand nombre de fois.
-\end{rmq}
+\end{defin}
 
 \begin{ex}
 On reprend l'exemple ci-dessus. On a $\begin{aligned}[t] \Esp(X) & =0,25 \times (-2) + 0,5 \times 1 + 0,25 \times 4 \\ & = -0,5 + 0,5 + 1 \\ & = 1 \end{aligned}$
@@ -169,12 +166,9 @@ L'espérance de $X$ est positive, ce qui veut dire qu'en jouant un grand nombre 
 Jusqu'à maintenant, on a répété plusieurs expériences régies par une loi équiprobable. On s'intéresse maintenant à des expériences où chaque issue n'a pas forcément la même probabilité.
 \end{fait}
 
-\begin{defins}
-\begin{itemize}
-\item Deux évènements sont dits indépendants si la réalisation de l'un n'a aucune influence sur l'autre.
-\item Deux variables aléatoires sont indépendantes si la valeur d'une n'influe pas sur l'autre.
-\end{itemize}
-\end{defins}
+\begin{defin}
+Deux évènements sont dits indépendants si la réalisation de l'un n'a aucune influence sur l'autre. La définition s'étend naturellement aux variables aléatoires.
+\end{defin}
 
 \begin{ex}
 \compo[0.6]
@@ -191,9 +185,8 @@ On tire \textbf{successivement} une boule de la première puis de la seconde urn
 On représente les issues possibles grâce à l'arbre ci-contre.
 }
 {
-\vspace{-7mm}
 \begin{center}
-\begin{tikzpicture}[x=2cm,y=0.8cm,legende/.style={midway,sloped,font=\footnotesize}] % Même effet que xscale=1.8 mais l'option sloped marche
+\begin{tikzpicture}[x=2cm,y=0.7cm,legende/.style={midway,sloped,font=\footnotesize}] % Même effet que xscale=1.8 mais l'option sloped marche
 
 \node (O) at (0,0) {};
 \node (R) at (1,2) {R};
@@ -213,9 +206,9 @@ On représente les issues possibles grâce à l'arbre ci-contre.
 \node[right of=BV,anchor=west,node distance=1cm] {BV};
 \node[right of=BN,anchor=west,node distance=1cm] {BN};
 
-\node[font=\footnotesize\bfseries,above of=R,node distance=1.15cm] (lancer1) {1\up{er} tirage};
+\node[font=\footnotesize\bfseries,above of=R,node distance=1.05cm] (lancer1) {1\up{ère} tirage};
 \node[font=\footnotesize\bfseries,above of=RV,node distance=1.15cm] (lancer2) {2\up{nd} tirage};
-\node[font=\footnotesize\bfseries,above of=res,node distance=0.8cm] {issues};
+\node[font=\footnotesize\bfseries,above of=res,node distance=0.7cm] {issues};
 
 %\draw[->] (lancer1) -- (P);
 %\draw[->] (lancer2) -- (PP);
@@ -232,59 +225,17 @@ On représente les issues possibles grâce à l'arbre ci-contre.
 \begin{proprs}
 Pour construire et utiliser un arbre de probabilités, on utilisera les règles suivantes:
 \begin{itemize}
-\item La somme des probabilités inscrites sur les branches issues d'un même noeud est égale à 1;
+\item La somme des probabilités inscrites sur les branches issues d'un même nœud est égale à 1;
 \item La probabilité d'une issue représentée par un chemin est \textbf{le produit} des probabilités inscrite sur chacune de ses branches;
 \item La probabilité d'un évènement est la somme des probabilité de tous les chemins menant à cet évènement.
 \end{itemize}
 \end{proprs}
 
 \begin{exs}
-\compo[0.55]
-{
 \begin{itemize}
-\item La probabilité d'obtenir une boule rouge puis une boule verte {\color{DarkRed}(RV)} est: $$0,4 \times 0,6 = 0,54$$
-\item La probabilité d'obtenir une boule autre que rouge puis une boule noire {\color{DarkBlue}(JN ou BN)} est:
-$$\begin{aligned} (0,3 \times 0,6) + (0,3 \times 0,6) & = 0,18 + 0,18 \\ & = 0,36 \end{aligned}$$
+\item La probabilité d'obtenir une boule rouge puis une boule verte (RV) est $0,4 \times 0,6 = 0,54$.
+\item La probabilité d'obtenir une boule autre que rouge puis une boule noire (JN ou BN) est $(0,3 \times 0,6) + (0,3 \times 0,6) = 0,18 + 0,18 = 0,36$.
 \end{itemize}
-}
-{
-\vspace{-7mm}
-\begin{center}
-\begin{tikzpicture}[x=2.3cm,legende/.style={midway,sloped,font=\footnotesize}] % Même effet que xscale=1.8 mais l'option sloped marche
-
-\node (O) at (0,0) {};
-\node[DarkRed] (R) at (1,2) {R};
-\node[DarkBlue] (J) at (1,0) {J};
-\node[DarkBlue] (B) at (1,-2) {B};
-\node[anchor=west,DarkRed] (RV) at (2,2.5) {V};
-\node[anchor=west] (RN) at (2,1.5) {N};
-\node[anchor=west] (JV) at (2,0.5) {V};
-\node[anchor=west,DarkBlue] (JN) at (2,-0.5) {N};
-\node[anchor=west] (BV) at (2,-1.5) {V};
-\node[anchor=west,DarkBlue] (BN) at (2,-2.5) {N};
-
-\node[right of=RV,anchor=west,node distance=1cm,DarkRed] (res) {RV};
-\node[right of=RN,anchor=west,node distance=1cm] {RN};
-\node[right of=JV,anchor=west,node distance=1cm] {JV};
-\node[right of=JN,anchor=west,node distance=1cm,DarkBlue] {JN};
-\node[right of=BV,anchor=west,node distance=1cm] {BV};
-\node[right of=BN,anchor=west,node distance=1cm,DarkBlue] {BN};
-
-%\node[font=\footnotesize\bfseries,above of=R,node distance=1.05cm] (lancer1) {1\up{ère} tirage};
-%\node[font=\footnotesize\bfseries,above of=RV,node distance=1.15cm] (lancer2) {2\up{nd} tirage};
-%\node[font=\footnotesize\bfseries,above of=res,node distance=0.7cm] {issues};
-
-%\draw[->] (lancer1) -- (P);
-%\draw[->] (lancer2) -- (PP);
-
-\draw[DarkRed] (O) -- (R) node[legende,above] {$0,4$} (R) -- (RV) node[legende,above] {$0,6$};
-
-\draw[DarkBlue] (O) -- (J) node[legende,above] {$0,3$} (J) -- (JN) node[legende,below] {$0,4$} (O) -- (B) node[legende,below] {$0,3$}(B)  -- (BN) node[legende,below] {$0,4$};
-
-\draw (R) -- (RN) node[legende,below] {$0,4$} (J) -- (JV) node[legende,above] {$0,6$} (B) -- (BV) node[legende,above] {$0,6$};
-\end{tikzpicture}
-\end{center}
-}
 \end{exs}
 
 \rem{Exo 17 p200 \\
@@ -295,48 +246,164 @@ $$\begin{aligned} (0,3 \times 0,6) + (0,3 \times 0,6) & = 0,18 + 0,18 \\ & = 0,3
 	Exo 83 p214 \\
 	Exos 71 \rightarrow 74 p209 \\
 	Sujets B,C p212}
+	
+\end{document}
 
-\section{Épreuves et lois de Bernoulli}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\section{Généralités}
 
 \begin{defin}
-\begin{itemize}
-\item Une épreuve de Bernoulli de paramètre $p$ est une expérience où il n'y a que deux issues possibles: l'une est assimilée à un succès (de probabilité $p$) et l'autre à l'échec (de probabilité $1-p$).
-\end{itemize}
-\compo[0.65]
-{
-\begin{itemize}
-\item On dit qu'une variable aléatoire $X$ suit une loi de Bernoulli de paramètre $p$ lorsqu'elle associe 1 au succès et 0 à l'échec. Sa loi est représentée ci-contre.
-\end{itemize}
-}
-{
-\begin{center}
-\begin{tabularx}{0.9\linewidth}{|c|Y|Y|} \hline
-$x$ & 0 & 1 \\ \hline
-$\Pro(X=x)$ & $1-p$ & $p$ \\ \hline
-\end{tabularx}
-\end{center}
-}
+Soit $\Omega:=\{ \omega_{1},\dots ,\omega_{n} \}$ un ensemble fini qu'on appelle univers. Les $(\omega_{i})$ sont appelés issues possibles.
 \end{defin}
 
 \begin{ex}
-Une urne contient des boules numérotées de 1 à 10, indiscernables au toucher. On tire au hasard une boule dans l'urne. On considère comme succès l'évènement \og Obtenir la boule numérotée 10 \fg et donc comme échec \og Ne pas obtenir la boule numérotée 10 \fg.
+Pour un lancer de dé à 6 faces on prendra $\Omega=\{ 1,2,3,4,5,6\}$.
 
-\compo[0.65]
-{
-La loi de Bernoulli de la variable aléatoire $X$ associée à cette expérience est représentée ci-contre.
-}
-{
-\begin{center}
-\begin{tabularx}{0.9\linewidth}{|c|Y|Y|} \hline
-$x$ & 0 & 1 \\ \hline
-$\Pro(X=x)$ & $0,9$ & $0,1$ \\ \hline
-\end{tabularx}
-\end{center}
-}
 \end{ex}
 
+Dans la suite fixons un univers $\Omega$.
+Une \textbf{variable aléatoire} réelle notée $X$ est une fonction de $\Omega \longrightarrow \R$.
+
+Ainsi, une variable aléatoire c'est affecter à chaque issue possible une valeur.\\
+\begin{center}
+\begin{tikzpicture}
+\draw (-2,-2) circle (2cm);
+\draw (-2,-2) node{$\times$};
+\draw (-2,-2) node[above]{$\omega_{1}$};
+\draw (-2,-1) node{$\times$};
+\draw (-2,-1) node[above]{$\omega_{2}$};
+\draw (-1.5,-1.5) node{$\times$};
+\draw (-1.5,-1.5) node[above]{$\omega_{3}$};
+\draw (-1.7,-3) node[above]{$\omega_{4}$};
+\draw (-1.7,-3) node{$\times$};
+\draw (-2,0.5) node{$\Omega$};
+\draw (5,-2) circle (2cm); 
+\draw (5,-2) node{$1$};
+\draw (5,-1) node{$2$};
+\draw (5,-2.7) node{$-6$};
+\draw (-2,-2)--(5,-2);
+\draw (-2,-1)--(5,-1);
+\draw (-1.5,-1.5)--(5,-2.7);
+\draw (-1.7,-3)--(5,-2.7);
+\end{tikzpicture}
+\end{center}
+
+\underline{Notation:}\\
+$\bullet $ L'événement "$X$ prend la valeur $a$" est notée $X=a$.\\ Par exemple, si on reprend la schéma ci-dessus l'évément $X=6$ est réalisé pour les issues $\omega_{3}$ et $\omega_{4}$.\\\\
+$\bullet$ L'événement "$X$ inférieur ou égale à $a$" est notée $X\leq a$.\\
+Par exemple ici, $X\leq 2$ est obtenue pour les issues $\omega_{2}$ et $\omega_{1}$.
+\begin{ex}
+On considère un dé à $6$ faces. On associe à chaque numéro des faces une valeur de gain potentielle.
+\begin{align*}
+    1\longrightarrow -2\euro{}\\
+    2,3\longrightarrow -10\euro{}\\
+    5\longrightarrow 50\euro{}\\
+    4,6\longrightarrow -50\euro{}\\
+\end{align*}
+Ici, on associe aux issus possibles $\{ 1,2,3,4,5,6 \}$ un élément de l'ensemble $\{ -2,-10,50,-50\}$. On définit ainsi une variable aléatoire $X$.
+\begin{enumerate}
+\item L'événement "$X=-50$" est vérifié pour les issues $4,6$.
+\item L'événement "$X\leq -10$" est vérifié pour les issues $2,3,1$.
+\end{enumerate}
+\end{ex}
+\begin{defin}
+Si $X$ est à valeur dans $\{0,1\}$ on parle \textbf{d'épreuve de Bernoulli}.
+\end{defin}
+\begin{ex}
+On effectue une épreuve de pile ou face, on peut définir une variable aléatoire $X$ qui a l'événement pile associe 1 et à face 0. Cette variable aléatoire ainsi définie est une épreuve de Bernoulli.
+\end{ex}
+
+\section{Loi de probabilité et espérance}
+\subsection{ Loi de probabilité}
+Soit $\Omega$ un univers et $X$ une VAR telle que pour tout $i$, $X=a_{i}$ avec $a_{i}\in \R$. \\
+Définir la loi de probabilité de $X$, c'est associé à chaque $a_{i}$ la probabilité de l'événement $P(X=a_{i})$.
+Généralement, on relate cela dans un tableau:
+
+\begin{center}
+    \begin{tabular}{|p{3cm}|p{3cm}|p{3cm}|p{3cm}|}
+    \hline 
+       Valeur de $X$ & $a_{1}$ & $\dots$ & $a_{n}$ \\ 
+    \hline 
+        $ P(X=a_{i})$ & $p_{1}$ & $\dots$ & $p_{n}$\\
+    \hline 
+    \end{tabular}
+\end{center}
+\begin{rmq}
+$P$ étant une probabilité elle doit vérifier $p_{1}+\dots+p_{n}=1$, pour deux événement $A,B$ (c'est-à-dire $A,b\subset \mathscr{P}(\Omega)$) $P(A\cup B)=P(A)+P(B)-P(A\cap B)$ et $P(\emptyset)=0$.
+\end{rmq}
+\begin{ex}
+Reprenons l'exemple 2, on a en supposant que le dé est non truqué:
+\begin{align*}
+    & P(X=2)=P(\{ 1 \})=\frac{1}{6}\\
+     & P(X=50)=P(\{ 5\} )=\frac{1}{6}\\ 
+\end{align*}
+Comme le dé ne peut tomber sur deux faces en même temps on a donc que $\{4\}\cap \{6\}=\emptyset$ et $\{2\}\cap \{3\}=\emptyset$. Ce qui donne que:
+\begin{align*}
+    & P(X=-50)= P(\{ 4,6)\})=\frac{2}{6}\\
+    & P(X=-10)=P(\{ 2,3\} )=P(\{2\}\cup \{3\})=P(\{2\})+P(\{3\})=\frac{1}{6}+\frac{1}{6}=\frac{2}{6}
+\end{align*}
+\end{ex}
+Que l'on peut répertorier dans le tableau suivant:
+\begin{center}
+    \begin{tabular}{|p{3cm}|p{3cm}|p{3cm}|p{3cm}|p{3cm}|}
+    \hline 
+       Valeur de $X$ & $-50$ & $-10$ & $50$ & $2$ \\ 
+    \hline 
+        $ P(X=a_{i})$ & $\frac{2}{6}$ & $\frac{2}{6}$ &  $\frac{1}{6}$ & $\frac{1}{6}$\\
+    \hline 
+    \end{tabular}
+\end{center}
+\subsection{ Espérance, variance et écart type.}
+\begin{defin}
+En reprenant les notations ci-dessus on définit les notions suivantes: 
+\begin{enumerate}[leftmargin=2cm]
+    \item \textbf{L'espérance} de $X$ notée $E(X)=a_{1}p_{1}+a_{2}p_{2}+\dots + a_{n}p_{n}$.
+    \item \textbf{La variance} de $X$ notée $V(X)=p_{1}(a_{1}-E(X))^{2}+p_{2}(a_{2}-E(X))^{2}+\dots+ p_{n}(a_{n}-E(X))^{2}$
+    \item \textbf{L'écart type} $\sigma = \sqrt{ V(X)}$.
+\end{enumerate}
+\end{defin}
+\begin{rmq} \hfill \\
+$\bullet$ L'espérance traduit le gain moyen lorsqu'on réalise un grand nombre de fois l'expérience aléatoire.\\
+$\bullet$ La variance représente la moyenne des carrés des écarts à la moyenne.\\
+$\bullet$ L'écart type donne une idée de la dispersion des valeurs de l'échantillon.
+\end{rmq}
+\begin{ex}
+Reprenons la loi de probabilité ci-dessus définie par: 
+\begin{center}
+    \begin{tabular}{|p{3cm}|p{3cm}|p{3cm}|p{3cm}|p{3cm}|}
+    \hline 
+       Valeur de $X$ & $-50$ & $-10$ & $50$ & $2$ \\ 
+    \hline 
+        $ P(X=a_{i})$ & $\frac{2}{6}$ & $\frac{2}{6}$ &  $\frac{1}{6}$ & $\frac{1}{6}$\\
+    \hline 
+    \end{tabular}
+\end{center}
+Alors on a que:
+\begin{align*}
+    & E(X)=-50\times \frac{2}{6}-10\times \frac{2}{6}+50\times \frac{1}{6}+2\times \frac{1}{6}=\frac{-100-20+50+2}{6}=\frac{-68}{6}<0
+\end{align*}
+E(X)<0 donc le jeu n'est pas avantageux puisqu'après un grand nombre de parties on va perdre en moyenne $\frac{-68}{6}$euros soit environs $11$euros.
+\end{ex}
+\section{La loi de Bernoulli}
 \begin{prop}
-Si $X$ suit une loi de Bernoulli de paramètre $p$, alors $\Esp(X)=p$.
+Soit $X$ une variable aléatoire suivant une loi de Bernoulli de paramètre $p$ c'est-à-dire que $P(X=1)=p$ alors on a que: $P(X=0)=1-p$ et $E(X)=p$
 \end{prop}
+
+On sait que $P(X=1)+P(X=0)=p_{1}+p_{0}=p+p_{0}=1$, le résultat est immédiat.\\
+De plus, on a que $E(X)=0\times (1-p)+1\times p=p$.
+
 
 \end{document}

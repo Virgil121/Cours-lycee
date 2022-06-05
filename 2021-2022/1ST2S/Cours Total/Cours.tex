@@ -1,10 +1,10 @@
 \documentclass[a4paper,french,12pt]{article}
 \usepackage{titling}
-\usepackage{sectsty}
+%\usepackage{sectsty}
 %\usepackage[toctitles]{titlesec}
 \usepackage[eleve,cours]{../../Style}
 \usepackage[subpreambles=false]{standalone}
-\usepackage{anyfontsize}
+%\usepackage{anyfontsize} % Va créer des erreurs de polices mais le package a un bug: la police math est un peu plus grande...
 %\PassOptionsToPackage{toctitles}{titlesec}
 \usepackage{titletoc}
 \hypersetup{linktoc=all,hypertexnames=false,pdftitle={Mathématiques: 1ST2S 2021-2022}}
@@ -25,7 +25,8 @@
 \renewcommand{\footrulewidth}{0pt}
 
 \setcounter{tocdepth}{1} % Voir chapitres et sections, pas plus loin
-\newcounter{chapitre}\setcounter{chapitre}{-1} % Chapitre initialisé à -1, on le remet à 0 après le toc (comme ca on peut tester si on affiche le premier chapitre dans le toc)
+\newcounter{chapitre}
+\newif\ifpremierchap\premierchaptrue
 
 \makeatletter
 
@@ -40,6 +41,7 @@
     	\tikz[overlay,remember picture]{\node at (current page.north) {\phantomsection};}% tikz pour mettre le lien tout en haut de la page
     	\addcontentsline{toc}{part}{Chapitre \Roman{chapitre}.\ \@title}%Modifie commande titre après pour mettre une ref. Chapitre X dedans pour que l'hyperlien le prenne en compte
     }{}{}
+    \appto\maketitle{\thispagestyle{fancy}}
 }
 \makeatother
 
@@ -47,7 +49,7 @@
 \def\stylepart{\fontfamily{cmr}\fontseries{bx}\selectfont\large\scshape\color{section}}
 
 \titlecontents{part}[0pt]%
-{\ifthenelse{\equal{\value{chapitre}}{-1}}{\setcounter{chapitre}{0}}{\vfill}\stylepart}%{\vspace{5mm}\normalfont\large\bfseries\color{section}}%
+{\ifpremierchap{\global\premierchapfalse}\else{\vfill}\fi\stylepart}%{\vspace{5mm}\normalfont\large\bfseries\color{section}}%
 {}%
 {}%{Chapitre \stepcounter{chapitre}\Roman{chapitre}.\ }%
 %{\makebox[\longueurchap][l]{Chapitre \stepcounter{chapitre}\Roman{chapitre}.}}%

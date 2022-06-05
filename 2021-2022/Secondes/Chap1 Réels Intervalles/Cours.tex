@@ -42,7 +42,7 @@ Tout entier relatif est aussi un entier décimal: $\Z \subset \D$: Par exemple, 
 
 \begin{defin}
 Un nombre rationnel est un nombre qui peut s'écrire sous la forme $\frac p q$, où $p$ et $q$ sont des entiers relatifs et $q$ est non nul. On note $\Q$ l'ensemble des nombres rationnels.
-$$-2 = \frac {-2} 1 \in \Q,\ \frac 1 3 \in \Q,\ \frac 3 7 \in \Q,\ \sqrt 2 \not\in \Q$$
+$$-2 = \frac {-2} 1 \in \Q,\qquad \frac 1 3 \in \Q,\qquad \frac 3 7 \in \Q,\qquad \sqrt 2 \not\in \Q$$
 \end{defin}
 
 \begin{prop}
@@ -56,9 +56,9 @@ $$-2 = \frac {-2} 1 \in \Q,\ \frac 1 3 \in \Q,\ \frac 3 7 \in \Q,\ \sqrt 2 \not\
 $x=0.0909 \ldots$ est rationnel: $100x=9.0909 \ldots$ donc $100x - x = 9$ d'où $99x=9$ puis $x= \frac 9 {99} = \frac 1 {11}$.
 \end{ex}
 
-\begin{exercice}
-Faire de même avec $x=0.1666 \ldots$: $10x=1.666 \ldots$ donc $10x-x=1.5$ et alors $9x= \frac 3 2$ puis $x= \frac 3 {18} = \frac 1 6$.
-\end{exercice}
+%\begin{exercice}
+%Faire de même avec $x=0.1666 \ldots$: $10x=1.666 \ldots$ donc $10x-x=1.5$ et alors $9x= \frac 3 2$ puis $x= \frac 3 {18} = \frac 1 6$.
+%\end{exercice}
 
 \begin{rmq}
 Tout nombre décimal est aussi un nombre rationnel: $\D \subset \Q$.
@@ -76,26 +76,25 @@ $$ \sqrt 2, \pi, \sqrt { \sqrt { \pi } } \text{ sont irrationnels}$$
 \rem{Crise des irrationnels: 6ème siècle avant J.C. Leur découverte fait du bruit dans la communauté mathématiques de l'époque car les maths étaient alors considérées comme belles, parfaites}
 
 \begin{propr}
+\compo[0.45]
+{
 On représente l'ensemble des nombres réels sur une droite graduée:
-
+}
+{
 \begin{center}
-\begin{tikzpicture}[>=latex]
-    \draw[thick,->] (-3.5,0) --(5.5,0);
-    \node[below=8pt] at (0,0) {0};
-    \node[below=8pt] at (1,0) {1};
-    \node[below=8pt] at (-3,0) {-3};
-    \node[above=8pt] at (1.414,0) {$\sqrt 2$};
-    \node[] at (1.414,0) {$\shortmid$};
-    \node[below=8pt] at (3.142,0) {$\pi$};
-    \node[] at (3.142,0) {$\shortmid$};
-    \node[above=8pt] at (0.33,0) {$\frac 1 3$};
-    \node[] at (0.33,0) {$\shortmid$};
-    \node[above=8pt] at (-1.5,0) {$-1.5$};
-    \node[] at (-1.5,0) {$\shortmid$};
-    \foreach \xp in {-3,-2,...,5}{\node[] at (\xp,0) {$\mid$};}
-   
+\begin{tikzpicture}
+	\tkzInit[xmin=-3,xmax=4]
+	\tkzSetUpAxis[ticka=3.5pt,tickb=3.5pt]	%Taille graduations
+	\tkzDrawX[label={},xstep=1,left space=0.5]
+	\tkzLabelX[frac=1,fill=none,below=3pt] % Option frac pour les graduations en fraction (aucun effet avec 1). Effet secondaire: centre bien les graduations...
+	
+    \draw[thin,black] (1.414,-0.07) -- ++(0,0.14) node[above] {$\sqrt 2$};
+    \draw[thin,black] (3.142,-0.07) -- ++(0,0.14) node[above] {$\pi$};
+    \draw[thin,black] (0.33,-0.07) -- ++(0,0.14) node[above] {$\frac 1 3$};
+    \draw[thin,black] (-1.5,-0.07) -- ++(0,0.14) node[above] {$-1,5$};
 \end{tikzpicture}
 \end{center}
+}
 \end{propr}
 
 \begin{prop}
@@ -171,17 +170,18 @@ Faire un  arrondi à $10^{-n}$ signifie $n$ chiffres après la virgule.
 \begin{defin}
 On veut écrire plus simplement \og Tous les nombres réels compris entre 2 et 5, 5 exclus \fg. Pour cela, il y a trois manières possibles:
 \begin{itemize}
-\item Par un schéma: \begin{tikzpicture}[>=latex,baseline={([yshift=-.5ex]current bounding box.center)}]
-    \draw[thick,->] (-0.5,0) --(6.5,0);
-    \node[] (2) at (2,0) {$\textbf{\Big[}$};
-    \node[] (5) at (5,0) {$\Big[$};
+\item Par un schéma: \begin{tikzpicture}[baseline={([yshift=-.5ex]current bounding box.center)}]
+	\tkzInit[xmin=0,xmax=6]
+	\tkzSetUpAxis[ticka=3.5pt,tickb=3.5pt]	%Taille graduations
+	\tkzDrawX[label={},xstep=1,left space=0.5]
+	\tkzLabelX[frac=1,fill=none,below=3pt] % Option frac pour les graduations en fraction (aucun effet avec 1). Effet secondaire: centre bien les graduations...
+	%
+	\draw[DarkRed,very thick,font=\bfseries] (2,0) -- (5,0) node[pos=0] (deux) {[} node[pos=1] (cinq) {[};
+	%
     \node[anchor=north] (cf) at (1,-1) {crochet fermé};
     \node[anchor=north] (co) at (6,-1) {crochet ouvert};
-    \draw[ultra thick,-] (2,0) --(5,0);
-    \foreach \xp in {0,1,...,6}{\node[] at (\xp,0) {$\mid$};}
-    \foreach \xp in {0,1,...,6}{\node[below=10pt] at (\xp,0) {\xp};}
-    \draw[->,>=latex,thick] (cf) to[bend left=10] (2);
-    \draw[->,>=latex,thick] (co) to[bend right=10] (5);
+    \draw[->,>=latex,thick] (cf) to[bend left=10] (deux);
+    \draw[->,>=latex,thick] (co) to[bend right=10] (cinq);
 \end{tikzpicture}
 \vspace{1mm}
 \item Par une inégalité: $2 \leq x < 5$
@@ -192,68 +192,52 @@ On veut écrire plus simplement \og Tous les nombres réels compris entre 2 et 5
 Soient $a$ et $b$ deux réels distincts.
 
 \begin{center}
-\begin{tabularx}{\textwidth}{ 
-  | >{\centering\arraybackslash}c 
-  | >{\centering\arraybackslash}X
-  | >{\centering\arraybackslash}X | }
-\hline
-L'intervalle noté $\ldots$ & $\ldots$ désigne l'ensemble des réels $x$ tels que $\ldots$ & Il est représenté par un segment sur une droite graduée\\ \hline 
-\large{$\left[ a;b \right]$} & \large{$a \leq x \leq b$} & \begin{tikzpicture}[>=latex]
+\begin{tabularx}{\linewidth}{|c|Y|Y<{\vspace{-2mm}}|} \hline
+L'intervalle noté \ldots & \ldots désigne l'ensemble des réels $x$ tels que \ldots & Il est représenté par un segment sur une droite graduée\\ \hline 
+{$\left[ a;b \right]$} & {$a \leq x \leq b$} & \begin{tikzpicture}
     \draw[thick,->] (0,0) --(6,0);
-    \node[] at (2,0) {$\textbf{\Big[}$};
-    \node[] at (4,0) {$\Big]$};
-    \node[below=10pt] at (2,0) {$a$};
-    \node[below=8pt] at (4,0) {$b$};
-    \draw[ultra thick,-] (2,0) --(4,0);
-\end{tikzpicture} \vspace{-2mm} \\ \hline 
-\large{$\left] a;b \right]$} & \large{$a < x \leq b$} & \begin{tikzpicture}[>=latex]
+    \draw[ultra thick,DarkRed,font=\bfseries] (2,0) --(4,0) node[pos=0] {[} node[pos=1] {]};
+    \node[below=8pt] at (2,0) {$a$};
+    \node[below=6pt] at (4,0) {$b$};
+\end{tikzpicture} \\ \hline 
+{$\left] a;b \right]$} & {$a < x \leq b$} & \begin{tikzpicture}
     \draw[thick,->] (0,0) --(6,0);
-    \node[] at (2,0) {$\textbf{\Big]}$};
-    \node[] at (4,0) {$\Big]$};
-    \node[below=10pt] at (2,0) {$a$};
-    \node[below=8pt] at (4,0) {$b$};
-    \draw[ultra thick,-] (2,0) --(4,0);
-\end{tikzpicture} \vspace{-2mm} \\ \hline 
-\large{$\left[ a;b \right[$} & \large{$a \leq x < b$} & \begin{tikzpicture}[>=latex]
+    \draw[ultra thick,DarkRed,font=\bfseries] (2,0) --(4,0) node[pos=0] {]} node[pos=1] {]};
+    \node[below=8pt] at (2,0) {$a$};
+    \node[below=6pt] at (4,0) {$b$};
+\end{tikzpicture} \\ \hline 
+{$\left[ a;b \right[$} & {$a \leq x < b$} & \begin{tikzpicture}
     \draw[thick,->] (0,0) --(6,0);
-    \node[] at (2,0) {$\textbf{\Big[}$};
-    \node[] at (4,0) {$\Big[$};
-    \node[below=10pt] at (2,0) {$a$};
-    \node[below=8pt] at (4,0) {$b$};
-    \draw[ultra thick,-] (2,0) --(4,0);
-\end{tikzpicture} \vspace{-2mm} \\ \hline 
-\large{$\left] a;b \right[$} & \large{$a < x < b$} & \begin{tikzpicture}[>=latex]
+    \draw[ultra thick,DarkRed,font=\bfseries] (2,0) --(4,0) node[pos=0] {[} node[pos=1] {[};
+    \node[below=8pt] at (2,0) {$a$};
+    \node[below=6pt] at (4,0) {$b$};
+\end{tikzpicture} \\ \hline 
+{$\left] a;b \right[$} & {$a < x < b$} & \begin{tikzpicture}
     \draw[thick,->] (0,0) --(6,0);
-    \node[] at (2,0) {$\textbf{\Big]}$};
-    \node[] at (4,0) {$\Big[$};
-    \node[below=10pt] at (2,0) {$a$};
-    \node[below=8pt] at (4,0) {$b$};
-    \draw[ultra thick,-] (2,0) --(4,0);
-\end{tikzpicture} \vspace{-2mm} \\ \hline 
-\large{$\left] - \infty;b \right]$} & \large{$x \leq b$} & \begin{tikzpicture}[>=latex]
+    \draw[ultra thick,DarkRed,font=\bfseries] (2,0) --(4,0) node[pos=0] {]} node[pos=1] {[};
+    \node[below=8pt] at (2,0) {$a$};
+    \node[below=6pt] at (4,0) {$b$};
+\end{tikzpicture} \\ \hline 
+{$\left] - \infty;b \right]$} & {$x \leq b$} & \begin{tikzpicture}
     \draw[thick,->] (0,0) --(6,0);
-    \node[] at (4,0) {$\Big]$};
-    \node[below=8pt] at (4,0) {$b$};
-    \draw[ultra thick,-] (0,0) --(4,0);
-\end{tikzpicture} \vspace{-2mm} \\ \hline 
-\large{$\left] - \infty;b \right[$} & \large{$x < b$} & \begin{tikzpicture}[>=latex]
+    \draw[ultra thick,DarkRed,font=\bfseries] (0,0) --(4,0) node[pos=1] {]};
+    \node[below=6pt] at (4,0) {$b$};
+\end{tikzpicture} \\ \hline 
+{$\left] - \infty;b \right[$} & {$x < b$} & \begin{tikzpicture}
     \draw[thick,->] (0,0) --(6,0);
-    \node[] at (4,0) {$\Big[$};
-    \node[below=8pt] at (4,0) {$b$};
-    \draw[ultra thick,-] (0,0) --(4,0);
-\end{tikzpicture} \vspace{-2mm} \\ \hline 
-\large{$\left[ a;+ \infty \right[$} & \large{$a \leq x $} & \begin{tikzpicture}[>=latex]
+    \draw[ultra thick,DarkRed,font=\bfseries] (0,0) --(4,0) node[pos=1] {[};
+    \node[below=6pt] at (4,0) {$b$};
+\end{tikzpicture} \\ \hline 
+{$\left[ a;+ \infty \right[$} & {$a \leq x $} & \begin{tikzpicture}
     \draw[thick,->] (0,0) --(6,0);
-    \node[] at (2,0) {$\textbf{\Big[}$};
-    \node[below=10pt] at (2,0) {$a$};
-    \draw[ultra thick,->] (2,0) --(6,0);
-\end{tikzpicture} \vspace{-2mm} \\ \hline 
-\large{$\left] a; + \infty \right[$} & \large{$a < x$} & \begin{tikzpicture}[>=latex]
+    \draw[ultra thick,DarkRed,font=\bfseries,->] (2,0) --(6,0) node[pos=0] {[};
+    \node[below=8pt] at (2,0) {$a$};
+\end{tikzpicture} \\ \hline 
+{$\left] a; + \infty \right[$} & {$a < x$} & \begin{tikzpicture}
     \draw[thick,->] (0,0) --(6,0);
-    \node[] at (2,0) {$\textbf{\Big]}$};
-    \node[below=10pt] at (2,0) {$a$};
-    \draw[ultra thick,->] (2,0) --(6,0);
-\end{tikzpicture} \vspace{-2mm} \\ \hline
+    \draw[ultra thick,DarkRed,font=\bfseries,->] (2,0) --(6,0) node[pos=0] {]};
+    \node[below=8pt] at (2,0) {$a$};
+\end{tikzpicture} \\ \hline
 \end{tabularx}
 \end{center}
 \end{defin}
@@ -280,32 +264,24 @@ Soient $I$ et $J$ deux intervalles de $\R$.
 \end{defin}
 
 \begin{ex}
-Pour $I=[-2;3[$ et $J=[-4;1]$, on a $I \cap J = [-2;1]$ et $I \cup J = ]-4;3[$.
+Pour {\color{DarkBlue}$I=[-2;3[$} et {\color{DarkRed}$J=[-4;1]$}, on a {\color{DarkGreen}$I \cap J = [-2;1]$} et {\color{RedOrange!90!black}$I \cup J = [-4;3[$}.
 
 \begin{center}
-\begin{tikzpicture}[>=latex]
-    \draw[ultra thin,->] (-5.5,0) --(4.5,0);
-    \draw[thick,-] (1,0) --(3,0);
-    \draw[thick,-] (-4,0) --(-2,0);
-    \draw[ultra thick,-] (-2,0) --(1,0);
-    \foreach \xp in {-5,-4,...,4}{\node[] at (\xp,0) {$\mid$};}
-    \foreach \xp in {-5,-4,...,4}{\node[below=10pt] at (\xp,0) {\xp};}
-    \node[] at (-2,0) {$\textbf{\Big[}$};
-    \node[] at (3,0) {$\textbf{\Big[}$};
-    \node[] at (-4,0) {$\textbf{\Big[}$};
-    \node[] at (1,0) {$\textbf{\Big]}$};
-    \draw[thick,-] (-2,0.3) --(1,0.3);
-    \draw[thick,-] (-4,0.6) --(3,0.6);
-    \node[] at (1.5,0.3) {$I \cap J$};
-    \node[] at (3.5,0.6) {$I \cup J$};
-	\node[] at (-4,0.6) {$\textbf{\small[}$};
-	\node[] at (3,0.6) {$\textbf{\small[}$};
+\begin{tikzpicture}[>=latex,yscale=1.5]
+	
+	\tkzInit[xmin=-5,xmax=5]
+	\tkzSetUpAxis[ticka=3.5pt,tickb=3.5pt]	%Taille graduations
+	\tkzDrawX[label={},xstep=1,left space=0.5]
+	\tkzLabelX[frac=1,fill=none,below=3pt] % Option frac pour les graduations en fraction (aucun effet avec 1). Effet secondaire: centre bien les graduations...
+    \draw[DarkBlue,very thick,font=\bfseries] (-2,0.2) -- (3,0.2) node[pos=0] {[} node[pos=1] {[};
+    \draw[DarkRed,very thick,font=\bfseries] (-4,0.4) -- (1,0.4) node[pos=0] {[} node[pos=1] {]};
+    \draw[DarkGreen,very thick,font=\bfseries] (-2,0.6) -- (1,0.6) node[pos=0] {[} node[pos=1] {]};
+    \draw[RedOrange!90!black,very thick,font=\bfseries] (-4,0.8) -- (3,0.8) node[pos=0] {[} node[pos=1] {[};
    
 \end{tikzpicture}
 \end{center}
 
 \end{ex}
-\rem{Exo}
 
 \section{Valeur absolue}
 
@@ -342,55 +318,5 @@ $[3;5]=[4-1;4+1]=\left\{ x \in \R, \ \abs{x-4} \leq 1 \right\}$
 \end{ex}
 
 \rem{Démonstration de $\frac 1 3$ non décimal}
-
-\begin{comment}
-
-\begin{center}
-\begin{tikzpicture}
-\begin{axis}[
-axis x line=bottom,
-axis y line = left,
-axis lines=middle,
-width=\linewidth,
-xmin=-5, xmax=5,
-%ymin=-5, ymax=20,
-%enlargelimits=true,
-%xlabel=$x$,
-ylabel={$f(x) = x^2$},
-minor x tick num=1,
-minor y tick num=4,
-%ytick distance=1,
-grid=major,
-grid style=dashed,
-axis equal,
-]
-\addplot[smooth]{x^2};
-\addplot[smooth,domain=0:14]{ln(x)};
-
-\end{axis}
-\end{tikzpicture}
-\end{center}
-
-\begin{center}
-\begin{tikzpicture}
-\begin{axis}[
-axis x line=bottom,
-axis y line = left,
-%enlargelimits=true,
-%xlabel=$x$,
-ylabel={$f(x) = x^2$},
-grid=major,
-grid style=dashed,
-axis equal,
-]
-%
-use TeX as calculator:
-\addplot[domain=-3:3,smooth] {x^2};
-\end{axis}
-\end{tikzpicture}
-\end{center}
-
-\end{comment}
-
 
 \end{document}

@@ -51,7 +51,7 @@
 \usepackage{xspace}						% Espaces intelligents (si point ou virgule, pas d'espace)
 \usepackage[d]{esvect} 					% Meilleurs vecteurs - Problèmess avec polices non otf
 \usepackage{lastpage}					% Trouve le numéro de la dernière page
-\usepackage[pdfusetitle,pdfauthor={Virgil Delauney}]{hyperref}
+\usepackage[pdfusetitle,pdfauthor={Virgil Delauney},hidelinks]{hyperref}
 %\usepackage[pdfauthor={Virgil Delauney}]{hyperref}
 \usepackage{lipsum}	% Pour les tests, pas utile en soi
 
@@ -142,12 +142,12 @@
 \setlength{\colG}{#3\linewidth}\setlength{\colD}{\linewidth}%
 \addtolength{\colD}{-\colG}\addtolength{\colD}{-#1}%
 \addtolength{\colG}{-#1}%
+\par\noindent%
 \sbox{\partieGauche}{\begin{minipage}[#2]{\colG}\vspace{0pt}#4\end{minipage}}%
 \sbox{\partieDroite}{\begin{minipage}[#2]{\colD}\vspace{0pt}#5\end{minipage}}%
-\setlength{\hauteurGauche}{\ht\partieGauche} \setlength{\hauteurDroite}{\ht\partieDroite}%
-\addtolength{\hauteurGauche}{\dp\partieGauche} \addtolength{\hauteurGauche}{14pt}%
-\addtolength{\hauteurDroite}{\dp\partieDroite} \addtolength{\hauteurDroite}{14pt}%
-\par\noindent%
+\setlength{\hauteurGauche}{\ht\partieGauche}\setlength{\hauteurDroite}{\ht\partieDroite}%
+\addtolength{\hauteurGauche}{\dp\partieGauche}\addtolength{\hauteurGauche}{14pt}%
+\addtolength{\hauteurDroite}{\dp\partieDroite}\addtolength{\hauteurDroite}{14pt}%
 \usebox{\partieGauche}%
 \setlength{\decalageLigne}{7pt}%
 \ifthenelse{\lengthtest{\hauteurGauche>\hauteurDroite}}%
@@ -305,7 +305,7 @@
 	},
 }
 
-% Pour agrandir des images tikz. Fait comme \resizebox mais sans agrandir le texte, l'épaisseur des traits...
+% Pour agrandir des images tikz. Fait comme \resizebox mais sans agrandir le texte, l'épaisseur des traits... - Règle scale automatiquement selon la taille voulue.
 \edef\tikzscale{1}
 \tikzset{every picture/.append style={scale=\tikzscale}}%
 
@@ -331,23 +331,29 @@
 \presetkeys{repere}{xmin=-5,xmax=5,ymin=-5,ymax=5}{}
 
 % Les clés permettent d'avoir une syntaxe comme tikz: au lieu de faire \repereOij{xmin}{xmax}{ymin}{ymax}, on fait \repereOij[xmin=..xmax=..,ymin=..,ymax=..], dans le sens qu'on veut.
+%On pourra ajouter d'autres clés: origine=false, vecteursij=false pour supprimer les vecteurs i et j ou l'origine... On verra si c'est utile...
 
-%On pourra ajouter d'autres clés: origine=false, vecteursij=false pour supprimer les vecteurs i et j ou l'origine... On verra si c'est utile
+% Bien pour faire des repères orthonormés, mais ça devient compliqué quand on veut changer les graduations (de 2 en 2...). Dualité pgfplots <=> tkz-base + tkz-fct
 
 \newcommand{\repereOij}[1][]{
 \setkeys{repere}{#1}
+%
 %Grille
 \draw[stylegrille] (\repere@xmin,\repere@ymin) grid (\repere@xmax,\repere@ymax);
+%
 %Création des axes avec tkz-base
 \tkzInit[xmin=\repere@xmin,xmax=\repere@xmax,ymin=\repere@ymin,ymax=\repere@ymax]
+%
 %On peut utiliser \tkzGrid pour la grille, mais la personnalisation est mal faite	
+%
 \tkzSetUpAxis[ticka=3.5pt,tickb=3.5pt]	%Taille graduations
 \tkzDrawX[label={},right space=0pt,-]	%Axe X,pas de nombres,pas de flèche
 \tkzDrawY[label={},up space=0pt,-]	%Axe Y
+%
 % Origine, vecteurs unité
 \coordinate[label={-135:{\scriptsize O}}] (O) at (0,0) {};	%Origine
-	\draw[stylevecteur,color=black!30!red] (0,0) -- (1,0) node[pos=0.5,below] {$\scriptstyle \vec i$};
-	\draw[stylevecteur,color=black!30!red] (0,0) -- (0,1) node[pos=0.5,left] {$\scriptstyle \vec j$};
+\draw[stylevecteur,color=black!30!red] (0,0) -- (1,0) node[pos=0.5,below] {$\scriptstyle \vec i$};
+\draw[stylevecteur,color=black!30!red] (0,0) -- (0,1) node[pos=0.5,left] {$\scriptstyle \vec j$};
 \clip (\repere@xmin,\repere@ymin) rectangle (\repere@xmax,\repere@ymax);
 }
 
@@ -665,7 +671,7 @@
 	
 	% Remarques perso	
 	
-	\newcommand{\rembase}[1]{\begin{remq} \begin{tabulary}{0.5\linewidth}{>{$\blacktriangleright$ \ }L} #1 \end{tabulary} \end{remq}}
+	\newcommand{\rembase}[1]{\begin{remq}\renewcommand{\arraystretch}{1}\begin{tabulary}{0.5\linewidth}{>{$\blacktriangleright$ \ }L} #1 \end{tabulary} \end{remq}}
 	\NewDocumentEnvironment{remsbase}{b}{\begin{remq} \begin{tabulary}{0.5\linewidth}{>{$\blacktriangleright$ \ }L} #1 \end{tabulary} \end{remq}}{\par}	
 	
 	\newcommand{\rem}[2][]{\rembase{#2}}

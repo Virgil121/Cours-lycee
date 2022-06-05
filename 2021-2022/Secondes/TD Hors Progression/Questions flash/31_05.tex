@@ -1,0 +1,73 @@
+\documentclass[17pt,xcolor={svgnames,rgb,dvipsnames}]{beamer}
+
+\usepackage{StyleBeamer}
+
+%\usetikzlibrary{patterns.meta}
+
+%\selectcolormodel{cmyk}
+
+%\usepackage{wrapfig}
+%\makeatletter
+%\setlength{\parskip}{1ex}
+%\newcommand{\@minipagerestore}{\setlength{\parskip}{1ex}}
+
+\setbeamertemplate{navigation symbols}{}
+
+% Début du document
+%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+\title{Questions flash}
+\frame{\titlepage}
+
+\centering
+\begin{question}
+Développer $A=( \sqrt 2 + \sqrt 5 )^2$
+\end{question}
+
+\begin{question}
+Une urne contient des jetons numérotés de 1 à 10. On se donne les évènements:
+
+\begin{itemize}
+\item $A=\{2;4;6;8;10\}$
+\item $B=\{;1;2;3;4;5\}$
+\end{itemize}
+
+Calculer $\Pro(A \cup B)$.
+
+\end{question}
+
+\begin{question}
+Dans laquelle de ces situations les vecteurs $\vv u$ et $\vv v$ sont-ils colinéaires, de sens différents?
+
+\begin{tabularx}{\linewidth}{Y|Y|Y}
+\begin{resizetikz}{0.9\linewidth}
+\begin{tikzpicture}
+\repereOij[xmin=-1,xmax=5,ymin=-2,ymax=8];
+
+\draw[stylevecteur] (2,0) -- ++(2,4) node[midway,below right] {$\vv u$};
+\draw[stylevecteur] (2,7) -- ++(0,-5) node[midway,left] {$\vv v$};
+\end{tikzpicture}
+\end{resizetikz}
+&
+\begin{resizetikz}{0.9\linewidth}
+\begin{tikzpicture}
+\repereOij[xmin=-1,xmax=5,ymin=-2,ymax=8];
+
+\draw[stylevecteur] (1,5) -- ++(1,1) node[midway,above left] {$\vv u$};
+\draw[stylevecteur] (2,1) -- ++(2,2) node[midway,below right] {$\vv v$};
+\end{tikzpicture}
+\end{resizetikz}
+&
+\begin{resizetikz}{0.9\linewidth}
+\begin{tikzpicture}
+\repereOij[xmin=-1,xmax=5,ymin=-2,ymax=8];
+
+\draw[stylevecteur] (2,2) -- ++(2,-1) node[midway,below left] {$\vv u$};
+\draw[stylevecteur] (5,3) -- ++(-4,2) node[midway,above right] {$\vv v$};
+\end{tikzpicture}
+\end{resizetikz}
+\end{tabularx}
+\end{question}
+
+\end{document}
