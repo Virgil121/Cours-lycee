@@ -267,16 +267,16 @@ Soient $I$ et $J$ deux intervalles de $\R$.
 Pour {\color{DarkBlue}$I=[-2;3[$} et {\color{DarkRed}$J=[-4;1]$}, on a {\color{DarkGreen}$I \cap J = [-2;1]$} et {\color{RedOrange!90!black}$I \cup J = [-4;3[$}.
 
 \begin{center}
-\begin{tikzpicture}[>=latex,yscale=1.5]
+\begin{tikzpicture}
 	
 	\tkzInit[xmin=-5,xmax=5]
 	\tkzSetUpAxis[ticka=3.5pt,tickb=3.5pt]	%Taille graduations
 	\tkzDrawX[label={},xstep=1,left space=0.5]
 	\tkzLabelX[frac=1,fill=none,below=3pt] % Option frac pour les graduations en fraction (aucun effet avec 1). Effet secondaire: centre bien les graduations...
-    \draw[DarkBlue,very thick,font=\bfseries] (-2,0.2) -- (3,0.2) node[pos=0] {[} node[pos=1] {[};
-    \draw[DarkRed,very thick,font=\bfseries] (-4,0.4) -- (1,0.4) node[pos=0] {[} node[pos=1] {]};
-    \draw[DarkGreen,very thick,font=\bfseries] (-2,0.6) -- (1,0.6) node[pos=0] {[} node[pos=1] {]};
-    \draw[RedOrange!90!black,very thick,font=\bfseries] (-4,0.8) -- (3,0.8) node[pos=0] {[} node[pos=1] {[};
+    \draw[DarkBlue,very thick,font=\bfseries] (-2,0.3) -- (3,0.3) node[pos=0] {[} node[pos=1] {[};
+    \draw[DarkRed,very thick,font=\bfseries] (-4,0.6) -- (1,0.6) node[pos=0] {[} node[pos=1] {]};
+    \draw[DarkGreen,very thick,font=\bfseries] (-2,0.9) -- (1,0.9) node[pos=0] {[} node[pos=1] {]};
+    \draw[RedOrange!90!black,very thick,font=\bfseries] (-4,1.2) -- (3,1.2) node[pos=0] {[} node[pos=1] {[};
    
 \end{tikzpicture}
 \end{center}

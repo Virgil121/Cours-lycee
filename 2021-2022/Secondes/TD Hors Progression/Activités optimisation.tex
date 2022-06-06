@@ -1,0 +1,172 @@
+\documentclass[12pt,a4paper,french] {article}
+
+\pagestyle{empty}
+
+\usepackage[TD]{../../Style}
+
+\geometry{margin=1cm}
+
+\renewcommand{\baselinestretch}{1.15}
+\renewcommand{\arraystretch}{1.2}
+\setlength{\columnsep}{2cm}
+
+\usetikzlibrary{patterns.meta}
+
+\newcommand{\contenu}{%
+\titre{Une histoire d'aires}
+
+\compo[0.6]
+{
+Le carré $ABCD$ a un côté de longueur 8cm. $M$ est un point du segment $[AB]$. On dessine comme ci-contre dans le carré $ABCD$:
+\begin{itemize}
+\item Un carré de côté $[AM]$;
+\item Un triangle rectangle isocèle en $B$.
+\end{itemize}
+
+On s'intéresse au motif constitué par le carré et le triangle.
+
+Est-il possible de faire en sorte que l'aire du motif soit la plus grande possible? La plus petite possible? Si oui dans quels cas?
+}
+{
+\begin{center}
+\begin{tikzpicture}[scale=0.7]
+
+\coordinate[label=-135:A] (A) at (0,0);
+\coordinate[label=-45:B] (B) at (8,0);
+\coordinate[label=45:C] (C) at (8,8);
+\coordinate[label=135:D] (D) at (0,8);
+
+\coordinate[label=-90:M] (M) at (5,0);
+
+\draw[thick] (A) -- (B) -- (C) -- (D) -- cycle;
+\draw[fill=DarkOrange,fill opacity=0.5,thick] (A) -- (0,5) -- (5,5) -- (M) -- (8,3) -- (B) -- cycle;
+
+\end{tikzpicture}
+\end{center}
+}
+}
+
+\newcommand{\inda}{%
+	\compo{
+	\titre{Indication}
+	
+	\centering Calculer l'aire du motif si:\\ $MB=2$cm, $MB=4$cm.
+	}
+	{
+	\titre{Indication}
+	
+	\centering Calculer l'aire du motif si:\\ $MB=2$cm, $MB=4$cm.
+	}
+}
+
+\newcommand{\indb}{%
+	\compo{
+	\titre{Indication}
+	
+	\centering On pose $MB=x$. Déterminer l'aire du carré puis du triangle en fonction de $x$.
+	}
+	{
+	\titre{Indication}
+	
+	\centering On pose $MB=x$. Déterminer l'aire du carré puis du triangle en fonction de $x$.
+	}
+}
+
+\newcommand{\indd}{%	% Indication avec ou sans x
+	\compo{
+	\titre{Indication}
+	
+	\centering Formule de l'aire d'un triangle quelconque: $$\frac{\text{base} \times \text{hauteur}} 2$$
+	
+	\centering Pour un triangle rectangle, c'est plus facile...
+	}
+	{
+	\titre{Indication}
+	
+	\centering Formule de l'aire d'un triangle quelconque: $$\frac{\text{base} \times \text{hauteur}} 2$$
+	
+	\centering Pour un triangle rectangle, c'est plus facile...
+	}
+}
+
+\newcommand{\inde}{%	% Indication avec ou sans x
+	\compo{
+	\titre{Indication}
+	
+	\centering La fonction obtenue n'est définie que sur $[0;8]$.	
+	
+	\centering Comment trouver son maximum et son minimum?
+	}
+	{
+	\titre{Indication}
+	
+	\centering La fonction obtenue n'est définie que sur $[0;8]$.	
+	
+	\centering Comment trouver son maximum et son minimum?
+	}
+}
+
+\newcommand{\contenub}{%
+\titre{Surface d'un stade}
+
+\noindent Un stade est constitué d'une pelouse centrale rectangulaire $ABCD$, complétée par deux demi-disques de diamètre $[AD]$ et $[BC]$. Ce terrain est entouré par une piste de course à pied de longueur égale à 400 m.
+
+\noindent Quelles doivent être les dimensions du rectangle ABCD si l'on veut que son aire soit maximale ?
+}
+
+\newcommand{\contenuc}{%
+\titre{La plage}
+
+\noindent Une colonie de vacance se retrouve à la plage. Les moniteurs et les monitrices doivent délimiter une zone de baignade rectangulaire. Pour cela, ils disposent d'une corde de 21m, de deux poteaux et de deux bouées. 
+
+\noindent Comment doit-on procéder pour que les enfants aient le plus de place pour nager ?
+
+\begin{center}
+\begin{tikzpicture}[scale=1.5]
+\draw (-5,0) -- (5,0);
+\shade[opacity=0.3,top color=DodgerBlue!50!DeepSkyBlue!10,bottom color=DodgerBlue!50!DeepSkyBlue] (-5,0) rectangle (5,2);
+\shade[opacity=0.3,top color=DarkOrange,bottom color=DarkOrange!10] (-5,0) rectangle (5,-1);
+\draw[gray,thick,densely dashed] (-5,-1) rectangle (5,2);
+\node[stylepoint,fill=blue,label=245:A] (A) at (-2,0) {};
+\node[stylepoint,fill=blue,label=-45:D] (D) at (2,0) {};
+\node[stylepoint,fill=blue,label=135:B] (B) at (-2,1.5) {};
+\node[stylepoint,fill=blue,label=45:C] (C) at (2,1.5) {};
+\shade[fill opacity=0.3,top color=DodgerBlue!50!DeepSkyBlue!30,bottom color=DodgerBlue!50!DeepSkyBlue] (A) rectangle (C);
+\draw[line width=1pt] (A.center) -- (B.center) -- (C.center) -- (D.center);
+%\draw[fill=DodgerBlue!50!DeepSkyBlue,fill opacity=0.2] (A) rectangle (C);
+\node at (0,0.75) {Zone de baignade};
+\node at (0,-0.5) {Plage};
+\end{tikzpicture}
+\end{center}
+}
+
+\begin{document}
+
+\contenu \vfill \contenu \vfill \contenu
+
+\newpage
+
+\setlength{\composep}{1cm}
+
+\inda \foreach \i in {1,2,..,4} {\vfill \inda}
+
+\newpage
+
+\indb \foreach \i in {1,2,..,4} {\vfill \indb}
+
+\newpage
+
+\indd \foreach \i in {1,2,..,4} {\vfill \indd}
+
+\newpage
+
+\inde \foreach \i in {1,2,..,4} {\vfill \inde}
+
+\newpage
+
+\contenub \vfill \contenub \vfill \contenub \vfill \contenub \vfill \contenub \vfill \contenub
+
+\newpage
+
+\contenuc \vfill \contenuc \vfill \contenuc
+\end{document}

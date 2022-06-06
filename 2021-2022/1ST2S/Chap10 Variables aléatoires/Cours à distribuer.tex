@@ -3,105 +3,15 @@
 \usepackage[cours]{../../Style}
 
 \renewcommand{\arraystretch}{1.3}
-%\selectcolormodel{cmyk}
 
-%\usepackage{wrapfig}
-%\makeatletter
-%\setlength{\parskip}{1ex}
-%\newcommand{\@minipagerestore}{\setlength{\parskip}{1ex}}
+\pagestyle{empty}
+
+\geometry{margin=12mm}
 
 % Début du document
 %%%%%%%%%%%%%%%%%%%
 \begin{document}
-
-\title{Variables aléatoires}
-\maketitle
-
-\section{Définitions}
-
-\begin{ex}
-On lance une pièce équilibrée. Si on tombe sur pile, on gagne 2\euro, sinon on perd 1\euro. On note $X$ les gains après un lancer. Ainsi $X$ peut valoir soit $2$, soit $-1$. La probabilité que $X$ vaille 2, notée $\Pro(X=2)$, vaut $\frac 1 2 = 0,5$. On dit que $X$ est une \textbf{variable aléatoire réelle}.
-\end{ex}
-
-\begin{rmqs}
-\begin{itemize}
-\item Une variable aléatoire réelle est en fait une fonction $X:\Omega \rightarrow \R$: Dans l'exemple précédent, l'univers est $\Omega=\{ \text{\og pile \fg} ; \text{\og face \fg} \}$. On a alors $X( \text{\og pile \fg} ) =2$ et $X( \text{\og face \fg} ) = -1$.
-
-\item En pratique, une variable aléatoire permet de raccourcir les notations: L'évènement \og On gagne 2\euro{} après le lancer \fg devient $X=2$.
-\end{itemize}
-\end{rmqs}
-
-\rem{Exos \textbf{26},\textbf{27},23 p201 \\
-	Exos 48,49,50 p204}
-
-%\begin{defin}
-%Une variable aléatoire réelle est une fonction $X:\Omega \rightarrow \R$
-%\end{defin}
-%
-%\begin{ex}
-%Dans l'exemple précédent, on a $\Omega=\{ \text{\og pile \fg} ; \text{\og face \fg} \}$.
-%
-%On a alors $X( \text{\og pile \fg} ) =2$ et $X( \text{\og face \fg} ) = -1$. 
-%\end{ex}
-
-\begin{ex}
-\compo[0.6]
-{
-On reprend l'exemple ci-dessus, mais $X$ représente cette fois les gains après \textbf{deux} lancers successifs. On représente les possibilités grâce à l'arbre ci-contre. On a alors:
-
-\begin{itemize}
-\item $\Pro(X=1)=\frac 2 4 = 0,5$ (2 cas favorables sur 4);
-\item $\Pro(X=-2)=\frac 1 4 = 0,25$;
-\item $\Pro(X=4)=\frac 1 4 = 0,25$
-\end{itemize}
-
-On peut alors donner la \textbf{loi de probabilité} de $X$, c'est-à-dire donner la probabilité de chaque issue:
-
-\begin{center}
-\begin{tabularx}{0.9\linewidth}{|c|Y|Y|Y|} \hline
-$x$ & $-2$ & $1$ & $4$ \\ \hline
-$\Pro(X=x)$ & $0,25$ & $0,5$ & $0,25$ \\ \hline
-\end{tabularx}
-\end{center}
-
-On peut aussi déterminer d'autres probabilités:
-\begin{itemize}
-\item $\Pro(X \leq 1)=\Pro(X=-2)+\Pro(X=1)=0,75$;
-\item $\Pro(X \geq 0) = \Pro(X=1) + \Pro(X=4)=0,75$
-\end{itemize}
-}
-{
-\begin{center}
-\begin{tikzpicture}[x=1.4cm] % Même effet que xscale=1.8 mais l'option sloped marche
-
-\node (O) at (0,0) {};
-\node (P) at (1,1.5) {P};
-\node (F) at (1,-1.5) {F};
-\node[anchor=west] (PP) at (2,2) {P};
-\node[anchor=west] (PF) at (2,1) {F};
-\node[anchor=west] (FP) at (2,-1) {P};
-\node[anchor=west] (FF) at (2,-2) {F};
-
-\node[right of=PP,anchor=west,node distance=0.5cm] (res) {PP: $X=4$};
-\node[right of=PF,anchor=west,node distance=0.5cm] {PF: $X=1$};
-\node[right of=FP,anchor=west,node distance=0.5cm] {FP: $X=1$};
-\node[right of=FF,anchor=west,node distance=0.5cm] {FF: $X=-2$};
-
-\node[font=\footnotesize\bfseries,above of=P,node distance=1.3cm] (lancer1) {1\up{ère} lancer};
-\node[font=\footnotesize\bfseries,above of=PP,node distance=1.3cm] (lancer2) {2\up{nd} lancer};
-\node[font=\footnotesize\bfseries,above of=res,node distance=0.8cm] {issues};
-
-%\draw[->] (lancer1) -- (P);
-%\draw[->] (lancer2) -- (PP);
-
-\draw (O) -- (P) node[midway,above,sloped,font=\footnotesize] {pile: $+2$} (P) -- (PP) (P) -- (PF) (O) -- (F) node[midway,below,sloped,font=\footnotesize] {face: $-1$} (F) -- (FP) (F) -- (FF);
-\end{tikzpicture}
-\end{center}
-}
-\end{ex}
-
-\rem{Exos \textbf{41},\textbf{43},\textbf{44} p203 \\
-	Exos 75 \rightarrow 78 p209}
+\setcounter{section}{1}
 
 \section{Espérance d'une variable aléatoire}
 
@@ -133,14 +43,6 @@ L'espérance de $X$ est positive, ce qui veut dire qu'en jouant un grand nombre 
 
 Évidemment, le jeu restant aléatoire, il est possible (mais très improbable) que le joueur perde dix, cent ou mille parties à la suite et se retrouve ruiné...
 \end{ex}
-
-\rem{Exo 28 p201 \\
-	Exos 51,53,55,58 p205 \\
-	Exos 56,57 p205\\	
-	Exox 82,84,86 p215 \\
-	Exo 68 p206 \\
-	Exo 54 p204 \\
-	Sujet D p212}
 
 \section{Expériences à plusieurs épreuves: Cas général}
 
@@ -206,7 +108,7 @@ On représente les issues possibles grâce à l'arbre ci-contre.
 
 \end{ex}
 
-\rem{Exos 30,35,36 p202}
+\newpage
 
 \begin{proprs}
 Pour construire et utiliser un arbre de probabilités, on utilisera les règles suivantes:
@@ -266,56 +168,64 @@ $$\begin{aligned} (0,3 \times 0,6) + (0,3 \times 0,6) & = 0,18 + 0,18 \\ & = 0,3
 }
 \end{exs}
 
-\rem{Exo 17 p200 \\
-	%(Bernoulli) Exos 19 -> 21 p201 \\
-	Exos 31,32,33 p202 \\
-	Exos 37,38,39 p205 \\
-	Exos 67,69,70 p206 \\
-	Exo 83 p214 \\
-	Exos 71 \rightarrow 74 p209 \\
-	Sujets B,C p212}
+\vfill
 
-\section{Épreuves et lois de Bernoulli}
-
-\begin{defin}
+\begin{proprs}
+Pour construire et utiliser un arbre de probabilités, on utilisera les règles suivantes:
 \begin{itemize}
-\item Une épreuve de Bernoulli de paramètre $p$ est une expérience où il n'y a que deux issues possibles: l'une est assimilée à un succès (de probabilité $p$) et l'autre à l'échec (de probabilité $1-p$).
+\item La somme des probabilités inscrites sur les branches issues d'un même noeud est égale à 1;
+\item La probabilité d'une issue représentée par un chemin est \textbf{le produit} des probabilités inscrite sur chacune de ses branches;
+\item La probabilité d'un évènement est la somme des probabilité de tous les chemins menant à cet évènement.
 \end{itemize}
-\compo[0.65]
+\end{proprs}
+
+\begin{exs}
+\compo[0.55]
 {
 \begin{itemize}
-\item On dit qu'une variable aléatoire $X$ suit une loi de Bernoulli de paramètre $p$ (parfois notée $\mathcal B(p)$) lorsqu'elle associe 1 au succès, 0 sinon. Sa loi est représentée ci-contre.
+\item La probabilité d'obtenir une boule rouge puis une boule verte {\color{DarkRed}(RV)} est: $$0,4 \times 0,6 = 0,54$$
+\item La probabilité d'obtenir une boule autre que rouge puis une boule noire {\color{DarkBlue}(JN ou BN)} est:
+$$\begin{aligned} (0,3 \times 0,6) + (0,3 \times 0,6) & = 0,18 + 0,18 \\ & = 0,36 \end{aligned}$$
 \end{itemize}
 }
 {
+\vspace{-7mm}
 \begin{center}
-\begin{tabularx}{0.9\linewidth}{|c|Y|Y|} \hline
-$x$ & 0 & 1 \\ \hline
-$\Pro(X=x)$ & $1-p$ & $p$ \\ \hline
-\end{tabularx}
+\begin{tikzpicture}[x=2.3cm,legende/.style={midway,sloped,font=\footnotesize}] % Même effet que xscale=1.8 mais l'option sloped marche
+
+\node (O) at (0,0) {};
+\node[DarkRed] (R) at (1,2) {R};
+\node[DarkBlue] (J) at (1,0) {J};
+\node[DarkBlue] (B) at (1,-2) {B};
+\node[anchor=west,DarkRed] (RV) at (2,2.5) {V};
+\node[anchor=west] (RN) at (2,1.5) {N};
+\node[anchor=west] (JV) at (2,0.5) {V};
+\node[anchor=west,DarkBlue] (JN) at (2,-0.5) {N};
+\node[anchor=west] (BV) at (2,-1.5) {V};
+\node[anchor=west,DarkBlue] (BN) at (2,-2.5) {N};
+
+\node[right of=RV,anchor=west,node distance=1cm,DarkRed] (res) {RV};
+\node[right of=RN,anchor=west,node distance=1cm] {RN};
+\node[right of=JV,anchor=west,node distance=1cm] {JV};
+\node[right of=JN,anchor=west,node distance=1cm,DarkBlue] {JN};
+\node[right of=BV,anchor=west,node distance=1cm] {BV};
+\node[right of=BN,anchor=west,node distance=1cm,DarkBlue] {BN};
+
+%\node[font=\footnotesize\bfseries,above of=R,node distance=1.05cm] (lancer1) {1\up{ère} tirage};
+%\node[font=\footnotesize\bfseries,above of=RV,node distance=1.15cm] (lancer2) {2\up{nd} tirage};
+%\node[font=\footnotesize\bfseries,above of=res,node distance=0.7cm] {issues};
+
+%\draw[->] (lancer1) -- (P);
+%\draw[->] (lancer2) -- (PP);
+
+\draw[DarkRed] (O) -- (R) node[legende,above] {$0,4$} (R) -- (RV) node[legende,above] {$0,6$};
+
+\draw[DarkBlue] (O) -- (J) node[legende,above] {$0,3$} (J) -- (JN) node[legende,below] {$0,4$} (O) -- (B) node[legende,below] {$0,3$}(B)  -- (BN) node[legende,below] {$0,4$};
+
+\draw (R) -- (RN) node[legende,below] {$0,4$} (J) -- (JV) node[legende,above] {$0,6$} (B) -- (BV) node[legende,above] {$0,6$};
+\end{tikzpicture}
 \end{center}
 }
-\end{defin}
-
-\begin{ex}
-Une urne contient des boules numérotées de 1 à 10, indiscernables au toucher. On tire au hasard une boule dans l'urne. On considère comme succès l'évènement \og Obtenir la boule numérotée 10 \fg et donc comme échec \og Ne pas obtenir la boule numérotée 10 \fg.
-
-\compo[0.65]
-{
-La loi de Bernoulli de la variable aléatoire $X$ associée à cette expérience est représentée ci-contre.
-}
-{
-\begin{center}
-\begin{tabularx}{0.9\linewidth}{|c|Y|Y|} \hline
-$x$ & 0 & 1 \\ \hline
-$\Pro(X=x)$ & $0,9$ & $0,1$ \\ \hline
-\end{tabularx}
-\end{center}
-}
-\end{ex}
-
-\begin{prop}
-Si $X$ suit une loi de Bernoulli de paramètre $p$, alors $\Esp(X)=p$.
-\end{prop}
+\end{exs}
 
 \end{document}
