@@ -168,64 +168,47 @@ $$\begin{aligned} (0,3 \times 0,6) + (0,3 \times 0,6) & = 0,18 + 0,18 \\ & = 0,3
 }
 \end{exs}
 
-\vfill
+\section{Épreuves et lois de Bernoulli}
 
-\begin{proprs}
-Pour construire et utiliser un arbre de probabilités, on utilisera les règles suivantes:
+\begin{defin}
 \begin{itemize}
-\item La somme des probabilités inscrites sur les branches issues d'un même noeud est égale à 1;
-\item La probabilité d'une issue représentée par un chemin est \textbf{le produit} des probabilités inscrite sur chacune de ses branches;
-\item La probabilité d'un évènement est la somme des probabilité de tous les chemins menant à cet évènement.
+\item Une épreuve de Bernoulli de paramètre $p$ est une expérience où il n'y a que deux issues possibles: l'une est assimilée à un succès (de probabilité $p$) et l'autre à l'échec (de probabilité $1-p$).
 \end{itemize}
-\end{proprs}
-
-\begin{exs}
-\compo[0.55]
+\compo[0.65]
 {
 \begin{itemize}
-\item La probabilité d'obtenir une boule rouge puis une boule verte {\color{DarkRed}(RV)} est: $$0,4 \times 0,6 = 0,54$$
-\item La probabilité d'obtenir une boule autre que rouge puis une boule noire {\color{DarkBlue}(JN ou BN)} est:
-$$\begin{aligned} (0,3 \times 0,6) + (0,3 \times 0,6) & = 0,18 + 0,18 \\ & = 0,36 \end{aligned}$$
+\item On dit qu'une variable aléatoire $X$ suit une loi de Bernoulli de paramètre $p$ lorsqu'elle associe 1 au succès et 0 à l'échec. Sa loi est représentée ci-contre.
 \end{itemize}
 }
 {
-\vspace{-7mm}
 \begin{center}
-\begin{tikzpicture}[x=2.3cm,legende/.style={midway,sloped,font=\footnotesize}] % Même effet que xscale=1.8 mais l'option sloped marche
-
-\node (O) at (0,0) {};
-\node[DarkRed] (R) at (1,2) {R};
-\node[DarkBlue] (J) at (1,0) {J};
-\node[DarkBlue] (B) at (1,-2) {B};
-\node[anchor=west,DarkRed] (RV) at (2,2.5) {V};
-\node[anchor=west] (RN) at (2,1.5) {N};
-\node[anchor=west] (JV) at (2,0.5) {V};
-\node[anchor=west,DarkBlue] (JN) at (2,-0.5) {N};
-\node[anchor=west] (BV) at (2,-1.5) {V};
-\node[anchor=west,DarkBlue] (BN) at (2,-2.5) {N};
-
-\node[right of=RV,anchor=west,node distance=1cm,DarkRed] (res) {RV};
-\node[right of=RN,anchor=west,node distance=1cm] {RN};
-\node[right of=JV,anchor=west,node distance=1cm] {JV};
-\node[right of=JN,anchor=west,node distance=1cm,DarkBlue] {JN};
-\node[right of=BV,anchor=west,node distance=1cm] {BV};
-\node[right of=BN,anchor=west,node distance=1cm,DarkBlue] {BN};
-
-%\node[font=\footnotesize\bfseries,above of=R,node distance=1.05cm] (lancer1) {1\up{ère} tirage};
-%\node[font=\footnotesize\bfseries,above of=RV,node distance=1.15cm] (lancer2) {2\up{nd} tirage};
-%\node[font=\footnotesize\bfseries,above of=res,node distance=0.7cm] {issues};
-
-%\draw[->] (lancer1) -- (P);
-%\draw[->] (lancer2) -- (PP);
-
-\draw[DarkRed] (O) -- (R) node[legende,above] {$0,4$} (R) -- (RV) node[legende,above] {$0,6$};
-
-\draw[DarkBlue] (O) -- (J) node[legende,above] {$0,3$} (J) -- (JN) node[legende,below] {$0,4$} (O) -- (B) node[legende,below] {$0,3$}(B)  -- (BN) node[legende,below] {$0,4$};
-
-\draw (R) -- (RN) node[legende,below] {$0,4$} (J) -- (JV) node[legende,above] {$0,6$} (B) -- (BV) node[legende,above] {$0,6$};
-\end{tikzpicture}
+\begin{tabularx}{0.9\linewidth}{|c|Y|Y|} \hline
+$x$ & 0 & 1 \\ \hline
+$\Pro(X=x)$ & $1-p$ & $p$ \\ \hline
+\end{tabularx}
 \end{center}
 }
-\end{exs}
+\end{defin}
+
+\begin{ex}
+Une urne contient des boules numérotées de 1 à 10, indiscernables au toucher. On tire au hasard une boule dans l'urne. On considère comme succès l'évènement \og Obtenir la boule numérotée 10 \fg et donc comme échec \og Ne pas obtenir la boule numérotée 10 \fg.
+
+\compo[0.65]
+{
+La loi de Bernoulli de la variable aléatoire $X$ associée à cette expérience est représentée ci-contre.
+}
+{
+\begin{center}
+\begin{tabularx}{0.9\linewidth}{|c|Y|Y|} \hline
+$x$ & 0 & 1 \\ \hline
+$\Pro(X=x)$ & $0,9$ & $0,1$ \\ \hline
+\end{tabularx}
+\end{center}
+}
+\end{ex}
+
+\begin{prop}
+Si $X$ suit une loi de Bernoulli de paramètre $p$, alors $\Esp(X)=p$.
+\end{prop}
 
 \end{document}
