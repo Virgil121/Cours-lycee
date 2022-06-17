@@ -483,19 +483,45 @@
 
 \def\tkzTabDefaultBackgroundColor{bg}
 
-% Changement style ligne pour zéros, prendre tout le bloc avec xpatch ne marche pas donc solution un peu moche mais fonctionnelle
+% BACKUP
+%% Changement style ligne pour zéros, prendre tout le bloc avec xpatch ne marche pas donc solution un peu moche mais fonctionnelle
+%
+%\xpatchcmd{\tkzTabLine}
+%{
+%\ifthenelse{\equal{\expandafter\stripspaces\expandafter{\x}}{z}}%
+%}
+%{
+%\ifthenelse{\equal{\expandafter\stripspaces\expandafter{\x}}{z}}{\tikzset{t style/.append style = { style = solid }}}{}
+%\ifthenelse{\equal{\expandafter\stripspaces\expandafter{\x}}{z}}
+%}
+%{}{}
+%
+%%\tikzset{t style/.style={style=densely dotted,draw=\tkzTabDefaultWritingColor}}
+%
+%\xpatchcmd{\tkzTabLine}
+%{
+%\node at (Z\thetkz@cnt@impair\thetkz@cnt@lg){$0$}; 
+%} % search
+%{
+%\node[fill=black,line width=0.5pt,draw=black,circle,minimum size=7pt,inner sep=2pt,xscale=0.93,yscale=1.3] at (Z\thetkz@cnt@impair\thetkz@cnt@lg){};
+%\node[fill=\tkzTabDefaultBackgroundColor,line width=0.5pt,draw=\tkzTabDefaultBackgroundColor,circle,minimum size=7pt,inner sep=2pt,xscale=0.7,yscale=1.18] at (Z\thetkz@cnt@impair\thetkz@cnt@lg){};
+%\tikzset{t style/.style = {style      = \cmdTAB@TTS@tstyle,
+%                           draw       = \cmdTAB@TTS@tcolor,
+%                           line width = \cmdTAB@TTS@twidth}} % Bizaremment, ça remet à zéro tout seul le style donc ligne inutile ...
+%}  % replace
+%{}{}
+
+% Changement style ligne pour zéros, prendre tout le bloc avec xpatch ne marche pas donc solution un peu moche mais fonctionnelle. A NE PAS RECOPIER, C'EST INCOMPREHENSIBLE: On change le style de ligne pour les zéros, et on change le style du zéro dessiné: Plutôt que de mettre un 0, on dessine deux ellipses
 
 \xpatchcmd{\tkzTabLine}
 {
 \ifthenelse{\equal{\expandafter\stripspaces\expandafter{\x}}{z}}%
 }
 {
-\ifthenelse{\equal{\expandafter\stripspaces\expandafter{\x}}{z}}{\tikzset{t style/.append style = { style = solid }}}{}
+\ifthenelse{\equal{\expandafter\stripspaces\expandafter{\x}}{z}}{\tikzset{t style/.append style = { style = solid }}\begin{scope}\clip ($(N\thetkz@cnt@impair\thetkz@cnt@lgnext)+(-0.5,-0.5)$) rectangle ($(N\thetkz@cnt@impair\thetkz@cnt@lg)+(0.5,0.5)$) (Z\thetkz@cnt@impair\thetkz@cnt@lg) circle (2.7pt and 4.4pt); }{}
 \ifthenelse{\equal{\expandafter\stripspaces\expandafter{\x}}{z}}
 }
 {}{}
-
-%\tikzset{t style/.style={style=densely dotted,draw=\tkzTabDefaultWritingColor}}
 
 \xpatchcmd{\tkzTabLine}
 {
@@ -503,10 +529,7 @@
 } % search
 {
 \node[fill=black,line width=0.5pt,draw=black,circle,minimum size=7pt,inner sep=2pt,xscale=0.93,yscale=1.3] at (Z\thetkz@cnt@impair\thetkz@cnt@lg){};
-\node[fill=\tkzTabDefaultBackgroundColor,line width=0.5pt,draw=\tkzTabDefaultBackgroundColor,circle,minimum size=7pt,inner sep=2pt,xscale=0.7,yscale=1.18] at (Z\thetkz@cnt@impair\thetkz@cnt@lg){};
-\tikzset{t style/.style = {style      = \cmdTAB@TTS@tstyle,
-                           draw       = \cmdTAB@TTS@tcolor,
-                           line width = \cmdTAB@TTS@twidth}} % Bizaremment, ça remet à zéro tout seul le style donc ligne inutile ...
+\end{scope}
 }  % replace
 {}{}
 
