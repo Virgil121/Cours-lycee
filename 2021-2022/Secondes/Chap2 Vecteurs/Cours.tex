@@ -19,15 +19,14 @@ Soient $A,B,M$ trois points quelconques du plan. L'image de $M$ par la translati
 
 \begin{center}
 \begin{tikzpicture}[scale=0.7]
-\node[stylepoint,fill=blue,label=above:A] (A) at (0,0) {};
-\node[stylepoint,fill=blue,label=above:B] (B) at (5,-2) {};
-\node[stylepoint,fill=blue,label=above:M] (M) at (-2,-3) {};
-\node[draw=none] (N) at (3,-5) {};
+\coordinate[stylepoint,label=above:A] (A) at (0,0);
+\coordinate[stylepoint,label=above:B] (B) at (5,-2);
+\coordinate[stylepoint,label=above:M] (M) at (-2,-3);
+\coordinate (N) at (3,-5);
 \draw[thick] (M) +(-17:5.385) arc (-17:-27:5.385);
 \draw[thick] (B) +(-115:3.606) arc (-115:-132:3.606);
 %\draw[dashed] (M) circle (5.3851);
 %\draw (B) circle (3.6055);
-
 \end{tikzpicture}
 \end{center}
 \end{defin}
@@ -100,11 +99,11 @@ On en déduit la \textbf{relation de Chasles}: $$\vv{AB} + \vv{BC} = \vv{AC}$$
 \begin{tikzpicture}
 \draw[stylegrille] (0,0) grid (14,9);
 %
-\node[stylepoint,fill=blue,label=below left:A] (A) at (2,2) {};
-\node[stylepoint,fill=blue,label=above:B] (B) at (3,7) {};
+\coordinate[stylepoint,label=below left:A] (A) at (2,2);
+\coordinate[stylepoint,label=above:B] (B) at (3,7);
 \draw[stylevecteur] (A.center) -- (B.center) node[pos=0.5,left] {$\vv u$};
 \draw[stylevecteur] (7,8) -- ++(6,-4) node[pos=0.5,above right] {$\vv v$};
-\node[stylepoint,fill=blue,label=below right:C] (C) at (9,3) {};
+\coordinate[stylepoint,label=below right:C] (C) at (9,3);
 \draw[stylevecteur] (B.center) -- (C.center) node[pos=0.5,above right] {$\vv v$};
 \draw[stylevecteur,color=red] (A.center) -- (C.center) node[pos=0.5,below] {$\vv u + \vv v$};
 \end{tikzpicture}
@@ -132,10 +131,10 @@ Le vecteur $\vv {AB} + \vv{AC}$ est alors égal à $\vv {AD}$.
 \vspace{-8mm}
 \begin{center}
 \begin{tikzpicture}[scale=0.6]
-\node[stylepoint,fill=blue,label=above:A] (A) at (0,0) {};
-\node[stylepoint,fill=blue,label=above:B] (B) at (5,-2) {};
-\node[stylepoint,fill=blue,label=above left:C] (C) at (-2,-3) {};
-\node[stylepoint,fill=blue,label=right:D] (D) at (3,-5) {};
+\coordinate[stylepoint,label=above:A] (A) at (0,0);
+\coordinate[stylepoint,label=above:B] (B) at (5,-2);
+\coordinate[stylepoint,label=above left:C] (C) at (-2,-3);
+\coordinate[stylepoint,label=right:D] (D) at (3,-5);
 \draw[thick] (C) +(-17:5.385) arc (-17:-27:5.385);
 \draw[thick] (B) +(-115:3.606) arc (-115:-132:3.606);
 \draw[stylevecteur] (A.center) -- (B.center) node[pos=0.5,above] {$\vv u$};
