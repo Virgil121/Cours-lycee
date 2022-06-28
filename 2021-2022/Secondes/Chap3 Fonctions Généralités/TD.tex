@@ -1,11 +1,6 @@
 \documentclass[,a4paper,12pt,french]{article}
 
-\usepackage{../../Style}
-
-\renewcommand\tabularxcolumn[1]{m{#1}}
-
-\setlist[itemize]{align=parleft,left=5pt..15pt}
-\setlist[enumerate]{align=parleft,left=5pt..20pt}
+\usepackage[TD]{../../Style}
 
 % Début du document
 %%%%%%%%%%%%%%%%%%%
@@ -264,7 +259,7 @@ yscale=0.5,
 \end{exercice}
 
 \begin{exercice} \label{schemafonctions}
-Dresser le tableau de variation et le tableau de signes des fonctions $f$, $g$ et $h$ définies sur le repère suivant:
+Dresser le tableau de signes des fonctions $f$, $g$ et $h$ définies sur le repère suivant:
 \begin{centrer}
 \begin{tikzpicture}
 \begin{axis}[
@@ -286,7 +281,7 @@ minor y tick num=1,
 \end{exercice}
 
 \begin{exercice}
-Dresser le tableau de variation et le tableau de signes des fonctions de l'exercice 38.
+Dresser le tableau de signes des fonctions de l'exercice 38.
 \end{exercice}
 
 \begin{exercice}
@@ -335,7 +330,7 @@ On se donne une fonction $f$ et son tableau de signes:
 \draw[cadre] (\gauche,\haut) rectangle  (\droite, \lignef);
 \draw[cadre] (\gauche,\lignex) -- (\droite,\lignex);
 \end{tikzpicture}
-\end{centrer} \vspace{-5mm}
+\end{centrer}
 \noindent Résoudre l'inéquation $f(x) \leq 0$.
 \end{exercice}
 
@@ -536,8 +531,7 @@ Soit $f$ une fonction définie sur $[0;8]$. Voici l'ensemble des solutions de ce
 \compo[0.5]{\fakeitem $f(x) \geq 4$} {$\mathscr S=\{4 \}$}
 \end{minipage}
 \end{centrer}
-\vspace{2mm}
-Dans un repère, tracer une courbe susceptible de représenter la fonction $f$.
+\noindent Dans un repère, tracer une courbe susceptible de représenter la fonction $f$.
 \end{exercice}
 
 \begin{exercice}[*]
@@ -550,47 +544,9 @@ On reprend les trois fonctions de l'exercice \ref{schemafonctions}. Dans chaque 
 \end{exercice}
 
 \begin{exercice}[*]
-On se donne une fonction $f$ définie sur $[-5;4]$. On a dressé son tableau de variations et son tableau de signes ci-dessous:
+On se donne une fonction $f$ définie sur $[-5;4]$. On a dressé son tableau de signes ci-dessous:
 \begin{centrer}
 \begin{tikzpicture}[scale=0.875]
-% Styles 
-\tikzstyle{cadre}=[thin]
-\tikzstyle{fleche}=[->,>=latex,thin]
-\tikzstyle{nondefini}=[lightgray]
-% Dimensions Modifiables
-\def\Lrg{5/4}
-\def\HtX{1}
-\def\HtY{0.5}
-% Dimensions Calculées
-\def\lignex{-0.5*\HtX}
-\def\lignef{-1.5*\HtX}
-\def\separateur{-0.5*\Lrg}
-% Largeur du tableau
-\def\gauche{-1.5*\Lrg}
-\def\droite{6.5*\Lrg}
-% Hauteur du tableau
-\def\haut{0.5*\HtX}
-\def\bas{-1.5*\HtX-2*\HtY}
-% Ligne de l'abscisse : x
-\node at (-1*\Lrg,0) {$x$};
-\node at (0*\Lrg,0) {$-5$};
-\node at (2*\Lrg,0) {$-2$};
-\node at (4*\Lrg,0) {$1$};
-\node at (6*\Lrg,0) {$4$};
-% Ligne de la fonction : f(x)
-\node  at (-1*\Lrg,{-1*\HtX+(-1)*\HtY}) {$f(x)$};
-\node (f1) at (0*\Lrg,{-1*\HtX+(0)*\HtY}) {$2$};
-\node (f2) at (2*\Lrg,{-1*\HtX+(-2)*\HtY}) {$-5$};
-\node (f3) at (4*\Lrg,{-1*\HtX+(0)*\HtY}) {$3$};
-\node (f4) at (6*\Lrg,{-1*\HtX+(-2)*\HtY}) {$-1$};
-% Flèches
-\draw[fleche] (f1) -- (f2);
-\draw[fleche] (f2) -- (f3);
-\draw[fleche] (f3) -- (f4);
-% Encadrement
-\draw[cadre] (\separateur,\haut) -- (\separateur,\bas);
-\draw[cadre] (\gauche,\haut) rectangle  (\droite,\bas);
-\draw[cadre] (\gauche,\lignex) -- (\droite,\lignex);
 
 \begin{scope}[shift= {(-0.38,-3.15)}]
 % Styles 
@@ -636,7 +592,7 @@ On se donne une fonction $f$ définie sur $[-5;4]$. On a dressé son tableau de 
 \draw[cadre] (\gauche,\lignex) -- (\droite,\lignex);
 \end{scope}
 \end{tikzpicture}
-\end{centrer} \vspace{-5mm}
+\end{centrer}
 \noindent Tracer dans un repère une courbe représentative potentielle de $f$.
 \end{exercice}
 
